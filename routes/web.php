@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OfertasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
+Route::get('/', HomeController::class)->name('home');
+//Route::get('/ofertas', [OfertasController::class,'index'])->name('ofertas');
+Route::get('/ofertas/{autonomia?}/{provincia?}/{localidad?}',[OfertasController::class,'index'])->name('ofertas');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

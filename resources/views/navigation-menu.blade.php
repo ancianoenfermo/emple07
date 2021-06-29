@@ -5,6 +5,11 @@ $nav_links = [
         'route' => route('home'),
         'active' => request()->routeIs('home'),
     ],
+    [
+        'name' => 'Ofertas',
+        'route' => route('ofertas'),
+        'active' => request()->routeIs('ofertas'),
+    ],
 ];
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
@@ -87,6 +92,7 @@ $nav_links = [
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
+
                     @auth
                         <x-jet-dropdown align="right" width="48">
                             <x-slot name="trigger">
@@ -137,7 +143,7 @@ $nav_links = [
                                     @csrf
 
                                     <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
+                                                        this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-jet-dropdown-link>
                                 </form>
@@ -170,16 +176,16 @@ $nav_links = [
 
 
 
-        <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-            <div class="pt-2 pb-3 space-y-1">
-                @foreach ($nav_links as $nav_link)
-                    <x-jet-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
-                        {{ $nav_link['name'] }}
-                    </x-jet-responsive-nav-link>
-                @endforeach
-            </div>
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+        <div class="pt-2 pb-3 space-y-1">
+            @foreach ($nav_links as $nav_link)
+                <x-jet-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                    {{ $nav_link['name'] }}
+                </x-jet-responsive-nav-link>
+            @endforeach
+        </div>
 
-            <!-- Responsive Settings Options -->
+        <!-- Responsive Settings Options -->
         @auth
 
             <div class="pt-4 pb-1 border-t border-gray-200">
@@ -216,7 +222,7 @@ $nav_links = [
                         @csrf
 
                         <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                                            this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-jet-responsive-nav-link>
                     </form>
@@ -255,15 +261,17 @@ $nav_links = [
                     @endif
                 </div>
             </div>
-        </div>
-    @else
-        <div class="py-1 border-t border-gray-200">
-            <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                login
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                Register
-            </x-jet-responsive-nav-link>
-        </div>
-    @endauth
+        @else
+            <div class="py-1 border-t border-gray-200">
+                <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                    login
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                    Register
+                </x-jet-responsive-nav-link>
+            </div>
+        @endauth
+
+    </div>
+
 </nav>
