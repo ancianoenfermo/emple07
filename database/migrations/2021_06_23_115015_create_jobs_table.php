@@ -22,14 +22,19 @@ class CreateJobsTable extends Migration
             $table->string('vacantes')->nullable();
             $table->boolean('ett')->nullable()->default('0');
             $table->string('salario')->nullable();
-            $table->unsignedBigInteger('localidade_id');
+            $table->unsignedBigInteger('autonomia_id');
+            $table->unsignedBigInteger('provincia_id');
+            $table->unsignedBigInteger('localidad_id');
+
             $table->unsignedBigInteger('contrato_id')->nullable();
             $table->unsignedBigInteger('fuente_id')->nullable();
             $table->unsignedBigInteger('jornada_id')->nullable();
             $table->unsignedBigInteger('experiencia_id')->nullable();
 
+            $table->foreign('autonomia_id')->references('id')->on('autonomias');
+            $table->foreign('provincia_id')->references('id')->on('provincias');
+            $table->foreign('localidad_id')->references('id')->on('localidades');
 
-            $table->foreign('localidade_id')->references('id')->on('localidades');
             $table->foreign('contrato_id')->references('id')->on('contratos');
             $table->foreign('fuente_id')->references('id')->on('fuentes');
             $table->foreign('jornada_id')->references('id')->on('jornadas');

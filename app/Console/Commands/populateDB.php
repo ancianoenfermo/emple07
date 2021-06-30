@@ -84,9 +84,13 @@ class populateDB extends Command
         $this->vaciaTablas();
 
 
+        $todosTrabajos = new Tipojob();
+        $todosTrabajos->name = "Todos los trabajos";
+        $todosTrabajos->save();
+
 
         foreach ($empleos as $empleo) {
-            $this->trata_empleo($empleo);
+            $this->trata_empleo($empleo,$todosTrabajos);
         }
 
 
@@ -97,7 +101,7 @@ class populateDB extends Command
         //File::delete($path);
         return 0;
     }
-    public function trata_empleo($empleo)
+    public function trata_empleo($empleo,$todosTrabajos)
     {
         global $logoFuente;
 
@@ -197,6 +201,7 @@ class populateDB extends Command
             }
         }
 
+
         $newJob = new Job;
         // DEBEN EXISTIR
 
@@ -213,6 +218,10 @@ class populateDB extends Command
         //echo $llave.PHP_EOL;
         $newJob->datePosted = $date;
         $newJob->title = $empleo['title'];
+        $newJob->autonomia_id = $autonomia->id;
+        $newJob->provincia_id = $provincia->id;
+        $newJob->localidad_id = $localidad->id;
+
 
         if (isset($empleo['excerpt'])) {
             $newJob->excerpt = $empleo['excerpt'];
@@ -230,8 +239,6 @@ class populateDB extends Command
             $newJob->ett = $empleo['ett'];
         }
 
-        $newJob->localidade_id = $localidad->id;
-
         if (isset($contrato)) {
             $newJob->contrato_id = $contrato->id;
         }
@@ -245,6 +252,8 @@ class populateDB extends Command
             $newJob->experiencia_id = $experiencia->id;
         }
         $newJob->save();
+
+        // Relaciones Muchos a Muchos
         if (isset($tipoDiscapacidad)) {
             $newJob->tipojobs()->attach($tipoDiscapacidad->id);
         }
@@ -254,7 +263,7 @@ class populateDB extends Command
         if (isset($tipoTeletrabajo)) {
             $newJob->tipojobs()->attach($tipoTeletrabajo->id);
         }
-
+        $newJob->tipojobs()->attach($todosTrabajos->id);
     }
 
 

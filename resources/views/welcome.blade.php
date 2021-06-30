@@ -3,13 +3,24 @@
         <div class="mx-auto px-4 sm:px-6 lg:px-8 py-36">
             <div class="w-full md:w-3/4b lg:w-1/2">
                 <h1 class="text-4xl font-bold text-white">Título página</h1>
-                <p class="text-white text-lg mt-2 mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+                <p class="text-white text-lg mt-2 mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Incidunt
                     quia blanditiis accusamus porro nihil ex aut, dolorem quae nisi beatae quod praesentium molestiae
                     enim laboriosam amet accusantium nesciunt deserunt nostrum</p>
             </div>
             <!-- component -->
-            @livewire('location-filters')
+            {{--
+            <div class="w-full md:w-3/4b lg:w-full flex items-center">
+                @livewire('location-filters')
+                <div class="ml-2">
+                    <button type="button"
+                        class="bg-blue-500 text-white px-2 h-12 rounded font-medium hover:bg-blue-600 transition duration-200 each-in-out">Ver
+                        ofertas</button>
+                </div>
+            </div>
+            --}}
         </div>
+
     </section>
 
     <section class="mt-20">
@@ -59,5 +70,3 @@
         </div>
     </section>
 </x-app-layout>
-
-{{--  --}}

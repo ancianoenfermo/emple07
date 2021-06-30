@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     use HasFactory;
+    public function autonomia(){
+        return $this->belongsTo('App\Models\Autonomia');
+    }
+    public function provincia(){
+        return $this->belongsTo('App\Models\Provincia');
+    }
+    public function localidad(){
+        return $this->belongsTo('App\Models\Localidade');
+    }
+
     public function contrato(){
         return $this->belongsTo('App\Models\Contrato');
     }
@@ -20,10 +30,28 @@ class Job extends Model
     public function jornada() {
         return $this->belongsTo('App\Models\Jornada');
     }
-    public function localidade() {
-        return $this->belongsTo('App\Models\Localidade');
-    }
+
+    // Relación Muchos a Muchos
     public function tipojobs() {
         return $this->belongsToMany('App\Models\Tipojob');
     }
+
+
+
+    public function scopeAutonomia($query, $autonomia_id) {
+        if($autonomia_id) {
+            return $query->where('autonomia_id',$autonomia_id);
+        }
+    }
+    public function scopeProvincia($query, $provincia_id) {
+        if($provincia_id) {
+            return $query->where('provincia_id',$provincia_id);
+        }
+    }
+    public function scopeLocalidad($query, $localidad_id) {
+        if($localidad_id) {
+            return $query->where('localidad_id',$localidad_id);
+        }
+    }
+
 }

@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Provincia extends Model
 {
     use HasFactory;
+    public function jobs() {
+        return $this->hasMany('App\Models\Job');
+    }
+
     public function localidades() {
         return $this->hasMany('App\Models\Localidade');
     }
 
-    public function jobs() {
-        return $this->hasManyThrough('App\Models\Job','App\Models\Localidade');
+    public function autonomia() {
+        return $this->belongsTo('App\Models\Autonomia');
     }
 }

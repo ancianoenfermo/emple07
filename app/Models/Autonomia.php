@@ -11,8 +11,9 @@ class Autonomia extends Model
     public function provincias() {
         return $this->hasMany('App\Models\Provincia');
     }
-
     public function jobs() {
-        return $this->hasManyThrough('App\Models\Job','App\Models\Provincia');
+        return $this->hasMany('App\Models\Job');
     }
+
+
 }

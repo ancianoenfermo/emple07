@@ -11,4 +11,8 @@ class Localidade extends Model
     public function jobs() {
         return $this->hasMany('App\Models\Job');
     }
+
+    public function provincia() {
+        return $this->belongsTo('App\Models\Provincia');
+    }
 }
