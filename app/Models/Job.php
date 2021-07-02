@@ -4,10 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Job extends Model
 {
     use HasFactory;
+    public function getDateHumanaAttribute() {
+        Carbon::setLocale('es');
+        return Carbon::create($this->datePosted)->diffForHumans();
+    }
+
     public function autonomia(){
         return $this->belongsTo('App\Models\Autonomia');
     }

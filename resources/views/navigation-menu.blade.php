@@ -6,7 +6,7 @@ $nav_links = [
         'active' => request()->routeIs('home'),
     ],
     [
-        'name' => 'Ofertas',
+        'name' => 'Ofertas de trabajo',
         'route' => route('ofertas'),
         'active' => request()->routeIs('ofertas'),
     ],

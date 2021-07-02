@@ -16,7 +16,7 @@ use App\Http\Controllers\OfertasController;
 
 Route::get('/', HomeController::class)->name('home');
 //Route::get('/ofertas', [OfertasController::class,'index'])->name('ofertas');
-Route::get('/ofertas/{autonomia?}/{provincia?}/{localidad?}',[OfertasController::class,'index'])->name('ofertas');
+Route::get('/ofertas-trabajo/',[OfertasController::class,'index'])->name('ofertas');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

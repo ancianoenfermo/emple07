@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Cache;
+use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Autonomia;
 use App\Models\Provincia;
@@ -14,6 +15,7 @@ use SebastianBergmann\Environment\Console;
 
 class LocationFilters extends Component
 {
+    use WithPagination;
 
     public $autonomia = null;
     public $elegidaAutonomia ="Todas las Autonomías";
@@ -31,6 +33,9 @@ class LocationFilters extends Component
 
     public function render()
     {
+        if (!$this->autonomia and !$this->provincia and !$this->localidad) {
+            $titleh1 = "Ofertas de trabajo en España";
+        }
 
         if (Cache::has('todasAutonomias')) {
             $autonomias = Cache::get('todasAutonomias');
@@ -51,8 +56,9 @@ class LocationFilters extends Component
         //$tiposTrabajo = Tipojob::with('jobs')->get();
 
         if ($this->tipoTrabajo == null) {
-            $this->tipoTrabajo = Tipojob::with('jobs')
-            ->find(1);
+
+           $this->tipoTrabajo = Tipojob::with('jobs')
+           ->find(1);
         }
 
         if(isset($this->autonomia->id)) {
@@ -76,12 +82,14 @@ class LocationFilters extends Component
         ->with('autonomia')
         ->with('provincia')
         ->with('localidad')
+        ->with('fuente')
+        ->orderBy('orden')
         ->autonomia($searchAutonomia)
         ->provincia($searchProvincia)
         ->localidad($searchLocalidad)
-        ->get();
+        ->paginate();
 
-        return view('livewire.location-filters',compact('autonomias','tiposTrabajo','jobs'));
+        return view('livewire.location-filters',compact('autonomias','tiposTrabajo','jobs','titleh1'));
 
 
 

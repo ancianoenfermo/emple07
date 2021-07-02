@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-gray-200 py-4">
+    <div class="bg-gray-500 py-3 flex justify-around">
         <div class="mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 block my-2 lg:flex">
@@ -9,7 +9,7 @@
                     <button
                         class="px-4 w-60 text-gray-700  h-12  rounded-lg overflow-hidden focus:outline-none bg-white shadow mr-6"
                         x-on:click="open = !open">
-                            <span>{{ $elegidaTiposTrabajo }}</span>
+                        <span>{{ $elegidaTiposTrabajo }}</span>
 
                         <i class="fas fa-angle-down"></i>
                     </button>
@@ -48,10 +48,10 @@
                             las Autonomías</a>
                         -->
                         <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white"
-                            wire:click="autonomiaClick({{null}})" x-on:click="open = false">Todas
+                            wire:click="autonomiaClick({{ null }})" x-on:click="open = false">Todas
                             las Autonomías</a>
                         @foreach ($autonomias as $autonomia)
-                            <a  class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white"
+                            <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white"
                                 wire:click="autonomiaClick({{ $autonomia }})"
                                 x-on:click="open = false">{{ $autonomia->name }}</a>
                         @endforeach
@@ -67,7 +67,7 @@
                 <div class="relative mb-2 z-30" x-data="{open:false}">
                     <button class="
                 @empty($provincias)
-                    cursor-not-allowed
+                        cursor-not-allowed
                 @endempty
                  px-4 w-60 text-gray-700  h-12  rounded-lg overflow-hidden focus:outline-none bg-white shadow mr-6"
                         x-on:click="open = !open">
@@ -82,13 +82,11 @@
                     @isset($provincias)
                         <div class="absolute right-0 w-60 mt-2 py-2 bg-white border rounded shadow-xl" x-show="open"
                             x-on:click.away="open = false">
-                            {{--
-                            <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white"
+                            {{-- <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white"
                                 wire:click="$set('elegidaProvincia','Todas las Provincias')" x-on:click="open = false">Todas
-                                las Provincias</a>
-                            --}}
+                                las Provincias</a> --}}
                             <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white"
-                            wire:click="provinciaClick({{null}})" x-on:click="open = false">Todas
+                                wire:click="provinciaClick({{ null }})" x-on:click="open = false">Todas
                                 las Provincias</a>
                             @foreach ($provincias as $provincia)
                                 <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white"
@@ -103,7 +101,7 @@
                 <div class="relative mb-2  z-20" x-data="{open:false}">
                     <button class="
                 @empty($localidades)
-                    cursor-not-allowed
+                        cursor-not-allowed
                 @endempty
                  px-4 w-60 text-gray-700  h-12  rounded-lg overflow-hidden focus:outline-none bg-white shadow mr-6"
                         x-on:click="open = !open">
@@ -120,13 +118,11 @@
 
                         <div class="absolute right-0 w-60 mt-2 py-2 bg-white border rounded shadow-xl" x-show="open"
                             x-on:click.away="open = false">
-                            {{--
-                            <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white"
+                            {{-- <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white"
                                 wire:click="$set('elegidaProvincia','Todas las Provincias')" x-on:click="open = false">Todas
-                                las Localidades</a>
-                            --}}
+                                las Localidades</a> --}}
                             <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white"
-                            wire:click="localidadClick({{null}})" x-on:click="open = false">Todas
+                                wire:click="localidadClick({{ null }})" x-on:click="open = false">Todas
                                 las Localidades</a>
                             @foreach ($localidades as $localidad)
                                 <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white"
@@ -145,21 +141,37 @@
     </div>
 
     <div>
-        @foreach ($jobs as $job )
+        @foreach ($jobs as $job)
 
-          <p>{{$job->title}}</p>
+            <x-jobCard :job=$job />
 
-            <p>{{$job->autonomia->name}}</p>
-            <p>{{$job->provincia->name}}</p>
-            <p>{{$job->localidad->name}}</p>
-            @foreach ($job->tipojobs as $tipoJob )
-                <p> {{$tipoJob->name}}  <p>
+        @endforeach
+    </div>
+    @if ($jobs->hasPages())
+    <div class="bg-gray-200 px-4 py-3 mt-5 mb-5 mr-2 items-center justify-between border-t border-gray-200 sm:px-6">
+        {{ $jobs->links() }}
+    </div>
+@endif
+</div>
+
+{{--
+<div>
+        @foreach ($jobs as $job)
+
+            <p>{{ $job->title }}</p>
+
+            <p>{{ $job->autonomia->name }}</p>
+            <p>{{ $job->provincia->name }}</p>
+            <p>{{ $job->localidad->name }}</p>
+            @foreach ($job->tipojobs as $tipoJob)
+                <p> {{ $tipoJob->name }}
+                <p>
             @endforeach
         @endforeach
     </div>
-</div>
+    {{ $jobs->links() }}
 
-
+--}}
 
 
 {{-- <button  disabled class="cursor-not-allowed px-4 w-60 text-gray-700  h-12  rounded-lg overflow-hidden focus:outline-none bg-white shadow"
