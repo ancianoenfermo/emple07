@@ -20,7 +20,7 @@ class CreateProvinciasTable extends Migration
             $table->unsignedBigInteger('autonomia_id');
 
             $table->foreign('autonomia_id')->references('id')->on('autonomias');
-            $table->timestamps();
+            $table->index('name');
         });
     }
 

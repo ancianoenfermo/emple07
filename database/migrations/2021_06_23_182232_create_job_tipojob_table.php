@@ -19,7 +19,7 @@ class CreateJobTipojobTable extends Migration
             $table->unsignedBigInteger('tipojob_id');
             $table->foreign('job_id')->references('id')->on('jobs');
             $table->foreign('tipojob_id')->references('id')->on('tipojobs');
-            $table->timestamps();
+
         });
     }
 

@@ -19,7 +19,7 @@ class CreateLocalidadesTable extends Migration
             $table->string('slug');
             $table->unsignedBigInteger('provincia_id');
             $table->foreign('provincia_id')->references('id')->on('provincias');
-            $table->timestamps();
+            $table->index('name');
         });
     }
 

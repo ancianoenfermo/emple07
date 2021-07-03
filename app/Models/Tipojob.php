@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tipojob extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     //Relación Muchos a Muchos
     public function jobs() {
         return $this->belongsToMany('App\Models\Job');

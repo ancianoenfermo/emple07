@@ -134,42 +134,6 @@ class populateDB extends Command
             $localidad->save();
         }
 
-        $fuente = Fuente::where('jobFuente', $empleo['JobFuente'])->first();
-        if ($fuente == null) {
-            $newFuente = new Fuente();
-            $newFuente->jobFuente = $empleo['JobFuente'];
-            $newFuente->jobUrl = $empleo['JobUrl'];
-            $newFuente->jobLogo = $this->descargarLogo($empleo["logo"]);
-            $fuente = $newFuente;
-            $fuente->save();
-        }
-        if (isset($empleo['contrato'])) {
-            $contrato = Contrato::where('name', $empleo['contrato'])->first();
-            if ($contrato == null) {
-                $newContrato = new Contrato();
-                $newContrato->name = $empleo['contrato'];
-                $contrato = $newContrato;
-                $contrato->save();
-            }
-        }
-        if (isset($empleo['experiencia'])) {
-            $experiencia = Experiencia::where('name', $empleo['experiencia'])->first();
-            if ($experiencia == null) {
-                $newExperiencia = new Experiencia();
-                $newExperiencia->name = $empleo['experiencia'];
-                $experiencia = $newExperiencia;
-                $experiencia->save();
-            }
-        }
-        if (isset($empleo['jornada'])) {
-            $jornada = Jornada::where('name', $empleo['jornada'])->first();
-            if ($jornada == null) {
-                $newJornada = new Jornada();
-                $newJornada->name = $empleo['jornada'];
-                $jornada = $newJornada;
-                $jornada->save();
-            }
-        }
 
         if (isset($empleo['discapacidad'])) {
             $tipoDiscapacidad = Tipojob::where('name', "Discapacidad")->first();
@@ -218,10 +182,8 @@ class populateDB extends Command
         //echo $llave.PHP_EOL;
         $newJob->datePosted = $date;
         $newJob->title = $empleo['title'];
-        $newJob->autonomia_id = $autonomia->id;
-        $newJob->provincia_id = $provincia->id;
-        $newJob->localidad_id = $localidad->id;
-
+        $newJob->jobFuente = $empleo['JobFuente'];
+        $newJob->jobUrl = $empleo['JobUrl'];
 
         if (isset($empleo['excerpt'])) {
             $newJob->excerpt = $empleo['excerpt'];
@@ -239,18 +201,24 @@ class populateDB extends Command
             $newJob->ett = $empleo['ett'];
         }
 
-        if (isset($contrato)) {
-            $newJob->contrato_id = $contrato->id;
+        if (isset($empleo['contrato'])) {
+            $newJob->contrato = $empleo['contrato'];
         }
-        if (isset($fuente)) {
-            $newJob->fuente_id = $fuente->id;
+
+        if (isset($empleo['jornada'])) {
+            $newJob->jornada = $empleo['jornada'];
         }
-        if (isset($jornada)) {
-            $newJob->jornada_id = $jornada->id;
+        if (isset($empleo['experiencia'])) {
+            $newJob->experiencia = $empleo['experiencia'];
         }
-        if (isset($experiencia)) {
-            $newJob->experiencia_id = $experiencia->id;
-        }
+
+
+        $newJob->autonomia = $autonomia->name;
+        $newJob->provincia = $provincia->name;
+        $newJob->localidad = $localidad->name;
+
+
+
         $newJob->save();
 
         // Relaciones Muchos a Muchos

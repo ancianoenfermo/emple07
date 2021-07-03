@@ -30,12 +30,11 @@ class LocationFilters extends Component
 
     public $tipoTrabajo = null;
     public $elegidaTiposTrabajo = "Todos los trabajos";
+    public $titleH1;
 
     public function render()
     {
-        if (!$this->autonomia and !$this->provincia and !$this->localidad) {
-            $titleh1 = "Ofertas de trabajo en España";
-        }
+        $this->titleH1 = "ofertas de trabajo en España";
 
         if (Cache::has('todasAutonomias')) {
             $autonomias = Cache::get('todasAutonomias');
@@ -51,45 +50,53 @@ class LocationFilters extends Component
             Cache::put('todosTiposTrabajo', $tiposTrabajo);
         }
 
+
+
         //$autonomias = Autonomia::all();
 
         //$tiposTrabajo = Tipojob::with('jobs')->get();
 
         if ($this->tipoTrabajo == null) {
-
            $this->tipoTrabajo = Tipojob::with('jobs')
            ->find(1);
         }
 
         if(isset($this->autonomia->id)) {
-            $searchAutonomia = $this->autonomia->id;
+            $searchAutonomia = $this->autonomia->name;
+            $this->titleH1 = "ofertas de trabajo en ". $searchAutonomia;
+
         } else {
             $searchAutonomia = null;
         }
 
         if(isset($this->provincia->id)) {
-            $searchProvincia = $this->provincia->id;
+            $searchProvincia = $this->provincia->name;
+            $searchAutonomia = null;
+            $this->titleH1 = "ofertas de trabajo en ". $searchProvincia;
         } else {
             $searchProvincia = null;
         }
         if(isset($this->localidad->id)) {
-            $searchLocalidad = $this->localidad->id;
+            $searchLocalidad = $this->localidad->name;
+            $searchProvincia = null;
+            $searchAutonomia = null;
+            $this->titleH1 = "ofertas de trabajo en ". $searchLocalidad;
         } else {
             $searchLocalidad = null;
         }
 
-        $jobs= $this->tipoTrabajo->jobs()->with('tipojobs')
-        ->with('autonomia')
-        ->with('provincia')
-        ->with('localidad')
-        ->with('fuente')
+        $jobs= $this->tipoTrabajo->jobs()
+        ->with('tipojobs')
         ->orderBy('orden')
         ->autonomia($searchAutonomia)
         ->provincia($searchProvincia)
         ->localidad($searchLocalidad)
         ->paginate();
+        $total = $jobs->total();
 
-        return view('livewire.location-filters',compact('autonomias','tiposTrabajo','jobs','titleh1'));
+        $this->titleH1 = 'Encontradas '.$total.' '. $this->titleH1;
+
+        return view('livewire.location-filters',compact('autonomias','tiposTrabajo','jobs'));
 
 
 
@@ -100,12 +107,22 @@ class LocationFilters extends Component
         } else {
             $this->autonomia = $autonomia;
             $this->elegidaAutonomia = $autonomia->name;
-            $this->provincias = $autonomia->provincias()->get();
+
+            $key = 'Provincias'.$autonomia->name;
+            if (Cache::has($key)) {
+                $this->provincias = Cache::get($key);
+            } else {
+                $this->provincias = $autonomia->provincias()->orderBy('name')->get();
+
+                Cache::put($key, $this->provincias);
+            }
+            //$this->provincias = $autonomia->provincias()->get();
         }
 
         $this->elegidaProvincia = "Todas las Provincias";
         $this->localidades = null;
         $this->elegidaLocalidad = "Todas las Localidades";
+        $this->titleH1 ="hola amigos";
 
     }
     public function provinciaClick(Provincia $provincia) {
@@ -115,7 +132,7 @@ class LocationFilters extends Component
             $this->provincia = $provincia;
             $this->elegidaProvincia = $provincia->name;
             $this->localidades = $provincia->localidades()->get();
-            $this->localidades = null;
+            //$this->localidades = null;
             $this->elegidaLocalidad = "Todas las Localidades";
         }
 
@@ -136,4 +153,23 @@ class LocationFilters extends Component
         $this->tipoTrabajo = $tipo;
     }
 
+
 }
+
+
+/*
+if (Cache::has('todasAutonomias')) {
+            $autonomias = Cache::get('todasAutonomias');
+        } else {
+            $autonomias = Autonomia::orderBy('name')->get();
+            Cache::put('todasAutonomias', $autonomias);
+        }
+
+        if (Cache::has('todosTiposTrabajo')) {
+            $tiposTrabajo = Cache::get('todosTiposTrabajo');
+        } else {
+            $tiposTrabajo = Tipojob::orderBy('name')->get();
+            Cache::put('todosTiposTrabajo', $tiposTrabajo);
+        }
+
+*/

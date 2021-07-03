@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Localidade extends Model
 {
     use HasFactory;
-    public function jobs() {
-        return $this->hasMany('App\Models\Job');
-    }
-
+    public $timestamps = false;
     public function provincia() {
         return $this->belongsTo('App\Models\Provincia');
     }

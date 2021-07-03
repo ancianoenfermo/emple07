@@ -22,25 +22,19 @@ class CreateJobsTable extends Migration
             $table->string('vacantes')->nullable();
             $table->boolean('ett')->nullable()->default('0');
             $table->string('salario')->nullable();
-            $table->unsignedBigInteger('autonomia_id');
-            $table->unsignedBigInteger('provincia_id');
-            $table->unsignedBigInteger('localidad_id');
+            $table->string('contrato')->nullable();
+            $table->string('jornada')->nullable();
+            $table->string('experiencia')->nullable();
+            $table->text('jobUrl');
+            $table->string('jobFuente');
+            $table->string('autonomia');
+            $table->string('provincia');
+            $table->string('localidad');
 
-            $table->unsignedBigInteger('contrato_id')->nullable();
-            $table->unsignedBigInteger('fuente_id')->nullable();
-            $table->unsignedBigInteger('jornada_id')->nullable();
-            $table->unsignedBigInteger('experiencia_id')->nullable();
-
-            $table->foreign('autonomia_id')->references('id')->on('autonomias');
-            $table->foreign('provincia_id')->references('id')->on('provincias');
-            $table->foreign('localidad_id')->references('id')->on('localidades');
-
-            $table->foreign('contrato_id')->references('id')->on('contratos');
-            $table->foreign('fuente_id')->references('id')->on('fuentes');
-            $table->foreign('jornada_id')->references('id')->on('jornadas');
-            $table->foreign('experiencia_id')->references('id')->on('experiencias');
-
-            $table->timestamps();
+            $table->index('autonomia');
+            $table->index('provincia');
+            $table->index('localidad');
+            $table->index('orden');
         });
     }
 
