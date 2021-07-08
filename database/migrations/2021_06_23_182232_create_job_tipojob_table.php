@@ -17,9 +17,12 @@ class CreateJobTipojobTable extends Migration
             $table->id();
             $table->unsignedBigInteger('job_id');
             $table->unsignedBigInteger('tipojob_id');
+
             $table->foreign('job_id')->references('id')->on('jobs');
             $table->foreign('tipojob_id')->references('id')->on('tipojobs');
 
+            $table->index('job_id');
+            $table->index('tipojob_id');
         });
     }
 

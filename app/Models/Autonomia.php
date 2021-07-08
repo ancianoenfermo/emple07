@@ -13,4 +13,5 @@ class Autonomia extends Model
         return $this->hasMany('App\Models\Provincia');
     }
 
+
 }

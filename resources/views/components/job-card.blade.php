@@ -36,7 +36,11 @@
             </header>
 
             <div class="text-lg ml-5 mt-2">
-                <p> {{ $job->excerpt }}</p>
+                @if(empty($job->excerpt))
+                    <p class="text-gray-300">Oferta sin información</p>
+                @else
+                    <p> {{ $job->excerpt }}</p>
+               @endif
             </div>
 
             <div class="mt-2 mb-2">

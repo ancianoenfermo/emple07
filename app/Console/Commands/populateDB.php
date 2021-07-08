@@ -232,6 +232,10 @@ class populateDB extends Command
             $newJob->tipojobs()->attach($tipoTeletrabajo->id);
         }
         $newJob->tipojobs()->attach($todosTrabajos->id);
+        $newJob->save();
+
+
+
     }
 
 

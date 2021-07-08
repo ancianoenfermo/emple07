@@ -11,6 +11,6 @@ class Tipojob extends Model
     public $timestamps = false;
     //Relación Muchos a Muchos
     public function jobs() {
-        return $this->belongsToMany('App\Models\Job');
+        return $this->belongsToMany(Job::class)->withPivot('id','job_id','tipojob_id');
     }
 }

@@ -103,7 +103,8 @@ class LocationFilters extends Component
     }
     public function autonomiaClick(Autonomia $autonomia) {
         if($autonomia == null) {
-            $this->elegidaAutonomia = "Todas las Autonomías";
+            $this->elegidaAutonomia = "Todas las Autonomíasaa";
+            $this->provincias = null;
         } else {
             $this->autonomia = $autonomia;
             $this->elegidaAutonomia = $autonomia->name;
@@ -120,9 +121,9 @@ class LocationFilters extends Component
         }
 
         $this->elegidaProvincia = "Todas las Provincias";
-        $this->localidades = null;
+
         $this->elegidaLocalidad = "Todas las Localidades";
-        $this->titleH1 ="hola amigos";
+        $this->localidades = null;
 
     }
     public function provinciaClick(Provincia $provincia) {
@@ -131,9 +132,18 @@ class LocationFilters extends Component
         } else {
             $this->provincia = $provincia;
             $this->elegidaProvincia = $provincia->name;
-            $this->localidades = $provincia->localidades()->get();
-            //$this->localidades = null;
             $this->elegidaLocalidad = "Todas las Localidades";
+            $key = 'Localidades'.$provincia->name;
+            if (Cache::has($key)) {
+                $this->localidades = Cache::get($key);
+            } else {
+                $this->localidades = $provincia->localidades()->orderBy('name')->get();
+
+                Cache::put($key, $this->localidades);
+            }
+            //$this->localidades = $provincia->localidades()->get();
+            //$this->localidades = null;
+
         }
 
     }
@@ -143,6 +153,7 @@ class LocationFilters extends Component
         } else {
             $this->localidad = $localidad;
             $this->elegidaLocalidad = $localidad->name;
+
         }
 
 

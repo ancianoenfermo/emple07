@@ -18,23 +18,27 @@ class Job extends Model
 
     // Relación Muchos a Muchos
     public function tipojobs() {
-        return $this->belongsToMany('App\Models\Tipojob');
+        return $this->belongsToMany(Tipojob::class)->withPivot('tipojob_id');
     }
 
-    public function scopeAutonomia($query, $autonomia_name) {
-        if($autonomia_name) {
-            return $query->where('autonomia',$autonomia_name);
+
+
+    public function scopeAutonomia($query, $autonomia) {
+        if($autonomia) {
+            return $query->where('autonomia',$autonomia);
         }
     }
-    public function scopeProvincia($query, $provincia_name) {
-        if($provincia_name) {
-            return $query->where('provincia',$provincia_name);
+    public function scopeProvincia($query, $provincia) {
+        if($provincia) {
+            return $query->where('name',$provincia);
         }
     }
-    public function scopeLocalidad($query, $localidad_name) {
-        if($localidad_name) {
-            return $query->where('localidad',$localidad_name);
+    public function scopeLocalidad($query, $localidad) {
+        if($localidad) {
+            return $query->where('name',$localidad);
         }
     }
+
+
 
 }

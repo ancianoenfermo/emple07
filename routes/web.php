@@ -17,9 +17,12 @@ use App\Http\Livewire\LocationFilters;
 
 Route::get('/', HomeController::class)->name('home');
 //Route::get('/ofertas', [OfertasController::class,'index'])->name('ofertas');
-//Route::get('/ofertas-trabajo/',[OfertasController::class,'index'])->name('ofertas');
-Route::get('/ofertas-trabajo/',LocationFilters::class)->name('ofertas');
+Route::get('/ofertas-trabajo/',[OfertasController::class,'index'])->name('ofertas');
+//Route::get('/ofertas-trabajo/',LocationFilters::class)->name('ofertas');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::get('/redis', function(){
+    print_r(app()->make('redis'));
+});
