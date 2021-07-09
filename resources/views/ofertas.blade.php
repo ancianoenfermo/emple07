@@ -14,8 +14,8 @@
         </div>
     </section>
 
-    <div class="sm:block bg-gray-500 py-3 lg:flex lg:justify-around">
-        @livewire('filters')
+    <div >
+        @livewire('filter-jobs')
     </div>
     <div class="container mx-auto px-4">
         @livewire('jobs', ['tipoTrabajo'=> $tipoTrabajo,'autonomia' => null, 'provincia'=> null, 'localidad'=>null])

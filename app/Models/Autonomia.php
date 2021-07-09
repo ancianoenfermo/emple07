@@ -9,8 +9,9 @@ class Autonomia extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
     public function provincias() {
-        return $this->hasMany('App\Models\Provincia');
+        return $this->hasMany(Provincia::class);
     }
 
 

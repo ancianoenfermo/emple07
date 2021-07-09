@@ -23,19 +23,19 @@ class Job extends Model
 
 
 
-    public function scopeAutonomia($query, $autonomia) {
-        if($autonomia) {
-            return $query->where('autonomia',$autonomia);
+    public function scopeAutonomia($query, $autonomiaName) {
+        if($autonomiaName) {
+            return $query->where('autonomia',$autonomiaName);
         }
     }
-    public function scopeProvincia($query, $provincia) {
-        if($provincia) {
-            return $query->where('name',$provincia);
+    public function scopeProvincia($query, $provinciaName) {
+        if($provinciaName) {
+            return $query->where('provincia',$provinciaName);
         }
     }
-    public function scopeLocalidad($query, $localidad) {
-        if($localidad) {
-            return $query->where('name',$localidad);
+    public function scopeLocalidad($query, $localidadName) {
+        if($localidadName) {
+            return $query->where('localidad',$localidadName);
         }
     }
 

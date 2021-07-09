@@ -29,6 +29,8 @@ class Jobs extends Component
 
             $jobs = $this->tipoTrabajo->jobs()
             ->autonomia($this->autonomia)
+            ->provincia($this->provincia)
+            ->localidad($this->localidad)
             ->paginate(10);
 
 
@@ -43,8 +45,15 @@ class Jobs extends Component
         $this->readyToLoad = true;
     }
 
-    public function filtersEmit($autonomia,$provincia,$localidad,$tipoTrabajo) {
-        $this->autonomia = $autonomia;
+    public function filtersEmit($autonomiaName,$provinciaName,$localidadName,$tipoTrabajo) {
+        // Viene id
+        $this->tipoTrabajo = Cache::rememberForever('TipoTrabajoID'.$tipoTrabajo, function () use($tipoTrabajo) {
+            return Tipojob::with('jobs')->find($tipoTrabajo);
+         });
+
+        $this->autonomia = $autonomiaName;
+        $this->provincia = $provinciaName;
+        $this->localidad = $localidadName;
         $this->resetPage();
     }
 

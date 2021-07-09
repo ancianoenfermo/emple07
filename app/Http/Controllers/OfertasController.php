@@ -14,7 +14,7 @@ class OfertasController extends Controller
         $tipoTrabajo = Cache::rememberForever('Todoslostrabajos', function () {
             return Tipojob::with('jobs')->find(1);
          });
-        $tipoTrabajo = Tipojob::find(1);
+
         return view('ofertas',compact('tipoTrabajo'));
     }
 }
