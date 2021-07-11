@@ -13,4 +13,5 @@ class Tipojob extends Model
     public function jobs() {
         return $this->belongsToMany(Job::class)->withPivot('id','job_id','tipojob_id');
     }
+
 }

@@ -14,16 +14,13 @@
         </div>
     </section>
 
-    <div >
+    <div>
         @livewire('filter-jobs')
     </div>
-    <div class="container mx-auto px-4">
-        @livewire('jobs', ['tipoTrabajo'=> $tipoTrabajo,'autonomia' => null, 'provincia'=> null, 'localidad'=>null])
+    <div class="">
+        @livewire('jobs', ['tipoTrabajo'=> '1','autonomia' => null, 'provincia'=> null, 'localidad'=>null])
+    </div>
 
-    </div>
-    {{-- Temporal para generar un espacio BORRAR --}}
-    <div class="h-64">
-    </div>
 </x-app-layout>
 
 {{-- style="background-image: url({{asset('img/home/portada.jpg')}})"> --}}

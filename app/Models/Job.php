@@ -18,7 +18,7 @@ class Job extends Model
 
     // Relación Muchos a Muchos
     public function tipojobs() {
-        return $this->belongsToMany(Tipojob::class)->withPivot('tipojob_id');
+        return $this->belongsToMany(Tipojob::class);
     }
 
 
@@ -38,6 +38,8 @@ class Job extends Model
             return $query->where('localidad',$localidadName);
         }
     }
+
+
 
 
 

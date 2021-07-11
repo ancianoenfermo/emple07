@@ -1,7 +1,7 @@
 <div>
     <!-- component -->
 
-    <article class="mt-10 py-2 px-4 rounded shadow-xl bg-white">
+    <article class="my-4  px-6 rounded-lg shadow-xl bg-white">
 
             <div class="flex px-0 py-2 justify-center border-b-2">
                 <span class="font-bold">Publicado {{ $job->dateHumana }} en</span>
@@ -15,6 +15,7 @@
                         </span>
                     @endif
                 @endforeach
+
 
             </div>
 

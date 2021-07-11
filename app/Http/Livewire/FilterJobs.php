@@ -45,14 +45,16 @@ class FilterJobs extends Component
             $this->provincias = Cache::rememberForever('TodasProvinciasDE'.$autonomiaJson['name'], function () use($autonomiaJson) {
                 return Autonomia::find($autonomiaJson['id'])->provincias;
             });
+            $autonomiaSeleccionada = $autonomiaJson['name'];
         } else {
             $this->provincias = null;
             $this->selectedProvincia =null;
             $this->localidades = null;
             $this->selectedLocalidad = null;
+            $autonomiaSeleccionada = null;
         }
 
-        $this->emitTo('jobs','filtersEmit',$autonomiaJson['name'],null,null,$this->selectedTipoTrabajo);
+        $this->emitTo('jobs','filtersEmit',$autonomiaSeleccionada,null,null,$this->selectedTipoTrabajo);
     }
 
 
@@ -65,21 +67,29 @@ class FilterJobs extends Component
             $this->localidades = Cache::rememberForever('TodasLocalidadesDE'.$provinciaJson['name'], function () use($provinciaJson) {
                 return Provincia::find($provinciaJson['id'])->localidades;
             });
+            $provinciaSeleccionada = $provinciaJson['name'];
         } else {
             $this->localidades = null;
             $this->selectedLocalidad = null;
+            $provinciaSeleccionada = null;
         }
-        $this->emitTo('jobs','filtersEmit',null,$provinciaJson['name'],null,$this->selectedTipoTrabajo);
+
+        $this->emitTo('jobs','filtersEmit',null,$provinciaSeleccionada,null,$this->selectedTipoTrabajo);
     }
 
     public function updatedSelectedLocalidad($localidad) {
 
         if($localidad) {
             $localidadJson = json_decode($localidad, true);
-            $this->emitTo('jobs','filtersEmit',null,null,$localidadJson['name'],$this->selectedTipoTrabajo);
+            $localidadSeleccionada = $localidadJson['name'];
+        } else {
+            $localidadSeleccionada = null;
         }
 
+        $this->emitTo('jobs','filtersEmit',null,null,$localidadSeleccionada,$this->selectedTipoTrabajo);
+
     }
+
 
 
 

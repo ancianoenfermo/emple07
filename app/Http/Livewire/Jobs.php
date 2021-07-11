@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Cache;
 class Jobs extends Component
 {
     use WithPagination;
-
+    public $search;
+    public $cant = 10;
     public $tipoTrabajo = null;
     public $autonomia = null;
     public $provincia = null;
@@ -26,12 +27,33 @@ class Jobs extends Component
     public function render()
     {
         if($this->readyToLoad) {
-
-            $jobs = $this->tipoTrabajo->jobs()
+            $jobs = Job::whereHas(
+                'tipojobs', function($q){
+                    $q->where('tipojob_id', $this->tipoTrabajo);
+                }
+            )
+            ->with('tipojobs')
+            ->where('title','like','%'.$this->search.'%')
+            ->Orwhere('excerpt','like','%'.$this->search.'%')
             ->autonomia($this->autonomia)
             ->provincia($this->provincia)
             ->localidad($this->localidad)
-            ->paginate(10);
+            ->orderBy('orden')
+            ->paginate($this->cant);
+
+
+
+            /*
+
+            $jobs = $this->tipoTrabajo->jobs()
+            ->with('tipojobs')
+            ->where('title','like','%'.$this->search.'%')
+            ->Orwhere('excerpt','like','%'.$this->search.'%')
+            ->autonomia($this->autonomia)
+            ->provincia($this->provincia)
+            ->localidad($this->localidad)
+            ->paginate($this->cant);
+            */
 
 
         } else {
@@ -45,12 +67,18 @@ class Jobs extends Component
         $this->readyToLoad = true;
     }
 
+    public function updatingSearch() {
+        $this->resetPage();
+    }
+
     public function filtersEmit($autonomiaName,$provinciaName,$localidadName,$tipoTrabajo) {
         // Viene id
+        /*
         $this->tipoTrabajo = Cache::rememberForever('TipoTrabajoID'.$tipoTrabajo, function () use($tipoTrabajo) {
             return Tipojob::with('jobs')->find($tipoTrabajo);
          });
-
+         */
+        $this->tipoTrabajo = $tipoTrabajo;
         $this->autonomia = $autonomiaName;
         $this->provincia = $provinciaName;
         $this->localidad = $localidadName;
