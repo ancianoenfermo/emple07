@@ -1,6 +1,7 @@
-<div wire:init="loadEmpleos">
-    <div class="container bg-gray-200 pt-3 mx-10">
-        <div class="mx-6 border-4 border-gray-300 rounded-lg">
+<div>
+    <div wire:init="loadEmpleos" class="container bg-gray-100 pt-3 mx-10 rounded-lg relative">
+        <div class="mx-6 border-2 border-gray-200 border-opacity-50 rounded-lg
+        @if (!$showSearch) hidden @endif relative">
             <div class="flex items-center mx-3 my-3">
                 <span>Mostrar</span>
                 <select wire:model="cant" class="mx-2 select-nuevo">
@@ -10,7 +11,8 @@
                     <option value="100">100</option>
                 </select>
                 <span>trabajos</span>
-                <x-jet-input class="w-full mx-4" placeholder="Escriba que está buscando" type=text wire:model="search" />
+                <x-jet-input class="w-full mx-4" placeholder="Escriba que está buscando" type=text
+                    wire:model="search" />
             </div>
         </div>
 
@@ -28,10 +30,19 @@
                 @endif
             </div>
         @else
-        <div class="px-4 py-3 mt-5">
-            No existen registros
-        </div>
+            <div class="px-4 py-3 mt-5">
+                No existen registros
+            </div>
         @endif
-
+        <div wire:loading class="backdrop-filter backdrop-blur-sm absolute inset-x-0  top-0 h-full w-full">
+            <div class="la-line-scale-pulse-out la-dark la-2x">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
 
 </div>

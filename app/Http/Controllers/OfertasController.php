@@ -11,11 +11,7 @@ use App\Models\Tipojob;
 class OfertasController extends Controller
 {
     public function index() {
-        /*
-        $tipoTrabajo = Cache::rememberForever('Todoslostrabajos', function () {
-            return Tipojob::with('jobs')->find(1);
-         });
-        */
+
         return view('ofertas');
     }
 }

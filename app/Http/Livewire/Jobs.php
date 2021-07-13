@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Autonomia;
 use Livewire\Component;
 use App\Models\Tipojob;
 use App\Models\Job;
@@ -19,6 +20,7 @@ class Jobs extends Component
     public $localidad = null;
 
     public $readyToLoad = false;
+    public $showSearch = false;
 
     protected $listeners = [
         'filtersEmit' => 'filtersEmit',
@@ -26,6 +28,7 @@ class Jobs extends Component
 
     public function render()
     {
+
         if($this->readyToLoad) {
             $jobs = Job::whereHas(
                 'tipojobs', function($q){
@@ -63,25 +66,35 @@ class Jobs extends Component
         return view('livewire.jobs',compact('jobs'));
     }
 
+
     public function loadEmpleos() {
         $this->readyToLoad = true;
+        $this->showSearch = true;
     }
 
     public function updatingSearch() {
         $this->resetPage();
     }
 
-    public function filtersEmit($autonomiaName,$provinciaName,$localidadName,$tipoTrabajo) {
+    public function filtersEmit($autonomiaId,$provinciaId,$localidadId,$tipoTrabajo) {
+        if ($autonomiaId) {
+            $nombreAutonomia = Cache::rememberForever('AutonomiaNombreId'.$autonomiaId, function () use($autonomiaId) {
+                return Autonomia::where('id',$autonomiaId)->get()->pluck('name')->toArray();
+            });
+        $this->autonomia = $nombreAutonomia[0];
+        }
+
         // Viene id
         /*
         $this->tipoTrabajo = Cache::rememberForever('TipoTrabajoID'.$tipoTrabajo, function () use($tipoTrabajo) {
             return Tipojob::with('jobs')->find($tipoTrabajo);
          });
-         */
+
         $this->tipoTrabajo = $tipoTrabajo;
         $this->autonomia = $autonomiaName;
         $this->provincia = $provinciaName;
         $this->localidad = $localidadName;
+         */
         $this->resetPage();
     }
 

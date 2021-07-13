@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
-        $totalRecords =Job::count();
-        return view('welcome',compact('totalRecords'));
+
+        return view('welcome');
     }
 }

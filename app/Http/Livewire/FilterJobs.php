@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Cache;
 class FilterJobs extends Component
 {
 
-    public $selectedTipoTrabajo = null, $selectedAutonomia = null, $selectedProvincia = null, $selectedLocalidad = null;
-    public $tiposTrabajos = null, $autonomias = null,$provincias = null, $localidades = null;
+    public $selectedTipoTrabajo = null, $selectedAutonomia = "todas", $selectedProvincia = "todas", $selectedLocalidad = "todas";
+    public $tiposTrabajos = null, $autonomias = null, $provincias = null, $localidades = null;
     public $contador = 0;
 
 
@@ -23,7 +23,7 @@ class FilterJobs extends Component
         $this->contador += 1;
         return view('livewire.filter-jobs');
     }
-    public function mount(){
+    public function mount($tipoTrabajo = null ){
         $this->autonomias = Cache::rememberForever('TodasAutonomias', function () {
             return Autonomia::orderBy('name')->get();
          });
@@ -31,7 +31,8 @@ class FilterJobs extends Component
          $this->tiposTrabajos = Cache::rememberForever('TodosTiposTrabajo', function () {
             return Tipojob::orderBy('name','DESC')->get();
         });
-        $this->selectedTipoTrabajo = '1';
+
+        $this->selectedTipoTrabajo = '2';
 
     }
 
@@ -39,54 +40,43 @@ class FilterJobs extends Component
         $this->emitTo('jobs','filtersEmit',null,null,null,$tipoTrabajo_id);
     }
 
-    public function updatedSelectedAutonomia($autonomia) {
-        if($autonomia) {
-            $autonomiaJson = json_decode($autonomia, true);
-            $this->provincias = Cache::rememberForever('TodasProvinciasDE'.$autonomiaJson['name'], function () use($autonomiaJson) {
-                return Autonomia::find($autonomiaJson['id'])->provincias;
+    public function updatedSelectedAutonomia($autonomia_id) {
+        if($autonomia_id != "todas") {
+            $this->provincias = Cache::rememberForever('TodasProvinciasDE'.$autonomia_id, function () use($autonomia_id) {
+                return Autonomia::find($autonomia_id)->provincias;
             });
-            $autonomiaSeleccionada = $autonomiaJson['name'];
+            $this->reset('selectedProvincia');
         } else {
-            $this->provincias = null;
-            $this->selectedProvincia =null;
-            $this->localidades = null;
-            $this->selectedLocalidad = null;
-            $autonomiaSeleccionada = null;
+            $this->reset(['provincias','selectedProvincia','localidades','selectedLocalidad']);
+            $autonomia_id = null;
         }
 
-        $this->emitTo('jobs','filtersEmit',$autonomiaSeleccionada,null,null,$this->selectedTipoTrabajo);
+        $this->emitTo('jobs','filtersEmit',$autonomia_id,null,null,$this->selectedTipoTrabajo);
     }
 
 
 
 
-    public function updatedSelectedProvincia($provincia) {
-
-        if($provincia) {
-            $provinciaJson = json_decode($provincia, true);
-            $this->localidades = Cache::rememberForever('TodasLocalidadesDE'.$provinciaJson['name'], function () use($provinciaJson) {
-                return Provincia::find($provinciaJson['id'])->localidades;
+    public function updatedSelectedProvincia($provincia_id) {
+        if($provincia_id != "todas") {
+            $this->localidades = Cache::rememberForever('TodasLocalidadesDE'.$provincia_id, function () use($provincia_id) {
+                return Provincia::find($provincia_id)->localidades;
             });
-            $provinciaSeleccionada = $provinciaJson['name'];
+            $this->reset('selectedLocalidad');
         } else {
-            $this->localidades = null;
-            $this->selectedLocalidad = null;
-            $provinciaSeleccionada = null;
+            $provincia_id = null;
         }
 
-        $this->emitTo('jobs','filtersEmit',null,$provinciaSeleccionada,null,$this->selectedTipoTrabajo);
+        $this->emitTo('jobs','filtersEmit',null,$provincia_id,null,$this->selectedTipoTrabajo);
     }
 
-    public function updatedSelectedLocalidad($localidad) {
+    public function updatedSelectedLocalidad($localidad_id) {
 
-        if($localidad) {
-            $localidadJson = json_decode($localidad, true);
-            $localidadSeleccionada = $localidadJson['name'];
-        } else {
-            $localidadSeleccionada = null;
+        if($localidad_id == "todas") {
+            $localidad_id = null;
         }
 
-        $this->emitTo('jobs','filtersEmit',null,null,$localidadSeleccionada,$this->selectedTipoTrabajo);
+        $this->emitTo('jobs','filtersEmit',null,null,$localidad_id,$this->selectedTipoTrabajo);
 
     }
 
