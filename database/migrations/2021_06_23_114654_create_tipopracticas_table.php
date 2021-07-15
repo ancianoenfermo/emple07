@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCacheTable extends Migration
+class CreateTipopracticasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCacheTable extends Migration
      */
     public function up()
     {
-        Schema::create('cache', function (Blueprint $table) {
-            $table->string('key')->unique();
-            $table->mediumText('value');
-            $table->integer('expiration');
+        Schema::create('tipopracticas', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateCacheTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cache');
+        Schema::dropIfExists('tipopracticas');
     }
 }

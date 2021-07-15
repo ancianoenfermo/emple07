@@ -5,10 +5,11 @@ namespace App\Console\Commands;
 use App\Models\Autonomia;
 use App\Models\Provincia;
 use App\Models\Localidade;
-use App\Models\Contrato;
-use App\Models\Experiencia;
-use App\Models\Fuente;
-use App\Models\Jornada;
+use App\Models\Tipodiscapacidad;
+use App\Models\Tipopractica;
+use App\Models\Tipoteletrabajo;
+use App\Models\Tipotodos;
+
 use App\Models\Tipojob;
 use App\Models\Job;
 
@@ -84,13 +85,29 @@ class populateDB extends Command
         $this->vaciaTablas();
 
 
-        $todosTrabajos = new Tipojob();
-        $todosTrabajos->name = "Todos los trabajos";
-        $todosTrabajos->save();
+
+        // Crear tipos
+        $tipos = new Tipotodos();
+        $tipos->name = "Todos los trabajos";
+        $tipos->save();
+
+        $tipos = new Tipodiscapacidad();
+        $tipos->name = "Discapacidad";
+        $tipos->save();
+
+        $tipos = new Tipoteletrabajo();
+        $tipos->name = "Teletrabajo";
+        $tipos->save();
+
+        $tipos = new Tipopractica();
+        $tipos->name = "Practicas";
+        $tipos->save();
+
+
 
 
         foreach ($empleos as $empleo) {
-            $this->trata_empleo($empleo,$todosTrabajos);
+            $this->trata_empleo($empleo);
         }
 
 
@@ -101,7 +118,7 @@ class populateDB extends Command
         //File::delete($path);
         return 0;
     }
-    public function trata_empleo($empleo,$todosTrabajos)
+    public function trata_empleo($empleo)
     {
         global $logoFuente;
 
@@ -133,38 +150,27 @@ class populateDB extends Command
             $localidad = $newLocalidad;
             $localidad->save();
         }
-
+        $listaTipos ="";
+        $empleo["discapacidad"] = "1";
+        $empleo["teletrabajo"] = "1";
+        $empleo["practicas"] = "1";
 
         if (isset($empleo['discapacidad'])) {
-            $tipoDiscapacidad = Tipojob::where('name', "Discapacidad")->first();
-            if ($tipoDiscapacidad == null) {
-                $newTipo = new Tipojob();
-                $newTipo->name = "Discapacidad";
-                $tipoDiscapacidad = $newTipo;
-                $tipoDiscapacidad->save();
-            }
+            $tipoDiscapacidad = Tipodiscapacidad::first();
+            $listaTipos = $listaTipos . 'Discapacidad|';
         }
 
         if (isset($empleo['practicas'])) {
-            $tipoPracticas = Tipojob::where('name', "Prácticas")->first();
-            if ($tipoPracticas == null) {
-                $newTipo = new Tipojob();
-                $newTipo->name = "Prácticas";
-                $tipoPracticas = $newTipo;
-                $tipoPracticas->save();
-            }
+            $tipoPracticas = Tipopractica::first();;
+            $listaTipos = $listaTipos . 'Practicas|';
         }
 
         if (isset($empleo['teletrabajo'])) {
-            $tipoTeletrabajo = Tipojob::where('name',"Teletrabajo")->first();
-            if ($tipoTeletrabajo == null) {
-                $newTipo = new Tipojob();
-                $newTipo->name = "Teletrabajo";
-                $tipoTeletrabajo = $newTipo;
-                $tipoTeletrabajo->save();
-            }
+            $tipoTeletrabajo = Tipoteletrabajo::first();
+            $listaTipos = $listaTipos . 'Teletrabajo|';
         }
 
+        $tipoTodos = Tipotodos::first();
 
         $newJob = new Job;
         // DEBEN EXISTIR
@@ -212,26 +218,35 @@ class populateDB extends Command
             $newJob->experiencia = $empleo['experiencia'];
         }
 
+        $listaTipos = substr($listaTipos, 0, -1);
+        $newJob->listaTipos = $listaTipos;
+
 
         $newJob->autonomia = $autonomia->name;
         $newJob->provincia = $provincia->name;
         $newJob->localidad = $localidad->name;
 
+        $newJob->autonomia_id = $autonomia->id;
+        $newJob->provincia_id = $provincia->id;
+        $newJob->localidad_id = $localidad->id;
 
 
-        $newJob->save();
+        $newJob->tipotodos_id = $tipoTodos->id;
 
-        // Relaciones Muchos a Muchos
-        if (isset($tipoDiscapacidad)) {
-            $newJob->tipojobs()->attach($tipoDiscapacidad->id);
+
+
+
+        if (isset($empleo['discapacidad'])) {
+            $newJob->tipodiscapacidad_id = $tipoDiscapacidad->id;
         }
-        if (isset($tipoPracticas)) {
-            $newJob->tipojobs()->attach($tipoPracticas->id);
+        if (isset($empleo['teletrabajo'])) {
+            $newJob->tipoteletrabajo_id = $tipoTeletrabajo->id;
         }
-        if (isset($tipoTeletrabajo)) {
-            $newJob->tipojobs()->attach($tipoTeletrabajo->id);
+
+        if (isset($empleo['practicas'])) {
+            $newJob->tipopractica_id = $tipoPracticas->id;
         }
-        $newJob->tipojobs()->attach($todosTrabajos->id);
+
         $newJob->save();
 
 

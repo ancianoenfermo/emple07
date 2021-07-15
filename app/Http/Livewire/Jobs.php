@@ -4,7 +4,10 @@ namespace App\Http\Livewire;
 
 use App\Models\Autonomia;
 use Livewire\Component;
-use App\Models\Tipojob;
+use App\Models\Tipotodos;
+use App\Models\Tipodiscapacidad;
+use App\Models\Tipopractica;
+use App\Models\Tipoteletrabajo;
 use App\Models\Job;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Cache;
@@ -30,6 +33,11 @@ class Jobs extends Component
     {
 
         if($this->readyToLoad) {
+
+
+            $jobs = $this->tipoTrabajo->jobs()->paginate();
+
+            /*
             $jobs = Job::whereHas(
                 'tipojobs', function($q){
                     $q->where('tipojob_id', $this->tipoTrabajo);
@@ -43,7 +51,7 @@ class Jobs extends Component
             ->localidad($this->localidad)
             ->orderBy('orden')
             ->paginate($this->cant);
-
+            */
 
 
             /*
@@ -77,6 +85,27 @@ class Jobs extends Component
     }
 
     public function filtersEmit($autonomiaId,$provinciaId,$localidadId,$tipoTrabajo) {
+
+        switch($tipoTrabajo) {
+            case 'Todos los trabajos':
+                $this->tipoTrabajo = TipoTodos::find(1);
+                break;
+            case 'Discapacidad':
+                $this->tipoTrabajo = TipoDiscapacidad::find(1);
+                break;
+            case 'Teletrabajo':
+                $this->tipoTrabajo = Tipoteletrabajo::find(1);
+                break;
+            case 'Prácticas':
+                $this->tipoTrabajo = Tipopractica::find(1);
+                break;
+            default:
+                $this->tipoTrabajo = TipoTodos::find(1);;
+        }
+
+
+
+
         if ($autonomiaId) {
             $nombreAutonomia = Cache::rememberForever('AutonomiaNombreId'.$autonomiaId, function () use($autonomiaId) {
                 return Autonomia::where('id',$autonomiaId)->get()->pluck('name')->toArray();

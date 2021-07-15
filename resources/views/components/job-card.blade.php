@@ -6,15 +6,16 @@
             <div class="flex px-0 py-2 justify-center border-b-2">
                 <span class="font-bold">Publicado {{ $job->dateHumana }} en</span>
                 <span class="ml-2 mr-2">{{ $job->jobFuente }}</span>
+                @isset($job->listaTipos)
+                    @foreach ($job->listaTipos as $tipoJob)
 
-                @foreach ($job->tipojobs as $tipoJob)
-                    @if ($tipoJob->name != 'Todos los trabajos')
-                        <span style="padding-top: 0.2em; padding-bottom: 0.2rem"
-                            class="space-x-1 text-xs px-2  bg-red-200 border border-bg-red-900 text-red-800 rounded-full">
-                            {{ $tipoJob->name }}
-                        </span>
-                    @endif
-                @endforeach
+                            <span style="padding-top: 0.2em; padding-bottom: 0.2rem"
+                                class="space-x-1 mr-3 text-xs px-2  bg-red-200 border border-bg-red-900 text-red-800 rounded-full">
+                                {{ $tipoJob }}
+                            </span>
+
+                    @endforeach
+                @endisset
 
 
             </div>

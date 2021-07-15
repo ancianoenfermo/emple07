@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipojobsTable extends Migration
+class CreateTipotodosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateTipojobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipojobs', function (Blueprint $table) {
+        Schema::create('tipotodos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->index('name');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateTipojobsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipojobs');
+        Schema::dropIfExists('tipotodos');
     }
 }

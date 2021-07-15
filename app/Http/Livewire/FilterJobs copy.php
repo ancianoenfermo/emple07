@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 use App\Models\Autonomia;
 use App\Models\Provincia;
 use App\Models\Localidade;
-use App\Models\Tipojob;
+
 use Livewire\Component;
 use Illuminate\Support\Facades\Cache;
 
@@ -28,10 +28,7 @@ class FilterJobs extends Component
             return Autonomia::orderBy('name')->get();
          });
 
-         $this->tiposTrabajos = Cache::rememberForever('TodosTiposTrabajo', function () {
-            return Tipojob::orderBy('name','DESC')->get();
-        });
-        $this->selectedTipoTrabajo = '1';
+        $this->selectedTipoTrabajo = 'Todos los trabajos';
 
     }
 

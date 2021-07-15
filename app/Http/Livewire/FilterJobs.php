@@ -28,16 +28,13 @@ class FilterJobs extends Component
             return Autonomia::orderBy('name')->get();
          });
 
-         $this->tiposTrabajos = Cache::rememberForever('TodosTiposTrabajo', function () {
-            return Tipojob::orderBy('name','DESC')->get();
-        });
-
-        $this->selectedTipoTrabajo = '2';
+        $this->selectedTipoTrabajo = 'Todos los trabajos';
+        $this->tiposTrabajos = array('Todos los trabajos','Discapacidad','Prácticas','Prácticas');
 
     }
 
-    public function updatedselectedTipoTrabajo($tipoTrabajo_id) {
-        $this->emitTo('jobs','filtersEmit',null,null,null,$tipoTrabajo_id);
+    public function updatedselectedTipoTrabajo($tipoTrabajo) {
+        $this->emitTo('jobs','filtersEmit',null,null,null,$tipoTrabajo);
     }
 
     public function updatedSelectedAutonomia($autonomia_id) {

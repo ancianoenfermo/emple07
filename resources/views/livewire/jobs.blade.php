@@ -1,7 +1,11 @@
 <div>
     <div wire:init="loadEmpleos" class="container bg-gray-100 pt-3 mx-10 rounded-lg relative">
         <div class="mx-6 border-2 border-gray-200 border-opacity-50 rounded-lg
+
+
         @if (!$showSearch) hidden @endif relative">
+        @livewire('filter-jobs')
+
             <div class="flex items-center mx-3 my-3">
                 <span>Mostrar</span>
                 <select wire:model="cant" class="mx-2 select-nuevo">
@@ -30,18 +34,23 @@
                 @endif
             </div>
         @else
-            <div class="px-4 py-3 mt-5">
+            <div class="px-4 py-3 mt-5 ">
                 No existen registros
             </div>
+
+
         @endif
         <div wire:loading class="backdrop-filter backdrop-blur-sm absolute inset-x-0  top-0 h-full w-full">
-            <div class="la-line-scale-pulse-out la-dark la-2x">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+
+            <div style="color: #283618" class="la-line-scale-pulse-out items-center absolute top-6 left-1/2">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
             </div>
+
+
         </div>
     </div>
 

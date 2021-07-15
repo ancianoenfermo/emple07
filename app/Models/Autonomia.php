@@ -12,7 +12,9 @@ class Autonomia extends Model
 
     public function provincias() {
         return $this->hasMany(Provincia::class);
+
     }
-
-
+    public function jobs() {
+        return $this->hasMany(Job::class);
+    }
 }

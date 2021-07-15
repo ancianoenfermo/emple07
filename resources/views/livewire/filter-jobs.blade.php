@@ -1,17 +1,18 @@
 <div>
     <div class="sm:block bg-gray-200 py-3 lg:flex lg:justify-around rounded-lg ">
         {{-- Tipos de Trabajo --}}
+
+
         <div>
             <label class="block font-bold ">Tipo de Trabajo</label>
             <select wire:model="selectedTipoTrabajo" class="cursor-pointer select-nuevo">
 
-                @foreach ($tiposTrabajos as $tiposTrabajo)
-                    <option value="{{ $tiposTrabajo->id }}">{{ $tiposTrabajo->name }}</option>
+                @foreach ($tiposTrabajos as $tipoTrabajo)
+                    <option value="{{ $tipoTrabajo }}">{{ $tipoTrabajo }}</option>
                 @endforeach
             </select>
 
         </div>
-
 
 
         {{-- Autonomias --}}
