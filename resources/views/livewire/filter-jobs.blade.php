@@ -1,14 +1,14 @@
 <div>
     <div class="sm:block bg-gray-200 py-3 lg:flex lg:justify-around rounded-lg ">
         {{-- Tipos de Trabajo --}}
-
+        {{$contador}}
 
         <div>
+
             <label class="block font-bold ">Tipo de Trabajo</label>
             <select wire:model="selectedTipoTrabajo" class="cursor-pointer select-nuevo">
-
-                @foreach ($tiposTrabajos as $tipoTrabajo)
-                    <option value="{{ $tipoTrabajo }}">{{ $tipoTrabajo }}</option>
+                @foreach ($tiposTrabajos as $item)
+                    <option value="{{ $item }}">{{ $item }}</option>
                 @endforeach
             </select>
 
@@ -18,17 +18,28 @@
         {{-- Autonomias --}}
         <div>
             <label class="block font-bold">Autonomía</label>
-            <select wire:model="selectedAutonomia" class="select-nuevo">
+
+            <select wire:model="selectedAutonomia"
+            wire:loading.class="animate-pulse cursor-wait"
+            wire:target="selectedTipoTrabajo"
+            class="select-nuevo">
                 <option value="todas">Todas las Autonomias</option>
-                @foreach ($autonomias as $autonomia)
-                    <option value="{{ $autonomia->id }}">{{ $autonomia->name }}</option>
+
+                @foreach ($autonomias as $item)
+
+                <option value="{{ $item->id}}">{{ $item->name }}</option>
+
                 @endforeach
+
             </select>
+
         </div>
+
 
         {{-- Provincias --}}
         <div>
-            <label class="block font-bold ">Provincia</label>
+            <label class="block font-bold ">Provincia -{{$selectedProvincia}}</label>
+
             <select wire:model="selectedProvincia"
             wire:loading.class="animate-pulse cursor-wait"
             wire:target="selectedAutonomia"
@@ -42,11 +53,12 @@
             >
                 <option value="todas">Todas las Provincias</option>
                 @if (!is_null($provincias))
-                    @foreach ($provincias as $provincia)
-                        <option value="{{ $provincia->id }}">{{ $provincia->name }}</option>
+                    @foreach ($provincias as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach
                 @endif
             </select>
+
 
         </div>
 
@@ -63,8 +75,8 @@
                 wire:loading.class="animate-pulse cursor-wait" wire:target="selectedProvincia">
                 <option value="todas">Todas las Localidades</option>
                 @if (!is_null($localidades))
-                    @foreach ($localidades as $localidad)
-                        <option value="{{ $localidad }}">{{ $localidad->name }}</option>
+                    @foreach ($localidades as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach
                 @endif
             </select>
@@ -76,21 +88,3 @@
     {{-- HHHHH{{ $contador }} --}}
 </div>
 
-{{-- <div>
-            <label class="block font-bold ">Provincia {{$selectedProvincia}}</label>
-            <select wire:model="selectedProvincia"
-            @if (is_null($provincias)) disabled
-                class ="cursor-not-allowed"
-            @else
-                class = "cursor-pointer"
-            @endif
-            wire:loading.class="animate-pulse cursor-wait" wire:target="selectedAutonomia">
-            <option value="">Todas las Provincias</option>
-                @if (!is_null($provincias))
-                    @foreach ($provincias as $provincia)
-                        <option value="{{ $provincia }}">{{ $provincia->name }}</option>
-                    @endforeach
-                @endif
-            </select>
-
-        </div> --}}

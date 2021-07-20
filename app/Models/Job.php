@@ -25,34 +25,14 @@ class Job extends Model
     }
 
     public function autonomia() {
-        return $this->belongsTo(Autonomia::class);
+        return $this->belongsTo(Autonomiatodo::class);
 
     }
-
     public function provincia() {
-        return $this->belongsTo(Provincia::class);
-
+        return $this->belongsTo(Provinciatodo::class);
     }
     public function localidad() {
-        return $this->belongsTo(Localidade::class);
-
-    }
-    public function tipoTodos() {
-        return $this->belongsTo(Tipotodos::class);
-
-    }
-    public function tipoDiscapacidad() {
-        return $this->belongsTo(Tipodiscapacidad::class);
-
-    }
-
-    public function tipoPractica() {
-        return $this->belongsTo(Tipopractica::class);
-    }
-
-    public function tipoTeletrabajo() {
-        return $this->belongsTo(Tipoteletrabajo::class);
-
+        return $this->belongsTo(Localidadtodo::class);
     }
 
 

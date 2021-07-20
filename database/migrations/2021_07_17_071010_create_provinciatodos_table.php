@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAutonomiasTable extends Migration
+class CreateProvinciatodosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateAutonomiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('autonomias', function (Blueprint $table) {
+        Schema::create('provinciatodos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('slug');
+
+            $table->unsignedBigInteger('autonomiatodo_id');
+            $table->foreign('autonomiatodo_id')->references('id')->on('autonomiatodos');
         });
     }
 
@@ -27,6 +30,6 @@ class CreateAutonomiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('autonomias');
+        Schema::dropIfExists('provinciatodos');
     }
 }

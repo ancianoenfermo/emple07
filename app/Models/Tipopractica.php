@@ -9,7 +9,7 @@ class Tipopractica extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public function jobs() {
-        return $this->hasMany(Job::class);
+    public function autonomiaspractica() {
+        return $this->hasMany(Autonomiapractica::class);
     }
 }

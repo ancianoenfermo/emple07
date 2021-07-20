@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tipotodos extends Model
+class Tipotodo extends Model
 {
     use HasFactory;
     public $timestamps = false;
 
-    public function jobs() {
-        return $this->hasMany(Job::class);
+    public function autonomiastodos() {
+        return $this->hasMany(Autonomiatodo::class);
     }
+
+
 }

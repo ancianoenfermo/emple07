@@ -4,7 +4,7 @@
 
 
         @if (!$showSearch) hidden @endif relative">
-        @livewire('filter-jobs')
+        {{--@livewire('filter-jobs') --}}
 
             <div class="flex items-center mx-3 my-3">
                 <span>Mostrar</span>

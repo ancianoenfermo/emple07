@@ -9,7 +9,7 @@ class Tipodiscapacidad extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public function jobs() {
-        return $this->hasMany(Job::class);
+    public function autonomiasdiscapacidads() {
+        return $this->hasMany(Autonomiadiscapacidad::class);
     }
 }

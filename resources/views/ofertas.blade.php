@@ -16,14 +16,15 @@
     </section>
 
     <section class="bg-white py-5">
-        {{--
+        {{-- Sacar y actiave en jobs-blade despues de prurbas --}}
         <div>
             @livewire('filter-jobs')
           </div>
-          --}}
+        {{--
         <div class="">
             @livewire('jobs', ['tipoTrabajo'=> $tiposTrabajo,'autonomia' => null, 'provincia'=> null, 'localidad'=>null])
         </div>
+        --}}
 
     </section>
 

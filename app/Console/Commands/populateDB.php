@@ -2,16 +2,33 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Autonomia;
-use App\Models\Provincia;
-use App\Models\Localidade;
+use App\Models\Autonomiadiscapacidad;
+
+use App\Models\Localidaddiscapacidad;
+use App\Models\Provinciadiscapacidad;
+use App\Models\Autonomiateletrabajo;
+use App\Models\Provinciateletrabajo;
+use App\Models\Localidadteletrabajo;
+
+use App\Models\Autonomiapractica;
+use App\Models\Provinciapractica;
+use App\Models\Localidadpractica;
+
+
+use App\Models\Autonomiatodo;
+use App\Models\Localidadtodo;
+use App\Models\Provinciatodo;
+
 use App\Models\Tipodiscapacidad;
 use App\Models\Tipopractica;
 use App\Models\Tipoteletrabajo;
-use App\Models\Tipotodos;
+use App\Models\Tipotodo;
 
-use App\Models\Tipojob;
+
 use App\Models\Job;
+use App\Models\JobsPractica;
+use App\Models\JobsDiscapacidad;
+use App\Models\JobsTeletrabajo;
 
 
 use Illuminate\Console\Command;
@@ -26,6 +43,7 @@ use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Cache;
 
+use function PHPUnit\Framework\isNull;
 
 class populateDB extends Command
 {
@@ -87,7 +105,7 @@ class populateDB extends Command
 
 
         // Crear tipos
-        $tipos = new Tipotodos();
+        $tipos = new Tipotodo();
         $tipos->name = "Todos los trabajos";
         $tipos->save();
 
@@ -121,58 +139,68 @@ class populateDB extends Command
     public function trata_empleo($empleo)
     {
         global $logoFuente;
+        $tipoTodos = Tipotodo::first();
+        $tipoDiscapacidad = Tipodiscapacidad::first();
+        $tipoPracticas = Tipopractica::first();
+        $tipoTeletrabajo = Tipoteletrabajo::first();
 
-        $autonomia = Autonomia::where('name', $empleo['autonomia'])->first();
+
+
+        $autonomia = Autonomiatodo::where('name', $empleo['autonomia'])->first();
         if ($autonomia == null) {
-            $newAutonomia = new Autonomia();
+            $newAutonomia = new Autonomiatodo();
             $newAutonomia->name = $empleo['autonomia'];
             $newAutonomia->slug = Str::slug($empleo['autonomia'], '-');
+            $newAutonomia->tipotodo_id = $tipoTodos->id;
             $autonomia = $newAutonomia;
             $autonomia->save();
         }
 
-        $provincia = Provincia::where('name', $empleo['provincia'])->first();
+        $provincia = Provinciatodo::where('name', $empleo['provincia'])->first();
         if ($provincia == null) {
-            $newProvincia = new Provincia();
+            $newProvincia = new Provinciatodo();
             $newProvincia->name = $empleo['provincia'];
             $newProvincia->slug = Str::slug($empleo['provincia'], '-');
-            $newProvincia->autonomia_id = $autonomia->id;
+            $newProvincia->autonomiatodo_id = $autonomia->id;
             $provincia = $newProvincia;
             $provincia->save();
         }
 
-        $localidad = Localidade::where('name', $empleo['localidad'])->first();
+        $localidad = Localidadtodo::where('name', $empleo['localidad'])->first();
         if ($localidad == null) {
-            $newLocalidad = new Localidade();
+            $newLocalidad = new Localidadtodo();
             $newLocalidad->name = $empleo['localidad'];
             $newLocalidad->slug = Str::slug($empleo['localidad'], '-');
-            $newLocalidad->provincia_id = $provincia->id;
+            $newLocalidad->provinciatodo_id = $provincia->id;
             $localidad = $newLocalidad;
             $localidad->save();
         }
+
         $listaTipos ="";
+        /*
         $empleo["discapacidad"] = "1";
         $empleo["teletrabajo"] = "1";
         $empleo["practicas"] = "1";
-
+        */
         if (isset($empleo['discapacidad'])) {
             $tipoDiscapacidad = Tipodiscapacidad::first();
             $listaTipos = $listaTipos . 'Discapacidad|';
+
         }
 
         if (isset($empleo['practicas'])) {
-            $tipoPracticas = Tipopractica::first();;
+            //$tipoPracticas = Tipopractica::first();;
             $listaTipos = $listaTipos . 'Practicas|';
         }
 
         if (isset($empleo['teletrabajo'])) {
-            $tipoTeletrabajo = Tipoteletrabajo::first();
+            //$tipoTeletrabajo = Tipoteletrabajo::first();
             $listaTipos = $listaTipos . 'Teletrabajo|';
         }
 
-        $tipoTodos = Tipotodos::first();
 
         $newJob = new Job;
+
         // DEBEN EXISTIR
 
         $date = Carbon::createFromFormat('d/m/Y', $empleo['datePosted']);
@@ -226,33 +254,193 @@ class populateDB extends Command
         $newJob->provincia = $provincia->name;
         $newJob->localidad = $localidad->name;
 
-        $newJob->autonomia_id = $autonomia->id;
-        $newJob->provincia_id = $provincia->id;
-        $newJob->localidad_id = $localidad->id;
-
-
-        $newJob->tipotodos_id = $tipoTodos->id;
-
-
-
 
         if (isset($empleo['discapacidad'])) {
-            $newJob->tipodiscapacidad_id = $tipoDiscapacidad->id;
+            $this->create_discapacidad($newJob, $tipoDiscapacidad,$listaTipos );
+
         }
+
         if (isset($empleo['teletrabajo'])) {
-            $newJob->tipoteletrabajo_id = $tipoTeletrabajo->id;
+
+            $this->create_teletrabajo($newJob, $tipoTeletrabajo,$listaTipos );
+
+
         }
 
         if (isset($empleo['practicas'])) {
-            $newJob->tipopractica_id = $tipoPracticas->id;
+            $this->create_practicas($newJob, $tipoPracticas,$listaTipos );
         }
 
+        $newJob->autonomiatodo_id = $autonomia->id;
+        $newJob->provinciatodo_id = $provincia->id;
+        $newJob->localidadtodo_id = $localidad->id;
         $newJob->save();
-
-
 
     }
 
+    public function create_discapacidad($job, $tipoDiscapacidad, $listaTipos) {
+        $autonomia = Autonomiadiscapacidad::where('name', $job->autonomia)->first();
+        if ($autonomia == null) {
+            $newAutonomia = new Autonomiadiscapacidad();
+            $newAutonomia->name = $job->autonomia;
+            $newAutonomia->slug = Str::slug($job->autonomia, '-');
+            $newAutonomia->tipodiscapacidad_id = $tipoDiscapacidad->id;
+            $autonomia = $newAutonomia;
+            $autonomia->save();
+        }
+
+        $provincia = Provinciadiscapacidad::where('name', $job->provincia)->first();
+        if ($provincia == null) {
+            $newProvincia = new Provinciadiscapacidad();
+            $newProvincia->name = $job->provincia;
+            $newProvincia->slug = Str::slug($job->provincia, '-');
+            $newProvincia->autonomiadiscapacidad_id = $autonomia->id;
+            $provincia = $newProvincia;
+            $provincia->save();
+        }
+
+        $localidad = Localidaddiscapacidad::where('name', $job->localidad)->first();
+        if ($localidad == null) {
+            $newLocalidad = new Localidaddiscapacidad();
+            $newLocalidad->name = $job->localidad;
+            $newLocalidad->slug = Str::slug($job->localidad, '-');
+            $newLocalidad->provinciadiscapacidad_id = $provincia->id;
+            $localidad = $newLocalidad;
+            $localidad->save();
+        }
+        $newJob = new JobsDiscapacidad;
+
+        $newJob->orden = $job->orden;
+        $newJob->datePosted = $job->datePosted;
+        $newJob->title = $job->title;
+        $newJob->excerpt = $job->excerpt;
+        $newJob->vacantes = $job->vacantes;
+        $newJob->ett = $job->ett;
+        $newJob->salario = $job->salario;
+        $newJob->contrato = $job->contrato;
+        $newJob->jornada = $job->jornada;
+        $newJob->experiencia = $job->experiencia;
+        $newJob->listaTipos = $listaTipos;
+        $newJob->jobUrl = $job->jobUrl;
+        $newJob->jobFuente = $job->jobFuente;
+        $newJob->autonomia = $job->autonomia;
+        $newJob->provincia = $job->provincia;
+        $newJob->localidad = $job->localidad;
+
+        $newJob->autonomiadiscapacidad_id = $autonomia->id;
+        $newJob->provinciadiscapacidad_id = $provincia->id;
+        $newJob->localidaddiscapacidad_id = $localidad->id;
+        $newJob->save();
+    }
+    public function create_teletrabajo($job, $tipoTeletrabajo, $listaTipos) {
+        $autonomia = Autonomiateletrabajo::where('name', $job->autonomia)->first();
+        if ($autonomia == null) {
+            $newAutonomia = new Autonomiateletrabajo();
+            $newAutonomia->name = $job->autonomia;
+            $newAutonomia->slug = Str::slug($job->autonomia, '-');
+            $newAutonomia->tipoteletrabajo_id = $tipoTeletrabajo->id;
+            $autonomia = $newAutonomia;
+            $autonomia->save();
+        }
+
+        $provincia = Provinciateletrabajo::where('name', $job->provincia)->first();
+        if ($provincia == null) {
+            $newProvincia = new Provinciateletrabajo();
+            $newProvincia->name = $job->provincia;
+            $newProvincia->slug = Str::slug($job->provincia, '-');
+            $newProvincia->autonomiateletrabajo_id = $autonomia->id;
+            $provincia = $newProvincia;
+            $provincia->save();
+
+        }
+
+        $localidad = Localidadteletrabajo::where('name', $job->localidad)->first();
+        if ($localidad == null) {
+            $newLocalidad = new Localidadteletrabajo();
+            $newLocalidad->name = $job->localidad;
+            $newLocalidad->slug = Str::slug($job->localidad, '-');
+            $newLocalidad->provinciateletrabajo_id = $provincia->id;
+            $localidad = $newLocalidad;
+            $localidad->save();
+        }
+        $newJob = new JobsTeletrabajo;
+
+        $newJob->orden = $job->orden;
+        $newJob->datePosted = $job->datePosted;
+        $newJob->title = $job->title;
+        $newJob->excerpt = $job->excerpt;
+        $newJob->vacantes = $job->vacantes;
+        $newJob->ett = $job->ett;
+        $newJob->salario = $job->salario;
+        $newJob->contrato = $job->contrato;
+        $newJob->jornada = $job->jornada;
+        $newJob->experiencia = $job->experiencia;
+        $newJob->listaTipos = $listaTipos;
+        $newJob->jobUrl = $job->jobUrl;
+        $newJob->jobFuente = $job->jobFuente;
+        $newJob->autonomia = $job->autonomia;
+        $newJob->provincia = $job->provincia;
+        $newJob->localidad = $job->localidad;
+
+        $newJob->autonomiateletrabajo_id = $autonomia->id;
+        $newJob->provinciateletrabajo_id = $provincia->id;
+        $newJob->localidadteletrabajo_id = $localidad->id;
+        $newJob->save();
+    }
+    public function create_practicas($job, $tipoPracticas, $listaTipos) {
+        $autonomia = Autonomiapractica::where('name', $job->autonomia)->first();
+        if ($autonomia == null) {
+            $newAutonomia = new Autonomiapractica();
+            $newAutonomia->name = $job->autonomia;
+            $newAutonomia->slug = Str::slug($job->autonomia, '-');
+            $newAutonomia->tipopractica_id = $tipoPracticas->id;
+            $autonomia = $newAutonomia;
+            $autonomia->save();
+        }
+
+        $provincia = Provinciapractica::where('name', $job->provincia)->first();
+        if ($provincia == null) {
+            $newProvincia = new Provinciapractica();
+            $newProvincia->name = $job->provincia;
+            $newProvincia->slug = Str::slug($job->provincia, '-');
+            $newProvincia->autonomiapractica_id = $autonomia->id;
+            $provincia = $newProvincia;
+            $provincia->save();
+        }
+
+        $localidad = Localidadpractica::where('name', $job->localidad)->first();
+        if ($localidad == null) {
+            $newLocalidad = new Localidadpractica();
+            $newLocalidad->name = $job->localidad;
+            $newLocalidad->slug = Str::slug($job->localidad, '-');
+            $newLocalidad->provinciapractica_id = $provincia->id;
+            $localidad = $newLocalidad;
+            $localidad->save();
+        }
+        $newJob = new JobsPractica();
+
+        $newJob->orden = $job->orden;
+        $newJob->datePosted = $job->datePosted;
+        $newJob->title = $job->title;
+        $newJob->excerpt = $job->excerpt;
+        $newJob->vacantes = $job->vacantes;
+        $newJob->ett = $job->ett;
+        $newJob->salario = $job->salario;
+        $newJob->contrato = $job->contrato;
+        $newJob->jornada = $job->jornada;
+        $newJob->experiencia = $job->experiencia;
+        $newJob->listaTipos = $listaTipos;
+        $newJob->jobUrl = $job->jobUrl;
+        $newJob->jobFuente = $job->jobFuente;
+        $newJob->autonomia = $job->autonomia;
+        $newJob->provincia = $job->provincia;
+        $newJob->localidad = $job->localidad;
+
+        $newJob->autonomiapractica_id = $autonomia->id;
+        $newJob->provinciapractica_id = $provincia->id;
+        $newJob->localidadpractica_id = $localidad->id;
+        $newJob->save();
+    }
 
     public function vaciaTablas()
     {

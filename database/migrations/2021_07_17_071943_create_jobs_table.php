@@ -36,28 +36,14 @@ class CreateJobsTable extends Migration
             $table->index('localidad');
             $table->index('orden');
 
-            $table->unsignedBigInteger('tipotodos_id');
-            $table->unsignedBigInteger('tipodiscapacidad_id')->nullable();
-            $table->unsignedBigInteger('tipoteletrabajo_id')->nullable();
-            $table->unsignedBigInteger('tipopractica_id')->nullable();
+            $table->unsignedBigInteger('autonomiatodo_id');
+            $table->foreign('autonomiatodo_id')->references('id')->on('autonomiatodos');
 
-            $table->foreign('tipotodos_id')->references('id')->on('tipotodos');
-            $table->foreign('tipodiscapacidad_id')->references('id')->on('tipodiscapacidads');
-            $table->foreign('tipoteletrabajo_id')->references('id')->on('tipoteletrabajos');
-            $table->foreign('tipopractica_id')->references('id')->on('tipopracticas');
+            $table->unsignedBigInteger('provinciatodo_id');
+            $table->foreign('provinciatodo_id')->references('id')->on('provinciatodos');
 
-
-
-
-            $table->unsignedBigInteger('autonomia_id');
-            $table->unsignedBigInteger('provincia_id');
-            $table->unsignedBigInteger('localidad_id');
-
-            $table->foreign('autonomia_id')->references('id')->on('autonomias');
-            $table->foreign('provincia_id')->references('id')->on('provincias');
-            $table->foreign('localidad_id')->references('id')->on('localidades');
-
-
+            $table->unsignedBigInteger('localidadtodo_id');
+            $table->foreign('localidadtodo_id')->references('id')->on('localidadtodos');
 
         });
     }

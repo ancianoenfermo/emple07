@@ -9,7 +9,7 @@ class Tipoteletrabajo extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public function jobs() {
-        return $this->hasMany(Job::class);
+    public function autonomiasteletrabajo() {
+        return $this->hasMany(Autonomiateletrabajo::class);
     }
 }
