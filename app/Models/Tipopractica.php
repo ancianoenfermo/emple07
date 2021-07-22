@@ -12,4 +12,7 @@ class Tipopractica extends Model
     public function autonomiaspractica() {
         return $this->hasMany(Autonomiapractica::class);
     }
+    public function jobs () {
+        return $this->hasMany(JobsPractica::class);
+    }
 }

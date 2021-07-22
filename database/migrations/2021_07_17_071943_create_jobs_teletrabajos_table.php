@@ -35,6 +35,10 @@ class CreateJobsTeletrabajosTable extends Migration
             $table->index('provincia');
             $table->index('localidad');
             $table->index('orden');
+
+            $table->unsignedBigInteger('tipoteletrabajo_id');
+            $table->foreign('tipoteletrabajo_id')->references('id')->on('tipoteletrabajos');
+
             $table->unsignedBigInteger('autonomiateletrabajo_id');
             $table->foreign('autonomiateletrabajo_id')->references('id')->on('autonomiateletrabajos');
 

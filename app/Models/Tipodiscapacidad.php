@@ -12,4 +12,7 @@ class Tipodiscapacidad extends Model
     public function autonomiasdiscapacidads() {
         return $this->hasMany(Autonomiadiscapacidad::class);
     }
+    public function jobs () {
+        return $this->hasMany(JobsDiscapacidad::class);
+    }
 }

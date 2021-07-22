@@ -1,8 +1,6 @@
 <div>
     <div class="sm:block bg-gray-200 py-3 lg:flex lg:justify-around rounded-lg ">
         {{-- Tipos de Trabajo --}}
-        {{$contador}}
-
         <div>
 
             <label class="block font-bold ">Tipo de Trabajo</label>
@@ -18,39 +16,31 @@
         {{-- Autonomias --}}
         <div>
             <label class="block font-bold">Autonomía</label>
-
             <select wire:model="selectedAutonomia"
             wire:loading.class="animate-pulse cursor-wait"
             wire:target="selectedTipoTrabajo"
-            class="select-nuevo">
+            class="select-nuevo cursor-pointer">
                 <option value="todas">Todas las Autonomias</option>
-
                 @foreach ($autonomias as $item)
-
-                <option value="{{ $item->id}}">{{ $item->name }}</option>
-
+                    <option value="{{ $item->id}}">{{ $item->name }}</option>
                 @endforeach
-
             </select>
-
         </div>
 
 
         {{-- Provincias --}}
         <div>
-            <label class="block font-bold ">Provincia -{{$selectedProvincia}}</label>
-
+            <label class="block font-bold ">Provincia</label>
             <select wire:model="selectedProvincia"
             wire:loading.class="animate-pulse cursor-wait"
             wire:target="selectedAutonomia"
-
             @if (is_null($provincias))
             class="select-nuevo cursor-not-allowed"
-            disabled
+            disabled>
             @else
-            class="select-nuevo cursor-pointer"
+            class="select-nuevo cursor-pointer">
             @endif
-            >
+
                 <option value="todas">Todas las Provincias</option>
                 @if (!is_null($provincias))
                     @foreach ($provincias as $item)
@@ -58,11 +48,11 @@
                     @endforeach
                 @endif
             </select>
-
-
         </div>
 
+
         {{-- Localidades --}}
+
         <div>
             <label class="block font-bold">Localidad</label>
             <select wire:model="selectedLocalidad"
@@ -85,6 +75,6 @@
 
 
     </div>
-    {{-- HHHHH{{ $contador }} --}}
+
 </div>
 

@@ -12,4 +12,7 @@ class Tipoteletrabajo extends Model
     public function autonomiasteletrabajo() {
         return $this->hasMany(Autonomiateletrabajo::class);
     }
+    public function jobs () {
+        return $this->hasMany(JobsTeletrabajo::class);
+    }
 }

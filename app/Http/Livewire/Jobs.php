@@ -9,13 +9,15 @@ use App\Models\Tipodiscapacidad;
 use App\Models\Tipopractica;
 use App\Models\Tipoteletrabajo;
 use App\Models\Job;
+use App\Models\Tipotodo;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class Jobs extends Component
 {
     use WithPagination;
-    public $search;
+    public $search = null;
     public $cant = 10;
     public $tipoTrabajo = null;
     public $autonomia = null;
@@ -24,6 +26,7 @@ class Jobs extends Component
 
     public $readyToLoad = false;
     public $showSearch = false;
+
 
     protected $listeners = [
         'filtersEmit' => 'filtersEmit',
@@ -34,8 +37,102 @@ class Jobs extends Component
 
         if($this->readyToLoad) {
 
+            switch ($this->tipoTrabajo) {
+                case 'Todos los trabajos':
+                    $jobs = DB::table('jobs')
+                    ->where(function($query) {
+                        if ($this->autonomia) {
+                            $query->where('autonomiatodo_id','=',$this->autonomia);
+                        }
+                        if ($this->provincia) {
+                            $query->where('provinciatodo_id','=',$this->provincia);
+                        }
+                        if ($this->localidad) {
+                            $query->where('localidadtodo_id','=',$this->localidad);
+                        }
+                    })
+                    ->where(function($query) {
+                        if ($this->search) {
+                            $query->where('title','like','%'.$this->search.'%');
+                        }
+                    })
+                    ->paginate(15);
+                    break;
+                case 'Discapacidad':
+                    $jobs = DB::table('jobs_discapacidads')
+                    ->where(function($query) {
+                        if ($this->autonomia) {
+                            $query->where('autonomiadiscapacidad_id','=',$this->autonomia);
+                        }
+                        if ($this->provincia) {
+                            $query->where('provinciadiscapacidad_id','=',$this->provincia);
+                        }
+                        if ($this->localidad) {
+                            $query->where('localidaddiscapacidad_id','=',$this->localidad);
+                        }
+                    })
+                    ->where(function($query) {
+                        if ($this->search) {
+                            $query->where('title','like','%'.$this->search.'%');
+                        }
+                    })
+                    ->paginate(15);
+                    break;
+                case 'Prácticas':
+                    $jobs = DB::table('jobs_practicas')
+                    ->where(function($query) {
+                        if ($this->autonomia) {
+                            $query->where('autonomiapractica_id','=',$this->autonomia);
+                        }
+                        if ($this->provincia) {
+                            $query->where('provinciapractica_id','=',$this->provincia);
+                        }
+                        if ($this->localidad) {
+                            $query->where('localidadpractica_id','=',$this->localidad);
+                        }
+                    })
+                    ->where(function($query) {
+                        if ($this->search) {
+                            $query->where('title','like','%'.$this->search.'%');
+                        }
+                    })
+                    ->paginate(15);
+                    break;
 
-            $jobs = $this->tipoTrabajo->jobs()->paginate();
+
+
+                case 'Teletrabajo':
+                    $jobs = DB::table('jobs_teletrabajos')
+                    ->where(function($query) {
+                        if ($this->autonomia) {
+                            $query->where('autonomiateletrabajo_id','=',$this->autonomia);
+                        }
+                        if ($this->provincia) {
+                            $query->where('provinciateletrabajo_id','=',$this->provincia);
+                        }
+                        if ($this->localidad) {
+                            $query->where('localidadteletrabajo_id','=',$this->localidad);
+                        }
+                    })
+                    ->where(function($query) {
+                        if ($this->search) {
+                            $query->where('title','like','%'.$this->search.'%');
+                        }
+                    })
+                    ->paginate(15);
+                    break;
+
+            }
+           /*
+                         $jobs = $table
+                    ->Orwhere($nameIdAutonomia, $this->autonomia)
+                    ->Orwhere($nameIdProvincia, $this->provincia)
+                    ->Orwhere($nameIdLocalidad, $this->localidad)
+                    ->where('title','like','%'.$this->search.'%')
+                    ->Orwhere('excerpt','like','%'.$this->search.'%')
+                    ->paginate(15);
+            */
+
 
             /*
             $jobs = Job::whereHas(
@@ -74,6 +171,10 @@ class Jobs extends Component
         return view('livewire.jobs',compact('jobs'));
     }
 
+    public function mount(){
+        $this->tipoTrabajo = "Todos los trabajos";
+
+    }
 
     public function loadEmpleos() {
         $this->readyToLoad = true;
@@ -86,44 +187,17 @@ class Jobs extends Component
 
     public function filtersEmit($autonomiaId,$provinciaId,$localidadId,$tipoTrabajo) {
 
-        switch($tipoTrabajo) {
-            case 'Todos los trabajos':
-                $this->tipoTrabajo = TipoTodos::find(1);
-                break;
-            case 'Discapacidad':
-                $this->tipoTrabajo = TipoDiscapacidad::find(1);
-                break;
-            case 'Teletrabajo':
-                $this->tipoTrabajo = Tipoteletrabajo::find(1);
-                break;
-            case 'Prácticas':
-                $this->tipoTrabajo = Tipopractica::find(1);
-                break;
-            default:
-                $this->tipoTrabajo = TipoTodos::find(1);;
-        }
-
-
-
-
-        if ($autonomiaId) {
-            $nombreAutonomia = Cache::rememberForever('AutonomiaNombreId'.$autonomiaId, function () use($autonomiaId) {
-                return Autonomia::where('id',$autonomiaId)->get()->pluck('name')->toArray();
-            });
-        $this->autonomia = $nombreAutonomia[0];
-        }
-
-        // Viene id
-        /*
-        $this->tipoTrabajo = Cache::rememberForever('TipoTrabajoID'.$tipoTrabajo, function () use($tipoTrabajo) {
-            return Tipojob::with('jobs')->find($tipoTrabajo);
-         });
-
         $this->tipoTrabajo = $tipoTrabajo;
-        $this->autonomia = $autonomiaName;
-        $this->provincia = $provinciaName;
-        $this->localidad = $localidadName;
-         */
+        if ($autonomiaId) {
+            $this->autonomia = $autonomiaId;
+        }
+        if ($provinciaId) {
+            $this->provincia = $provinciaId;
+        }
+        if($localidadId) {
+            $this->localidad = $localidadId;
+        }
+
         $this->resetPage();
     }
 

@@ -36,6 +36,10 @@ class CreateJobsPracticasTable extends Migration
             $table->index('localidad');
             $table->index('orden');
 
+            $table->unsignedBigInteger('tipopractica_id');
+            $table->foreign('tipopractica_id')->references('id')->on('tipopracticas');
+
+
             $table->unsignedBigInteger('autonomiapractica_id');
             $table->foreign('autonomiapractica_id')->references('id')->on('autonomiapracticas');
 

@@ -24,6 +24,10 @@ class Job extends Model
         }
     }
 
+    public function tipojob () {
+        return $this->belongsTo(Tipotodo::class);
+    }
+
     public function autonomia() {
         return $this->belongsTo(Autonomiatodo::class);
 

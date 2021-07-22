@@ -13,6 +13,8 @@ class Tipotodo extends Model
     public function autonomiastodos() {
         return $this->hasMany(Autonomiatodo::class);
     }
-
+    public function jobs () {
+        return $this->hasMany(Job::class);
+    }
 
 }

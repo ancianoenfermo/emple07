@@ -17,6 +17,10 @@ class JobsDiscapacidad extends Model
             return explode("|", $value);
         }
     }
+    public function tipojob () {
+        return $this->belongsTo(Tipodiscapacidad::class);
+    }
+
     public function autonomia() {
         return $this->belongsTo(Autonomiadiscapacidad::class);
 

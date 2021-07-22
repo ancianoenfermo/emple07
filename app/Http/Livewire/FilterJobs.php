@@ -6,16 +6,33 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Cache;
 
+use App\Models\Autonomiatodo;
+use App\Models\Provinciatodo;
+use App\Models\Localidadtodo;
+
+use App\Models\Autonomiadiscapacidad;
+use App\Models\Provinciadiscapacidad;
+use App\Models\Localidaddiscapacidad;
+
+use App\Models\Autonomiapractica;
+use App\Models\Provinciapractica;
+use App\Models\Localidadpractica;
+
+use App\Models\Autonomiateletrabajo;
+use App\Models\Provinciateletrabajo;
+use App\Models\Localidadteletrabajo;
+
+
 
 class FilterJobs extends Component
 {
 
-    public $selectedTipoTrabajo = null;
+    public $selectedTipoTrabajo = "Todos los trabajos";
     public $selectedAutonomia = "todas";
     public $selectedProvincia = "todas";
     public $selectedLocalidad = "todas";
     public $tiposTrabajos = null;
-    public $autonomias = "hola";
+    public $autonomias = null;
     public $provincias = null;
     public $localidades = null;
 
@@ -28,185 +45,113 @@ class FilterJobs extends Component
     {
         $this->contador += 1;
 
-        if($this->contador == 9) {
-            dd($this->autonomias);
-            /*
-            foreach($this->autonomias as $item){
-                dd($item->id);
-            }
-            */
-            dd(var_dump($this->autonomias));
-        }
-
         return view('livewire.filter-jobs');
     }
     public function mount($tipoTrabajo = null)
     {
+        $this->autonomias = Cache::rememberForever('TodasAutonomias', function () {
+            return Autonomiatodo::all();
+         });
 
-
-        $a = DB::table('autonomiatodos')->get();
-        $this->autonomias = $a;
-        $this->selectedTipoTrabajo = 'Todos los trabajos';
+        //$this->autonomias = DB::table('autonomiatodos')->get();;
+        $this->selectedTipoTrabajo = "Todos los trabajos";
         $this->tiposTrabajos = array('Todos los trabajos', 'Discapacidad', 'Prácticas', 'Teletrabajo');
-
     }
 
 
     public function updatedselectedTipoTrabajo()
     {
-        //$this->reset('autonomias');
+        $this->reset(['autonomias', 'selectedAutonomia', 'provincias', 'selectedProvincia','selectedLocalidad','localidades']);
         switch ($this->selectedTipoTrabajo) {
             case 'Todos los trabajos':
-                /*
-                $this->autonomias = Cache::rememberForever('autonomiasTiposTodos', function () {
-                    return DB::table('autonomiatodos')->get();
-                });
-                */
-                $this->autonomias = DB::table('autonomiatodos')->get();
+                $this->autonomias = Cache::rememberForever('TodasAutonomias', function () {
+                    return Autonomiatodo::all();
+                 });
                 break;
             case 'Discapacidad':
-                /*
-                $this->autonomias = Cache::rememberForever('autonomiasDiscapacidad', function () {
-                    return DB::table('autonomiadiscapacidads')->select(['id','name'])->get();
-                });
-                */
-                $this->autonomias =  DB::table('autonomiadiscapacidads')->get();
+                $this->autonomias = Cache::rememberForever('DiscapacidadAutonomias', function () {
+                    return Autonomiadiscapacidad::all();
+                 });
                 break;
             case 'Prácticas':
-                $this->autonomias = Cache::rememberForever('autonomiasPractica', function () {
-                    return DB::table('autonomiapracticas')->get();
-                });
+                $this->autonomias = Cache::rememberForever('PracticasAutonomias', function () {
+                    return Autonomiapractica::all();
+                 });
                 break;
             case 'Teletrabajo':
-                $this->autonomias = Cache::rememberForever('autonomiasTeletrabajo', function () {
-                    return DB::table('autonomiateletrabajos')->get();
-                });
+                $this->autonomias = Cache::rememberForever('TeletrabajoAutonomias', function () {
+                    return Autonomiateletrabajo::all();
+                 });
+                break;
+            default:
+                dd("error en updatedselectedTipoTrabajo");
+        }
+        $this->emitTo('jobs','filtersEmit',null,null,null,$this->selectedTipoTrabajo);
+    }
+
+    public function updatedSelectedAutonomia($autonomia_id)
+    {
+        $this->reset(['provincias', 'selectedProvincia','localidades','selectedLocalidad']);
+
+        switch ($this->selectedTipoTrabajo) {
+            case 'Todos los trabajos':
+                $this->provincias = Cache::rememberForever('TodasProvinciasDeAutonomia'.$autonomia_id, function () use($autonomia_id) {
+                    return Provinciatodo::where('autonomiatodo_id',$autonomia_id)->get();
+                 });
+                break;
+            case 'Discapacidad':
+                $this->provincias = Cache::rememberForever('DiscapacidadProvinciasDeAutonomia'.$autonomia_id, function () use($autonomia_id) {
+                    return  Provinciadiscapacidad::where('autonomiadiscapacidad_id',$autonomia_id)->get();
+                 });
+                break;
+            case 'Prácticas':
+                $this->provincias = Cache::rememberForever('PracticasProvinciasDeAutonomia'.$autonomia_id, function () use($autonomia_id) {
+                    return  Provinciapractica::where('autonomiapractica_id',$autonomia_id)->get();
+                 });
+                break;
+            case 'Teletrabajo':
+                $this->provincias = Cache::rememberForever('PracticasProvinciasDeAutonomia'.$autonomia_id, function () use($autonomia_id) {
+                    return  Provinciateletrabajo::where('autonomiateletrabajo_id',$autonomia_id)->get();
+                 });
                 break;
             default:
                 dd("error en updatedselectedTipoTrabajo");
         }
 
-        //$this->reset(['selectedProvincia', 'provincias', 'selectedLocalidad', 'localidades']);
-        //$this->reset(['selectedAutonomia','selectedProvincia', 'provincias', 'selectedLocalidad', 'localidades']);
-
-
-
-        //$this->emitTo('jobs','filtersEmit',null,null,null,$tipoTrabajo);
-    }
-
-    public function updatedSelectedAutonomia($autonomia_id)
-    {
-
-        if ($autonomia_id == "todas") {
-            //$this->reset(['selectedProvincia', 'provincias', 'selectedLocalidad', 'localidades']);
-
-        } else {
-            switch ($this->selectedTipoTrabajo) {
-                case 'Todos los trabajos':
-                    $this->provincias = DB::table('provinciatodos')->where('autonomiatodo_id','=',$autonomia_id)->get();
-                    //$this->autonomias = DB::table('autonomiatodos')->select(['id','name'])->get();
-
-                    break;
-                case 'Discapacidad':
-                    /*
-                    $key = "provinciasautonomia".$autonomia_id."Discapacidad";
-
-                    $this->provincias = Cache::rememberForever($key, function () use($autonomia_id){
-                        return Autonomiadiscapacidad::find($autonomia_id)->provincias;
-                    });
-                    */
-                    //$this->provincias = DB::table('provinciadiscapacidads')->where('autonomiadiscapacidad_id','=',$autonomia_id)->get();
-                    //$this->autonomias = DB::table('autonomiadiscapacidads')->select(['id','name'])->get();
-
-
-                    //$this->provincias = Autonomiadiscapacidad::find($autonomia_id)->provincias;
-                    break;
-                case 'Prácticas':
-                    $this->provincias = DB::table('provinciapracticas')->where('autonomiapractica_id','=',$autonomia_id)->get();
-                    //$this->autonomias = DB::table('autonomiapracticas')->select(['id','name'])->get();
-                    /*
-                    $key = "provinciasautonomia".$autonomia_id."Practicas";
-                    $this->provincias = Cache::rememberForever($key, function () use($autonomia_id){
-                        return Autonomiapractica::find($autonomia_id)->provincias;
-                    });
-                    */
-                    //$this->provincias = Autonomiapractica::find($autonomia_id)->provincias;
-                    break;
-                case 'Teletrabajo':
-                    $this->provincias = DB::table('provinciateletrabajos')->where('autonomiateletrabajo_id','=',$autonomia_id)->get();
-                    //$this->autonomias = DB::table('autonomiatyeletrabajos')->select(['id','name'])->get();
-
-                    /*
-                    $key = "provinciasautonomia".$autonomia_id."Teletrabajo";
-                    $this->provincias = Cache::rememberForever($key, function () use($autonomia_id){
-                        return Autonomiateletrabajo::find($autonomia_id)->provincias;
-                    });
-                    */
-                    //$this->provincias = Autonomiateletrabajo::find($autonomia_id)->provincias;
-                    break;
-                default:
-                    dd("error en updatedselectedTipoTrabajo");
-            }
-
-        }
-
-        //$this->emitTo('jobs','filtersEmit',$autonomia_id,null,null,$this->selectedTipoTrabajo);
+        $this->emitTo('jobs','filtersEmit',$autonomia_id,null,null,$this->selectedTipoTrabajo);
     }
 
     public function updatedSelectedProvincia($provincia_id)
     {
 
-        dd("22222222222222222");
-            switch ($this->selectedTipoTrabajo) {
-                case 'Todos los trabajos':
-                    /*
-                    $key = "localidadesprovincia".$provincia_id."TodosTrabajos";
-                    $this->localidades = Cache::rememberForever($key, function () use($provincia_id){
-                        return Provinciatodo::find($provincia_id)->localidades;
-                    });
-                    */
-                    $this->localidades =  DB::table('localidadtodos')->where('provinciatoda_id','=',$provincia_id)->get();
+        $this->reset(['localidades','selectedLocalidad']);
 
-                    //$this->localidades = Provinciatodo::find($provincia_id)->localidades;
-                    break;
-                case 'Discapacidad':
-                    /*
-                    $key = "localidadesprovincia".$provincia_id."Discapacidad";
-                    $this->localidades = Cache::rememberForever($key, function () use($provincia_id){
-                        return Provinciadiscapacidad::find($provincia_id)->localidades;
-                    });
-                    */
-                    $this->localidades =  DB::table('localidaddiscapacidads')->where('provinciadiscapacidad_id','=',$provincia_id)->get();
-
-
-                    //$this->localidades = Provinciadiscapacidad::find($provincia_id)->localidades;
-                    break;
-                case 'Prácticas':
-                    $this->localidades =  DB::table('localidadpracticas')->where('provinciapractica_id','=',$provincia_id)->get();
-                    /*
-                    $key = "localidadesprovincia".$provincia_id."Practicas";
-                    $this->localidades = Cache::rememberForever($key, function () use($provincia_id){
-                        return Provinciapractica::find($provincia_id)->localidades;
-                    });
-                    */
-                    //$this->localidades = Provinciapractica::find($provincia_id)->localidades;
-                    break;
-                case 'Teletrabajo':
-                    /*
-                    $key = "localidadesprovincia".$provincia_id."Teletrabajo";
-                    $this->localidades = Cache::rememberForever($key, function () use($provincia_id){
-                        return Provinciateletrabajo::find($provincia_id)->localidades;
-                    });
-                    */
-                    $this->localidades =  DB::table('localidadteletrabajos')->where('provinciateletrabajo_id','=',$provincia_id)->get();
-                    //$this->localidades = Provinciateletrabajo::find($provincia_id)->localidades;
-                    break;
-                default:
-                    dd("error en updatedselectedTipoTrabajo");
-
+        switch ($this->selectedTipoTrabajo) {
+            case 'Todos los trabajos':
+                $this->localidades = Cache::rememberForever('TodosLocalidadesDeProvincia'.$provincia_id, function () use($provincia_id) {
+                    return  Localidadtodo::where('provinciatodo_id',$provincia_id)->get();
+                 });
+                break;
+            case 'Discapacidad':
+                $this->localidades = Cache::rememberForever('DiscapacidadLocalidadesDeProvincia'.$provincia_id, function () use($provincia_id) {
+                    return  Localidaddiscapacidad::where('provinciadiscapacidad_id',$provincia_id)->get();
+                 });
+                break;
+            case 'Prácticas':
+                $this->localidades = Cache::rememberForever('PracticasLocalidadesDeProvincia'.$provincia_id, function () use($provincia_id) {
+                    return  Localidadpractica::where('provinciapractica_id',$provincia_id)->get();
+                 });
+                break;
+            case 'Teletrabajo':
+                $this->localidades = Cache::rememberForever('TeletrabajoLocalidadesDeProvincia'.$provincia_id, function () use($provincia_id) {
+                    return  Localidadteletrabajo::where('provinciateletrabajo_id',$provincia_id)->get();
+                 });
+                break;
+            default:
+                dd("error en updatedselectedTipoTrabajo");
         }
 
-
+        $this->emitTo('jobs','filtersEmit',null,$provincia_id,null,$this->selectedTipoTrabajo);
 
 
 
@@ -285,7 +230,7 @@ if ($provincia_id == "todas") {
             $localidad_id = null;
         }
 
-        //$this->emitTo('jobs','filtersEmit',null,null,$localidad_id,$this->selectedTipoTrabajo);
+        $this->emitTo('jobs','filtersEmit',null,null,$localidad_id,$this->selectedTipoTrabajo);
 
     }
 }

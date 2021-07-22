@@ -16,6 +16,11 @@ class JobsPractica extends Model
             return explode("|", $value);
         }
     }
+    public function tipojob () {
+        return $this->belongsTo(Tipopractica::class);
+    }
+
+
 
     public function autonomia() {
         return $this->belongsTo(Autonomiapractica::class);
@@ -27,4 +32,5 @@ class JobsPractica extends Model
     public function localidad() {
         return $this->belongsTo(Localidadpractica::class);
     }
+
 }

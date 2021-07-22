@@ -36,6 +36,10 @@ class CreateJobsTable extends Migration
             $table->index('localidad');
             $table->index('orden');
 
+            $table->unsignedBigInteger('tipotodo_id');
+            $table->foreign('tipotodo_id')->references('id')->on('tipotodos');
+
+
             $table->unsignedBigInteger('autonomiatodo_id');
             $table->foreign('autonomiatodo_id')->references('id')->on('autonomiatodos');
 

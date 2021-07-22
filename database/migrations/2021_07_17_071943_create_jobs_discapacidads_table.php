@@ -35,6 +35,10 @@ class CreateJobsDiscapacidadsTable extends Migration
             $table->index('provincia');
             $table->index('localidad');
             $table->index('orden');
+
+            $table->unsignedBigInteger('tipodiscapacidad_id');
+            $table->foreign('tipodiscapacidad_id')->references('id')->on('tipodiscapacidads');
+
             $table->unsignedBigInteger('autonomiadiscapacidad_id');
             $table->foreign('autonomiadiscapacidad_id')->references('id')->on('autonomiadiscapacidads');
 

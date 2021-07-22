@@ -16,18 +16,21 @@
     </section>
 
     <section class="bg-white py-5">
-        {{-- Sacar y actiave en jobs-blade despues de prurbas --}}
-        <div>
-            @livewire('filter-jobs')
-          </div>
-        {{--
+
+
         <div class="">
-            @livewire('jobs', ['tipoTrabajo'=> $tiposTrabajo,'autonomia' => null, 'provincia'=> null, 'localidad'=>null])
+            @livewire('jobs')
         </div>
-        --}}
+
 
     </section>
 
 </x-app-layout>
 
 {{-- style="background-image: url({{asset('img/home/portada.jpg')}})"> --}}
+{{-- Sacar y actiave en jobs-blade despues de prurbas
+<div>
+    @livewire('filter-jobs')
+
+</div>
+ --}}

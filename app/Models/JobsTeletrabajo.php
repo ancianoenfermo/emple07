@@ -16,6 +16,9 @@ class JobsTeletrabajo extends Model
             return explode("|", $value);
         }
     }
+    public function tipojob () {
+        return $this->belongsTo(Tipoteletrabajo::class);
+    }
 
     public function autonomia() {
         return $this->belongsTo(Autonomiateletrabajo::class);
