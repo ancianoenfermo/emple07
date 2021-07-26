@@ -200,8 +200,11 @@ class populateDB extends Command
             $experiencia = $empleo['experiencia'];
         }
 
-        $listaTipos = substr($listaTipos, 0, -1);
-
+        if ($listaTipos) {
+            $listaTipos = substr($listaTipos, 0, -1);
+        } else {
+            $listaTipos = null;
+        }
 
 
         if (isset($empleo['discapacidad'])) {

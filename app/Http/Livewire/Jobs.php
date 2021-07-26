@@ -185,8 +185,13 @@ class Jobs extends Component
         $this->resetPage();
     }
 
+    public function search() {
+
+    }
+
     public function filtersEmit($autonomiaId,$provinciaId,$localidadId,$tipoTrabajo) {
 
+        $this->reset(['autonomia','provincia','localidad','tipoTrabajo']);
         $this->tipoTrabajo = $tipoTrabajo;
         if ($autonomiaId) {
             $this->autonomia = $autonomiaId;
@@ -197,6 +202,8 @@ class Jobs extends Component
         if($localidadId) {
             $this->localidad = $localidadId;
         }
+
+
 
         $this->resetPage();
     }

@@ -86,7 +86,7 @@ class FilterJobs extends Component
             default:
                 dd("error en updatedselectedTipoTrabajo");
         }
-        $this->emitTo('jobs','filtersEmit',null,null,null,$this->selectedTipoTrabajo);
+        //$this->emitTo('jobs','filtersEmit',null,null,null,$this->selectedTipoTrabajo);
     }
 
     public function updatedSelectedAutonomia($autonomia_id)
@@ -118,7 +118,7 @@ class FilterJobs extends Component
                 dd("error en updatedselectedTipoTrabajo");
         }
 
-        $this->emitTo('jobs','filtersEmit',$autonomia_id,null,null,$this->selectedTipoTrabajo);
+        //$this->emitTo('jobs','filtersEmit',$autonomia_id,null,null,$this->selectedTipoTrabajo);
     }
 
     public function updatedSelectedProvincia($provincia_id)
@@ -151,76 +151,8 @@ class FilterJobs extends Component
                 dd("error en updatedselectedTipoTrabajo");
         }
 
-        $this->emitTo('jobs','filtersEmit',null,$provincia_id,null,$this->selectedTipoTrabajo);
-
-
-
-
-
-        /*
-if ($provincia_id == "todas") {
-            $this->reset(['selectedLocalidad','localidades']);
-        } else {
-            switch ($this->selectedTipoTrabajo) {
-                case 'Todos los trabajos':
-                    $this->localidades = Tipotodo::find(1)->autonomias->where('id', '=', $provincia_id);
-                    break;
-                case 'Discapacidad':
-                    $this->localidades = Tipodiscapacidad::find(1)->autonomias->where('id', '=', $provincia_id);
-                    break;
-                case 'Prácticas':
-                    $this->localidades = Tipopractica::find(1)->autonomias->where('id', '=', $provincia_id);;
-                    break;
-                case 'Teletrabajo':
-                    $this->localidades = Tipoteletrabajo::find(1)->autonomias->where('id', '=', $provincia_id);;
-                    break;
-                default:
-                    dd("error en updatedselectedTipoTrabajo");
-            }
-            $this->reset(['selectedProvincia']);
-
-        }
-
-        */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-        if ($provincia_id != 'todas') {
-            $this->localidades = Provincia::find($this->selectedProvincia)->localidades;
-        }
-        $this->reset(['selectedLocalidad', 'localidades']);
-        */
-
-
-
-        /*
-        if($provincia_id != "todas") {
-            $this->localidades = Cache::rememberForever('TodasLocalidadesDE'.$provincia_id, function () use($provincia_id) {
-                return Provincia::find($provincia_id)->localidades;
-            });
-            $this->reset('selectedLocalidad');
-        } else {
-            $provincia_id = null;
-        }
-        */
         //$this->emitTo('jobs','filtersEmit',null,$provincia_id,null,$this->selectedTipoTrabajo);
+
     }
 
     public function updatedSelectedLocalidad($localidad_id)
@@ -230,7 +162,24 @@ if ($provincia_id == "todas") {
             $localidad_id = null;
         }
 
-        $this->emitTo('jobs','filtersEmit',null,null,$localidad_id,$this->selectedTipoTrabajo);
+        //$this->emitTo('jobs','filtersEmit',null,null,$localidad_id,$this->selectedTipoTrabajo);
+
+    }
+
+    public function clickBuscar() {
+        if ($this->selectedLocalidad != "todas") {
+            $this->emitTo('jobs','filtersEmit',null,null,$this->selectedLocalidad,$this->selectedTipoTrabajo);
+            return;
+        }
+        if ($this->selectedProvincia != "todas") {
+            $this->emitTo('jobs','filtersEmit',null,$this->selectedProvincia,null,$this->selectedTipoTrabajo);
+            return;
+        }
+        if ($this->selectedAutonomia != "todas") {
+            $this->emitTo('jobs','filtersEmit',$this->selectedAutonomia,null,null,$this->selectedTipoTrabajo);
+            return;
+        }
+        $this->emitTo('jobs','filtersEmit',null,null,null,$this->selectedTipoTrabajo);
 
     }
 }

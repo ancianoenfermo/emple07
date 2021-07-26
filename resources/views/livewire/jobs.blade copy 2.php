@@ -6,18 +6,24 @@
         @if (!$showSearch) hidden @endif relative">
             @livewire('filter-jobs')
 
-
+            <div class="flex items-center mx-3 my-3 bg-red-500">
+                <span>Mostrar</span>
+                <select wire:model="cant" class="mx-2 select-nuevo">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                <span>trabajos</span>
+                <x-jet-input class="w-full mx-4" placeholder="Escriba que está buscando" type=text
+                    wire:model="search" />
+            </div>
         </div>
 
         @if (count($jobs))
-            <div class="mx-5 mt-10">
+            <div class="mx-5">
                 <x-job-table>
-                    <div class="px-6 py-3 flex">
-                        <x-jet-input class="w-full mx-4" placeholder="Escriba que está buscando y pulse ENTER" type=text name="pp"
 
-                        wire:model.defer="search" wire:keydown.enter="search"/>
-
-                    </div>
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
@@ -182,19 +188,3 @@
     </div>
 
 </div>
-
-{{--
-<div class="flex items-center mx-3 my-3 bg-red-500">
-                <span>Mostrar</span>
-                <select wire:model="cant" class="mx-2 select-nuevo">
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-                <span>trabajos</span>
-                <x-jet-input class="w-full mx-4" placeholder="Escriba que está buscando" type=text
-                    wire:model="search" />
-            </div>
-
---}}

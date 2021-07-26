@@ -11,6 +11,13 @@ $nav_links = [
         'active' => request()->routeIs('ofertas'),
     ],
 ];
+$nav_links_auth = [
+    [
+        'name' => 'Mis Trabajos',
+        'route' => route('misofertas'),
+        'active' => request()->routeIs('misofertas'),
+    ],
+]
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
     <!-- Primary Navigation Menu -->
@@ -31,6 +38,14 @@ $nav_links = [
                             {{ $nav_link['name'] }}
                         </x-jet-nav-link>
                     @endforeach
+                    @auth
+                        @foreach ($nav_links_auth as $nav_link_auth)
+                            <x-jet-nav-link href="{{ $nav_link_auth['route'] }}" :active="$nav_link_auth['active']">
+                                {{ $nav_link_auth['name'] }}
+                            </x-jet-nav-link>
+                        @endforeach
+
+                    @endauth
                 </div>
             </div>
 
