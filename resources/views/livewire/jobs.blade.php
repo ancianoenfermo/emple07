@@ -1,200 +1,129 @@
 <div>
-    <div wire:init="loadEmpleos" class="pt-3 mx-10 rounded-lg relative">
-        <div class=" border-gray-200 border-opacity-50 rounded-lg
 
+    <div wire:init="loadEmpleos" class=" relative">
+        <div class=" border-gray-100 border-opacity-50 rounded-lg
+            @if (!$showSearch) hidden @endif relative">
 
-        @if (!$showSearch) hidden @endif relative">
             @livewire('filter-jobs')
-
 
         </div>
 
-        @if (count($jobs))
-            <div class="mx-5 mt-10">
-                <x-job-table>
+
+
+
+        <div class="container bg-withe mx-auto mt-10">
+            @if (count($jobs))
+
+                <span class="">
+                    Hemos encontrado {{ $jobs->links()->paginator->total() }} ofertas
+                </span>
+
+
+                <div class="mt-10">
+
                     <div class="px-6 py-3 flex">
-                        <x-jet-input class="w-full mx-4" placeholder="Escriba que está buscando y pulse ENTER" type=text name="pp"
-
-                        wire:model.defer="search" wire:keydown.enter="search"/>
+                        <x-jet-input class="w-full" placeholder="Escriba que está buscando y pulse ENTER" type=text
+                            name="pp" wire:model.defer="search" wire:keydown.enter="search" />
 
                     </div>
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Fecha
-                                </th>
-                                <th scope="col"
-                                    class="border-l-2 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Trabajo
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Localidad
-                                </th>
 
-                                <th scope="col" class="relative px-6 py-3">
-                                    <span class="sr-only">Edit</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($jobs as $job)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap ">
-                                        <div class="text-sm font-bold text-gray-900">
-                                            {{ \Carbon\Carbon::parse($job->datePosted)->format('d-m-Y') }}
-                                        </div>
-                                        <div>
-                                            <span class="text-right text-xs">
-                                                Publicado en
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <p class="text-right text-xs inline-block ">
-                                                {{ $job->jobFuente }}
-                                            </p>
-                                        </div>
-                                    </td>
-                                    @php
-                                        if (!is_null($job->listaTipos)) {
-                                            $tipos = explode('|', $job->listaTipos);
-                                        }
-                                    @endphp
-                                    <td class="px-6 py-4 border-l-2 ">
-                                        <div class="text-lg font-bold text-gray-900 whitespace-nowrap ">
-                                            <p>{{ $job->title }}</p>
+                    @foreach ($jobs as $job)
+                        <x-jobCard :job=$job />
+                    @endforeach
 
-                                        </div>
+                    @if ($jobs->hasPages())
+                        <div
+                            class="bg-gray-50 px-4 py-3 mt-5 mb-5 mr-2 items-center justify-between border-t border-gray-200 sm:px-6">
+                            {{ $jobs->links() }}
+                        </div>
 
-                                        <div class="text-base text-gray-900">{{ $job->excerpt }}</div>
-                                        <div class="text-xs text-gray-900 pt-4">
-                                            @isset($job->contrato)
-                                                <span
-                                                    class="mr-4 items-center justify-center py-2 text-xs font-bold leading-none text-black">
-                                                    <strong>Contrato:</strong>
-                                                    <span class="px-1 font-semibold">{{ $job->contrato }}</span>
-                                                </span>
-                                            @endisset
-                                            @isset($job->jornada)
-                                                <span
-                                                    class="mr-4 items-center justify-center py-2 text-xs font-bold leading-none text-black">
-                                                    <strong>Jornada:</strong>
-                                                    <span class="px-1 font-semibold">{{ $job->jornada }}</span>
-                                                </span>
-                                            @endisset
-                                            @isset($job->salario)
-                                                <span
-                                                    class="mr-4 items-center justify-center py-2 text-xs font-bold leading-none text-black">
-                                                    <strong>Salario:</strong>
-                                                    <span class="px-1 font-semibold">{{ $job->salario }}</span>
-                                                </span>
-                                            @endisset
-                                            @isset($job->vacantes)
-                                                <span
-                                                    class="mr-4 items-center justify-center py-2 text-xs font-bold leading-none text-black">
-                                                    <strong>Vacantes:</strong>
-                                                    <span class="px-1 font-semibold">{{ $job->vacantes }}</span>
-                                                </span>
-                                            @endisset
-                                            @isset($job->experiencia)
-                                                <span
-                                                    class="mr-4 items-center justify-center py-2 text-xs font-bold leading-none text-black">
-                                                    <strong>Experiencia:</strong>
-                                                    <span class="px-1 font-semibold">Requerida</span>
-                                                </span>
-                                            @endisset
+                    @endif
 
-                                            @isset($tipos)
+                </div>
+            @else
 
-                                                @foreach ($tipos as $tipo)
-                                                    <span
-                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                        {{ $tipo }}
-                                                    </span>
-                                                @endforeach
-
-                                            @endisset
+                <div class="px-4 py-3 mt-5 ">
+                    No existen registros
+                </div>
 
 
-                                        </div>
-
-
-
-
-                                    </td>
-                                    <td class="px-6 py-4 ">
-                                        <div class="px-1 py-4 whitespace-nowrap text-xs font-bold">
-                                            <span>
-                                                {{ $job->localidad }}
-                                            </span>
-                                            @if ($job->provincia != $job->localidad)
-                                                <p class=" mt-1">( {{ $job->provincia }} )</p>
-                                            @endif
-                                        </div>
-                                    </td>
-
-                                    <td class="px-6 py-4 text-right text-sm font-medium whitespace-nowrap">
-                                        <a href="{{ $job->jobUrl }}" target="_blank"
-                                            class="text-indigo-600 hover:text-indigo-900">Ir a oferta</a>
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                            <!-- More people... -->
-                        </tbody>
-                    </table>
-
-
-                </x-job-table>
-
-                {{-- @foreach ($jobs as $job)
-                  <x-jobCard :job=$job />
-                   <x-job-table/> --}}
-                @if ($jobs->hasPages())
-                    <div
-                        class="bg-gray-200 px-4 py-3 mt-5 mb-5 mr-2 items-center justify-between border-t border-gray-200 sm:px-6">
-                        {{ $jobs->links() }}
+            @endif
+            @if (!$showModal == "hidden")
+                <div wire:loading class="backdrop-filter backdrop-blur-sm absolute inset-x-0  top-0 h-full w-full">
+                    <div style="color: #283618" class="la-line-scale-pulse-out items-center absolute top-6 left-1/2">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </div>
-
-                @endif
-            </div>
-        @else
-            <div class="px-4 py-3 mt-5 ">
-                No existen registros
-            </div>
-
-
-        @endif
-        <div wire:loading class="backdrop-filter backdrop-blur-sm absolute inset-x-0  top-0 h-full w-full">
-
-            <div style="color: #283618" class="la-line-scale-pulse-out items-center absolute top-6 left-1/2">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
-
+                </div>
+            @endif
         </div>
     </div>
 
 </div>
+@push('modals')
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="{{$showModal}} fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <!--
+        Background overlay, show/hide based on modal state.
 
-{{--
-<div class="flex items-center mx-3 my-3 bg-red-500">
-                <span>Mostrar</span>
-                <select wire:model="cant" class="mx-2 select-nuevo">
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-                <span>trabajos</span>
-                <x-jet-input class="w-full mx-4" placeholder="Escriba que está buscando" type=text
-                    wire:model="search" />
+        Entering: "ease-out duration-300"
+          From: "opacity-0"
+          To: "opacity-100"
+        Leaving: "ease-in duration-200"
+          From: "opacity-100"
+          To: "opacity-0"
+      -->
+      <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+
+      <!-- This element is to trick the browser into centering the modal contents. -->
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+      <!--
+        Modal panel, show/hide based on modal state.
+
+        Entering: "ease-out duration-300"
+          From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          To: "opacity-100 translate-y-0 sm:scale-100"
+        Leaving: "ease-in duration-200"
+          From: "opacity-100 translate-y-0 sm:scale-100"
+          To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+      -->
+      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+              <!-- Heroicon name: outline/exclamation -->
+              <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
             </div>
+            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+              <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                Deactivate account
+              </h3>
+              <div class="mt-2">
+                <p class="text-sm text-gray-500">
+                  Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+            Deactivate
+          </button>
+          <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
---}}
+@endpush
+

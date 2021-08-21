@@ -14,6 +14,10 @@ use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Cache;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\populateEmpleos;
+
+
 use function PHPUnit\Framework\isNull;
 
 class populateDB extends Command
@@ -52,7 +56,7 @@ class populateDB extends Command
     public function handle()
     {
         global $tipoTodos, $tipoDiscapacidad, $tipoPracticas,$tipoTeletrabajo;
-
+        $timeStart = Carbon::now();
         $logoFunte = array();
         // Comprueba si hay un nuevo fichero de empleos
         if (!file_exists(public_path("collection.json"))) {
@@ -90,10 +94,15 @@ class populateDB extends Command
         foreach ($empleos as $empleo) {
             $this->trata_empleo($empleo);
         }
+        $timeEnd = Carbon::now();
+        $diff = $timeStart->diff($timeEnd)->format('%H:%I:%S');
 
-
+        // Enviar mail
+        $mail = new populateEmpleos($diff);
+        Mail::to('carlos@allll.com')->send($mail);
         // Desacctiva el modo mantenimiento
-        Artisan::call('up');
+
+
         $fin = now();
         echo "acabe";
         //File::delete($path);
@@ -103,12 +112,19 @@ class populateDB extends Command
     {
        global $tipoTodos, $tipoDiscapacidad, $tipoPracticas,$tipoTeletrabajo;
 
+        if (isset($empleo['remoto'])) {
+            return;
+        }
+
+
+
         $autonomia = DB::table('autonomiatodos')->where('name', $empleo['autonomia'])->first();
         if (!$autonomia) {
             $slug = Str::slug($empleo['autonomia'], '-');
+
             DB::table('autonomiatodos')->insert(
                 [
-                'name' => $empleo['autonomia'],
+               'name' => $empleo['autonomia'],
                 'slug' => $slug,
                 'tipotodo_id' => $tipoTodos->id,
                 ]
@@ -223,7 +239,7 @@ class populateDB extends Command
             $this->create_practicas($empleo, $tipoPracticas,$listaTipos );
         }
 
-        DB::table('jobs')->insert([
+        DB::table('jobs_todos')->insert([
             'orden' => $llave,
             'datePosted' => $date,
             'title' => $empleo['title'],

@@ -1,5 +1,6 @@
 <div>
-    <div class="sm:block bg-gray-50 py-3 lg:flex lg:justify-around rounded-lg ">
+
+    <div class="w-full sm:block bg-gray-50 py-3 lg:flex lg:justify-around">
         {{-- Tipos de Trabajo --}}
         <div>
 
@@ -73,11 +74,11 @@
 
         </div>
 
-        <div class=" flex justify-center items-center">
 
-            <button wire:click="clickBuscar" class="h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">Buscar</button>
-        </div>
 
+    </div>
+    <div class=" flex justify-center items-center bg-gray-50">
+        <button wire:click="clickBuscar" class="w-48 h-8 px-4 mt-2 mb-3 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">Buscar</button>
     </div>
 
 </div>

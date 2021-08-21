@@ -14,7 +14,7 @@ class Tipotodo extends Model
         return $this->hasMany(Autonomiatodo::class);
     }
     public function jobs () {
-        return $this->hasMany(Job::class);
+        return $this->hasMany(JobTodo::class);
     }
 
 }

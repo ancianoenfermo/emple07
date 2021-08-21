@@ -2,17 +2,15 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Autonomia;
+
 use Livewire\Component;
-use App\Models\Tipotodos;
-use App\Models\Tipodiscapacidad;
-use App\Models\Tipopractica;
-use App\Models\Tipoteletrabajo;
-use App\Models\Job;
-use App\Models\Tipotodo;
+
+
+
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 
 class Jobs extends Component
 {
@@ -27,6 +25,8 @@ class Jobs extends Component
     public $readyToLoad = false;
     public $showSearch = false;
 
+    public $showModal ="hidden";
+    public $modalOpen = false;
 
     protected $listeners = [
         'filtersEmit' => 'filtersEmit',
@@ -34,12 +34,13 @@ class Jobs extends Component
 
     public function render()
     {
-
         if($this->readyToLoad) {
 
             switch ($this->tipoTrabajo) {
                 case 'Todos los trabajos':
-                    $jobs = DB::table('jobs')
+                    $this->emitTo('cabecera-ofertas','CambiaCabeceraH1',"Empleo en España: Ofertas de trabajo publicadas");
+                    $jobs = DB::table('jobs_todos')
+                    ->orderBy("orden")
                     ->where(function($query) {
                         if ($this->autonomia) {
                             $query->where('autonomiatodo_id','=',$this->autonomia);
@@ -57,9 +58,12 @@ class Jobs extends Component
                         }
                     })
                     ->paginate(15);
+
                     break;
                 case 'Discapacidad':
+                    $this->emitTo('cabecera-ofertas','CambiaCabeceraH1',"Empleo para personas con discapacidad: Ofertas de trabajo publicadas");
                     $jobs = DB::table('jobs_discapacidads')
+                    ->orderBy("orden")
                     ->where(function($query) {
                         if ($this->autonomia) {
                             $query->where('autonomiadiscapacidad_id','=',$this->autonomia);
@@ -79,7 +83,9 @@ class Jobs extends Component
                     ->paginate(15);
                     break;
                 case 'Prácticas':
+                    $this->emitTo('cabecera-ofertas','CambiaCabeceraH1',"Empleo en prácticas: Ofertas de trabajo publicadas");
                     $jobs = DB::table('jobs_practicas')
+                    ->orderBy("orden")
                     ->where(function($query) {
                         if ($this->autonomia) {
                             $query->where('autonomiapractica_id','=',$this->autonomia);
@@ -102,7 +108,9 @@ class Jobs extends Component
 
 
                 case 'Teletrabajo':
+                    $this->emitTo('cabecera-ofertas','CambiaCabeceraH1',"Empleo con teletrabajo: Ofertas de trabajo publicadas");
                     $jobs = DB::table('jobs_teletrabajos')
+                    ->orderBy("orden")
                     ->where(function($query) {
                         if ($this->autonomia) {
                             $query->where('autonomiateletrabajo_id','=',$this->autonomia);
@@ -123,46 +131,6 @@ class Jobs extends Component
                     break;
 
             }
-           /*
-                         $jobs = $table
-                    ->Orwhere($nameIdAutonomia, $this->autonomia)
-                    ->Orwhere($nameIdProvincia, $this->provincia)
-                    ->Orwhere($nameIdLocalidad, $this->localidad)
-                    ->where('title','like','%'.$this->search.'%')
-                    ->Orwhere('excerpt','like','%'.$this->search.'%')
-                    ->paginate(15);
-            */
-
-
-            /*
-            $jobs = Job::whereHas(
-                'tipojobs', function($q){
-                    $q->where('tipojob_id', $this->tipoTrabajo);
-                }
-            )
-            ->with('tipojobs')
-            ->where('title','like','%'.$this->search.'%')
-            ->Orwhere('excerpt','like','%'.$this->search.'%')
-            ->autonomia($this->autonomia)
-            ->provincia($this->provincia)
-            ->localidad($this->localidad)
-            ->orderBy('orden')
-            ->paginate($this->cant);
-            */
-
-
-            /*
-
-            $jobs = $this->tipoTrabajo->jobs()
-            ->with('tipojobs')
-            ->where('title','like','%'.$this->search.'%')
-            ->Orwhere('excerpt','like','%'.$this->search.'%')
-            ->autonomia($this->autonomia)
-            ->provincia($this->provincia)
-            ->localidad($this->localidad)
-            ->paginate($this->cant);
-            */
-
 
         } else {
             $jobs = [];
@@ -176,6 +144,8 @@ class Jobs extends Component
 
     }
 
+
+
     public function loadEmpleos() {
         $this->readyToLoad = true;
         $this->showSearch = true;
@@ -187,6 +157,10 @@ class Jobs extends Component
 
     public function search() {
 
+    }
+
+    public function clickFavoritos() {
+        dd("Estoy");
     }
 
     public function filtersEmit($autonomiaId,$provinciaId,$localidadId,$tipoTrabajo) {
@@ -203,9 +177,11 @@ class Jobs extends Component
             $this->localidad = $localidadId;
         }
 
-
-
         $this->resetPage();
+    }
+
+    public function showModal($mesaje){
+        dd($mesaje);
     }
 
 
