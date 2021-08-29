@@ -38,7 +38,8 @@ class Jobs extends Component
 
             switch ($this->tipoTrabajo) {
                 case 'Todos los trabajos':
-                    $this->emitTo('cabecera-ofertas','CambiaCabeceraH1',"Empleo en España: Ofertas de trabajo publicadas");
+
+                    $this->emitTo('cabecera-ofertas','CambiaCabeceraH1','<p class="text-3xl underline text-center ">Empleo en España</p><p class="mt-3 text-center text-2xl" >Ofertas de trabajo</p>');
                     $jobs = DB::table('jobs_todos')
                     ->orderBy("orden")
                     ->where(function($query) {

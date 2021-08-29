@@ -43,8 +43,16 @@
         @livewireScripts
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}"></script>
+        <script>
+            function showModalDes(title) {
 
-
-
+                console.log(title);
+                Swal.fire({
+                    icon: 'error',
+                    html: "<p>Hola amigo<strong>del alma</strong>mio</p><ul><li>prueba 1</li></ul>",
+                    footer: '<a href="">Why do I have this issue?</a>',
+                });
+            };
+        </script>
     </body>
 </html>

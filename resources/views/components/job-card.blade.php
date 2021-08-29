@@ -1,19 +1,19 @@
 <div>
     <!-- component -->
 
-    <article class="my-5  px-6 rounded-lg shadow-md bg-gray-50 bg-opacity-50" x-ref="job">
+    <article class="my-5  px-6 rounded-lg shadow-md bg-gray-50 bg-opacity-50">
 
-        <div class="flex px-0 py-2 justify-left border-b-2">
+        <div class="px-0 py-2 ml-2 justify-left border-b-2">
 
             @php
                 $publicado = 'Publicado ' . \Carbon\Carbon::parse($job->datePosted)->diffForHumans() . '  (' . $job->jobFuente.')';
             @endphp
                 <span class="text-yellow-600">{{ $publicado }}</span>
-                <p class="ml-36 font-semibold inline-block">{{ $job->localidad }}</p>
+                <p class="font-semibold block ">{{ $job->localidad }}
                 @if ($job->provincia != $job->localidad)
-                    <p class="ml-1 inline-block">( {{ $job->provincia }} )</p>
+                    ({{ $job->provincia }})
                 @endif
-
+            </p>
 
 
             @php
@@ -40,16 +40,16 @@
 
             <div class="flex">
                 <div class="flex flex-1">
-                    <h1 class=" mt-2 text-2xl font-bold" >{{ $job->title }}</h1>
-                    @php
-                        $hola = <<<EOD
-$job->excerpt
-EOD;
-                    @endphp
-                    <button class="focus:shadow-outline" wire:click="showModal({})">
-                    {{-- <i class=" ml-5 text-gray-400 fas fa-search-plus"></i> --}}
-                    pp
-                    </button>
+
+                    <h1 class=" text-lg leading-6 font-medium text-gray-900" >{{ $job->title }}</h1>
+                    <button class="ml-5 h-8 px-4 mt-2 mb-3 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800 justify-end"
+                    x-on:click="openModal = true;
+                    $refs.descripcionOferta.innerHTML = '{{addslashes($job->excerpt)}}';
+                    $refs.titulo.innerHTML = '{{addslashes($job->title)}}'
+                    "
+                    >
+                    Información
+                </button>
 
                 </div>
 

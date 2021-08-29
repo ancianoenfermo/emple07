@@ -1,3 +1,5 @@
 <div>
-    {{$h1Cabecera}}
+    <div class="">
+    {!!$h1Cabecera!!}
+    </div>
 </div>

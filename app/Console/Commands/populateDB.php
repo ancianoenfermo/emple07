@@ -102,7 +102,7 @@ class populateDB extends Command
         Mail::to('carlos@allll.com')->send($mail);
         // Desacctiva el modo mantenimiento
 
-
+        Artisan::call('up');
         $fin = now();
         echo "acabe";
         //File::delete($path);
