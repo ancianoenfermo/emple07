@@ -1,9 +1,9 @@
-<div class="flex">
+<div class="">
 
     {{-- Dropwdown Autonomias --}}
     <div class="relative mb-2" x-data="{open:false}">
         <button
-            class="px-4 w-60 text-gray-700  h-12  rounded-lg overflow-hidden focus:outline-none bg-white shadow mr-6"
+            class=" text-xs px-4 text-gray-700  h-12  rounded-lg overflow-hidden focus:outline-none bg-white shadow mr-6"
             x-on:click="open = !open" wire:loading.attr="disabled">
             @if (@isset($elegidaAutonomia))
                 <span>{{ $elegidaAutonomia }}</span>

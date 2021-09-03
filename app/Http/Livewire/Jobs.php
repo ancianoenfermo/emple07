@@ -38,101 +38,19 @@ class Jobs extends Component
 
             switch ($this->tipoTrabajo) {
                 case 'Todos los trabajos':
-
-                    $this->emitTo('cabecera-ofertas','CambiaCabeceraH1','<p class="text-3xl underline text-center ">Empleo en España</p><p class="mt-3 text-center text-2xl" >Ofertas de trabajo</p>');
-                    $jobs = DB::table('jobs_todos')
-                    ->orderBy("orden")
-                    ->where(function($query) {
-                        if ($this->autonomia) {
-                            $query->where('autonomiatodo_id','=',$this->autonomia);
-                        }
-                        if ($this->provincia) {
-                            $query->where('provinciatodo_id','=',$this->provincia);
-                        }
-                        if ($this->localidad) {
-                            $query->where('localidadtodo_id','=',$this->localidad);
-                        }
-                    })
-                    ->where(function($query) {
-                        if ($this->search) {
-                            $query->where('title','like','%'.$this->search.'%');
-                        }
-                    })
-                    ->paginate(15);
+                    $jobs = $this->buscaRegistros("jobs_todos","");
 
                     break;
                 case 'Discapacidad':
-                    $this->emitTo('cabecera-ofertas','CambiaCabeceraH1',"Empleo para personas con discapacidad: Ofertas de trabajo publicadas");
-                    $jobs = DB::table('jobs_discapacidads')
-                    ->orderBy("orden")
-                    ->where(function($query) {
-                        if ($this->autonomia) {
-                            $query->where('autonomiadiscapacidad_id','=',$this->autonomia);
-                        }
-                        if ($this->provincia) {
-                            $query->where('provinciadiscapacidad_id','=',$this->provincia);
-                        }
-                        if ($this->localidad) {
-                            $query->where('localidaddiscapacidad_id','=',$this->localidad);
-                        }
-                    })
-                    ->where(function($query) {
-                        if ($this->search) {
-                            $query->where('title','like','%'.$this->search.'%');
-                        }
-                    })
-                    ->paginate(15);
+                    $jobs = $this->buscaRegistros("jobs_discapacidads","con discapacidad");
                     break;
                 case 'Prácticas':
-                    $this->emitTo('cabecera-ofertas','CambiaCabeceraH1',"Empleo en prácticas: Ofertas de trabajo publicadas");
-                    $jobs = DB::table('jobs_practicas')
-                    ->orderBy("orden")
-                    ->where(function($query) {
-                        if ($this->autonomia) {
-                            $query->where('autonomiapractica_id','=',$this->autonomia);
-                        }
-                        if ($this->provincia) {
-                            $query->where('provinciapractica_id','=',$this->provincia);
-                        }
-                        if ($this->localidad) {
-                            $query->where('localidadpractica_id','=',$this->localidad);
-                        }
-                    })
-                    ->where(function($query) {
-                        if ($this->search) {
-                            $query->where('title','like','%'.$this->search.'%');
-                        }
-                    })
-                    ->paginate(15);
+                    $jobs = $this->buscaRegistros("jobs_practicas","en prácticas");
                     break;
-
-
-
                 case 'Teletrabajo':
-                    $this->emitTo('cabecera-ofertas','CambiaCabeceraH1',"Empleo con teletrabajo: Ofertas de trabajo publicadas");
-                    $jobs = DB::table('jobs_teletrabajos')
-                    ->orderBy("orden")
-                    ->where(function($query) {
-                        if ($this->autonomia) {
-                            $query->where('autonomiateletrabajo_id','=',$this->autonomia);
-                        }
-                        if ($this->provincia) {
-                            $query->where('provinciateletrabajo_id','=',$this->provincia);
-                        }
-                        if ($this->localidad) {
-                            $query->where('localidadteletrabajo_id','=',$this->localidad);
-                        }
-                    })
-                    ->where(function($query) {
-                        if ($this->search) {
-                            $query->where('title','like','%'.$this->search.'%');
-                        }
-                    })
-                    ->paginate(15);
+                    $jobs = $this->buscaRegistros("jobs_teletrabajos","con teletrabajo");
                     break;
-
             }
-
         } else {
             $jobs = [];
         }
@@ -185,6 +103,54 @@ class Jobs extends Component
         dd($mesaje);
     }
 
+    public function buscaRegistros($tabla,$tipo) {
+        $this->emitTo('cabecera-ofertas','CambiaCabeceraH1','<p class="text-3xl underline">Empleo en España</p><p class="mt-3 text-2xl" >Ofertas de trabajo '.$tipo.'</p>');
+        $jobs = DB::table($tabla)
+        ->orderBy("orden")
+        ->where(function($query) {
+            if ($this->autonomia) {
+                $query->where('autonomiatodo_id','=',$this->autonomia);
+            }
+            if ($this->provincia) {
+                $query->where('provinciatodo_id','=',$this->provincia);
+            }
+            if ($this->localidad) {
+                $query->where('localidadtodo_id','=',$this->localidad);
+            }
+            if ($this->search) {
+                $query->where('title','like','%'.' '.$this->search.' '.'%')
+                ->orWhere('excerpt','like','%'.' '.$this->search.' '.'%');
+            }
+        })->paginate(15);
 
+        return $jobs;
+    }
 
 }
+
+/*
+case 'Todos los trabajos':
+                    $this->emitTo('cabecera-ofertas','CambiaCabeceraH1','<p class="text-3xl underline">Empleo en España</p><p class="mt-3 text-2xl" >Ofertas de trabajo</p>');
+                    $jobs = DB::table('jobs_todos')
+                    ->orderBy("orden")
+                    ->where(function($query) {
+                        if ($this->autonomia) {
+                            $query->where('autonomiatodo_id','=',$this->autonomia);
+                        }
+                        if ($this->provincia) {
+                            $query->where('provinciatodo_id','=',$this->provincia);
+                        }
+                        if ($this->localidad) {
+                            $query->where('localidadtodo_id','=',$this->localidad);
+                        }
+                    })
+                    ->where(function($query) {
+                        if ($this->search) {
+                            $query->where('title','like','%'.$this->search.'%');
+                            $query->Orwhere('excerpt','like','%'.$this->search.'%');
+                        }
+                    })
+                    ->paginate(15);
+
+                    break;
+*/

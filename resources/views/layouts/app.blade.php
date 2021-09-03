@@ -14,6 +14,13 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <style>
+            li {
+                font-size: 14px;
+                margin-left: 10px;
+                list-style-type: circle;
+            }
+        </style>
 
         @livewireStyles
 

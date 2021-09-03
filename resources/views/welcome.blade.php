@@ -1,15 +1,32 @@
 <x-app-layout>
     <section>
-        <div class="mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
-            <div class="w-full md:w-3/4b lg:w-1/2">
-                <h1 class="text-3xl md:text-4xl lg:text-6xl font-extrabold text-black tracking-wider leading-loose ">Mejora tu empleabilidad con wi-Empleo</h1>
-                <p class="py-6">Conoce como acceder a los cursos gratuitos para desempleados y ocupados  subvencionados por el Ministerio de Trabajo, Migraciones y Seguridad Social. </p>
-                <div class="flex items-center ">
+        <div class="mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-10">
+            <div class="flex">
+                <div class=flex-1>
+                    <h1 class="pb-6  text-3xl md:text-4xl lg:text-6xl font-extrabold text-black tracking-wider leading-loose ">¿Estás buscando empleo?</h1>
+                   <span class="">IMFORMATE SOBRE</span>
+                    <ul class="ml-4">
+                        <li>Cursos gratuitos para desempleados</li>
+                        <li>Cursos gratuitos para ocupados</li>
+                        <li>Contratos de formación y apredizaje</li>
+                        <li>Certificados de profesionalidad</li>
+                    </ul>
 
-                <a class="flex-col h-12  mt-5 text-lg font-extrabold text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
-                        href="{{Route('ofertas')}}"><span class=" flex mx-5 py-3 ">Ofertas de trabajo publicadas en los últimos 30 días</span></a>
+                </div>
+                <div class="flex items-center ml-10">
+                    <div class="bg-gray-100 border-2 rounded-lg shadow-lg">
+                        <div class="container mx-auto text-center px-4 py-6">
+                            <h2 class="text-2xl md:text-4xl font-medium">Ofertas de trabajo</h2>
+                            <p class="mt-3">Ofertas publicadas en España en los últimos treinta días</p>
 
-                <span class="flex-col flex-1 "></span>
+
+                            <div class="flex items-center justify-center mt-4">
+                                <a class="text-mx text-center font-extrabold text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
+                                href="{{Route('ofertas')}}"><span class=" flex mx-5 py-1 ">Ver todas las ofertas</span>
+                                </a>
+                            </div>
+                        </div>
+                      </div>
                 </div>
                 <!-- component -->
             </div>

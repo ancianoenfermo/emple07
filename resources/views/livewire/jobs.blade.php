@@ -1,19 +1,15 @@
 <div>
 
     <div wire:init="loadEmpleos" class=" relative">
-        <div class=" border-gray-100 border-opacity-50 rounded-lg
+        {{--<div class=" border-gray-100 border-opacity-50 rounded-lg
+
             @if (!$showSearch) hidden @endif relative">
 
             @livewire('filter-jobs')
 
         </div>
-        <style>
-            li {
-                font-size: 14px;
-                margin-left: 10px;
-                list-style-type: circle;
-            }
-        </style>
+        --}}
+
         <div class="container bg-withe mx-auto mt-10">
             @if (count($jobs))
 

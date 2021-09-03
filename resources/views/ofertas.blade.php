@@ -1,13 +1,16 @@
 <x-app-layout>
 
     <section>
-        <div class="mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-3 bg-gray-50">
-            <div class="w-full md:w-3/4b">
+        <div class="flex my-10 px-4 sm:px-6 lg:px-8  bg-gray-50">
+            <div class="flex-1">
                 <h1 class="">
-                    @livewire('cabecera-ofertas')
+                   @livewire('cabecera-ofertas')
                 </h1>
             </div>
-
+            <div>
+                @livewire('filter-jobs')
+            </div>
+        </div>
     </section>
 
     <section class="bg-white">
