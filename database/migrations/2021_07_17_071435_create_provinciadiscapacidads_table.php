@@ -18,8 +18,8 @@ class CreateProvinciadiscapacidadsTable extends Migration
             $table->string('name');
             $table->string('slug');
 
-            $table->unsignedBigInteger('autonomiadiscapacidad_id');
-            $table->foreign('autonomiadiscapacidad_id')->references('id')->on('autonomiadiscapacidads');
+            $table->unsignedBigInteger('autonomia_id');
+            $table->foreign('autonomia_id')->references('id')->on('autonomiadiscapacidads');
         });
     }
 

@@ -1,5 +1,6 @@
 <x-app-layout>
     <section>
+
         <div class="mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-10">
             <div class="flex">
                 <div class=flex-1>

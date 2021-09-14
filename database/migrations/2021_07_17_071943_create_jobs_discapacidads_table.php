@@ -39,14 +39,14 @@ class CreateJobsDiscapacidadsTable extends Migration
             $table->unsignedBigInteger('tipodiscapacidad_id');
             $table->foreign('tipodiscapacidad_id')->references('id')->on('tipodiscapacidads');
 
-            $table->unsignedBigInteger('autonomiadiscapacidad_id');
-            $table->foreign('autonomiadiscapacidad_id')->references('id')->on('autonomiadiscapacidads');
+            $table->unsignedBigInteger('autonomia_id');
+            $table->foreign('autonomia_id')->references('id')->on('autonomiadiscapacidads');
 
-            $table->unsignedBigInteger('provinciadiscapacidad_id');
-            $table->foreign('provinciadiscapacidad_id')->references('id')->on('provinciadiscapacidads');
+            $table->unsignedBigInteger('provincia_id');
+            $table->foreign('provincia_id')->references('id')->on('provinciadiscapacidads');
 
-            $table->unsignedBigInteger('localidaddiscapacidad_id');
-            $table->foreign('localidaddiscapacidad_id')->references('id')->on('localidaddiscapacidads');
+            $table->unsignedBigInteger('localidad_id');
+            $table->foreign('localidad_id')->references('id')->on('localidaddiscapacidads');
 
         });
     }

@@ -14,6 +14,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
         <style>
             li {
                 font-size: 14px;
@@ -47,6 +48,7 @@
 
         @stack('modals')
 
+
         @livewireScripts
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}"></script>
@@ -61,5 +63,7 @@
                 });
             };
         </script>
-    </body>
+    @stack('scripts')
+</body>
+
 </html>

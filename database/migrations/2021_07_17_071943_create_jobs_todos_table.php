@@ -40,14 +40,14 @@ class CreateJobsTodosTable extends Migration
             $table->foreign('tipotodo_id')->references('id')->on('tipotodos');
 
 
-            $table->unsignedBigInteger('autonomiatodo_id');
-            $table->foreign('autonomiatodo_id')->references('id')->on('autonomiatodos');
+            $table->unsignedBigInteger('autonomia_id');
+            $table->foreign('autonomia_id')->references('id')->on('autonomiatodos');
 
-            $table->unsignedBigInteger('provinciatodo_id');
-            $table->foreign('provinciatodo_id')->references('id')->on('provinciatodos');
+            $table->unsignedBigInteger('provincia_id');
+            $table->foreign('provincia_id')->references('id')->on('provinciatodos');
 
-            $table->unsignedBigInteger('localidadtodo_id');
-            $table->foreign('localidadtodo_id')->references('id')->on('localidadtodos');
+            $table->unsignedBigInteger('localidad_id');
+            $table->foreign('localidad_id')->references('id')->on('localidadtodos');
 
         });
     }

@@ -18,8 +18,8 @@ class CreateLocalidaddiscapacidadsTable extends Migration
             $table->string('name');
             $table->string('slug');
 
-            $table->unsignedBigInteger('provinciadiscapacidad_id');
-            $table->foreign('provinciadiscapacidad_id')->references('id')->on('provinciadiscapacidads');
+            $table->unsignedBigInteger('provincia_id');
+            $table->foreign('provincia_id')->references('id')->on('provinciadiscapacidads');
         });
     }
 

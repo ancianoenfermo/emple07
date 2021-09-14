@@ -18,8 +18,8 @@ class CreateProvinciapracticasTable extends Migration
             $table->string('name');
             $table->string('slug');
 
-            $table->unsignedBigInteger('autonomiapractica_id');
-            $table->foreign('autonomiapractica_id')->references('id')->on('autonomiapracticas');
+            $table->unsignedBigInteger('autonomia_id');
+            $table->foreign('autonomia_id')->references('id')->on('autonomiapracticas');
         });
     }
 

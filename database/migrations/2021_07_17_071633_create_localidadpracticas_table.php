@@ -17,8 +17,8 @@ class CreateLocalidadpracticasTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->unsignedBigInteger('provinciapractica_id');
-            $table->foreign('provinciapractica_id')->references('id')->on('provinciapracticas');
+            $table->unsignedBigInteger('provincia_id');
+            $table->foreign('provincia_id')->references('id')->on('provinciapracticas');
         });
     }
 

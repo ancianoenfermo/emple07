@@ -39,14 +39,14 @@ class CreateJobsTeletrabajosTable extends Migration
             $table->unsignedBigInteger('tipoteletrabajo_id');
             $table->foreign('tipoteletrabajo_id')->references('id')->on('tipoteletrabajos');
 
-            $table->unsignedBigInteger('autonomiateletrabajo_id');
-            $table->foreign('autonomiateletrabajo_id')->references('id')->on('autonomiateletrabajos');
+            $table->unsignedBigInteger('autonomia_id');
+            $table->foreign('autonomia_id')->references('id')->on('autonomiateletrabajos');
 
-            $table->unsignedBigInteger('provinciateletrabajo_id');
-            $table->foreign('provinciateletrabajo_id')->references('id')->on('provinciateletrabajos');
+            $table->unsignedBigInteger('provincia_id');
+            $table->foreign('provincia_id')->references('id')->on('provinciateletrabajos');
 
-            $table->unsignedBigInteger('localidadteletrabajo_id');
-            $table->foreign('localidadteletrabajo_id')->references('id')->on('localidadteletrabajos');
+            $table->unsignedBigInteger('localidad_id');
+            $table->foreign('localidad_id')->references('id')->on('localidadteletrabajos');
 
         });
     }

@@ -18,8 +18,8 @@ class CreateProvinciatodosTable extends Migration
             $table->string('name');
             $table->string('slug');
 
-            $table->unsignedBigInteger('autonomiatodo_id');
-            $table->foreign('autonomiatodo_id')->references('id')->on('autonomiatodos');
+            $table->unsignedBigInteger('autonomia_id');
+            $table->foreign('autonomia_id')->references('id')->on('autonomiatodos');
         });
     }
 

@@ -39,7 +39,6 @@ class Jobs extends Component
             switch ($this->tipoTrabajo) {
                 case 'Todos los trabajos':
                     $jobs = $this->buscaRegistros("jobs_todos","");
-
                     break;
                 case 'Discapacidad':
                     $jobs = $this->buscaRegistros("jobs_discapacidads","con discapacidad");
@@ -103,19 +102,19 @@ class Jobs extends Component
         dd($mesaje);
     }
 
-    public function buscaRegistros($tabla,$tipo) {
-        $this->emitTo('cabecera-ofertas','CambiaCabeceraH1','<p class="text-3xl underline">Empleo en España</p><p class="mt-3 text-2xl" >Ofertas de trabajo '.$tipo.'</p>');
+    private function buscaRegistros($tabla,$tipo) {
+
         $jobs = DB::table($tabla)
         ->orderBy("orden")
         ->where(function($query) {
             if ($this->autonomia) {
-                $query->where('autonomiatodo_id','=',$this->autonomia);
+                $query->where('autonomia_id','=',$this->autonomia);
             }
             if ($this->provincia) {
-                $query->where('provinciatodo_id','=',$this->provincia);
+                $query->where('provincia_id','=',$this->provincia);
             }
             if ($this->localidad) {
-                $query->where('localidadtodo_id','=',$this->localidad);
+                $query->where('localidad_id','=',$this->localidad);
             }
             if ($this->search) {
                 $query->where('title','like','%'.' '.$this->search.' '.'%')
@@ -123,7 +122,27 @@ class Jobs extends Component
             }
         })->paginate(15);
 
+        $this->emitTo('cabecera-ofertas','CambiaCabeceraH1','<p class="text-3xl underline">Empleo en España</p><p class="mt-3 text-2xl" >'.$jobs->total().' Ofertas de trabajo '.$tipo.'</p>'
+                        .'<br/>'.$this->buscaDonde());
+
         return $jobs;
+    }
+
+    private function buscaDonde() {
+        if ($this->localidad) {
+            return "En localidad".$this->localidad;
+        }
+        if ($this->provincia) {
+            return "En provincia".$this->provincia;
+        }
+        if ($this->autonomia) {
+           $nombreAutonomia = Cache::rememberForever('NombreAutonomoa'.$autonomia_id, function () use($autonomia_id) {
+                return  Provinciapractica::where('autonomia_id',$autonomia_id)->get();
+             });
+
+            return "en Autonomia".$this->autonomia;
+        }
+        return "";
     }
 
 }

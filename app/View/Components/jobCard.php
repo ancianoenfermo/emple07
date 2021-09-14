@@ -12,9 +12,11 @@ class jobCard extends Component
      * @return void
      */
     public $job;
-    public function __construct($job)
+    public $index;
+    public function __construct($job, $index)
     {
         $this->job = $job;
+        $this->index = $index;
     }
 
     /**
@@ -24,6 +26,6 @@ class jobCard extends Component
      */
     public function render()
     {
-        return view('components.job-card');
+        return view('components.job-cardXXXX');
     }
 }

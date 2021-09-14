@@ -18,7 +18,23 @@
             @livewire('jobs')
         </div>
     </section>
+@push('scripts')
+    <script>
+        window.addEventListener('DOMContentLoaded',
+        () =>{
+            const divPublicada = document.getElementById('oferta');
+            console.log(divPublicada);
+            const toltipPublicada = document.getElementById('toltipPublicada');
 
+            divPublicada.addEventListener('mouseenter',
+            () =>{
+                console.log("Entra Mouse")
+            })
+
+
+        })
+    </script>
+@endpush
 
 </x-app-layout>
 
@@ -28,4 +44,10 @@
     @livewire('filter-jobs')
 
 </div>
+toltipPublicada.addEventListener('mouseleave',
+            () =>{
+                console.log("Sale Mouse")
+            })
+
+
  --}}

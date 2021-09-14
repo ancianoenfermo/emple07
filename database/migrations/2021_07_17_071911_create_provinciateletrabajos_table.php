@@ -18,8 +18,8 @@ class CreateProvinciateletrabajosTable extends Migration
             $table->string('name');
             $table->string('slug');
 
-            $table->unsignedBigInteger('autonomiateletrabajo_id');
-            $table->foreign('autonomiateletrabajo_id')->references('id')->on('autonomiateletrabajos');
+            $table->unsignedBigInteger('autonomia_id');
+            $table->foreign('autonomia_id')->references('id')->on('autonomiateletrabajos');
         });
     }
 

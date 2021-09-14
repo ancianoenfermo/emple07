@@ -18,8 +18,8 @@ class CreateLocalidadtodosTable extends Migration
             $table->string('name');
             $table->string('slug');
 
-            $table->unsignedBigInteger('provinciatodo_id');
-            $table->foreign('provinciatodo_id')->references('id')->on('provinciatodos');
+            $table->unsignedBigInteger('provincia_id');
+            $table->foreign('provincia_id')->references('id')->on('provinciatodos');
         });
     }
 

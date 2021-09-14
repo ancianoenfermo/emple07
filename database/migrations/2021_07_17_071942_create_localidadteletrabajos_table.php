@@ -17,8 +17,8 @@ class CreateLocalidadteletrabajosTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->unsignedBigInteger('provinciateletrabajo_id');
-            $table->foreign('provinciateletrabajo_id')->references('id')->on('provinciateletrabajos');
+            $table->unsignedBigInteger('provincia_id');
+            $table->foreign('provincia_id')->references('id')->on('provinciateletrabajos');
         });
     }
 

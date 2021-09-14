@@ -40,14 +40,14 @@ class CreateJobsPracticasTable extends Migration
             $table->foreign('tipopractica_id')->references('id')->on('tipopracticas');
 
 
-            $table->unsignedBigInteger('autonomiapractica_id');
-            $table->foreign('autonomiapractica_id')->references('id')->on('autonomiapracticas');
+            $table->unsignedBigInteger('autonomia_id');
+            $table->foreign('autonomia_id')->references('id')->on('autonomiapracticas');
 
-            $table->unsignedBigInteger('provinciapractica_id');
-            $table->foreign('provinciapractica_id')->references('id')->on('provinciapracticas');
+            $table->unsignedBigInteger('provincia_id');
+            $table->foreign('provincia_id')->references('id')->on('provinciapracticas');
 
-            $table->unsignedBigInteger('localidadpractica_id');
-            $table->foreign('localidadpractica_id')->references('id')->on('localidadpracticas');
+            $table->unsignedBigInteger('localidad_id');
+            $table->foreign('localidad_id')->references('id')->on('localidadpracticas');
         });
     }
 

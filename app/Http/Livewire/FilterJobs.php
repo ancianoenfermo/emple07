@@ -96,22 +96,22 @@ class FilterJobs extends Component
         switch ($this->selectedTipoTrabajo) {
             case 'Todos los trabajos':
                 $this->provincias = Cache::rememberForever('TodasProvinciasDeAutonomia'.$autonomia_id, function () use($autonomia_id) {
-                    return Provinciatodo::where('autonomiatodo_id',$autonomia_id)->get();
+                    return Provinciatodo::where('autonomia_id',$autonomia_id)->get();
                  });
                 break;
             case 'Discapacidad':
                 $this->provincias = Cache::rememberForever('DiscapacidadProvinciasDeAutonomia'.$autonomia_id, function () use($autonomia_id) {
-                    return  Provinciadiscapacidad::where('autonomiadiscapacidad_id',$autonomia_id)->get();
+                    return  Provinciadiscapacidad::where('autonomia_id',$autonomia_id)->get();
                  });
                 break;
             case 'Prácticas':
                 $this->provincias = Cache::rememberForever('PracticasProvinciasDeAutonomia'.$autonomia_id, function () use($autonomia_id) {
-                    return  Provinciapractica::where('autonomiapractica_id',$autonomia_id)->get();
+                    return  Provinciapractica::where('autonomia_id',$autonomia_id)->get();
                  });
                 break;
             case 'Teletrabajo':
                 $this->provincias = Cache::rememberForever('PracticasProvinciasDeAutonomia'.$autonomia_id, function () use($autonomia_id) {
-                    return  Provinciateletrabajo::where('autonomiateletrabajo_id',$autonomia_id)->get();
+                    return  Provinciateletrabajo::where('autonomia_id',$autonomia_id)->get();
                  });
                 break;
             default:
@@ -129,22 +129,22 @@ class FilterJobs extends Component
         switch ($this->selectedTipoTrabajo) {
             case 'Todos los trabajos':
                 $this->localidades = Cache::rememberForever('TodosLocalidadesDeProvincia'.$provincia_id, function () use($provincia_id) {
-                    return  Localidadtodo::where('provinciatodo_id',$provincia_id)->get();
+                    return  Localidadtodo::where('provincia_id',$provincia_id)->get();
                  });
                 break;
             case 'Discapacidad':
                 $this->localidades = Cache::rememberForever('DiscapacidadLocalidadesDeProvincia'.$provincia_id, function () use($provincia_id) {
-                    return  Localidaddiscapacidad::where('provinciadiscapacidad_id',$provincia_id)->get();
+                    return  Localidaddiscapacidad::where('provincia_id',$provincia_id)->get();
                  });
                 break;
             case 'Prácticas':
                 $this->localidades = Cache::rememberForever('PracticasLocalidadesDeProvincia'.$provincia_id, function () use($provincia_id) {
-                    return  Localidadpractica::where('provinciapractica_id',$provincia_id)->get();
+                    return  Localidadpractica::where('provincia_id',$provincia_id)->get();
                  });
                 break;
             case 'Teletrabajo':
                 $this->localidades = Cache::rememberForever('TeletrabajoLocalidadesDeProvincia'.$provincia_id, function () use($provincia_id) {
-                    return  Localidadteletrabajo::where('provinciateletrabajo_id',$provincia_id)->get();
+                    return  Localidadteletrabajo::where('provincia_id',$provincia_id)->get();
                  });
                 break;
             default:

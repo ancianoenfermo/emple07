@@ -139,7 +139,7 @@ class populateDB extends Command
                 [
                 'name' => $empleo['provincia'],
                 'slug' => $slug,
-                'autonomiatodo_id' => $autonomia->id,
+                'autonomia_id' => $autonomia->id,
                 ]
             );
             $provincia = DB::table('provinciatodos')->where('name',$empleo['provincia'])->first();
@@ -152,7 +152,7 @@ class populateDB extends Command
                 [
                 'name' => $empleo['localidad'],
                 'slug' => $slug,
-                'provinciatodo_id' => $provincia->id,
+                'provincia_id' => $provincia->id,
                 ]
             );
             $localidad = DB::table('localidadtodos')->where('name',$empleo['localidad'])->first();
@@ -256,9 +256,9 @@ class populateDB extends Command
             'autonomia' => $autonomia->name,
             'provincia' => $provincia->name,
             'localidad' => $localidad->name,
-            'autonomiatodo_id' => $autonomia->id,
-            'provinciatodo_id' => $provincia->id,
-            'localidadtodo_id' => $localidad->id,
+            'autonomia_id' => $autonomia->id,
+            'provincia_id' => $provincia->id,
+            'localidad_id' => $localidad->id,
             'tipotodo_id' => $tipoTodos->id
         ]);
 
@@ -286,7 +286,7 @@ class populateDB extends Command
                 [
                 'name' => $empleo['provincia'],
                 'slug' => $slug,
-                'autonomiadiscapacidad_id' => $autonomia->id,
+                'autonomia_id' => $autonomia->id,
                 ]
             );
             $provincia = DB::table('provinciadiscapacidads')->where('name',$empleo['provincia'])->first();
@@ -299,7 +299,7 @@ class populateDB extends Command
                 [
                 'name' => $empleo['localidad'],
                 'slug' => $slug,
-                'provinciadiscapacidad_id' => $provincia->id,
+                'provincia_id' => $provincia->id,
                 ]
             );
             $localidad = DB::table('localidaddiscapacidads')->where('name',$empleo['localidad'])->first();
@@ -364,9 +364,9 @@ class populateDB extends Command
             'autonomia' => $autonomia->name,
             'provincia' => $provincia->name,
             'localidad' => $localidad->name,
-            'autonomiadiscapacidad_id' => $autonomia->id,
-            'provinciadiscapacidad_id' => $provincia->id,
-            'localidaddiscapacidad_id' => $localidad->id,
+            'autonomia_id' => $autonomia->id,
+            'provincia_id' => $provincia->id,
+            'localidad_id' => $localidad->id,
             'tipodiscapacidad_id' => $tipoDiscapacidad->id
         ]);
 
@@ -393,7 +393,7 @@ class populateDB extends Command
                 [
                 'name' => $empleo['provincia'],
                 'slug' => $slug,
-                'autonomiateletrabajo_id' => $autonomia->id,
+                'autonomia_id' => $autonomia->id,
                 ]
             );
             $provincia = DB::table('provinciateletrabajos')->where('name',$empleo['provincia'])->first();
@@ -406,7 +406,7 @@ class populateDB extends Command
                 [
                 'name' => $empleo['localidad'],
                 'slug' => $slug,
-                'provinciateletrabajo_id' => $provincia->id,
+                'provincia_id' => $provincia->id,
                 ]
             );
             $localidad = DB::table('localidadteletrabajos')->where('name',$empleo['localidad'])->first();
@@ -471,9 +471,9 @@ class populateDB extends Command
             'autonomia' => $autonomia->name,
             'provincia' => $provincia->name,
             'localidad' => $localidad->name,
-            'autonomiateletrabajo_id' => $autonomia->id,
-            'provinciateletrabajo_id' => $provincia->id,
-            'localidadteletrabajo_id' => $localidad->id,
+            'autonomia_id' => $autonomia->id,
+            'provincia_id' => $provincia->id,
+            'localidad_id' => $localidad->id,
             'tipoteletrabajo_id' => $tipoTeletrabajo->id
 
         ]);
@@ -503,7 +503,7 @@ class populateDB extends Command
                 [
                 'name' => $empleo['provincia'],
                 'slug' => $slug,
-                'autonomiapractica_id' => $autonomia->id,
+                'autonomia_id' => $autonomia->id,
                 ]
             );
             $provincia = DB::table('provinciapracticas')->where('name',$empleo['provincia'])->first();
@@ -516,7 +516,7 @@ class populateDB extends Command
                 [
                 'name' => $empleo['localidad'],
                 'slug' => $slug,
-                'provinciapractica_id' => $provincia->id,
+                'provincia_id' => $provincia->id,
                 ]
             );
             $localidad = DB::table('localidadpracticas')->where('name',$empleo['localidad'])->first();
@@ -581,9 +581,9 @@ class populateDB extends Command
             'autonomia' => $autonomia->name,
             'provincia' => $provincia->name,
             'localidad' => $localidad->name,
-            'autonomiapractica_id' => $autonomia->id,
-            'provinciapractica_id' => $provincia->id,
-            'localidadpractica_id' => $localidad->id,
+            'autonomia_id' => $autonomia->id,
+            'provincia_id' => $provincia->id,
+            'localidad_id' => $localidad->id,
             'tipopractica_id' => $tipoPracticas->id
 
         ]);
