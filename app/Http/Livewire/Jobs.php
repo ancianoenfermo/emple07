@@ -28,33 +28,43 @@ class Jobs extends Component
     public $showModal ="hidden";
     public $modalOpen = false;
 
+    public $visualiza = false;
+
+    public $contadorRender = 0;
+
     protected $listeners = [
         'filtersEmit' => 'filtersEmit',
     ];
 
     public function render()
     {
+        $ofertas = [];
+        $pp=0;
         if($this->readyToLoad) {
-
+            $this->contadorRender +=1;
+            $pp = $this->contadorRender;
             switch ($this->tipoTrabajo) {
                 case 'Todos los trabajos':
-                    $jobs = $this->buscaRegistros("jobs_todos","");
+                    $ofertas = $this->buscaRegistros("jobs_todos");
                     break;
                 case 'Discapacidad':
-                    $jobs = $this->buscaRegistros("jobs_discapacidads","con discapacidad");
+                    $ofertas = DB::table('jobs_discapacidads')->paginate(15);
+                    /*$ofertas = $this->buscaRegistros("jobs_discapacidads");*/
                     break;
                 case 'Prácticas':
-                    $jobs = $this->buscaRegistros("jobs_practicas","en prácticas");
+                    $ofertas = $this->buscaRegistros("jobs_practicas");
                     break;
                 case 'Teletrabajo':
-                    $jobs = $this->buscaRegistros("jobs_teletrabajos","con teletrabajo");
+                    $ofertas = $this->buscaRegistros("jobs_teletrabajos");
                     break;
+                default:
+                    dd("ERROR");
             }
         } else {
-            $jobs = [];
+            $ofertas = [];
         }
 
-        return view('livewire.jobs',compact('jobs'));
+        return view('livewire.jobs',compact('ofertas','pp'));
     }
 
     public function mount(){
@@ -69,17 +79,13 @@ class Jobs extends Component
         $this->showSearch = true;
     }
 
+    /*
     public function updatingSearch() {
         $this->resetPage();
     }
+    */
 
-    public function search() {
 
-    }
-
-    public function clickFavoritos() {
-        dd("Estoy");
-    }
 
     public function filtersEmit($autonomiaId,$provinciaId,$localidadId,$tipoTrabajo) {
 
@@ -94,24 +100,25 @@ class Jobs extends Component
         if($localidadId) {
             $this->localidad = $localidadId;
         }
-
         $this->resetPage();
+        $this->readyToLoad = true;
     }
 
-    public function showModal($mesaje){
-        dd($mesaje);
-    }
 
-    private function buscaRegistros($tabla,$tipo) {
 
-        $jobs = DB::table($tabla)
+    public function buscaRegistros($tabla) {
+
+        $resultado = DB::table($tabla)
         ->orderBy("orden")
         ->where(function($query) {
             if ($this->autonomia) {
                 $query->where('autonomia_id','=',$this->autonomia);
+
             }
+
             if ($this->provincia) {
                 $query->where('provincia_id','=',$this->provincia);
+
             }
             if ($this->localidad) {
                 $query->where('localidad_id','=',$this->localidad);
@@ -120,30 +127,12 @@ class Jobs extends Component
                 $query->where('title','like','%'.' '.$this->search.' '.'%')
                 ->orWhere('excerpt','like','%'.' '.$this->search.' '.'%');
             }
+
         })->paginate(15);
 
-        $this->emitTo('cabecera-ofertas','CambiaCabeceraH1','<p class="text-3xl underline">Empleo en España</p><p class="mt-3 text-2xl" >'.$jobs->total().' Ofertas de trabajo '.$tipo.'</p>'
-                        .'<br/>'.$this->buscaDonde());
-
-        return $jobs;
+        return $resultado;
     }
 
-    private function buscaDonde() {
-        if ($this->localidad) {
-            return "En localidad".$this->localidad;
-        }
-        if ($this->provincia) {
-            return "En provincia".$this->provincia;
-        }
-        if ($this->autonomia) {
-           $nombreAutonomia = Cache::rememberForever('NombreAutonomoa'.$autonomia_id, function () use($autonomia_id) {
-                return  Provinciapractica::where('autonomia_id',$autonomia_id)->get();
-             });
-
-            return "en Autonomia".$this->autonomia;
-        }
-        return "";
-    }
 
 }
 

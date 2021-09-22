@@ -31,6 +31,7 @@ class FilterJobs extends Component
     public $selectedAutonomia = "todas";
     public $selectedProvincia = "todas";
     public $selectedLocalidad = "todas";
+    public $textoBuscar = "";
     public $tiposTrabajos = null;
     public $autonomias = null;
     public $provincias = null;
@@ -91,6 +92,7 @@ class FilterJobs extends Component
 
     public function updatedSelectedAutonomia($autonomia_id)
     {
+
         $this->reset(['provincias', 'selectedProvincia','localidades','selectedLocalidad']);
 
         switch ($this->selectedTipoTrabajo) {
@@ -98,6 +100,13 @@ class FilterJobs extends Component
                 $this->provincias = Cache::rememberForever('TodasProvinciasDeAutonomia'.$autonomia_id, function () use($autonomia_id) {
                     return Provinciatodo::where('autonomia_id',$autonomia_id)->get();
                  });
+                /*
+                $this->provincias = Cache::rememberForever('TodasProvinciasDeAutonomia'.$autonomia_id, function () use($autonomia_id) {
+                    return Provinciatodo::where('autonomia_id',$autonomia_id)->get();
+                 });
+
+                */
+
                 break;
             case 'Discapacidad':
                 $this->provincias = Cache::rememberForever('DiscapacidadProvinciasDeAutonomia'.$autonomia_id, function () use($autonomia_id) {
@@ -166,7 +175,9 @@ class FilterJobs extends Component
 
     }
 
-    public function clickBuscar() {
+    public function clickBuscar($texto) {
+
+        dd($texto);
         if ($this->selectedLocalidad != "todas") {
             $this->emitTo('jobs','filtersEmit',null,null,$this->selectedLocalidad,$this->selectedTipoTrabajo);
             return;
@@ -179,6 +190,7 @@ class FilterJobs extends Component
             $this->emitTo('jobs','filtersEmit',$this->selectedAutonomia,null,null,$this->selectedTipoTrabajo);
             return;
         }
+
         $this->emitTo('jobs','filtersEmit',null,null,null,$this->selectedTipoTrabajo);
 
     }

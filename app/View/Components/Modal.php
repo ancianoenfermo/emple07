@@ -4,19 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class jobCard extends Component
+class Modal extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $job;
-    public $index;
-    public function __construct($job, $index)
+    public function __construct()
     {
-        $this->job = $job;
-        $this->index = $index;
+        //
     }
 
     /**
@@ -26,6 +23,6 @@ class jobCard extends Component
      */
     public function render()
     {
-        return view('components.job-cardXXXX');
+        return view('components.modal');
     }
 }

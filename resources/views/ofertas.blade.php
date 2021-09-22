@@ -1,40 +1,24 @@
 <x-app-layout>
-
+    <div class="my-4" x-data='{totalOfertas:""}' >
+        <h1 class="text-4xl text-center">
+            EMPLEO EN ESPAÑA
+        </h1>
+        <p id = "cabecerah1" class="text-sm text-gray-500"></p>
+    </div>
     <section>
-        <div class="flex my-10 px-4 sm:px-6 lg:px-8  bg-gray-50">
-            <div class="flex-1">
-                <h1 class="">
-                   @livewire('cabecera-ofertas')
-                </h1>
-            </div>
-            <div>
-                @livewire('filter-jobs')
-            </div>
+        <div class="px-4 sm:px-6 lg:px-8  bg-gray-50">
+
+            @livewire('filter-jobs')
+
         </div>
     </section>
 
     <section class="bg-white">
-        <div class="">
+
             @livewire('jobs')
-        </div>
+
     </section>
-@push('scripts')
-    <script>
-        window.addEventListener('DOMContentLoaded',
-        () =>{
-            const divPublicada = document.getElementById('oferta');
-            console.log(divPublicada);
-            const toltipPublicada = document.getElementById('toltipPublicada');
 
-            divPublicada.addEventListener('mouseenter',
-            () =>{
-                console.log("Entra Mouse")
-            })
-
-
-        })
-    </script>
-@endpush
 
 </x-app-layout>
 
@@ -51,3 +35,17 @@ toltipPublicada.addEventListener('mouseleave',
 
 
  --}}
+
+
+ {{--
+<div class="flex-1">
+
+                <h1 class="">
+                   @livewire('cabecera-ofertas')
+                </h1>
+
+            </div>
+
+
+
+--}}

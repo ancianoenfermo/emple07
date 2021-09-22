@@ -2,19 +2,16 @@
 
     <div wire:init="loadEmpleos" class=" relative">
         {{--<div class=" border-gray-100 border-opacity-50 rounded-lg
-
             @if (!$showSearch) hidden @endif relative">
-
             @livewire('filter-jobs')
-
         </div>
         --}}
 
         <div class="container bg-withe mx-auto px-28 mt-10">
-            @if (count($jobs))
+            @if (count($ofertas))
 
                 <span class="">
-                    Hemos encontrado {{ $jobs->links()->paginator->total() }} ofertas
+                    Hemos encontrado {{ $ofertas->links()->paginator->total() }} ofertas
                 </span>
 
 
@@ -22,11 +19,11 @@
                 <div class="mt-10">
                     <div class="px-6 py-3 flex">
                         <x-jet-input class="w-full" placeholder="Escriba que está buscando y pulse ENTER" type=text
-                            name="pp" wire:model.defer="search" wire:keydown.enter="search" />
+                            name="pp" id="textobuscar" wire:model.defer="search" wire:keydown.enter="search" />
 
                     </div>
 
-                    @foreach ($jobs as  $job)
+                    @foreach ($ofertas as  $job)
 
                         @if($loop->index != 9999)
                         @php
@@ -38,10 +35,10 @@
                     @endforeach
                     {{--<x-cardjob :job=$job />--}}
 
-                    @if ($jobs->hasPages())
+                    @if ($ofertas->hasPages())
                         <div
                             class="bg-gray-50 px-4 py-3 mt-5 mb-5 mr-2 items-center justify-between border-t border-gray-200 sm:px-6">
-                            {{ $jobs->links() }}
+                            {{ $ofertas->links() }}
                         </div>
 
                     @endif

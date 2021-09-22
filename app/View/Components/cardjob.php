@@ -12,12 +12,12 @@ class cardjob extends Component
      * @return void
      */
     public $job;
-    public $index;
 
-    public function __construct($job, $index)
+
+    public function __construct($job)
     {
         $this->job = $job;
-        $this->index = $index;
+
     }
 
     /**
