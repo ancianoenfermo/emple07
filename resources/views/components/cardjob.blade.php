@@ -1,5 +1,5 @@
 <div>
-    <article class="my-10  rounded-lg shadow-md bg-gray-50 bg-opacity-50">
+    <article class="my-10  rounded-lg border-2 shadow-md bg-gray-50 bg-opacity-50">
         <!-- LINEA 1 -->
         <div class="pt-5 ml-4 flex items-center ">
             <!-- Localidad -->
@@ -62,17 +62,13 @@
             @endisset
 
             <!-- Ir a la Oferta -->
-            <div class="  flex-1 flex justify-end" x-data="{ tooltip: false }">
+            <div class="  flex-1 flex justify-end">
                 <div class="flex" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"  >
                     <button
-                    class="mr-8 px-2 text-base text-indigo-100  bg-indigo-700 rounded-lg    justify-end"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-4 rounded-full  justify-end"
                     onclick="window.open('{{ $job->jobUrl }}')">
                     <span class="ml-2 text-xs">Ir a la oferta</span>
                     </button>
-                </div>
-
-                <div class="text-xs bg-gray-600 text-gray-100 px-1 absolute rounded mt-1" x-cloak x-show.transition.origin.top="tooltip">
-                   Abre la oferta en una pestaña nueva
                 </div>
             </div>
         </div>
@@ -87,19 +83,21 @@
                 </h2>
             </div>
 
-            <!-- Icono descripción de la Oferta -->
-            <div class="ml-8" x-data="{ tooltip: false }">
-                <div class="flex"  >
-                    <button  class="flex items-center justify-center mt-3 px-3"
-                        x-on:click="$dispatch('modal', { openModal: 'true',titulo: '{{$job->title}}', mensaje: '{{$job->excerpt}}' })">
-                        <i class="fa fa-search-plus my-2" style="color:blue"></i>
-                    </button>
-                </div>
-            </div>
+
         </div>
 
         <!-- LINEA 3 -->
-        <div class="flex justify-center pt-6 pb-4">
+        <div class="flex pt-6 pb-4 ml-4">
+             <!-- Icono descripción de la Oferta -->
+            <div class="mr-4 items-center text-sm leading-none text-black " x-data="{ tooltip: false }">
+                <strong>Descripción:</strong>
+
+                    <button
+                    x-on:click="$dispatch('modal', { openModal: 'true',titulo: '{{$job->title}}', mensaje: '{{$job->excerpt}}' })">
+                    <i class="fa fa-search-plus transition duration-500 ease-in-out bg-transparent hover:bg-transparent transform hover:-translate-y-1 hover:scale-110" style="color:blue"></i>
+                    </button>
+
+                </div>
 
             @isset($job->contrato)
                 <span class="mr-4 items-center text-sm leading-none text-black">
@@ -140,4 +138,14 @@
     </article>
 </div>
 
-
+{{--
+ <!-- Icono descripción de la Oferta -->
+            <div class="ml-8" x-data="{ tooltip: false }">
+                <div class="flex"  >
+                    <button  class="flex items-center justify-center mt-3 px-3"
+                        x-on:click="$dispatch('modal', { openModal: 'true',titulo: '{{$job->title}}', mensaje: '{{$job->excerpt}}' })">
+                        <i class="fa fa-search-plus my-2" style="color:blue"></i>
+                    </button>
+                </div>
+            </div>
+--}}

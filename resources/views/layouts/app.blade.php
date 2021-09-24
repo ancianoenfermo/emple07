@@ -23,6 +23,7 @@
             }
         </style>
 
+
         @livewireStyles
 
     </head>
@@ -49,68 +50,11 @@
 
 
         @livewireScripts
+
+        @stack('js')
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}"></script>
-        <script>
-            function showModalDes(title) {
-                console.log(title);
-                Swal.fire({
-                    icon: 'error',
-                    html: "<p>Hola amigo<strong>del alma</strong>mio</p><ul><li>prueba 1</li></ul>",
-                    footer: '<a href="">Why do I have this issue?</a>',
-                });
-            };
-        </script>
-        <script>
-            function GetSelectedText(){
-                var e = document.getElementById("tipoTrabajo");
-                var tipoTrabajo = e.options[e.selectedIndex].text;
 
-                var e = document.getElementById("autonomia");
-                var autonomia = e.options[e.selectedIndex].text;
-
-                var e = document.getElementById("provincia");
-                var provincia = e.options[e.selectedIndex].text;
-
-                var e = document.getElementById("localidad");
-                var localidad = e.options[e.selectedIndex].text;
-
-                var busqueda = document.getElementById("textobuscar").value;
-
-
-                var lugar = "";
-                var en = "";
-                var tipo = "";
-
-                if (tipoTrabajo != "Todos los trabajos") {
-                    tipo = " (" + tipoTrabajo + ")";
-                }
-
-                if (localidad != "Todas las Localidades") {
-                    lugar = localidad;
-                    en = " en ";
-                } else if (provincia != 'Todas las Provincias') {
-                    lugar = provincia;
-                    en = " en ";
-                }   else if (autonomia != 'Todas las Autonomias') {
-                    lugar = autonomia;
-                    en = " en ";
-                }
-
-
-                textoh1 = "Ofertas de trabajo" + en + lugar + tipo;
-                document.getElementById("cabecerah1").innerHTML = textoh1;
-                console.log(textoh1);
-                console.log(busqueda);
-                return;
-            };
-            function GetTextBusqueda(){
-                var busqueda = document.getElementById("textobuscar").value;
-                return busqueda;
-            }
-
-        </script>
-    @stack('scripts')
 </body>
 
 </html>

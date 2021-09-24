@@ -1,7 +1,9 @@
 <div>
     <div class="pl-28 sm:block  lg:flex lg:justify-around">
-        <div class="rounded-lg bg-gray-500 bg-opacity-50 flex">
-            <div>
+        <div id="filtros" class="rounded-lg bg-gray-200 border-2 bg-opacity-50 flex"
+            style="pointer-events: none;opacity: 0.5;background: #CCC;"
+        >
+            <div >
                 <div class="flex space-x-6">
                     {{-- Tipos de Trabajo --}}
                     <div class="ml-4 my-3">
@@ -85,14 +87,27 @@
             </div>
 
                 <div class="flex  bg-gray-50 ml-10" >
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    wire:click="clickBuscar(GetTextBusqueda())"
+                    onclick="GetSelectedText()">
+                        Buscar
+                      </button>
 
+                </div>
+
+        </div>
+    </div>
+</div>
+{{--
                     <x-jet-button class="rounded-tl-none rounded-bl-none"
                     wire:click="clickBuscar(GetTextBusqueda())"
                     onclick="GetSelectedText()"
                     >
                         Buscar
-                    </x-jet-secondary-button>
-                    {{--
+                    </x-jet-button>
+
+
+
                     <button
                     wire:click="clickBuscar"
                     onclick="GetSelectedText()"
@@ -107,10 +122,3 @@
                     Buscar ofertas
                     </button>
                    --}}
-                </div>
-
-
-
-        </div>
-    </div>
-</div>

@@ -177,21 +177,21 @@ class FilterJobs extends Component
 
     public function clickBuscar($texto) {
 
-        dd($texto);
+
         if ($this->selectedLocalidad != "todas") {
-            $this->emitTo('jobs','filtersEmit',null,null,$this->selectedLocalidad,$this->selectedTipoTrabajo);
+            $this->emitTo('jobs','filtersEmit',null,null,$this->selectedLocalidad,$this->selectedTipoTrabajo,$texto);
             return;
         }
         if ($this->selectedProvincia != "todas") {
-            $this->emitTo('jobs','filtersEmit',null,$this->selectedProvincia,null,$this->selectedTipoTrabajo);
+            $this->emitTo('jobs','filtersEmit',null,$this->selectedProvincia,null,$this->selectedTipoTrabajo,$texto);
             return;
         }
         if ($this->selectedAutonomia != "todas") {
-            $this->emitTo('jobs','filtersEmit',$this->selectedAutonomia,null,null,$this->selectedTipoTrabajo);
+            $this->emitTo('jobs','filtersEmit',$this->selectedAutonomia,null,null,$this->selectedTipoTrabajo,$texto);
             return;
         }
 
-        $this->emitTo('jobs','filtersEmit',null,null,null,$this->selectedTipoTrabajo);
+        $this->emitTo('jobs','filtersEmit',null,null,null,$this->selectedTipoTrabajo,$texto);
 
     }
 }

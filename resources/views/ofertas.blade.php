@@ -1,19 +1,25 @@
 <x-app-layout>
-    <div class="my-4" x-data='{totalOfertas:""}' >
-        <h1 class="text-4xl text-center">
-            EMPLEO EN ESPAÑA
-        </h1>
-        <p id = "cabecerah1" class="text-sm text-gray-500"></p>
-    </div>
-    <section>
-        <div class="px-4 sm:px-6 lg:px-8  bg-gray-50">
 
-            @livewire('filter-jobs')
+    <div class=" mb-5 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100">
+        <div class="pt-4 pb-4">
+            <p class="text-4xl text-center">
+                EMPLEO EN ESPAÑA
+            </p>
 
         </div>
-    </section>
+        <section>
+            <div class="px-4 pb-4 sm:px-6 lg:px-8">
 
-    <section class="bg-white">
+                @livewire('filter-jobs')
+                <div class="flex items-center justify-center pt-4 pb-4">
+                    <p class="rounded animate-spin ease duration-300 w-5 h-5 border-2 border-blue-600" id="totalOfertas"></p>
+                    <h1 class="text-4xl pl-2 " id = "cabecerah1" >Ofertas de trabajo</h1>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <section class="bg-gray-50">
 
             @livewire('jobs')
 

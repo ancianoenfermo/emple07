@@ -10,6 +10,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Mockery\Matcher\Type;
 use phpDocumentor\Reflection\PseudoTypes\True_;
 
 class Jobs extends Component
@@ -60,9 +61,26 @@ class Jobs extends Component
                 default:
                     dd("ERROR");
             }
+
+            if($ofertas->total()==0) {
+
+                $this->emit('showNOrecords', $this->search);
+            }
+
+            $this->emit('cabecerah1', $ofertas->total());
+
+
+
+
+
+
+
+
         } else {
             $ofertas = [];
         }
+
+
 
         return view('livewire.jobs',compact('ofertas','pp'));
     }
@@ -87,10 +105,11 @@ class Jobs extends Component
 
 
 
-    public function filtersEmit($autonomiaId,$provinciaId,$localidadId,$tipoTrabajo) {
+    public function filtersEmit($autonomiaId,$provinciaId,$localidadId,$tipoTrabajo,$texto) {
 
         $this->reset(['autonomia','provincia','localidad','tipoTrabajo']);
         $this->tipoTrabajo = $tipoTrabajo;
+        $this->search = $texto;
         if ($autonomiaId) {
             $this->autonomia = $autonomiaId;
         }

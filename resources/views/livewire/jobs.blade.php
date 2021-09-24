@@ -1,36 +1,23 @@
 <div>
 
-    <div wire:init="loadEmpleos" class=" relative">
+    <div wire:init="loadEmpleos" class=" relative mt-10">
         {{--<div class=" border-gray-100 border-opacity-50 rounded-lg
             @if (!$showSearch) hidden @endif relative">
             @livewire('filter-jobs')
         </div>
         --}}
 
-        <div class="container bg-withe mx-auto px-28 mt-10">
+        <div class="container mx-auto px-28 py-5">
             @if (count($ofertas))
-
-                <span class="">
-                    Hemos encontrado {{ $ofertas->links()->paginator->total() }} ofertas
-                </span>
-
 
                 {{-- <div x-data='{openModal:false}' class="mt-10">--}}
                 <div class="mt-10">
-                    <div class="px-6 py-3 flex">
-                        <x-jet-input class="w-full" placeholder="Escriba que está buscando y pulse ENTER" type=text
-                            name="pp" id="textobuscar" wire:model.defer="search" wire:keydown.enter="search" />
-
-                    </div>
 
                     @foreach ($ofertas as  $job)
 
-                        @if($loop->index != 9999)
-                        @php
-                            $tt = $loop->index
-                        @endphp
-                        <x-cardjob :job=$job :index=$tt/>
-                        @endif
+
+                        <x-cardjob :job=$job/>
+
 
                     @endforeach
                     {{--<x-cardjob :job=$job />--}}
@@ -102,21 +89,10 @@
                 </div>
 
 
-
-
-
-            @else
-            <div class="px-6 py-3 flex">
-                <x-jet-input class="w-full" placeholder="Escriba que está buscando y pulse ENTER" type=text
-                    name="pp" wire:model.defer="search" wire:keydown.enter="search" />
-
-            </div>
-                <div class="px-4 py-3 mt-5 ">
-                    No existen registros
-                </div>
-
-
             @endif
+
+
+
 
             <div wire:loading class="backdrop-filter backdrop-blur-sm absolute inset-x-0  top-0 h-full w-full">
                 <div style="color: #283618" class="la-line-scale-pulse-out items-center absolute top-6 left-1/2">
@@ -130,5 +106,102 @@
 
         </div>
     </div>
+@push('js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Livewire.on('showNOrecords', mensaje => {
+            Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No hemos encontrado ninguna oferta con '+ mensaje,
 
+            });
+        });
+
+        Livewire.on('cabecerah1',totalRecords=> {
+            GetSelectedText(totalRecords);
+        });
+
+
+        function GetSelectedText(total){
+                var e = document.getElementById("tipoTrabajo");
+                var tipoTrabajo = e.options[e.selectedIndex].text;
+
+                var e = document.getElementById("autonomia");
+                var autonomia = e.options[e.selectedIndex].text;
+
+                var e = document.getElementById("provincia");
+                var provincia = e.options[e.selectedIndex].text;
+
+                var e = document.getElementById("localidad");
+                var localidad = e.options[e.selectedIndex].text;
+
+                var busqueda = document.getElementById("textobuscar").value;
+
+
+                var lugar = "";
+                var en = "";
+                var tipo = "";
+
+                if (tipoTrabajo != "Todos los trabajos") {
+                    tipo = " con " + tipoTrabajo;
+                    tipo = tipo.toLowerCase();
+                }
+
+                if (localidad != "Todas las Localidades") {
+                    lugar = localidad;
+                    en = " en ";
+                } else if (provincia != 'Todas las Provincias') {
+                    lugar = provincia;
+                    en = " en ";
+                }   else if (autonomia != 'Todas las Autonomias') {
+                    lugar = autonomia;
+                    en = " en ";
+                }
+
+                totalformat = new Intl.NumberFormat("de-DE").format(total)
+                if(totalformat == "NaN") {
+                    totalformat = "";
+                    document.getElementById("filtros").style.cssText = "pointer-events: none;opacity: 0.5;background: #CCC;"
+                    document.getElementById("totalOfertas").className = "rounded animate-spin ease duration-300 w-5 h-5 border-2 border-blue-600";
+                    document.getElementById("totalOfertas").innerHTML = totalformat;
+
+                    console.log("NaN")
+                } else {
+                    document.getElementById("totalOfertas").className = "text-4xl";
+                    document.getElementById("filtros").style.cssText = ""
+                    console.log("Numero");
+                }
+
+                textoh1 = "Ofertas de trabajo " + tipo + en + lugar ;
+
+                document.getElementById("totalOfertas").innerHTML = totalformat;
+
+                document.getElementById("cabecerah1").innerHTML = textoh1;
+
+                console.log(textoh1);
+                console.log(busqueda);
+                return;
+            };
+            function GetTextBusqueda(){
+                var busqueda = document.getElementById("textobuscar").value;
+                return busqueda;
+            }
+
+    </script>
+@endpush
 </div>
+{{--
+ @if($loop->index != 9999)
+                        @php
+                            $tt = $loop->index
+                        @endphp
+                        <x-cardjob :job=$job :index=$tt/>
+                        @endif
+
+
+
+
+
+
+--}}
