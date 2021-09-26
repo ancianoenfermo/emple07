@@ -104,7 +104,7 @@ $nav_links_auth = [
                         </x-jet-dropdown>
                     </div>
                 @endif
-
+                {{--
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
 
@@ -169,6 +169,7 @@ $nav_links_auth = [
                         <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                     @endauth
                 </div>
+                --}}
             </div>
 
             <!-- Hamburger -->
@@ -199,7 +200,7 @@ $nav_links_auth = [
                 </x-jet-responsive-nav-link>
             @endforeach
         </div>
-
+        {{--
         <!-- Responsive Settings Options -->
         @auth
 
@@ -286,6 +287,7 @@ $nav_links_auth = [
                 </x-jet-responsive-nav-link>
             </div>
         @endauth
+        --}}
 
     </div>
 

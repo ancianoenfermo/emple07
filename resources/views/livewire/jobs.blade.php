@@ -24,8 +24,8 @@
 
                     @if ($ofertas->hasPages())
                         <div
-                            class="bg-gray-50 px-4 py-3 mt-5 mb-5 mr-2 items-center justify-between border-t border-gray-200 sm:px-6">
-                            {{ $ofertas->links() }}
+                            class="bg-gray-50 px-4 py-10  mr-2 items-center justify-between border-t border-gray-200 sm:px-6">
+                            {{ $ofertas->links('vendor.pagination.tailwind') }}
                         </div>
 
                     @endif
@@ -170,6 +170,7 @@
                 } else {
                     document.getElementById("totalOfertas").className = "text-4xl";
                     document.getElementById("filtros").style.cssText = ""
+
                     console.log("Numero");
                 }
 

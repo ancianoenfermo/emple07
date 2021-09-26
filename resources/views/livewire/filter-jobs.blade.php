@@ -1,6 +1,6 @@
 <div>
     <div class="pl-28 sm:block  lg:flex lg:justify-around">
-        <div id="filtros" class="rounded-lg bg-gray-200 border-2 bg-opacity-50 flex"
+        <div id="filtros" class="rounded-lg bg-gray-300 border-2 bg-opacity-50 shadow-xl flex"
             style="pointer-events: none;opacity: 0.5;background: #CCC;"
         >
             <div >
@@ -87,7 +87,7 @@
             </div>
 
                 <div class="flex  bg-gray-50 ml-10" >
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white  font-bold py-2 px-4 rounded focus:outline-none"
                     wire:click="clickBuscar(GetTextBusqueda())"
                     onclick="GetSelectedText()">
                         Buscar

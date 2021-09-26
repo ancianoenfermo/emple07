@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section>
+    <section class="bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100">
 
         <div class="mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-10">
             <div class="flex">
@@ -15,7 +15,10 @@
 
                 </div>
                 <div class="flex items-center ml-10">
-                    <div class="bg-gray-100 border-2 rounded-lg shadow-lg">
+
+
+
+                      <div class="bg-gray-100 border-2 rounded-lg shadow-lg animate-pulse">
                         <div class="container mx-auto text-center px-4 py-6">
                             <h2 class="text-2xl md:text-4xl font-medium">Ofertas de trabajo</h2>
                             <p class="mt-3">Ofertas publicadas en España en los últimos treinta días</p>
@@ -28,6 +31,7 @@
                             </div>
                         </div>
                       </div>
+
                 </div>
                 <!-- component -->
             </div>

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Carbon;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,6 @@ class AppServiceProvider extends ServiceProvider
     {
        Carbon::setLocale('es');
        setlocale(LC_TIME,'es_ES');
-
+       Paginator::defaultView('tailwind.blade');
     }
 }
