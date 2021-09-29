@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100">
+    <section class="bg-gradient-to-r from-green-100 via-green-200 to-green-500">
 
         <div class="mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-10">
             <div class="flex">
@@ -12,14 +12,10 @@
                         <li>Contratos de formación y apredizaje</li>
                         <li>Certificados de profesionalidad</li>
                     </ul>
-
                 </div>
                 <div class="flex items-center ml-10">
-
-
-
-                      <div class="bg-gray-100 border-2 rounded-lg shadow-lg animate-pulse">
-                        <div class="container mx-auto text-center px-4 py-6">
+                    <div class="bg-green-900 border-2 rounded-lg shadow-lg animate-pulse">
+                        <div class="container mx-auto text-center px-4 py-6 text-white ">
                             <h2 class="text-2xl md:text-4xl font-medium">Ofertas de trabajo</h2>
                             <p class="mt-3">Ofertas publicadas en España en los últimos treinta días</p>
 
@@ -30,27 +26,62 @@
                                 </a>
                             </div>
                         </div>
-                      </div>
+                    </div>
 
                 </div>
-                <!-- component -->
-            </div>
 
+            </div>
+        </div>
     </section>
 
     <section class="bg-white pb-4">
-        <h1 class="text-gray-600 text-center text-3xl mb-6 pt-10 ">FORMACIÓN PARA EL EMPLEO</h1>
+        <h1 class="text-gray-600 text-center text-3xl mb-6 pt-10 ">RECURSOS PARA LA BÚSQUEDA DE EMPLEO</h1>
         <div
             class="mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
+            <article>
+                <figure>
+
+                    <a href="{{ route('entrevista') }}">
+                    <img class="rounded-xl h-36 w-full object-contain " src="{{ asset('img/home/entrevista.png') }}" alt="">
+                    </a>
+                </figure>
+                <header class="mt-2">
+                    <h1 class="text-center text-xl text-gray-700">La entrevista de trabajo</h1>
+
+                    <p class="text-sm text-gray-500">La entrevista es la técnica más utilizada en los procesos de selección de personal.
+
+                    </p>
+
+                </header>
+            </article>
+
+            <article>
+                <figure>
+
+                    <a href="{{ route('curriculum') }}">
+                    <img class="rounded-xl h-36 w-full object-contain " src="{{ asset('img/home/curriculum.png') }}" alt="">
+                    </a>
+                </figure>
+                <header class="mt-2">
+                    <h1 class="text-center text-xl text-gray-700">El curriculum</h1>
+
+                    <p class="text-sm text-gray-500">El curriculum es el instrumento para presentarte a las instituciones o empresas; es tu tarjeta de presentación
+
+                    </p>
+
+                </header>
+            </article>
+
+
             <article>
                 <figure>
 
                     <a href="#">
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/img1.jpg') }}" alt="">
+                    <img class="rounded-xl h-36 w-full object-contain" src="{{ asset('img/home/FormacionD.jpg') }}" alt="">
                     </a>
                 </figure>
                 <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Formación gratuita para desempleados</h1>
+                    <h1 class="text-center text-xl text-gray-700">Formación gratuita</h1>
 
                     <p class="text-sm text-gray-500">100% Subvencionados por el Ministerio de Trabajo, Migraciones y Seguridad Social
 
@@ -60,78 +91,39 @@
             </article>
             <article>
                 <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/img2.jpg') }}" alt="">
-                </figure>
-                <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Formación gratuita para ocupados</h1>
-                    <p class="text-sm text-gray-500">Pensados para responder a las necesidades formativas de un trabajador en activo.</p>
 
-                </header>
-            </article>
-            <article>
-                <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/img3.jpg') }}" alt="">
+                    <a href="#">
+                    <img class="rounded-xl h-36 w-full object-contain" src="{{ asset('img/home/FormacionAprendizaje.jpg') }}" alt="">
+                    </a>
                 </figure>
                 <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Contratos de Formación y apredizaje</h1>
-                    <p class="text-sm text-gray-500">Cualificación profesional de los trabajadores, en un régimen de alternancia de actividad laboral retribuida en una empresa, con actividad formativa</p>
-                </header>
-            </article>
-            <article>
-                <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/img4.jpg') }}" alt="">
-                </figure>
-                <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Certificados de Profesionalidad</h1>
-                    <p class="text-sm text-gray-500">Instrumento de acreditación oficial de las cualificaciones profesionales del Catálogo Nacional de Cualificaciones Profesionales en el ámbito de la administración laboral</p>
-                </header>
-            </article>
-        </div>
-    </section>
-    <section class="bg-gray-100">
-        <h1 class="text-gray-600 text-center text-3xl mb-6 pt-10 ">OFERTAS DE TRABAJO EN ESPAÑA</h1>
-        <div
-            class="mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
-            <article>
-                <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/Discapacidad.jpg') }}" alt="">
-                </figure>
-                <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Trabajos para personas con <strong>discapacidad</strong></h1>
+                    <h1 class="text-center text-xl text-gray-700">El contrato de formación y apredizaje</h1>
 
-                    <p class="text-sm text-gray-500">100% Subvencionados por el Ministerio de Trabajo, Migraciones y Seguridad Social
+                    <p class="text-sm text-gray-500">Destinado a favorecer la inserción laboral y la formación de las personas jóvenes
 
                     </p>
 
                 </header>
             </article>
+
             <article>
                 <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/Practicas.jpg') }}" alt="">
+
+                    <a href="#">
+                    <img class="rounded-xl h-36 w-full object-contain" src="{{ asset('img/home/Practicas.jpg') }}" alt="">
+                    </a>
                 </figure>
                 <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Trabajos en <strong>prácticas</strong></h1>
-                    <p class="text-sm text-gray-500">Pensados para responder a las necesidades formativas de un trabajador en activo.</p>
+                    <h1 class="text-center text-xl text-gray-700">El contrato en prácticas</h1>
+
+                    <p class="text-sm text-gray-500">Tiene por objeto la obtención por el trabajador de la práctica profesional adecuada al nivel de estudios cursados
+
+                    </p>
+
                 </header>
             </article>
-            <article>
-                <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/Teletrabajo.jpg') }}" alt="">
-                </figure>
-                <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Trabajos con <strong>teletrabajo</strong></h1>
-                    <p class="text-sm text-gray-500">Cualificación profesional de los trabajadores, en un régimen de alternancia de actividad laboral retribuida en una empresa, con actividad formativa</p>
-                </header>
-            </article>
-            <article>
-                <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/Todoteletrabajo.jpg') }}" alt="">
-                </figure>
-                <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Trabajos <strong>100% teletrabajo</strong></h1>
-                    <p class="text-sm text-gray-500">Instrumento de acreditación oficial de las cualificaciones profesionales del Catálogo Nacional de Cualificaciones Profesionales en el ámbito de la administración laboral</p>
-                </header>
-            </article>
+
         </div>
     </section>
+    <x-footer/>
 </x-app-layout>

@@ -16,11 +16,11 @@ module.exports = {
     },
 
     variants: {
-        extend: {
-            opacity: ['disabled'],
-            animation: ['group-hover'],
-        },
+        textIndent: ['responsive'],
     },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        require('tailwindcss-text-indent')(),
+        require('@tailwindcss/forms')
+    ]
 };

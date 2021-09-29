@@ -10,6 +10,20 @@ $nav_links = [
         'route' => route('ofertas'),
         'active' => request()->routeIs('ofertas'),
     ],
+    [
+        'name' => 'La entrevista',
+        'route' => route('entrevista'),
+        'active' => request()->routeIs('entrevista'),
+    ],
+    [
+        'name' => 'El curriculum',
+        'route' => route('curriculum'),
+        'active' => request()->routeIs('curriculum'),
+    ],
+
+
+
+
 ];
 $nav_links_auth = [
     [

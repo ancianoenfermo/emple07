@@ -1,5 +1,23 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import 'misCss';
 
 
+.nivelp {
+    @apply indent-lg pb-2;
+}
+.nivel2 {
+    @apply text-3xl font-bold pt-4 pb-3;
+}
+.nivel3 {
+    @apply text-2xl font-bold pb-3 pt-4;
+}
+.nivel4 {
+    @apply text-xl font-semibold pb-3 pt-4 pl-6;
+}
+
+.linivel {
+    @apply text-xl pb-2
+
+}

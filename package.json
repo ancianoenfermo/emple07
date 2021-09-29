@@ -22,7 +22,8 @@
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.35.1",
         "sass-loader": "^12.1.0",
-        "tailwindcss": "^2.0.2"
+        "tailwindcss": "^2.0.2",
+        "tailwindcss-text-indent": "^1.0.2"
     },
     "dependencies": {
         "sweetalert2": "^11.1.4"

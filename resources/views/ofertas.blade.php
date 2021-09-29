@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <header class=" mb-5 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100">
+    <header class=" mb-5 bg-gradient-to-r from-green-100 via-green-200 to-green-500">
         <div class="pt-4 pb-4">
             <p class="text-4xl text-center font-bold tracking-wider">
                 EMPLEO EN ESPAÑA
@@ -19,15 +19,12 @@
 
         </section>
     </header>
-    <section class="bg-gray-50 min-h-screen">
+    <section class="bg-white min-h-screen">
 
             @livewire('jobs')
 
     </section>
-    <footer class="h-32 mb-5 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100"">
-
-
-    </footer>
+    <x-footer/>
 
 </x-app-layout>
 

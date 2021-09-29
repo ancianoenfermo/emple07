@@ -9,9 +9,10 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        --}}
+
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -33,7 +34,7 @@
     <body class="font-sans antialiased">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-50 z-50">
+        <div class="min-h-screen bg-white z-50">
             @livewire('navigation-menu')
             <!-- Page Heading -->
             @if (isset($header))
