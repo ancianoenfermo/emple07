@@ -77,7 +77,9 @@
 
                                     <button type="button"
                                         class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                                        x-on:click.away='openModal = false'>
+                                        x-on:click.away='openModal = false'
+                                        x-on:click='openModal = false'
+                                        >
                                         Cerrar
                                     </button>
                                 </div>
@@ -118,9 +120,11 @@
             });
         });
 
+
         Livewire.on('cabecerah1',totalRecords=> {
             GetSelectedText(totalRecords);
         });
+
 
 
         function GetSelectedText(total){
@@ -163,10 +167,8 @@
                 if(totalformat == "NaN") {
                     totalformat = "";
                     document.getElementById("filtros").style.cssText = "pointer-events: none;opacity: 0.5;background: #CCC;"
-                    document.getElementById("totalOfertas").className = "rounded animate-spin ease duration-300 w-5 h-5 border-2 border-blue-600";
+                    document.getElementById("totalOfertas").className = "rounded animate-spin ease duration-300 w-5 h-5 border-2 border-red-800";
                     document.getElementById("totalOfertas").innerHTML = totalformat;
-
-                    console.log("NaN")
                 } else {
                     document.getElementById("totalOfertas").className = "text-4xl";
                     document.getElementById("filtros").style.cssText = ""
@@ -188,6 +190,38 @@
                 var busqueda = document.getElementById("textobuscar").value;
                 return busqueda;
             }
+            function clickOferta(url,oferta) {
+                Swal.fire({
+                    title: 'Se abrirá en una pestaña nueva la oferta',
+                    text: oferta,
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'OK',
+                    cancelButtonText: 'CANCELAR'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.open(url);
+                    }
+                })
+
+
+            }
+
+            function showOfertaInfo() {
+            Swal.fire({
+                title: 'Hemos abierto una pestaña nueva en tu navegador',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                 popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+        }
+
+
 
     </script>
 @endpush

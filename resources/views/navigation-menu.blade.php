@@ -20,7 +20,11 @@ $nav_links = [
         'route' => route('curriculum'),
         'active' => request()->routeIs('curriculum'),
     ],
-
+    [
+        'name' => 'Carta de presentación',
+        'route' => route('carta'),
+        'active' => request()->routeIs('carta'),
+    ],
 
 
 
@@ -52,6 +56,10 @@ $nav_links_auth = [
                             {{ $nav_link['name'] }}
                         </x-jet-nav-link>
                     @endforeach
+
+
+
+
                     @auth
                         @foreach ($nav_links_auth as $nav_link_auth)
                             <x-jet-nav-link href="{{ $nav_link_auth['route'] }}" :active="$nav_link_auth['active']">

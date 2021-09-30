@@ -70,12 +70,6 @@ class Jobs extends Component
             $this->emit('cabecerah1', $ofertas->total());
 
 
-
-
-
-
-
-
         } else {
             $ofertas = [];
         }

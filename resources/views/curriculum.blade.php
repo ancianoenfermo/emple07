@@ -5,7 +5,7 @@
                 <h1 class="pb-6  text-3xl md:text-4xl lg:text-6xl font-extrabold text-black tracking-wider leading-loose ">
                     El curriculum vitae
                 </h1>
-
+                <p class="nivelp text-2xl italic leading-relaxed ">Es un resumen del conjunto de estudios, méritos, cargos, premios, experiencia laboral que ha desarrollado u obtenido una persona a lo largo de su vida laboral o académica.</p>
             </div>
             <div class="items-center ml-10">
                 <div class="bg-gray-100 border-2 rounded-lg shadow-lg ">
@@ -19,6 +19,15 @@
         </div>
     </div>
     <div class="container mx-auto text-xl leading-normal text-justify px-10 bg-white ">
+        <div class="pt-10">
+            <a class="text-2xl px-4 py-2 items-center font-semibold rounded-full bg-green-900 text-white" href="https://www.todofp.es/" target="_blank"><span class=" font-extrabold text-green-100">
+                <i class="fas fa-pen"></i>
+                Fuente: </span>TodoFP
+            </a>
+        </div>
+
+
+
         <p class="nivelp pt-10">El curriculum vitae es el instrumento para presentarte a las instituciones o empresas; es tu tarjeta de presentación. Contar con un buen curriculum es imprescindible para solicitar un puesto de trabajo. Debes adaptarlo y actualizarlo según la oferta y la empresa a la que lo mandas y no enviar siempre el mismo a todas partes.</p>
         <h3 class="nivel3">¿Qué debe contener mi curriculum?</h3>
         <p class="nivelp">A pesar de existir diversos tipos de curriculum, el documento a elaborar debe contener una información básica para todos. Hay una serie de apartados imprescindibles en cualquier curriculum:</p>

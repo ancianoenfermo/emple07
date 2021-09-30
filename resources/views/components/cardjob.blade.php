@@ -65,8 +65,9 @@
             <div class="  flex-1 flex justify-end">
                 <div class="flex" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"  >
                     <button
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-4 rounded-full  justify-end"
-                    onclick="window.open('{{ $job->jobUrl }}')">
+                    class="focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-opacity-75 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mr-4 rounded-full  justify-end"
+                    onclick="clickOferta('{{ $job->jobUrl }}','{{ $job->title }}')">
+                    {{--onclick="window.open('{{ $job->jobUrl }}')">--}}
                     <span class="ml-2 text-xs">Ir a la oferta</span>
                     </button>
                 </div>
@@ -94,7 +95,7 @@
 
                     <button
                     x-on:click="$dispatch('modal', { openModal: 'true',titulo: '{{$job->title}}', mensaje: '{{$job->excerpt}}' })">
-                    <i class="fa fa-search-plus transition duration-500 ease-in-out bg-transparent hover:bg-transparent transform hover:-translate-y-1 hover:scale-110" style="color:blue"></i>
+                    <i class="fa fa-search-plus transition duration-500 ease-in-out bg-transparent hover:bg-transparent transform hover:-translate-y-1 hover:scale-110 text-green-500" ></i>
                     </button>
 
                 </div>
