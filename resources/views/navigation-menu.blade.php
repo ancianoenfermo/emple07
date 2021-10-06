@@ -37,7 +37,8 @@ $nav_links_auth = [
     ],
 ]
 @endphp
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
+<nav x-data="{ open: false }" class="bg-pink-400 border-b border-gray-100 shadow"
+    itemscope itemtype="https://schema.org/SiteNavigationElement">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -57,9 +58,6 @@ $nav_links_auth = [
                         </x-jet-nav-link>
                     @endforeach
 
-
-
-
                     @auth
                         @foreach ($nav_links_auth as $nav_link_auth)
                             <x-jet-nav-link href="{{ $nav_link_auth['route'] }}" :active="$nav_link_auth['active']">
@@ -68,6 +66,7 @@ $nav_links_auth = [
                         @endforeach
 
                     @endauth
+
                 </div>
             </div>
 

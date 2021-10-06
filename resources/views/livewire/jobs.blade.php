@@ -1,14 +1,19 @@
 <div>
-
+    @section('title', 'mititulo')
     <div wire:init="loadEmpleos" class=" relative mt-10">
-        {{--<div class=" border-gray-100 border-opacity-50 rounded-lg
+
+
+        <div class=" border-gray-100 border-opacity-50 rounded-lg
             @if (!$showSearch) hidden @endif relative">
-            @livewire('filter-jobs')
+
+
+            {{--@livewire('filter-jobs')--}}
         </div>
-        --}}
+
 
         <div class="container mx-auto px-28 py-5">
             @if (count($ofertas))
+
 
                 {{-- <div x-data='{openModal:false}' class="mt-10">--}}
                 <div class="mt-10">
@@ -25,14 +30,195 @@
                     @if ($ofertas->hasPages())
                         <div
                             class="bg-white px-4 py-10  mr-2 items-center justify-between border-t border-gray-200 sm:px-6">
-                            {{ $ofertas->links('vendor.pagination.tailwind') }}
+                            {{ $ofertas->links()}}
                         </div>
 
                     @endif
 
-                    {{-- MODAL --}}
+
+                </div>
+
+
+            @endif
+
+
+            <div wire:loading class="backdrop-filter backdrop-blur-sm absolute inset-x-0  top-0 h-full w-full">
+                <div style="color: #36181f" class="la-line-scale-pulse-out items-center absolute top-6 left-1/2">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+{{--
+<div wire:loading class="backdrop-filter backdrop-blur-sm absolute inset-x-0  top-0 h-full w-full">
+                <div style="color: #36181f" class="la-line-scale-pulse-out items-center absolute top-6 left-1/2">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+--}}
+
+
+
+@push('js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Livewire.on('showNOrecords', mensaje => {
+            Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No hemos encontrado ninguna oferta con '+ mensaje,
+
+            });
+        });
+
+        Livewire.on('cabecerah1',totalRecords=> {
+            GetSelectedText(totalRecords);
+        });
+
+
+        function GetSelectedText(total){
+            console.log("total");
+            totalformat = new Intl.NumberFormat("de-DE").format(total)
+            document.getElementById("totalOfertas").className = "text-4xl";
+            document.getElementById("buscando").style.visibility = "hidden";
+            document.getElementById("totalOfertas").innerHTML = totalformat;
+            document.getElementById("cabecerah1").innerHTML = getDatosTituloH1();
+            document.getElementById("filtros").removeAttribute("style");
+        };
+
+        function clickFiltersBuscar() {
+            document.getElementById("cabecerah1").innerHTML = getDatosTituloH1();
+            document.getElementById("buscando").style.visibility = "visible";
+            document.getElementById("totalOfertas").className = "ml-2 rounded animate-spin ease duration-300 w-5 h-5 border-2 border-green-800";
+            document.getElementById("totalOfertas").innerHTML ="";
+            document.getElementById("filtros").style = "background-color:rgb(59, 20, 235) pointer-events: none;opacity: 0.5;background: #CCC; "
+        }
+
+
+        function getDatosTituloH1() {
+            var e = document.getElementById("tipoTrabajo");
+            var tipoTrabajo = e.options[e.selectedIndex].text;
+
+            var e = document.getElementById("autonomia");
+            var autonomia = e.options[e.selectedIndex].text;
+
+            var e = document.getElementById("provincia");
+            var provincia = e.options[e.selectedIndex].text;
+
+            var e = document.getElementById("localidad");
+            var localidad = e.options[e.selectedIndex].text;
+
+            var busqueda = document.getElementById("textobuscar").value;
+
+
+            var lugar = "";
+            var en = "";
+            var tipo = "";
+
+            if (tipoTrabajo != "Todos los trabajos") {
+                tipo = " con " + tipoTrabajo;
+                tipo = tipo.toLowerCase();
+            }
+
+            if (localidad != "Todas las Localidades") {
+                lugar = localidad;
+                en = " en ";
+            } else if (provincia != 'Todas las Provincias') {
+                lugar = provincia;
+                en = " en ";
+            }   else if (autonomia != 'Todas las Autonomias') {
+                lugar = autonomia;
+                en = " en ";
+            }
+            textoh1 = "Ofertas de trabajo " + tipo + en + lugar ;
+            return textoh1;
+
+            //document.getElementById("cabecerah1").innerHTML = textoh1;
+
+
+            //document.getElementById("totalOfertas").innerHTML = totalformat;
+
+        }
+
+        /*
+                if(totalformat == "NaN") {
+                totalformat = "";
+
+                document.getElementById("filtros").style.cssText = "pointer-events: none;opacity: 0.5;background: #CCC;"
+                document.getElementById("totalOfertas").className = "ml-2 rounded animate-spin ease duration-300 w-5 h-5 border-2 border-green-800";
+                document.getElementById("totalOfertas").innerHTML = totalformat;
+                document.getElementById("buscando").style.visibility = "visible";
+
+            } else {
+        */
+
+
+        /*
+
+        function GetSelectedText(total){
+            console.log("total");
+            totalformat = new Intl.NumberFormat("de-DE").format(total)
+
+            document.getElementById("totalOfertas").className = "text-4xl";
+            document.getElementById("buscando").style.visibility = "hidden";
+            document.getElementById("filtros").removeAttribute("style");
+            document.getElementById("totalOfertas").innerHTML = totalformat;
+
+        };
+        */
+        function GetTextBusqueda(){
+            var busqueda = document.getElementById("textobuscar").value;
+            return busqueda;
+        }
+
+        function clickOferta(url,oferta) {
+            Swal.fire({
+                title: 'Se abrirá en una pestaña nueva la oferta',
+                text: oferta,
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'OK',
+                cancelButtonText: 'CANCELAR'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.open(url);
+                }
+            })
+        }
+
+        function showOfertaInfo() {
+            Swal.fire({
+                title: 'Hemos abierto una pestaña nueva en tu navegador',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+        }
+
+    </script>
+@endpush
+@push('modals')
+{{-- MODAL --}}
                     <!-- This example requires Tailwind CSS v2.0+ -->
-                    <div x-data='{openModal:false, titulo:"", mensaje:""}' x-show='openModal'
+                    <div x-data='{openModal:false, titulo:"", mensaje:""}' x-show='openModal' x-init='{openModal:false, titulo:"", mensaje:""}'
                         x-on:modal.window="openModal = $event.detail.openModal;
                          mensaje = $event.detail.mensaje;
                          titulo = $event.detail.titulo;
@@ -78,7 +264,7 @@
                                     <button type="button"
                                         class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                                         x-on:click.away='openModal = false'
-                                        x-on:click='openModal = false'
+                                        x-on:click.away='openModal = false'
                                         >
                                         Cerrar
                                     </button>
@@ -88,155 +274,5 @@
                     </div>
                     {{-- FIN MODAL --}}
 
-                </div>
-
-
-            @endif
-
-
-
-
-            <div wire:loading class="backdrop-filter backdrop-blur-sm absolute inset-x-0  top-0 h-full w-full">
-                <div style="color: #283618" class="la-line-scale-pulse-out items-center absolute top-6 left-1/2">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-@push('js')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        Livewire.on('showNOrecords', mensaje => {
-            Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'No hemos encontrado ninguna oferta con '+ mensaje,
-
-            });
-        });
-
-
-        Livewire.on('cabecerah1',totalRecords=> {
-            GetSelectedText(totalRecords);
-        });
-
-
-
-        function GetSelectedText(total){
-                var e = document.getElementById("tipoTrabajo");
-                var tipoTrabajo = e.options[e.selectedIndex].text;
-
-                var e = document.getElementById("autonomia");
-                var autonomia = e.options[e.selectedIndex].text;
-
-                var e = document.getElementById("provincia");
-                var provincia = e.options[e.selectedIndex].text;
-
-                var e = document.getElementById("localidad");
-                var localidad = e.options[e.selectedIndex].text;
-
-                var busqueda = document.getElementById("textobuscar").value;
-
-
-                var lugar = "";
-                var en = "";
-                var tipo = "";
-
-                if (tipoTrabajo != "Todos los trabajos") {
-                    tipo = " con " + tipoTrabajo;
-                    tipo = tipo.toLowerCase();
-                }
-
-                if (localidad != "Todas las Localidades") {
-                    lugar = localidad;
-                    en = " en ";
-                } else if (provincia != 'Todas las Provincias') {
-                    lugar = provincia;
-                    en = " en ";
-                }   else if (autonomia != 'Todas las Autonomias') {
-                    lugar = autonomia;
-                    en = " en ";
-                }
-
-                totalformat = new Intl.NumberFormat("de-DE").format(total)
-                if(totalformat == "NaN") {
-                    totalformat = "";
-                    document.getElementById("filtros").style.cssText = "pointer-events: none;opacity: 0.5;background: #CCC;"
-                    document.getElementById("totalOfertas").className = "rounded animate-spin ease duration-300 w-5 h-5 border-2 border-red-800";
-                    document.getElementById("totalOfertas").innerHTML = totalformat;
-                } else {
-                    document.getElementById("totalOfertas").className = "text-4xl";
-                    document.getElementById("filtros").style.cssText = ""
-
-                    console.log("Numero");
-                }
-
-                textoh1 = "Ofertas de trabajo " + tipo + en + lugar ;
-
-                document.getElementById("totalOfertas").innerHTML = totalformat;
-
-                document.getElementById("cabecerah1").innerHTML = textoh1;
-
-                console.log(textoh1);
-                console.log(busqueda);
-                return;
-            };
-            function GetTextBusqueda(){
-                var busqueda = document.getElementById("textobuscar").value;
-                return busqueda;
-            }
-            function clickOferta(url,oferta) {
-                Swal.fire({
-                    title: 'Se abrirá en una pestaña nueva la oferta',
-                    text: oferta,
-                    icon: 'info',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'OK',
-                    cancelButtonText: 'CANCELAR'
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.open(url);
-                    }
-                })
-
-
-            }
-
-            function showOfertaInfo() {
-            Swal.fire({
-                title: 'Hemos abierto una pestaña nueva en tu navegador',
-                showClass: {
-                    popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                 popup: 'animate__animated animate__fadeOutUp'
-                }
-            })
-        }
-
-
-
-    </script>
 @endpush
-</div>
-{{--
- @if($loop->index != 9999)
-                        @php
-                            $tt = $loop->index
-                        @endphp
-                        <x-cardjob :job=$job :index=$tt/>
-                        @endif
 
-
-
-
-
-
---}}

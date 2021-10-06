@@ -1,10 +1,10 @@
 <div>
-    <footer class="mb-5 bg-gradient-to-r from-green-100 via-green-200 to-green-500 mt-10">
+    <footer class="mb-5">
         <div class="bg-cover bg-center">
-            <div >
-                <div class="container mx-auto px-6 lg:px-20 py-12">
+            <div class="cabecera" >
+                <div class="container mx-auto px-6 lg:px-20 py-12 ">
                     <div class="lg:flex">
-                        <div class="w-full lg:w-2/3">
+                        <div class="w-full lg:w-2/3 ">
                             <div class="lg:flex">
                                 <div class="w-full mb-12 lg:mb-0 lg:w-1/2">
                                     <h2 class="font-bold text-xl mb-4">Wi-Empleo</h2>
@@ -61,9 +61,9 @@
                 </div>
             </div>
             <!-- Footer bottom -->
-            <div class="bg-green-800">
+            <div class="bg-pink-400">
                 <div class="container mx-auto px-6 lg:px-20 py-6">
-                    <div class="flex justify-center text-gray-300 mb-1">
+                    <div class="flex justify-center text-white mb-1">
                         © 2021  <span class="font-bold">Wi-Empleo</span> 
                     </div>
                 </div>

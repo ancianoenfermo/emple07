@@ -177,7 +177,6 @@ class FilterJobs extends Component
 
     public function clickBuscar($texto) {
 
-
         if ($this->selectedLocalidad != "todas") {
             $this->emitTo('jobs','filtersEmit',null,null,$this->selectedLocalidad,$this->selectedTipoTrabajo,$texto);
             return;

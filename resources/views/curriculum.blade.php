@@ -1,11 +1,12 @@
 <x-app-layout>
-    <div class="bg-gradient-to-r from-green-100 via-green-200 to-green-500 mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-10">
+    <div class="cabecera">
         <div class="grid grid-cols-2">
             <div class=flex-1>
                 <h1 class="pb-6  text-3xl md:text-4xl lg:text-6xl font-extrabold text-black tracking-wider leading-loose ">
                     El curriculum vitae
                 </h1>
                 <p class="nivelp text-2xl italic leading-relaxed ">Es un resumen del conjunto de estudios, méritos, cargos, premios, experiencia laboral que ha desarrollado u obtenido una persona a lo largo de su vida laboral o académica.</p>
+                <x-ctaofertas/>
             </div>
             <div class="items-center ml-10">
                 <div class="bg-gray-100 border-2 rounded-lg shadow-lg ">

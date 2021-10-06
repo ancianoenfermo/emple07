@@ -1,13 +1,14 @@
 <x-app-layout>
-    <div class="bg-gradient-to-r from-green-100 via-green-200 to-green-500 mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-10">
+    <div class="cabecera">
         <div class="grid grid-cols-2">
             <div>
-                <h1 class="pb-6  text-3xl md:text-4xl lg:text-6xl font-extrabold text-black tracking-wider leading-loose ">
+                <h1 class="pb-6  tituloH1">
                     La entrevista de trabajo
                 </h1>
                 <p class="nivelp text-2xl italic leading-relaxed ">La entrevista de trabajo es la fase del proceso de selección donde el entrevistador analiza a fondo el candidato para comprobar su idoneidad para el puesto ofertado. El aspirante debe aprovechar la oportunidad para destacar que es el más cualificado para el empleo.</p>
-
+                <x-ctaofertas/>
             </div>
+
             <div class="items-center ml-10">
                 <div class="bg-gray-100 border-2 rounded-lg shadow-lg ">
 
@@ -16,24 +17,20 @@
                 </div>
 
             </div>
-
-
         </div>
+
+
+
     </div>
 
-
-
-
-
-<div class="container mx-auto text-xl leading-normal text-justify px-10 bg-white ">
-
-
-    <div class="pt-10">
-            <a class="text-2xl px-4 py-2 items-center font-semibold rounded-full bg-green-900 text-white" href="https://www.todofp.es/" target="_blank"><span class=" font-extrabold text-green-100">
+    <div class="container mx-auto text-xl leading-normal text-justify px-10 bg-white ">
+        <div class="text-right mt-4">
+            <a class="text-xs px-4 py-2 items-center font-semibold rounded-full bg-green-900 text-white" href="https://www.todofp.es/" target="_blank"><span class=" font-extrabold text-green-100">
                 <i class="fas fa-pen"></i>
                 Fuente: </span>TodoFP
             </a>
-    </div>
+        </div>
+
 
     <p class="nivelp pt-10">La entrevista es la técnica más utilizada en los procesos de selección de personal. Ante un puesto de trabajo vacante o de nueva creación, se establece el perfil del candidato y, posteriormente, a través de la entrevista, se elige a uno de los candidatos para cubrir el puesto determinado.<p>
 

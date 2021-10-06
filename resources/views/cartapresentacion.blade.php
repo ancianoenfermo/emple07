@@ -1,11 +1,12 @@
 <x-app-layout>
-    <div class="bg-gradient-to-r from-green-100 via-green-200 to-green-500 mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-10">
+    <div class="cabecera">
         <div class="grid grid-cols-2">
             <div class=flex-1>
                 <h1 class="pb-6  text-3xl md:text-4xl lg:text-6xl font-extrabold text-black tracking-wider leading-loose ">
                     La carta de presentación
                 </h1>
                 <p class="nivelp text-2xl italic leading-relaxed ">Es la carta que acompaña al CV y pretende atraer la atención del responsable de selección </p>
+                <x-ctaofertas/>
             </div>
             <div class="items-center ml-10">
                 <div class="bg-gray-100 border-2 rounded-lg shadow-lg ">

@@ -1,8 +1,11 @@
 <div>
     <div class="pl-28 sm:block  lg:flex lg:justify-around">
-        <div id="filtros" class="rounded-lg bg-gray-50 border-2 border-green-200 bg-opacity-50 shadow-xl flex"
-            style="pointer-events: none;opacity: 0.5;background: #CCC;"
-        >
+
+
+        <div class="rounded-lg bg-gray-50 border-2 border-green-200 bg-opacity-50 shadow-xl flex"
+        id="filtros" style="background-color:rgb(59, 20, 235) pointer-events: none;opacity: 0.5;background: #CCC; ">
+
+
             <div >
                 <div class="flex space-x-6">
                     {{-- Tipos de Trabajo --}}
@@ -88,8 +91,11 @@
 
                 <div class="flex  bg-gray-50 ml-10" >
                     <button class="bg-green-500 hover:bg-green-700 text-white  font-bold py-2 px-4 rounded focus:outline-none"
+                  onclick="clickFiltersBuscar()"
                     wire:click="clickBuscar(GetTextBusqueda())"
-                    onclick="GetSelectedText()">
+
+                    {{--onclick="getDisplayCabecerah1()"--}}
+                    {{--onclick="GetSelectedText()"--}}>
                         Buscar
                       </button>
 

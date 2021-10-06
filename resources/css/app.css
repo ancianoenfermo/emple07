@@ -5,19 +5,28 @@
 
 
 .nivelp {
-    @apply indent-lg pb-2;
+    @apply indent-lg pb-4 text-2xl tracking-wide leading-normal text-justify ;
 }
 .nivel2 {
-    @apply text-3xl font-bold pt-4 pb-3;
+    @apply text-3xl font-bold pt-4 pb-3 text-pink-600 ;
 }
 .nivel3 {
-    @apply text-2xl font-bold pb-3 pt-4;
+    @apply text-2xl font-bold pb-3 pt-4 text-pink-400;
 }
 .nivel4 {
     @apply text-xl font-semibold pb-3 pt-4 pl-6;
 }
 
 .linivel {
-    @apply text-xl pb-2
+    @apply tracking-wide text-2xl tracking-wide leading-normal text-justify pb-2;
 
+}
+.ulnivel {
+    @apply pb-4;
+}
+.tituloH1 {
+    @apply text-5xl text-center font-bold tracking-wider leading-loose;
+}
+.cabecera {
+    @apply bg-gradient-to-b from-pink-50 via-pink-50 to-pink-200 mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-10;
 }

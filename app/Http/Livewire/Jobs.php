@@ -44,6 +44,8 @@ class Jobs extends Component
         if($this->readyToLoad) {
             $this->contadorRender +=1;
             $pp = $this->contadorRender;
+            //$this->emit('filtrosOff',"nada");
+
             switch ($this->tipoTrabajo) {
                 case 'Todos los trabajos':
                     $ofertas = $this->buscaRegistros("jobs_todos");
@@ -146,6 +148,30 @@ class Jobs extends Component
         return $resultado;
     }
 
+    public function dameTextoH1() {
+        $lugar = "";
+        $en = "";
+        $tipo = "";
+
+        if ($this->tipoTrabajo != "Todos los trabajos") {
+            $tipo = " con " + $this->tipoTrabajo;
+            $tipo = strtolower($tipo);
+        }
+
+        if ($this->localidad != "Todas las Localidades") {
+            $lugar = $this->localidad;
+            $en = " en ";
+        } else if ($this->provincia != 'Todas las Provincias') {
+            $lugar = $this->provincia;
+            $en = " en ";
+        }   else if ($this->autonomia != 'Todas las Autonomias') {
+            $lugar = $this->autonomia;
+            $en = " en ";
+        }
+        $textoh1 = "Esto es una prueba";
+        //$textoh1 = "Ofertas de XXXXX trabajo " + strval($tipo) + strval($en) + strval($lugar) ;
+        return $textoh1;
+    }
 
 }
 
