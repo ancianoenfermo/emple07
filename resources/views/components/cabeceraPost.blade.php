@@ -5,7 +5,7 @@
             <h1 itemprop="name" class="pb-3 tituloH1 ">
                 {{$slot}}
             </h1>
-            <p itemprop="description" class="text-xl italic leading-relaxed text-justify ">
+            <p itemprop="description" class="h2parrafo">
                 {{$descripcion}}
              </p>
         </div>

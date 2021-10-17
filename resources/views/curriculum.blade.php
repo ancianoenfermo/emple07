@@ -1,108 +1,134 @@
 <x-app-layout>
-    <div class="cabecera">
-        <div class="grid grid-cols-2">
-            <div class=flex-1>
-                <h1 class="pb-6  text-3xl md:text-4xl lg:text-6xl font-extrabold text-black tracking-wider leading-loose ">
-                    El curriculum vitae
-                </h1>
-                <p class="nivelp text-2xl italic leading-relaxed ">Es un resumen del conjunto de estudios, méritos, cargos, premios, experiencia laboral que ha desarrollado u obtenido una persona a lo largo de su vida laboral o académica.</p>
-                <x-ctaofertas/>
-            </div>
-            <div class="items-center ml-10">
-                <div class="bg-gray-100 border-2 rounded-lg shadow-lg ">
+    <x-cabeceraPost video="fYnxHNseQso">
+        El curriculum vitae
+        <x-slot name="descripcion">
+            Es un resumen del conjunto de estudios, méritos, cargos, premios, experiencia laboral que ha desarrollado u obtenido una persona a lo largo de su vida laboral o académica.
+        </x-slot>
+    </x-cabeceraPost>
 
-                        <div class="youtube-player max-w-7xl " data-id="fYnxHNseQso"></div>
+
+    <article class="container mx-auto text-xl leading-normal text-justify px-32 bg-pink-50 ">
+
+        <p class="h2parrafo pt-10">El curriculum vitae es tu tarjeta de presentación para instituciones o empresas y contiene un resumen de tus experiencias laborales y formativas, así como de tus habilidades profesionales. Con el curriculum vitae pretendes acceder a un proceso de selección demostrando la idoneidad de tu candidatura a un puesto de trabajo concreto.</p>
+        <p class="h2parrafo">No debemos mandar el mismo curriculum a todas partes. Es mucho mejor adaptarlo según la oferta y la empresa a la que lo mandas. Aunque existen varios tipos de curriculum, básicamente los podemos resumir en cuatro: cronológico, funcional, mixto y europeo </p>
+        <x-posth2>
+            ¿Qué debe contener mi curriculum?
+        </x-posth2>
+
+        <p class="h2parrafo">Aunque existen distintos tipos de curriculum hay una información básica que debe contener cualquier curriculum:</p>
+
+        <ul class="list-decimal h2ul">
+            <li class="h2li">Datos personales.</li>
+            <p class="h2liparrafo">Aquí incluimos toda la información de interés para que la empresa te identifique. Los datos que debes incluir son:</p>
+            <ul class="h2ul2 list-disc list-inside ">
+                <li class="h2li2">Nombre y apellidos.</li>
+                <li class="h2li2">Fecha de nacimiento.</li>
+                <li class="h2li2">Domicilio:</li>
+                <li class="h2li2">Datos de contacto como teléfono y/o correo electrónico.</li>
+                <li class="h2li2">Si tienes, enlaces a tus redes sociales profesionales, página web, blog, etc.</li>
+
+            </ul>
+
+            <li class="h2li">Formación.</li>
+            <p class="h2liparrafo">Este apartado lo subdividiremos en estudios oficiales, formación complementaria y formación en idiomas e informática.</p>
+            <li class="h2li">Experiencia laboral.</li>
+            <p class="h2liparrafo">Consta de los trabajos, prácticas y colaboraciones que hayas realizado. Incluye el puesto que has ocupado con sus funciones, la fecha de inicio y fin y el nombre de la empresa. Usa un orden cronológico inverso.</p>
+            <li class="h2li">Otros datos</li>
+            <p class="h2liparrafo">En este apartado incluye toda aquella información que pueda aportar un valor añadido a tu curriculum como: permisos de conducir, disponibilidad, aficiones, movilidad, experiencia en el extranjero etc.</p>
+
+        </ul>
+        <x-posth2>
+            ¿Cómo redactar un buen curriculum?
+        </x-posth2>
+        <p class="h2parrafo">El curriculum es la herramienta que posees para que te conozcan en la empresa a la que te diriges. Los encargados de llevar a cabo la selección de personal en las empresas suelen fijarse en curriculums atractivos, por lo que es importante que pienses que formato y diseño encaja mejor con los objetivos y valores de la empresa a la que te diriges.</p>
+        <x-posth3>
+            Consejos para crear un buen currículum
+        </x-posth3>
+
+        <ul class="h3ul list-decimal ">
+            <li class="h3li">Sé breve.</li>
+            <p class="h3liparrafo">Preferiblemente y siempre que sea posible una página y como máximo dos. </p>
+            <li class="h3li">Adáptalo a las empresas.</li>
+            <p class="h3liparrafo">No envíes el mismo curriculum a todas las ofertas de trabajo. Debes modificarlo para adaptarlo a cada candidatura a la que te presente, destacando todo aquello que te hacen idóneo para ocupar el puesto de trabajo al que optas.</p>
+            <li class="h3li">Cuida los aspectos formales del currículum.</li>
+            <p class="h3liparrafo">El curriculum tiene que estar bien estructurado y tener una buena presentación. Si incluyes fotografía, que sea actual y de buena calidad, elige un tipo de letra formal y legible. </p>
+            <li class="h3li">Usa aplicaciones y plantillas que te permitan crear un CV atractivo.</li>
+            <p class="h3liparrafo">Existen multitud de herramientas online gratuitas que te ayudan a crear tu curriculum.</p>
+            <li class="h3li">Sé sincero.</li>
+            <p class="h3liparrafo">Ten en cuenta que en la entrevista vas ha tener que defender el curriculum. La información falsa acabará perjudicando tu candidatura.</p>
+            <li class="h3li">Evita detalles innecesarios.</li>
+            <p class="h3liparrafo">Si no tiene relación con el puesto de trabajo no añadas información innecesaria como por ejemplo que has realizado un curso de escalada o de cocina. </p>
+            <li class="h3li">Añade los enlaces a tus blogs o redes profesionales.</li>
+            <p class="h3liparrafo">Los enlaces que añadas darán a la empresa más información sobre ti. </p>
+            <li class="h3li">Pide opinión antes de enviarlo.</li>
+            <p class="h3liparrafo">Muestra tu currículum a otras personas y recaba su primera impresión</p>
+            <li class="h3li">Intenta que tu curricum destaque sobre los demás</li>
+            <div class="mt-5 mx-24 px-5 border-2 shadow-lg ">
+                <div class="flex justify-center items-center" >
+                    <p class="ml-5 py-2">¿Cómo puede mi curriculum destacar sobre los demás</p>
 
                 </div>
-
+                <div class="grid grid-cols-3 p-4" >
+                    <div></div>
+                    <div class="youtube-player max-w-7xl " data-id="kMq-JtjQoHA"></div>
+                    <div></div>
+                </div>
             </div>
 
+        </ul>
+        <x-posth2>
+            Tipo de curriculum
+        </x-posth2>
+
+        <p class="h2parrafo">Aunque existen muchos tipos de curriculums, básicamente pueden resumirse en cuatro:  cronológico, funcional, mixto y europeo. Cada uno hace énfasis en ciertos apartados. Elige el que mejor se adapte a tu situación.</p>
+        <x-posth3>
+            Cronológico
+        </x-posth3>
+
+        <ul class="h3ul list-disc list-inside">
+            <li class="h2li">Es el más usado y también el más fácil de redactar.</li>
+            <li class="h2li">Lo normal es comenzar desde lo más reciente y finalizar con lo más antiguo en cada uno de los apartados.</li>
+            <li class="h2li">Muestra claramente tu trayectoria profesional, visualizando claramente las lagunas y la promoción en tu vida laboral</li>
+            <li class="h2li">Expone los datos de forma clara y ordenada</li>
+            <li class="h2li">Es adecuado si muestra un crecimiento profesional coherente con el puesto de trabajo solicitado. </li>
+            <li class="h2li">No es adecuado para el primer empleo, cuando hayamos cambiado frecuentemente de empresa o si llevamos mucho tiempo fuera del mercado.</li>
+        </ul>
+        <x-posth3>
+            Funcional
+        </x-posth3>
+
+        <ul class="h3ul list-disc list-inside">
+            <li class="h2li">Agrupa la experiencia por tareas, funciones o sectores profesionales.</li>
+            <li class="h2li">Más difícil de redactar, pero visualiza más rápidamente tu carrera profesional.</li>
+            <li class="h2li">Disimula los cambios frecuentes de empresa y las lagunas. Las empresas en las que has trabajado pasan a un segundo plano.</li>
+            <li class="h2li">Recomendado si cuentas con bastante experiencia y útil para destacar puntos fuertes y funciones realizadas que tengan que ver con el puesto ofertado.</li>
+            <li class="h2li">Recomendado para el primer empleo o si has estado mucho tiempo en paro.</li>
+            <li class="h2li">No recomendable cuando se exijan los periodos trabajados.</li>
+        </ul>
+        <x-posth3>
+            Europeo
+        </x-posth3>
+
+        <ul class="h3ul list-disc list-inside">
+            <li class="h2li">También llamado Europass pretende estandarizar el modelo de curriculum de todos los países que forman parte de la Unión Europea. </li>
+            <li class="h2li">Siempre que puedas se recomienda usar este modelo.</li>
+            <li class="h2li">Puedes hacerlo, guardarlo, imprimirlo y enviarlo online.</li>
+        </ul>
+        <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
+            <div class="flex justify-center items-center" >
+                <p class="ml-5 py-4">Realizar curriculum desde la web de Europass</p>
+
+            </div>
+            <div class="grid grid-cols-3 pb-10" >
+                <div ></div>
+                <div class="youtube-player max-w-7xl " data-id="8J3ROdiGphI"></div>
+                <div></div>
+            </div>
         </div>
-    </div>
-    <div class="container mx-auto text-xl leading-normal text-justify px-10 bg-white ">
-        <div class="pt-10">
-            <a class="text-2xl px-4 py-2 items-center font-semibold rounded-full bg-green-900 text-white" href="https://www.todofp.es/" target="_blank"><span class=" font-extrabold text-green-100">
-                <i class="fas fa-pen"></i>
-                Fuente: </span>TodoFP
-            </a>
-        </div>
 
-
-
-        <p class="nivelp pt-10">El curriculum vitae es el instrumento para presentarte a las instituciones o empresas; es tu tarjeta de presentación. Contar con un buen curriculum es imprescindible para solicitar un puesto de trabajo. Debes adaptarlo y actualizarlo según la oferta y la empresa a la que lo mandas y no enviar siempre el mismo a todas partes.</p>
-        <h3 class="nivel3">¿Qué debe contener mi curriculum?</h3>
-        <p class="nivelp">A pesar de existir diversos tipos de curriculum, el documento a elaborar debe contener una información básica para todos. Hay una serie de apartados imprescindibles en cualquier curriculum:</p>
-        <ul class="ml-10 pt-1" >
-            <li class="linivel">Datos personales. En datos personales, se incluye aquella información de interés para la empresa: tu nombre y apellidos, fecha de nacimiento, domicilio, teléfono y correo electrónico.</li>
-            <li class="linivel">Formación. Abarca tres subapartados: los estudios oficiales, la formación complementaria y la formación en informática e idiomas.</li>
-            <li class="linivel">Experiencia laboral. En este apartado, se especifican los trabajos, prácticas o colaboraciones que has realizado. Además, puedes incluir el puesto que has ocupado con sus funciones, las fechas y el nombre de la empresa. Debes empezar por los datos más cercanos al momento en que realizas el curriculum y empezar a hacer la descripción de lo más próximo a lo más lejano en el tiempo.</li>
-            <li class="linivel">Otros datos. La última información que engloba “otros datos” suele incluir los voluntariados, permisos de conducir, tu disponibilidad, aficiones u otros intereses, experiencia en el extranjero, …, es decir, todo aquello que pueda aportar valor añadido a tu propuesta.</li>
-        </ul>
-        <h3 class="nivel3">¿Cómo redactar un buen curriculum?</h3>
-        <p class="nivelp">Es importante redactar un buen curriculum ya que es la herramienta que posees para que te conozcan y posteriormente, tendrás que defenderlo durante la entrevista.</p>
-        <ul class="ml-10 pt-1" >
-            <li class="linivel">Prepara un borrador con toda la información que quieras incluir.</li>
-            <li class="linivel">Escríbelo a ordenador, a no ser que se especifique lo contrario.</li>
-            <li class="linivel">Utiliza márgenes y espacios entre los distintos contenidos para facilitar la lectura y comprensión.</li>
-            <li class="linivel">Emplea un vocabulario claro y preciso.</li>
-            <li class="linivel">La extensión no debe ser más de dos páginas (todos los documentos justificativos debes adjuntarlos en un dossier independiente si así se solicitara en la demanda de empleo).</li>
-            <li class="linivel">Selecciona la información relevante. No incluyas alguna formación o experiencia que no te vaya a favorecer en relación al puesto.</li>
-            <li class="linivel">Si adjuntas una foto, procura que sea de calidad y actual.</li>
-        </ul>
-        <h3 class="nivel3">Tipos de Curriculum</h3>
-        <p class="nivelp">Existen varios tipos de curriculum, aunque básicamente pueden resumirse en: cronológico, funcional, mixto y europeo. Tienes que tener en cuenta que en cada caso deberás elegir el más conveniente para el puesto al que optas y que cada uno destaca unas cosas frente a otras, por lo que debes utilizar el que mejor pone en relieve lo que tienes.</p>
-        <h4 class="nivel4">Cronológico</h4>
-        <ul class="ml-10 pt-1" >
-            <li class="linivel">Es el más común y más fácil de redactar.</li>
-            <li class="linivel">Los apartados se estructuran siempre cronológicamente empezando por lo más reciente en el tiempo, aunque también se puede hacer de forma inversa.</li>
-            <li class="linivel">Expone claramente la trayectoria profesional. En algunos casos, quedará a la vista las lagunas y en otros, la promoción, el aumento de tareas o la progresión en la escala profesional.</li>
-            <li class="linivel">Se caracteriza por exponer los datos de forma clara y ordenada.</li>
-            <li class="linivel">Este modelo es adecuado en situaciones si se resalta el crecimiento en la profesión, si permite leer un recorrido profesional coherente con la oferta o si se ha trabajado en otras empresas anteriormente.</li>
-            <li class="linivel">Este modelo no es adecuado si se ha cambiado muchas veces de empresa o no se ha cambiado nunca, en el primer empleo y si llevamos mucho tiempo fuera del mercado, o el historial no es coherente con la oferta.</li>
-        </ul>
-        <h4 class="nivel4">Funcional</h4>
-        <ul class="ml-10 pt-1" >
-             <li class="linivel">Presenta la experiencia agrupada por funciones, tareas o sectores profesionales.</li>
-             <li class="linivel">Es más difícil de redactar pero pone de manifiesto,de una manera más rápida, tu itinerario profesional.</li>
-             <li class="linivel">Las empresas en las que se ha acumulado experiencia pasan a un segundo plano, pero disimula las lagunas y los cambios frecuentes de empresa.</li>
-             <li class="linivel">Se recomienda utilizar este modelo cuando se cuenta con bastante experiencia.</li>
-             <li class="linivel">Este modelo es útil para destacar las funciones realizadas en relación con la oferta y destacar puntos fuertes.</li>
-             <li class="linivel">Es aconsejable si se tiene una o varias profesiones, si hay cambios de profesión, si se accede al primer empleo, o si se ha estado mucho tiempo en paro.</li>
-             <li class="linivel">No es conveniente cuando la función expuesta en la oferta no se acredite por el currículum, ni cuando se exijan los periodos trabajados</li>
-        </ul>
-        <h4 class="nivel4">Europeo</h4>
-        <ul class="ml-10 pt-1" >
-            <li class="linivel">Curriculum Vitae Europass, se abre en ventana nueva pone a disposición de los ciudadanos un modelo común para presentar de modo sistemático, cronológico y flexible sus capacidades, competencias, titulaciones y certificaciones.</li>
-            <li class="linivel">Se recomienda, siempre que puedas, seguir este modelo, ya que es el que se está extendiendo por toda Europa.</li>
-            <li class="linivel">Puedes hacerlo por Internet, imprimirlo, guardarlo o enviarlo online. Accede a este modelo de curriculo en el apartado correspondiente de este portal.</li>
-            <li class="linivel">Tiene la ventaja de que, desde el principio, la persona que recibe tu curriculum sabe que estás al día y conoces cuáles son los documentos más extendidos en la Unión Europea.</li>
-            <li class="linivel">El currículum europeo ordena la información siguiendo la plantilla consensuada por los países de la Unión Europea.</li>
-            <li class="linivel">Está diseñado para buscar trabajo en la Unión Europea.</li>
-            <li class="linivel">El modelo presenta las competencias y cualificaciones de una manera normalizada para los países de la Unión Europea.</li>
-        </ul>
-        <h3 class="nivel3">¿Qué tipo de currículum me conviene?</h3>
-        <p class="nivelp">Cada tipo de currículum resalta diferentes aspectos de los estudios o experiencia del candidato. Por ello, te convendrá más uno u otro, dependiendo de tu caso concreto.</p>
-        <ul class="ml-10 pt-1" >
-            <li class="linivel">Si eres recién titulado o sin experiencia debes demostrar y acreditar tu potencial, tus capacidades y tu valor por encima de la experiencia. Por ello es especialmente importante trabajar la sección de habilidades, conocimientos, los logros conseguidos en los estudios, los viajes, idiomas… Para ello, el currículum que más te convendrá será posiblemente el funcional o temático.</li>
-            <li class="linivel">Si eres un profesional con experiencia destacada y llevas ya tiempo trabajando y has experimentado una progresión en tu carrera profesional, te interesará destacarlo. Para ello, lo mejor será que te decantes por una solución cronológica, o bien por uno combinado (funcional-cronológico), ya que este último destaca los objetivos y los logros conseguidos, las habilidades y la promoción y el desarrollo de la carrera profesional.</li>
-        </ul>
-{{--Presentación--}}
-<div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
-    <div class="flex justify-center items-center" >
-        <p class="ml-5 py-4">Realizar curricullum desde la web de Europass</p>
-
-    </div>
-    <div class="grid grid-cols-3" >
-        <div ></div>
-        <div class="youtube-player max-w-7xl " data-id="8J3ROdiGphI"></div>
-        <div></div>
-    </div>
-
-
-</div>
-
-
-    </div>
+    </article>
+    <x-separadorFooter/>
+    <x-footer/>
 
     @push('js')
     <script>
@@ -151,6 +177,5 @@
         document.addEventListener('DOMContentLoaded', initYouTubeVideos);
       </script>
     @endpush
-</div>
-<x-footer/>
+
 </x-app-layout>

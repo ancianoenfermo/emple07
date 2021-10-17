@@ -2,64 +2,82 @@
     <x-cabeceraPost video="YHgGcafQeio">
         ¿Dónde buscar trabajo?
         <x-slot name="descripcion">
-            Durante la búsqueda de empleo, tu objetivo es ponerte en contacto con las empresas y convencerlas de tu idoneidad para el puesto de trabajo.
+            Buscar trabajo de manera efectiva es mucho más que redactar un currículum y enviarlo a todo tipo de ofertas laborales.
         </x-slot>
     </x-cabeceraPost>
-    <div class="container mx-auto text-2xl leading-normal text-justify px-20 bg-white ">
+    <article class="container mx-auto text-2xl leading-normal text-justify px-32 bg-pink-50 ">
+        <div class="pt-6">
+            <x-posth2>
+                Pasos a seguir para encontrar trabajo
+            </x-posth2>
+        </div>
 
-        <p class="nivelp pt-10">
-            Debes tener en cuenta que las empresas cubren la mayoría de sus vacantes a través del boca a boca y de autocandidaturas, y que sólo recurren a intermediarios o a anuncios cuando no encuentran a la persona adecuada a través de los otros canales. Por esto es importante que trabajes a fondo tu red de contactos (networking).
-        </p>
-        <p class="nivelp">
-            Las ofertas públicas (en periódicos, sitios web, agencias de colocación, etc.) reciben un gran número de respuestas, por lo que la competencia entre los candidatos es mayor.
-        </p>
-        <h2 class="nivel2 text-pink-600">Canales para buscar trabajo</h2>
-        <h3 class="nivel3 text-pink-400">Autocandidatura</h3>
-        <p class="nivelp">Esta técnica consiste en presentarte, personalmente, por teléfono, o enviando un currículum vitae y carta de presentación, a la empresa que te interese sin responder a ninguna oferta previa. La ventaja es que tu escoges el momento y evitas la competencia en el proceso de selección.</p>
-        <p class="nivelp">Si optas por este canal, es importante que te informes bien sobre la empresa y su actividad económica; que diseñes un currículum adaptado al perfil de la empresa, una buena carta de presentación y te prepares adecuadamente para la entrevista.</p>
-        <p class="nivelp">El primer paso para que la autocandidatura sea un éxito es captar la atención de la persona a la que te dirijas, destacando lo que más te interesa de la empresa o de su producto. A continuación, preséntate como la persona con la formación o la experiencia que necesita la empresa.</p>
-        <p class="nivelp">Si te convocan para una entrevista personal es aconsejable llevar contigo el currículum y la carta de presentación, y si es necesario, una serie de documentos denominados portafolio personal, que incluya títulos, certificados, cartas de recomendación, etc.</p>
-        <p class="nivelp">Trabaja también tu marca personal, ya que si le interesas a la empresa, aparte de la información que aportes sobre ti, se informarán en Internet y las redes sociales y todo lo que encuentren puede ir a tu favor o en tu contra.</p>
-
-        <h3 class="nivel3">Red de contactos</h3>
-        <p class="nivelp">La mayoría de empresas encuentran a sus nuevos empleados entre sus redes de contactos. Muchos puestos vacantes no se anuncian y por consiguiente, el mercado de trabajo invisible es bastante grande. Existen redes sociales específicas sobre empleo que te pueden ayudar a aumentar tu red de contactos.</p>
-        <p class="nivelp">Además de estar en Internet, pregunta a familiares y amigos; habla con ellos sobre tu intención de buscar trabajo y pregúntales si en su entorno de trabajo están buscando a alguien con un perfil similar al tuyo. Las empresas suelen apreciar el hecho de oír que existe un candidato adecuado (es decir, tú) de boca de una persona que te conozca y te recomiende.</p>
-        <p class="nivelp">Uno de los instrumentos que te puede resultar muy útil es tener una agenda que incluya aquellos contactos que puedan ofrecerte información sobre oportunidades profesionales. Este es un trabajo sistemático que es necesario realizar meticulosamente y que se va ampliando a lo largo de nuestro desarrollo profesional. El objetivo de esta agenda ha de ser el de conservar y actualizar posibles contactos de trabajo. Los datos básicos que deben incluirse son: nombre, entidades y/o empresas, teléfonos, correo electrónico, dirección postal, cargo dentro de la organización.</p>
-        <p class="nivelp">Conseguir una red de contactos puede parecernos misión imposible, sobre todo si tenemos que empezar de cero, pero como veremos a continuación todos podemos hacer Networking.</p>
-        <ul class="ml-10 pt-1 ulnivel" >
-            <li class="linivel">Ten claro el objetivo. Es vital que antes de  comenzar a hacer Networking tengamos claro para qué vamos a utilizarlo. Las opciones son diversas, puede ser buscar un trabajo; encontrar un puesto mejor; tener más clientes; dar un giro a nuestra profesión o simplemente disponer de un mayor número de contactos  profesionales con quienes compartir la experiencia.</li>
-            <li class="linivel">Los mejores contactos. Cuando hacemos Networking nuestro objetivo no tiene que ser aglutinar muchos contactos, más bien conseguir contactos que sean útiles.</li>
-            <li class="linivel">Cómo contactar. Quizás este es el punto más complicado, una vez que tengas claro quiénes son esas personas de interés tienes que localizarlas. Aprovecha la oportunidad que te ofrecen las redes sociales. También puedes contactar con ellos vía mail o en persona. Eventos como foros o convenciones pueden ser tu oportunidad.</li>
-            <li class="linivel">Conocidos. No pases por alto a personas que ya conoces o que son conocidos de tus amigos, pueden ser una opción muy interesante para vincularte a un sector profesional. Y si son contactos que has creado durante tu formación te podrán ser de especial utilidad ya que forman parte del mismo sector profesional al que estás orientado.</li>
-            <li class="linivel">Linkedln. Un punto y aparte merece sin duda esta red social. Piensa que es una magnífica posibilidad para ampliar tus contactos. Conocerás a los contactos de tus contactos y a su vez a los contactos que estos tengan. Aunque suene un poco a trabalenguas las opciones son infinitas.</li>
-            <li class="linivel">Lleva un registro. Tener muchos contactos si no mantenemos un cierto orden y organización de poco servirá.  Mantén un registro de ellos y actualízalo de forma habitual.</li>
-            <li class="linivel">Un beneficio en dos direcciones. Algo que no puedes olvidar es que al posible contacto que quieres incorporar a tu red debes ofrecerle algo de interés. Puedes ayudarle en alguna tarea, participar en sus proyectos o negocios o permitirle acceder a los que ya son tus contactos.</li>
-            <li class="linivel">No te olvides de ellos. Mantén una comunicación regular con los contactos, cualquier método puede ser de utilidad, pero lo importante es que no te limites a añadirlos a tu lista, conserva vivo el interés.</li>
-
+        <p class="h2parrafo">Si estás buscando empleo, es recomendable seguir una serie de pasos que te ayudarán a encontrar un trabajo acorde a tus necesidades e intereses.</p>
+        <ol class="list-decimal h2ul">
+            <li class="h2li">Localización de la oferta que te interesa a través de los canales de búsqueda de empleo.</li>
+                <p class="h2liparrafo">Por lo general las empresas contratan personal a través autocandidaturas y del boca a boca. Solo cuando no encuentran a la persona adecuada recurren a otros canales de búsqueda de empleo como las agencias de colocación o los anuncios.</p>
+            <li class="h2li">Preséntate a la empresa.</li>
+                <p class="h2liparrafo">Lo más habitual es que el primer contacto con la empresa sea el envío del curriculum. Es importante que trabajes la redacción y estilo del CV, destacando aquellos elementos que encajen con el perfil de la empresa.</p>
+                <p class="h2liparrafo">Puedes ayudarte redactando y adjuntando al CV una carta de presentación en la que manifiestes el interés por la empresa y tu idoneidad para el puesto que solicitas.</p>
+                <p class="h2liparrafo">Puedes también entregar el CV en la propia empresa o realizar una llamada al departamento de recursos humanos en la que muestres tu interés y te faciliten un correo electrónico para enviar el curriculum.</p>
+            <li class="h2li">El proceso de selección</li>
+                <p class="h2liparrafo">Sin lugar a duda la entrevista es el proceso de selección más importante y todo cuenta respuestas, comunicación no verbal, vestimenta etc. Es importante que la prepares a fondo imaginándote las preguntas que te pueden hacer.</p>
+        </ol>
+        <x-posth2>
+            Canales para buscar trabajo
+        </x-posth2>
+        <p class="h2parrafo">Como ya hemos mencionado la mayor parte de empresas recuren al boca a boca y la autocandidatura para cubrir sus necesidades de personal.</p>
+        <p class="h2parrafo">Ten en cuenta que las ofertas públicas (en sitios web, agencias de colocación, periódicos etc.) tendrán una competencia entre candidatos mayor.</p>
+        <p class="h2parrafo">Existen varios canales en los que puedes localizar la oferta que te interese. Es importante que los conozcas y sepas utilizarlos eficazmente para diferenciarte de aquellos que como tu buscan trabajo. Ten presente los siguientes aspectos:</p>
+        <ul class="list-disc list-inside h2ul" >
+            <li class="h2li">Conoce todos los canales para conseguir empleo. </li>
+            <li class="h2li">Intenta utilizar todos ellos priorizando los más adecuados a nuestro perfil profesional.</li>
         </ul>
+        <p class="h2parrafo">Los principales canales para la búsqueda de trabajo son: la autocandidatura, la red de contactos, las agencias de colocación, las bolsas de trabajo online y los anuncios.</p>
+        <x-posth3>
+            Autocandidatura
+        </x-posth3>
+        <p class="h3parrafo">Identifica las empresas que te interese y envía el curriculum y la carta de presentación. También puedes dejarlo personalmente en la empresa o contactar telefónicamente con el departamento de recursos humanos.</p>
+        <p class="h3parrafo">Debes diseñar una buena carta de presentación y un curriculum adaptado al perfil de la empresa, para lo que deberás informarte bien sobre la empresa y su actividad económica. No olvides que te pueden convocar para una entrevista por lo que deberás prepararla y entrenarla.</p>
+        <p class="h3parrafo">En la carta de presentación intenta captar la atención de la persona a la que te dirijas presentándote como la persona con la experiencia o formación que la empresa necesita y destacando aquello que más te interesa de la empresa.</p>
+        <p class="h3parrafo">Si te llaman para una entrevista llévate la carta de presentación, el curriculum y todos aquellos documentos que acrediten tu formación y experiencia, así como cartas de recomendación.</p>
+        <p class="h3parrafo">Si le interesas a la empresa se informarán sobre ti en las redes sociales e internet y lo que encuentren puede afectar positivamente o negativamente a tu candidatura.  Es por ello que deberás trabajar tu marca personal.</p>
+        <x-posth3>
+            Red de contactos
+        </x-posth3>
+        <p class="h3parrafo">Muchas empresas recurren a su red de contactos para la contratación de personal nuevo. Supone un volumen bastante alto de ofertas de trabajo que no se anuncian y por lo tanto son invisibles en las ofertas públicas de empleo.</p>
+        <p class="h3parrafo">Las empresas valoran el hecho de oír de personas cercanas que conocen y recomiendan a un candidato adecuado para el puesto de trabajo vacante que están buscando. (ese candidato puedes ser tú)</p>
+        <p class="h3parrafo">Además de trabajar tu marca personal habla con familiares y amigos sobre tu proceso de búsqueda de empleo. Enterante si en su entorno conocen a alguien que es este buscando un perfil similar al tuyo.</p>
+        <p class="h3parrafo">Te puede resultar muy útil tener una agenda en la que vayas incorporando a todas aquellas personas que en un futuro te puedan informar sobre oportunidades profesionales. Deberás irla actualizando a lo largo de tu carrera profesional. </p>
 
-
-
-        <h3 class="nivel3">Agencias de colocación</h3>
-        <p class="nivelp">Las agencias de colocación, públicas o privadas, dan a conocer las ofertas de empleo que reciben de las empresas, recogen los CV de personas que buscan empleo y los envían a las empresas que puedan estar interesadas. También guardan la información en su base de datos hasta que surja alguna vacante.</p>
-        <p class="nivelp">Pueden ayudarte con la redacción de tu CV, la preparación de entrevistas, etc.</p>
-        <p class="nivelp">Puedes inscribirte en cualquier momento, incluso si en ese momento no disponen de ninguna oferta de empleo que concuerde con tu perfil.</p>
-        <p class="nivelp">Algunas agencias contratan directamente al personal que luego envían a trabajar a las empresas, es lo que se llama empresas de trabajo temporal.</p>
-        <p class="nivelp">De manera similar a las agencias de colocación, las oficinas de empleo y servicios públicos recogen ofertas de las empresas y envían el CV de los interesados en los anuncios y de las personas que tienen en su base de datos. En los centros de empleo también pueden ofrecer servicios de orientación, información y asesoramiento.</p>
-        <p class="nivelp">No obstante, ten en cuenta que en las oficinas de empleo existen muchas menos oportunidades, ya que la mayoría de las empresas acuden en primer lugar a agencias o a bolsas de trabajo on-line.</p>
-
-        <h3 class="nivel3">Anuncios</h3>
-        <p class="nivelp">Las principales fuentes de anuncios de trabajo son:</p>
-        <ul class="ml-10 pt-1 ulnivel" >
-            <li class="linivel">Prensa: periódicos y revistas</li>
-            <li class="linivel">Páginas web de empleo y herramientas de búsqueda de empleo online</li>
-            <li class="linivel">Páginas web de asociaciones profesionales</li>
-            <li class="linivel">Páginas web de empresas</li>
+        <x-posth3>
+            Agencias de colocación
+        </x-posth3>
+        <p class="h3parrafo">La agencia de colocación, publica o privada, además de publicitar las ofertas de empleo que reciben de las empresas, recogen los curriculum de personas que están en proceso de búsqueda de empleo y los guardan en sus bases de datos enviándoselos a aquellas empresas estén interesadas en perfiles como el tuyo. </p>
+        <p class="h3parrafo">Además, te ayudan en la elaboración de la carta de presentación y el curriculum y preparan contigo la posible entrevista de trabajo.</p>
+        <x-posth3>
+            Empresas de Trabajo Temporal (ETT)
+        </x-posth3>
+        <p class="h3parrafo">Las Empresas de Trabajo Temporal contratan trabajadores para cederlos de forma temporal a empresas con necesidades temporales de personal. Sobre un 30% de estas personas cedidas acaban siendo contratadas por la empresa cliente.</p>
+        <p class="h3parrafo">Entrega el curriculum en la oficina de la ETT más cercana o súbelo a su página Web. Se podrán en contacto contigo cuando un cliente les solicite un candidato con un perfil similar a tuyo.</p>
+        <x-posth3>
+            Anuncios
+        </x-posth3>
+        <p class="h3parrafo">Es el canal en el que mayor competencia con otros candidatos vas a tener.</p>
+        <P class="h3parrafo">Las principales fuentes de anuncios de trabajo son:</P>
+        <ul class="list-disc list-inside h3ul" >
+            <li class="h3li">Páginas web de empleo y herramientas de búsqueda de empleo online</li>
+            <li class="h3li">Páginas web de asociaciones profesionales</li>
+            <li class="h3li">Páginas web de empresas</li>
+            <li class="h3li">Prensa: periódicos y revistas</li>
         </ul>
-        <p class="nivelp">Ten en cuenta que en un anuncio fiable debe aparecer la descripción del trabajo, el nombre y la dirección del empleador, y el nombre y el número de contacto y/o dirección de la persona responsable (o departamento).</p>
-        <p class="nivelp">Desconfía de los anuncios que ofrecen un salario muy elevado poco trabajo o que ofrecen un puesto excelente y sólo indican un número de teléfono móvil. La mayoría de las ofertas de trabajo fiables no ocultan el contenido real del trabajo. En general, cuanta más información ofrezcan, mejor.</p>
-        <p class="nivelp">Algunas páginas web que anuncian puestos vacantes permiten también publicar tus propios anuncios, de forma gratuita o pagando una pequeña cuota.</p>
-    </div>
+        <p class="h3parrafo">Para que el anuncio sea fiable debe aparecer el nombre de la empresa que contrata, la descripción del trabajo y alguna forma de contacto.</p>
+        <p class="h3parrafo">Son poco fiables los anuncios con salarios muy elevados, poco trabajo y que como contacto solo ofrecen un número de teléfono móvil.</p>
+
+        <x-creditos>
+        www.educaweb.com
+        </x-creditos>
+    </article>
 
     <x-separadorFooter/>
     <x-footer/>

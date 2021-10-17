@@ -1,327 +1,362 @@
 <x-app-layout>
-    <div class="cabecera">
-        <div class="grid grid-cols-2">
-            <div>
-                <h1 class="pb-6  tituloH1">
-                    La entrevista de trabajo
-                </h1>
-                <p class="nivelp text-2xl italic leading-relaxed ">La entrevista de trabajo es la fase del proceso de selección donde el entrevistador analiza a fondo el candidato para comprobar su idoneidad para el puesto ofertado. El aspirante debe aprovechar la oportunidad para destacar que es el más cualificado para el empleo.</p>
-                <x-ctaofertas/>
-            </div>
+    <x-cabeceraPost video="iXs3ANkVft0">
+        La entrevista de trabajo
+        <x-slot name="descripcion">
+            La entrevista es el proceso más importante al que te enfrentarás en la búsqueda de empleo. Todo lo anterior envío de curriculum y carta de presentación tiene por objetivo conseguir que te llamen para una entrevista.
+        </x-slot>
+    </x-cabeceraPost>
 
-            <div class="items-center ml-10">
-                <div class="bg-gray-100 border-2 rounded-lg shadow-lg ">
+    <article class="container mx-auto bg-pink-50 leading-normal text-justify px-32 ">
+        <p class="h2parrafo pt-10">Con la <strong>entrevista de trabajo</strong> se analiza a fondo al candidato que opta a un puesto de trabajo, de nueva creación o vacante. En los procesos de selección de personal es la técnica más utilizada y como aspirantes a un puesto de trabajo debemos aprovechar para destacar que somos los más cualificados. </p>
+        <p class="h2parrafo">En toda entrevista de trabajo hay ciertos aspectos básicos que debes contemplar si quieres que tu entrevista tenga posibilidades de éxito.</p>
+        <p class=" text-black text-lg ">En toda entrevista de trabajo hay ciertos aspectos básicos que debes contemplar si quieres que tu entrevista tenga posibilidades de éxito.</p>
+        <div class="">
+            <div class="grid grid-cols-2 gap-16" >
+                <div>
+                    <p class="h3titulo text-center">Correcto en cualquier entrevista</p>
+                    <hr class="bg-pink-600 h-0.5 mb-4 border-none bg-opacity-25">
+                    <ul class="h2ul list-disc list-inside">
+                        <li class="h2li">Cuidar la indumentaria y la higiene personal.</li>
+                        <li class="h2li">Sé puntual.</li>
+                        <li class="h2li">Tener claro qué puedes ofrecer. Analiza tu proyecto y tus argumentos.</li>
+                        <li class="h2li">Identifica tus puntos fuertes y débilesy no desveles debilidades que te puedan perjudicarte.</li>
+                        <li class="h2li">Infórmate sobre la empresa y el puesto vacante.</li>
+                        <li class="h2li">Preparar preguntas para hacer al entrevistador.</li>
+                        <li class="h2li">Recordar los detalles de tu currículum.</li>
+                        <li class="h2li">Llevar toda la documentación necesaria.</li>
+                    </ul>
+                </div>
 
-                        <div class="youtube-player max-w-7xl " data-id="iXs3ANkVft0"></div>
+                <div class ="">
+                    <p class="h3titulo text-center" >Debes evitar</p>
+                    <hr class="bg-pink-600 h-0.5 mb-4 border-none bg-opacity-25">
+                    <ul class="h2ul list-disc list-inside">
+                        <li class="h2li">Llegar tarde o demasiado pronto.</li>
+                        <li class="h2li">Tener el móvil encendido.</li>
+                        <li class="h2li">Sentarse en el borde de la silla.</li>
+                        <li class="h2li">Llevar la iniciativa: deja que sea el entrevistador el que dirija la entrevista.</li>
+                        <li class="h2li">Mostrar problemas de disponibilidad, movilidad, poca adaptabilidad y rigidez.</li>
+                        <li class="h2li">Dar muestras de agresividad o de poco control..</li>
+                        <li class="h2li">Dar muestras de rigidez o de poca adaptabilidad..</li>
+                        <li class="h2li">Parecer poco responsable..</li>
+                        <li class="h2li">Parecer poco dinámico.</li>
 
+                        <li class="h2li">Parecer que no tienes confianza en ti mismo.</li>
+
+
+
+                    </ul>
                 </div>
 
             </div>
+
+
         </div>
 
 
 
-    </div>
+        <x-posth2>
+            Tipos de entrevista
+        </x-posth2>
 
-    <div class="container mx-auto text-xl leading-normal text-justify px-10 bg-white ">
-        <div class="text-right mt-4">
-            <a class="text-xs px-4 py-2 items-center font-semibold rounded-full bg-green-900 text-white" href="https://www.todofp.es/" target="_blank"><span class=" font-extrabold text-green-100">
-                <i class="fas fa-pen"></i>
-                Fuente: </span>TodoFP
-            </a>
+        <ul class="h2ul2 list-decimal list-inside " >
+            <li class="h2li2">Individual</li>
+            <p class="h2liparrafo">Lo habitual es que la realice un único entrevistador, pero puede haber más de uno. El o los entrevistadores profundizarán en la información plasmada en el curriculum y tus aspectos o cualidades personales. </p>
+            <li class="h2li2">Colectiva</li>
+            <p class="h2liparrafo">Se realiza simultáneamente a un grupo de candidatos. Normalmente se plantea un tema o tarea al grupo y deberás discutirlo con los distintos componentes de tu grupo para llegar a una postura común. Lo que evalúan en este tipo de entrevista es:</p>
+            <ul class="h2ul2 list-disc list-inside">
+                <li class="h2li">Capacidad de trabajo en grupo.</li>
+                <li class="h2li">Iniciativa.</li>
+                <li class="h2li">Seguridad.</li>
+                <li class="h2li">Liderazgo.</li>
+                <li class="h2li">Capacidad de comunicación.</li>
+                <li class="h2li">Actitud de escucha.</li>
+            </ul>
+        </ul>
+        <x-posth2>
+            Prepárate para la entrevista
+        </x-posth2>
+
+        <p class="h2parrafo">Aunque afrontar una entrevista de trabajo suele producir ansiedad y nerviosismo, siempre será una experiencia enriquecedora ya que aporta seguridad para afrontar futuras entrevistas. Antes de ir a una entrevista debes:</p>
+
+        <x-posth3>
+            ¿Sobre que serán las preguntas en la entrevista?
+        </x-posth3>
+        <p class="h3parrafo">El objetivo de la entrevista es evaluar si eres idóneo para el puesto de trabajo, por lo que te harán preguntas sobre tu formación, experiencia laboral y competencias. Es común que profundicen en los aspectos más débiles de tu curriculum. </p>
+        <p class="h3parrafo">No dejes espacio para la improvisación. Antes de asistir a la entrevista intenta reflexionar sobre las preguntas que te pueden hacer y piensa que contestarías. Los ámbitos sobre los que te preguntarán son:</p>
+        <ul class="h3ul list-disc list-inside" >
+            <li class="h3li">Personalidad: anécdotas, valores, motivaciones etc.</li>
+            <li class="h3li">Formación: ¿Por qué te decidiste por tu itinerario formativo?</li>
+            <li class="h3li">Trabajos anteriores, funciones, proyectos, compañeros.</li>
+            <li class="h3li">Empleo: Objetivos, preferencias, puntos fuertes y débiles.</li>
+            <li class="h3li">Vida privada: relaciones personales, familia, vacaciones, tiempo libre, hobbies.</li>
+            <li class="h3li">Varias:  referencias, opiniones.</li>
+        </ul>
+        <x-posth3>
+            ¿Algunas de las preguntas que te pueden hacer?
+        </x-posth3>
+
+        <p class="h3parrafo">Tus respuestas deben ser directas y concisas. Si puedes apóyate en ejemplos buscando la relación con temas laborales.</p>
+
+        <div class="grid grid-cols-2 gap-8" >
+            <div>
+                <ul class="h2ul list-disc list-inside">
+                    <li class="h2li">¿Por qué deseas trabajar en esta empresa?</li>
+                    <li class="h2li">¿Por qué deberíamos contratarte?</li>
+                    <li class="h2li">¿Crees que tienes suficiente formación para el puesto?</li>
+                    <li class="h2li">¿Por qué dejaste tu último trabajo?</li>
+                    <li class="h2li">¿Por qué quieres cambiar de trabajo?</li>
+                    <li class="h2li">Veo que no tienes experiencia</li>
+                    <li class="h2li">¿Por qué has estado tanto tiempo sin trabajar?	</li>
+                    <li class="h2li">¿Dónde te ves en cinco años?</li>
+                    <li class="h2li">¿Qué sueldo quieres ganar?</li>
+                </ul>
+            </div>
+            <div class="border-l-2">
+                <ul class="h2ul list-disc list-inside">
+                    <li class="h2li">¿Cómo haces frente a situaciones de urgencia o tensión?	</li>
+                    <li class="h2li">Dime dos de sus puntos débiles y fuertes.</li>
+                    <li class="h2li">¿Crees que encajarías en un equipo más joven/más mayor?</li>
+                    <li class="h2li">¿Tienes hijos?</li>
+                    <li class="h2li">¿Cómo concilias la vida familiar y laboral</li>
+                    <li class="h2li">¿Qué te gusta hacer en tu tiempo libre?</li>
+                    <li class="h2li">Describe un día habitual en su anterior trabajo.</li>
+                    <li class="h2li">¿Qué crees que podrías aportar a nuestra empresa?</li>
+
+                </ul>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+        <x-posth2>
+            Esquema básico de una entrevista de trabajo
+        </x-posth2>
+
+        <p class="h2parrafo">En todas las fases de la entrevista debes tener en cuenta que también transmites información a través de tu sonrisa, tono de voz, posición piernas y manos, eje corporal etc. En una entrevista generalmente nos encontramos con las siguientes fases:</p>
+
+        <ul class="h2ul2 list-decimal list-inside " >
+            <li class="h2li">Saludo</li>
+            <p class="h2liparrafo">No tomes la iniciativa en el saludo. Deja que sea el entrevistador quien se dirija a ti. Tu actitud debe ser amable y cordial no familiar ni distante</p>
+            <li class="h2li">Charla introductoria. </li>
+            <p class="h2liparrafo">Se habla sobre temas intranscendentes. Contesta de forma natural e intenta relajarte</p>
+            <li class="h2li">Conversación sobre el puesto.</li>
+            <p class="h2liparrafo">Es la parte principal de la entrevista. Se abordan cuestiones relativas al puesto de trabajo y a tu candidatura. </p>
+            <li class="h2li">Despejar interrogantes. </li>
+            <p class="h2liparrafo">Pregunta las dudas que tengas sobre la empresa, el proceso de selección o el puesto de trabajo.</p>
+            <li class="h2li">Despedida</li>
+            <p class="h2liparrafo">Mantén la misma actitud que el saludo e infórmate sobre el siguiente contacto dentro del proceso de selección.</p>
+        </ul>
+        <x-posth2>
+            Preparate para la entrevista de trabajo
+        </x-posth2>
+        <p class="h2parrafo">La entrevista de trabajo debes prepararla para afrontarla con mayor seguridad. Habitualmente el entrevistador corrobora contigo los datos de tu curriculum. Se sincero.</p>
+        <p class="h2parrafo">Durante toda la entrevista cuida la comunicación no verbal ya que estarás ofreciendo información sobre ti y dará credibilidad a lo que estás diciendo.</p>
+
+        <p class="h2parrafo">La comunicación no verbal es aquella que se transmite a través de movimientos corporales, gestos y expresiones. En una comunicación cara a cara se considera que el componente verbal es de un 35% frente al 65% que se corresponde con la comunicación no verbal.  Los principales elementos a tener en cuenta en una comunicación no verbal son gestos, manos, posturas, miradas, velocidad al hablar, tono de voz y distancia que necesitamos para sentirnos seguros.</p>
+        <div class=" mx-24 px-5 border-2 shadow-lg mb-5 pb-4 ">
+            <div class="flex justify-center items-center" >
+                <p class="ml-5 py-4">Comunicación no verbal</p>
+            </div>
+            <div class="grid grid-cols-3" >
+
+                <div ></div>
+                <div class="youtube-player max-w-7xl " data-id="Y07iMF-rEXg"></div>
+                <div ></div>
+            </div>
+        </div>
+
+        <p class="h2parrafo">Durante la entrevista tu interlocutor valorará tanto tu lenguaje no verbal como las palabras. Tu expresión corporal está transmitiendo si estás muy nervioso, relajado o eres un pasota.</p>
+
+        <x-posth3>
+            La presentación.
+        </x-posth3>
+        <p class="h3parrafo">Es una fase muy breve de la entrevista, pero fundamentales para la idea que el entrevistador puede hacerse de ti. Deja siempre que sea el entrevistador quien tome la iniciativa: espera a que se dirija a ti si te da la mano dásela con firmeza, pero sin brusquedad. No te sientes hasta que él te lo indique.</p>
+        <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
+            <div class="flex justify-center items-center" >
+                <img class="h-8" src="{{ asset('img/check.png') }}">
+                <p class="ml-5 py-4">Presentación correcta</p>
+
+            </div>
+            <div class="grid grid-cols-3" >
+
+                <div class="youtube-player max-w-7xl " data-id="Q_2FSs_w0N0"></div>
+                <div class="youtube-player max-w-7xl " data-id="ymTG9KUsRDE"></div>
+                <div class="youtube-player max-w-7xl " data-id="qt6FNc-0XXg"></div>
+            </div>
+
+            <div class="flex justify-center py-5" >
+                <img class="h-8" src="{{ asset('img/abort.png') }}">
+                <p class="ml-5">Presentación incorrecta</p>
+            </div>
+            <div class="grid grid-cols-3 mb-4" >
+                <div class="youtube-player max-w-7xl " data-id="1iHHDvyOpgA"></div>
+                <div class="youtube-player max-w-7xl " data-id="yKqI3MMveVA"></div>
+                <div class="youtube-player max-w-7xl " data-id="8QtGzGQF4aw"></div>
+            </div>
         </div>
 
 
-    <p class="nivelp pt-10">La entrevista es la técnica más utilizada en los procesos de selección de personal. Ante un puesto de trabajo vacante o de nueva creación, se establece el perfil del candidato y, posteriormente, a través de la entrevista, se elige a uno de los candidatos para cubrir el puesto determinado.<p>
+        <x-posth3>
+            Información personal.
+        </x-posth3>
+        <p class="h3parrafo">Después de la presentación el entrevistador pretenderá predecir tu desempeño en el trabajo haciéndote una serie de preguntas con las que tratará de hacerse una idea del tipo de persona que eres. Se positivo y sincero resalta tus puntos fuertes y no trates de justificar en exceso los débiles.</p>
+        <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
+            <div class="flex justify-center items-center" >
+                <img class="h-8" src="{{ asset('img/check.png') }}">
+                <p class="ml-5 py-4">Información personal correcta</p>
 
+            </div>
+            <div class="grid grid-cols-3" >
 
-    <h3 class="nivel3">Tipos de entrevista</h3>
-    <ul class="ml-10 pt-1" >
-        <li class="linivel">Individual. Amplía la información del curriculum y profundiza en tus aspectos y cualidades personales. Lo más común es que la realice un entrevistador pero, en ocasiones, puede haber más de uno. Dentro de este tipo puedes encontrarte con distintas modalidades según su finalidad: preselección o fases avanzadas de selección.</li>
-        <li class="linivel">Colectiva. Suele comenzar con la proposición de un tema o una tarea. Posteriormente, el grupo en el que estarás incluido deberá discutir hasta llegar a una postura de acuerdo común. Este tipo de entrevista se utiliza para evaluar la capacidad de trabajo en grupo, la iniciativa, la seguridad, el liderazgo, la capacidad de comunicación, y la actitud de escucha hacia los demás.</li>
-    </ul>
-    <h3 class="nivel3">Preparación de la entrevista</h3>
-    <p class="nivelp">Es una situación que produce un alto grado de nerviosismo y ansiedad. Puedes prepararla de antemano y afrontar la entrevista como un reto enriquecedor, una situación de la que puedes aprender y obtener aspectos positivos. Para esto puedes seguir los siguientes consejos que te proponemos:</p>
-    <ul class="ml-10 pt-2 pb-2" >
-        <li class="linivel">Infórmate previamente sobre el puesto, la empresa y el cargo.</li>
-        <li class="linivel">Identifica tus puntos fuertes y débiles. Ten en cuenta que tampoco te convienen desvelar debilidades que puedan perjudicarte.
-        <li class="linivel">Analiza tu proyecto y tus argumentos.</li>
-        <li class="linivel">Prepárate las preguntas que vas a formular.</li>
-        <li class="linivel">Sé optimista y confía en ti mismo.</li>
-        <li class="linivel">Analiza la imagen que quieres transmitir y elige, en función de ella, los elementos de tu aspecto personal por si en algún momento de la entrevista lo necesitas.</li>
-        <li class="linivel">Prepara tu curriculum, documentos acreditativos y referencias de forma ordenada y limpia.</li>
-        <li class="linivel">Sé puntual.</li>
-    </ul>
-    <p class="nivelp">Debes considerar que el proceso de pasar por una entrevista, incluso aunque no seas seleccionado, supone una experiencia positiva que te aporta seguridad para afrontar nuevas entrevistas como situaciones más conocidas.</p>
-    <h3 class="nivel3">¿Qué te pueden preguntar?</h3>
-    <p class="nivelp">No dejes un momento para la improvisación. Durante la entrevista, te preguntarán acerca de diversos ámbitos: procura reflexionar antes pensando qué podrías contestar.</p>
-    <ul class="ml-10 pt-2 pb-2" >
-        <li class="linivel">Personalidad: sobre ti mismo, anécdotas, valores, motivaciones e influencias.</li>
-        <li class="linivel">Formación: razones para la elección de tu itinerario de formación.</li>
-        <li class="linivel">Trabajos anteriores, actividades, funciones, proyectos, compañeros.</li>
-        <li class="linivel">Empleo: preferencias, relaciones en el trabajo, puntos fuertes y débiles, objetivos.</li>
-        <li class="linivel">Vida privada: familia, relaciones personales, tiempo libre, vacaciones, hobbies.</li>
-        <li class="linivel">Varias: incorporación al trabajo, opiniones, referencias.</li>
-    </ul>
-    <p class="nivelp">Si quieres prepararte para una entrevista, prueba a contestar preguntas como:</p>
-    <ul class="ml-10 pt-2 pb-2" >
-        <li class="linivel">¿Por qué dejó su último trabajo?</li>
-        <li class="linivel">¿Qué conoce sobre nuestra empresa?</li>
-        <li class="linivel">Nombre dos de sus puntos fuertes y débiles.</li>
-        <li class="linivel">¿Dónde se ve en cinco años?</li>
-        <li class="linivel">¿Por qué debería contratarlo?</li>
-        <li class="linivel">Describa un día habitual en su anterior trabajo.</li>
-        <li class="linivel">¿Qué puede aportar a la empresa?</li>
-    </ul>
-    <p class="nivelp" >Las respuestas deben ser concisas y directas. Siempre que puedas, utiliza ejemplos para ser más claro y trata de buscar la relación con temas laborales.</p>
-    <p class="nivelp">Además de preparar las respuestas a las posibles preguntas, puedes preparar preguntas para formular tú mismo acerca de:</p>
-    <ul class="ml-10 pt-2 pb-2" >
-        <li class="linivel">Principales responsabilidades y funciones del puesto.</li>
-        <li class="linivel">Desarrollo profesional, condiciones, incentivos.</li>
-        <li class="linivel">Sobre tus futuros compañeros, jefes, subordinados.</li>
-    </ul>
-    <h3 class="nivel3"> ¿Qué es lo que no se debe hacer en una entrevista?</h3>
-    <ul class="ml-10 pt-2 pb-2" >
-    <li class="linivel">Llegar tarde o demasiado pronto.</li>
-    <li class="linivel">Tener el móvil encendido.</li>
-    <li class="linivel">Enredarse en una discusión.
-    <li class="linivel">Sentarse en el borde de la silla.</li>
-    <li class="linivel">Llevar la iniciativa: deja que sea el entrevistador el que dirija la entrevista.</li>
-    <li class="linivel">Responder de manera agresiva.</li>
-    <li class="linivel">Evita características llamativas: cuida tu aspecto personal.</li>
-    <li class="linivel">Comer chicle.</li>
-    <li class="linivel">Mentir.</li>
-    </ul>
-    <h3 class="nivel3">Durante la entrevista</h3>
-    <p class="nivelp" >Durante la entrevista tendrás que venderte a ti mismo y para esto habras de saber de antemano cuáles son tus puntos fuertes y cuáles los débiles, con la intención de compensarlos.
-        Es un momento decisivo para demostrar y convencer al seleccionador de que eres el candidato ideal para cubrir el puesto de trabajo.</p>
-    <h3 class="nivel3">¿En qué consiste la entrevista de trabajo? </h3>
-    <p class="nivelp">La mayoría de las entrevistas siguen un esquema básico que puede variar:</p>
-    <ul class="ml-10 pt-2">
-    <li class="linivel">Saludo. Espera a que el entrevistador se dirija a ti. Sé cordial y amable pero no tomes actitudes ni distantes ni familiares.</li>
-    <li class="linivel">Charla introductoria. Se suele comenzar con un diálogo sobre temas intrascendentes que sirven para romper el hielo. Relájate y contesta de forma natural.</li>
-    <li class="linivel">Conversación sobre el puesto. En esta parte, se afrontan las cuestiones relativas al puesto, tareas y funciones, tus estudios y formación, experiencias, motivaciones y tu disponibilidad (para viajar, para trasladarte fuera de tu ciudad,..). Defiende tu candidatura de forma positiva. Muestra cómo tu perfil se ajusta a las características del puesto. Ten en cuenta que se transmitimos información a través del eje corporal, el tono de voz, la sonrisa, la distancia y la posición de brazos y piernas.</li>
-    <li class="linivel">Despejar interrogantes. Es el momento de consultar cualquier duda que tengas sobre la empresa, las condiciones de trabajo o el proceso de selección. Da buena impresión la persona que se interesa y pregunta por cuestiones específicas de la empresa o del puesto de trabajo.</li>
-    <li class="linivel">Despedida. Procura asegurarte el siguiente contacto dentro del proceso. Muéstrate cordial con el entrevistador.</li>
-    </ul>
-    <h2 class="nivel2">Entrénate para una entrevista de trabajo </h2>
-    <p class="nivelp">Normalmente, en una entrevista de trabajo, el entrevistador confirmará contigo los datos de tu curriculum, tanto formativos y académicos como sobre tu experiencia laboral. Durante esa parte de la entrevista, tus respuestas deben ser sinceras y adaptarse a la realidad de tu trayectoria tanto académica como profesional.</p>
-    <p class="nivelp">Después, o ,en ocasiones, en una segunda entrevista, el entrevistador hará otro tipo de preguntas dirigidas a recabar conocimientos complementarios, actitudes y personalidad sobre ti, porque en un puesto de trabajo importa lo que sabes hacer, pero también cómo eres, cómo te comportas, cómo reaccionas ante determinadas situaciones o cómo encajas en un equipo de trabajo concreto.</p>
-    <p class="nivelp">En ambas partes de la entrevista, tu cuerpo, la mirada, tu modo de vestir , la forma de sentarte o de utilizar las manos, a través de la comunicación no verbal, están dando información sobre ti y corroboras o desmientes lo que estás diciendo.</p>
-    <p class="nivelp">Es importante que vayas preparado y, para ello, tienes que entrenarte en el desarrollo de las entrevistas, para conocer cómo te sientes y trabajar en tu seguridad.</p>
-    <h3 class="nivel3">Comunicación no verbal</h3>
-    <p class="nivelp">Con los gestos, comunicamos de manera inconsciente tanto como con las palabras. Por eso, el entrevistador valorará tu lenguaje no verbal durante toda la charla. Piensa que con tu expresión corporal le estás diciendo si eres un “pasota”, si estás demasiado relajado o muy nervioso.</p>
-    <ul class="ml-10 pt-2">
-        <li class="linivel">Siéntate de manera formal, evitando una posición de descanso, pero sin mostrarte rígido. Mantén la postura e intenta dar la impresión de que te sientes cómodo.</li>
-        <li class="linivel">No invadas nunca el espacio personal de tu entrevistador, ni siquiera dejes tu móvil en su escritorio. Igualmente, no apoyes los codos en la mesa.</li>
-        <li class="linivel">Tu mirada es importantísima. Mira directamente a los ojos de tu interlocutor y le demostrarás tu confianza en ti mismo, nunca le rehuyas.</li>
-        <li class="linivel">No mires el reloj. Podría pensar que te aburres en la entrevista justo cuando debes mostrarte extremadamente atento a todo lo que se te dice.</li>
-        <li class="linivel">Sé positivo en todo momento. Siéntete seguro, evita mostrar tu ansiedad y lo más importante: no dejes que ésta te domine. Es una de las cosas que te hará perder más puntos ante tu entrevistador.</li>
-        <li class="linivel">No cruces nunca los brazos durante la charla, señal inequívoca de actitud defensiva. Pero ,a la vez, trata de no parecer excesivamente tímido o servil. Habla en un tono de voz adecuado y evita juguetear con unas llaves, tocarte continuamente la frente y el pelo, morderte las uñas y los labios… o demostrarás lo alterado que estás</li>
-    </ul>
+                <div class="youtube-player max-w-7xl " data-id="XGvGNsA_Vj0"></div>
+                <div class="youtube-player max-w-7xl " data-id="WwixrFdIm1k"></div>
+                <div class="youtube-player max-w-7xl " data-id="rnByHxMZHno"></div>
+            </div>
 
-
-
-
-    <h3 class="nivel3">Presentación</h3>
-    <p class="nivelp">Los primeros momentos de contacto con tu entrevistador son claves en la idea que puede hacerse de ti.</p>
-    <ul class="ml-10 pt-2">
-        <li class="linivel">¿Cómo vas vestido?: aspecto cuidado y correctamente vestido, pero sin llamar excesivamente la atención. Olvídate de la ropa, los perfumes y los maquillajes demasiado llamativos, pero ten también cuidado con un pelo descuidado o unos zapatos sucios. Debes vestirte de acuerdo con el tipo de empresa a la que acudes a hacer la entrevista.</li>
-        <li class="linivel">Puntualidad: no llegues nunca tarde</li>
-        <li class="linivel">Saludo: camina decidido y saluda sonriendo a tu interlocutor con mano firme, a la vez que le miras a los ojos y espera a que te invite a sentarte.</li>
-        <li class="linivel">Lo que nunca debes hacer: naturalmente, no fumes ni masques chicle y ten el móvil apagado. Debes demostrar que toda tu atención está centrada en la conversación que vais a tener.</li>
-    </ul>
-
-    {{--Presentación--}}
-    <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
-        <div class="flex justify-center items-center" >
-            <img class="h-8" src="{{ asset('img/check.png') }}">
-            <p class="ml-5 py-4">Presentación correcta</p>
-
-        </div>
-        <div class="grid grid-cols-3" >
-
-            <div class="youtube-player max-w-7xl " data-id="Q_2FSs_w0N0"></div>
-            <div class="youtube-player max-w-7xl " data-id="ymTG9KUsRDE"></div>
-            <div class="youtube-player max-w-7xl " data-id="qt6FNc-0XXg"></div>
+            <div class="flex justify-center py-5" >
+                <img class="h-8" src="{{ asset('img/abort.png') }}">
+                <p class="ml-5">Información personal incorrecta</p>
+            </div>
+            <div class="grid grid-cols-3 mb-4" >
+                <div class="youtube-player max-w-7xl " data-id="TbN_TYS6hbE"></div>
+                <div class="youtube-player max-w-7xl " data-id="bU_hR1Skbm4"></div>
+                <div class="youtube-player max-w-7xl " data-id="cd0Mx1VIpAs"></div>
+            </div>
         </div>
 
-        <div class="flex justify-center py-5" >
-            <img class="h-8" src="{{ asset('img/abort.png') }}">
-            <p class="ml-5">Presentación incorrecta</p>
-        </div>
-        <div class="grid grid-cols-3 mb-4" >
-            <div class="youtube-player max-w-7xl " data-id="1iHHDvyOpgA"></div>
-            <div class="youtube-player max-w-7xl " data-id="yKqI3MMveVA"></div>
-            <div class="youtube-player max-w-7xl " data-id="8QtGzGQF4aw"></div>
-        </div>
-    </div>
 
 
+        <x-posth3>
+            Formación.
+        </x-posth3>
+        <p class="h3parrafo">El itinerario formativo suele ser de interés por cualquier entrevistador, ya que le aporta información sobre tus competencias, intereses, motivaciones, constancia, responsabilidad etc. </p>
+        <p class="h3parrafo">Se sincero y muestra tu interés por continuar tu formación. Si puedes resalta aquello que tenga relación con el puesto al que optas.</p>
+        <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
+            <div class="flex justify-center items-center" >
+                <img class="h-8" src="{{ asset('img/check.png') }}">
+                <p class="ml-5 py-4">Formación correcta</p>
 
+            </div>
+            <div class="grid grid-cols-3" >
 
+                <div class="youtube-player max-w-7xl " data-id="B_bUBuQ-2lA"></div>
+                <div class="youtube-player max-w-7xl " data-id="txXCx58SWGw"></div>
+                <div class="youtube-player max-w-7xl " data-id="Rx3Hb3DfzpA"></div>
+            </div>
 
-
-    <h3 class="nivel3">Información personal</h3>
-    <p class="nivelp">Tras la presentación, lo habitual es que tu entrevistador te haga algunas preguntas personales. Sé sincero y positivo, resalta tus puntos fuertes y no trates de justificar en exceso los débiles.</p>
-    {{--Información personal--}}
-    <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
-        <div class="flex justify-center items-center" >
-            <img class="h-8" src="{{ asset('img/check.png') }}">
-            <p class="ml-5 py-4">Información personal correcta</p>
-
-        </div>
-        <div class="grid grid-cols-3" >
-
-            <div class="youtube-player max-w-7xl " data-id="XGvGNsA_Vj0"></div>
-            <div class="youtube-player max-w-7xl " data-id="WwixrFdIm1k"></div>
-            <div class="youtube-player max-w-7xl " data-id="rnByHxMZHno"></div>
-        </div>
-
-        <div class="flex justify-center py-5" >
-            <img class="h-8" src="{{ asset('img/abort.png') }}">
-            <p class="ml-5">Presentación incorrecta</p>
-        </div>
-        <div class="grid grid-cols-3 mb-4" >
-            <div class="youtube-player max-w-7xl " data-id="TbN_TYS6hbE"></div>
-            <div class="youtube-player max-w-7xl " data-id="bU_hR1Skbm4"></div>
-            <div class="youtube-player max-w-7xl " data-id="cd0Mx1VIpAs"></div>
-        </div>
-    </div>
-
-    <h3 class="nivel3">Formación</h3>
-    <p class="nivelp">Tras la presentación, lo habitual es que tu entrevistador te haga algunas preguntas personales. Sé sincero y positivo, resalta tus puntos fuertes y no trates de justificar en exceso los débiles.</p>
-
-    {{--Formación--}}
-    <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
-        <div class="flex justify-center items-center" >
-            <img class="h-8" src="{{ asset('img/check.png') }}">
-            <p class="ml-5 py-4">Formación correcta</p>
-
-        </div>
-        <div class="grid grid-cols-3" >
-
-            <div class="youtube-player max-w-7xl " data-id="B_bUBuQ-2lA"></div>
-            <div class="youtube-player max-w-7xl " data-id="txXCx58SWGw"></div>
-            <div class="youtube-player max-w-7xl " data-id="Rx3Hb3DfzpA"></div>
+            <div class="flex justify-center py-5" >
+                <img class="h-8" src="{{ asset('img/abort.png') }}">
+                <p class="ml-5">Formación incorrecta</p>
+            </div>
+            <div class="grid grid-cols-3 mb-4" >
+                <div class="youtube-player max-w-7xl " data-id="js0jAwn9zxE"></div>
+                <div class="youtube-player max-w-7xl " data-id="DqoHlTpIAKg"></div>
+                <div class="youtube-player max-w-7xl " data-id="NTNrOAE1aBY"></div>
+            </div>
         </div>
 
-        <div class="flex justify-center py-5" >
-            <img class="h-8" src="{{ asset('img/abort.png') }}">
-            <p class="ml-5">Formación incorrecta</p>
-        </div>
-        <div class="grid grid-cols-3 mb-4" >
-            <div class="youtube-player max-w-7xl " data-id="js0jAwn9zxE"></div>
-            <div class="youtube-player max-w-7xl " data-id="DqoHlTpIAKg"></div>
-            <div class="youtube-player max-w-7xl " data-id="NTNrOAE1aBY"></div>
-        </div>
-    </div>
 
 
-    <h3 class="nivel3">Experiencia laboral</h3>
-    <p class="nivelp">Cuenta tus experiencias siempre desde un punto de vista efectivo y sacando conclusiones positivas de lo sucedido</p>
-    <ul class="ml-10 pt-2">
-        <li class="linivel">En esta parte de la entrevista, te preguntarán por tu experiencia profesional, objetivos y planes laborales.</li>
-        <li class="linivel">Sé sincero y no hables mal de compañeros o jefes anteriores, destaca los logros obtenidos y tus aportaciones a los proyectos.</li>
-        <li class="linivel">A las preguntas sobre errores o críticas responde con sinceridad, todos cometemos errores, tratar de ocultarlo no te favorece, lo importante es cómo has encajado esas situaciones; cuéntalas siempre desde un punto de vista positivo y sacando conclusiones positivas de lo sucedido.</li>
-        <li class="linivel">Lo mismo ante situaciones de estrés que hayas vivido y que puedan salir en la conversación.</li>
-    </ul>
 
-    {{--Experiencia laboral--}}
-    <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
-        <div class="flex justify-center items-center" >
-            <img class="h-8" src="{{ asset('img/check.png') }}">
-            <p class="ml-5 py-4">Experiencia laboral correcta</p>
+        <x-posth3>
+            Experiencia laboral
+        </x-posth3>
+        <p class="h3parrafo">El entrevistador dedicara una parte importante de la entrevista a este apartado. Le interesa conocer capacidades y competencias, eficacia en el trabajo, relaciones interpersonales en el trabajo, motivación etc. No hables mal de compañeros ni jefes anteriores y resalta tus aportaciones y logros obtenidos.</p>
+        <p class="h3parrafo">Se sincero incluso cuando te hagan preguntas sobre criticas o errores, ten en cuenta que todos cometemos errores y lo importante es como afrontas esas situaciones.</p>
+        <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
+            <div class="flex justify-center items-center" >
+                <img class="h-8" src="{{ asset('img/check.png') }}">
+                <p class="ml-5 py-4">Experiencia laboral correcta</p>
 
-        </div>
-        <div class="grid grid-cols-3" >
+            </div>
+            <div class="grid grid-cols-3" >
 
-            <div class="youtube-player max-w-7xl " data-id="NTKWgQuVfyQ"></div>
-            <div class="youtube-player max-w-7xl " data-id="3RB9XqGCiHc"></div>
-            <div class="youtube-player max-w-7xl " data-id="ikqB13YQcaU"></div>
+                <div class="youtube-player max-w-7xl " data-id="NTKWgQuVfyQ"></div>
+                <div class="youtube-player max-w-7xl " data-id="3RB9XqGCiHc"></div>
+                <div class="youtube-player max-w-7xl " data-id="ikqB13YQcaU"></div>
+            </div>
+
+            <div class="flex justify-center py-5" >
+                <img class="h-8" src="{{ asset('img/abort.png') }}">
+                <p class="ml-5">Experiencia laboral incorrecta</p>
+            </div>
+            <div class="grid grid-cols-3 mb-4" >
+                <div class="youtube-player max-w-7xl " data-id="kseqEDuS3f8"></div>
+                <div class="youtube-player max-w-7xl " data-id="U7pIhGe9Rbs"></div>
+                <div class="youtube-player max-w-7xl " data-id="R0JVs1OjHlg"></div>
+            </div>
         </div>
 
-        <div class="flex justify-center py-5" >
-            <img class="h-8" src="{{ asset('img/abort.png') }}">
-            <p class="ml-5">Experiencia laboral incorrecta</p>
+
+        <x-posth3>
+            Puesto de trabajo
+        </x-posth3>
+        <p class="h3parrafo">El entrevistador se informará sobre tu motivación, implicación y expectativas. Se sincero y responde con seguridad. Es importante que se vea que te as informado sobre la empresa y tu interés por formar parte del proyecto.</p>
+        <p class="h3parrafo">Si tienes oportunidad es bueno y el momento de hacer preguntas sobre el puesto de trabajo o cundo se conocerán los resultados de la entrevista.</p>
+        <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
+            <div class="flex justify-center items-center" >
+                <img class="h-8" src="{{ asset('img/check.png') }}">
+                <p class="ml-5 py-4">Puesto de trabajo correcta</p>
+
+            </div>
+            <div class="grid grid-cols-3" >
+
+                <div class="youtube-player max-w-7xl " data-id="1hTsvKZitk8"></div>
+                <div class="youtube-player max-w-7xl " data-id="va4nFaOJGo8"></div>
+                <div class="youtube-player max-w-7xl " data-id="iGQYv_4AfTE"></div>
+            </div>
+
+            <div class="flex justify-center py-5" >
+                <img class="h-8" src="{{ asset('img/abort.png') }}">
+                <p class="ml-5">Puesto de trabajo incorrecta</p>
+            </div>
+            <div class="grid grid-cols-3 mb-4" >
+                <div class="youtube-player max-w-7xl " data-id="6c2jOZo97Es"></div>
+                <div class="youtube-player max-w-7xl " data-id="C6GmW5FKL2c"></div>
+                <div class="youtube-player max-w-7xl " data-id="Tp2GXRZZCK4"></div>
+            </div>
         </div>
-        <div class="grid grid-cols-3 mb-4" >
-            <div class="youtube-player max-w-7xl " data-id="kseqEDuS3f8"></div>
-            <div class="youtube-player max-w-7xl " data-id="U7pIhGe9Rbs"></div>
-            <div class="youtube-player max-w-7xl " data-id="R0JVs1OjHlg"></div>
+        <x-posth3>
+            Despedida
+        </x-posth3>
+        <p class="h3parrafo">Da las gracias por la oportunidad de realizar la entrevista y muestra tu interés por pertenecer a la empresa.</p>
+        <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
+            <div class="flex justify-center items-center" >
+                <img class="h-8" src="{{ asset('img/check.png') }}">
+                <p class="ml-5 py-4">Despedida correcta</p>
+
+            </div>
+            <div class="grid grid-cols-2" >
+
+                <div class="youtube-player max-w-7xl " data-id="mOgtQSgmbZc"></div>
+
+                <div class="youtube-player max-w-7xl " data-id="iATGZD8NBxA"></div>
+            </div>
+
+            <div class="flex justify-center py-5" >
+                <img class="h-8" src="{{ asset('img/abort.png') }}">
+                <p class="ml-5">Despedida incorrecta</p>
+            </div>
+            <div class="grid grid-cols-2 mb-4" >
+                <div class="youtube-player max-w-7xl " data-id="64j_SoDzvRo"></div>
+
+                <div class="youtube-player max-w-7xl " data-id="R41muknWF18"></div>
+            </div>
         </div>
-    </div>
+        <x-creditos>
+            www.educaweb.com
+        </x-creditos>
 
-    <h3 class="nivel3">Puesto de trabajo</h3>
-    <p class="nivelp">Demuestra implicación y motivación y sé sincero en cuanto a tus expectativas.</p>
-    <ul class="ml-10 pt-2">
-        <li class="linivel">Cuando tu entrevistador te pregunte sobre tus expectativas respecto al puesto de trabajo al que optas, responde con seguridad.</li>
-        <li class="linivel">Demuestra que has recogido información sobre la empresa y muestra tu interés por formar parte del proyecto, ofrece implicación y motivación y sé sincero en cuanto a tus expectativas, pero también realista.</li>
-        <li class="linivel">Es conveniente que hagas alguna pregunta cuando te den la oportunidad, sobre el puesto de trabajo, si te hubiera quedado alguna duda, o sobre cuándo se conocerán los resultados de la entrevista.</li>
-    </ul>
+    </article>
 
-    {{--Puesto de trabajo--}}
-    <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
-        <div class="flex justify-center items-center" >
-            <img class="h-8" src="{{ asset('img/check.png') }}">
-            <p class="ml-5 py-4">Puesto de trabajo correcta</p>
-
-        </div>
-        <div class="grid grid-cols-3" >
-
-            <div class="youtube-player max-w-7xl " data-id="1hTsvKZitk8"></div>
-            <div class="youtube-player max-w-7xl " data-id="va4nFaOJGo8"></div>
-            <div class="youtube-player max-w-7xl " data-id="iGQYv_4AfTE"></div>
-        </div>
-
-        <div class="flex justify-center py-5" >
-            <img class="h-8" src="{{ asset('img/abort.png') }}">
-            <p class="ml-5">Puesto de trabajo incorrecta</p>
-        </div>
-        <div class="grid grid-cols-3 mb-4" >
-            <div class="youtube-player max-w-7xl " data-id="6c2jOZo97Es"></div>
-            <div class="youtube-player max-w-7xl " data-id="C6GmW5FKL2c"></div>
-            <div class="youtube-player max-w-7xl " data-id="Tp2GXRZZCK4"></div>
-        </div>
-    </div>
-
-
-    <h3 class="nivel3">Despedida</h3>
-    <p class="nivelp">Aprovecha la despedida para cerrar el próximo contacto y muéstrate optimista a esperar buenas noticias.</p>
-
-    {{--Despedida--}}
-    <div class="mt-10 mx-24 px-5 border-2 shadow-lg ">
-        <div class="flex justify-center items-center" >
-            <img class="h-8" src="{{ asset('img/check.png') }}">
-            <p class="ml-5 py-4">Puesto de trabajo correcta</p>
-
-        </div>
-        <div class="grid grid-cols-3" >
-
-            <div class="youtube-player max-w-7xl " data-id="mOgtQSgmbZc"></div>
-            <div class="youtube-player max-w-7xl " data-id="va4nFaOJGo8"></div>
-            <div class="youtube-player max-w-7xl " data-id="iATGZD8NBxA"></div>
-        </div>
-
-        <div class="flex justify-center py-5" >
-            <img class="h-8" src="{{ asset('img/abort.png') }}">
-            <p class="ml-5">Puesto de trabajo incorrecta</p>
-        </div>
-        <div class="grid grid-cols-3 mb-4" >
-            <div class="youtube-player max-w-7xl " data-id="64j_SoDzvRo"></div>
-            <div class="youtube-player max-w-7xl " data-id="C6GmW5FKL2c"></div>
-            <div class="youtube-player max-w-7xl " data-id="R41muknWF18"></div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
+    <x-separadorFooter/>
+    <x-footer/>
 
     @push('js')
     <script>
@@ -370,6 +405,5 @@
         document.addEventListener('DOMContentLoaded', initYouTubeVideos);
       </script>
     @endpush
-</div>
-<x-footer/>
+
 </x-app-layout>
