@@ -56,6 +56,11 @@
              <li class="h2li">El tercero se destina a explicar el objetivo de la carta, es decir, si quieres formar parte de la selección o solicitar una entrevista.</li>
              <li class="h2li">La carta termina con una despedida en un estilo formal y de cortesía, y ,por último, tu firma original, siempre que sea posible.</li>
         </ul>
+        <x-creditos>
+            www.todofp.es#https://www.todofp.es/orientacion-profesional/busca-empleo-entrenate/asalariado/carta-presentacion.html
+            |www.educaweb.com#https://www.educaweb.com/contenidos/laborales/como-buscar-empleo/instrumentos-presentacion-buscar-trabajo/carta-presentacion/
+        </x-creditos>
+
     </article>
     <x-separadorFooter/>
     <x-footer/>

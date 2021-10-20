@@ -1,16 +1,18 @@
 <div>
-    <footer class="mb-5">
+    <footer class="">
         <div class="bg-cover bg-center">
             <div class="cabecera" >
-                <div class="container mx-auto px-6 lg:px-20 py-12 ">
+                <div class="container mx-auto px-6 lg:px-20">
                     <div class="lg:flex">
                         <div class="w-full lg:w-2/3 ">
                             <div class="lg:flex">
-                                <div class="w-full mb-12 lg:mb-0 lg:w-1/2">
-                                    <h2 class=" text-pink-800 font-semibold text-xl mb-4">Quelqum</h2>
-                                    <p class="text-gray-600 text-sm">
-                                        En Quelqum nos caracterizamos por ofrecer una formación orientada hacia el empleo de calidad. Nuestra actividad principal es la formación.
-                                        Pero nuestro compromiso va más allá, por eso nos convertimos en Agencia de Colocación autorizada por el Servicio Público de Empleo; apostamos decididamente por los Contratos de Formación y Aprendizaje y nos adherimos a la Estrategia Europea de Emprendimiento y Empleo Joven.
+                                <div class="w-full  mb-12 lg:mb-0 lg:w-1/2 ">
+                                    <a href="http://quelqum.com/" target="_blank">
+                                        <img class="mx-auto" src="{{ asset('img/logo/LogoQuelqum.png') }}" alt="logo wiempleo" style="width:90px;">
+                                    </a>
+
+                                    <p class="text-gray-600 text-sm pt-4">
+                                        <strong>Qempleo</strong> es una iniciativa de Quelqum dentro de su compromiso de facilitar la búsqueda de empleo y mejorar la empleabilidad de las personas.
 
                                     </p>
                                 </div>
@@ -60,7 +62,7 @@
             <div class="bg-pink-400">
                 <div class="container mx-auto px-6 lg:px-20 py-6">
                     <div class="flex justify-center text-white mb-1">
-                        © 2021  <span class="font-bold">Wi-Empleo</span> 
+                        © 2021  <span class="font-bold">Quelqum</span> 
                     </div>
                 </div>
             </div>

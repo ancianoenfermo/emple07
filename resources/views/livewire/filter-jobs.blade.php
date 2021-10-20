@@ -90,7 +90,7 @@
             </div>
 
                 <div class="flex  bg-gray-50 ml-10" >
-                    <button class="bg-green-500 hover:bg-green-700 text-white  font-bold py-2 px-4 rounded focus:outline-none"
+                    <button class="bg-pink-500 hover:bg-pink-700 text-white  font-bold py-2 px-4 rounded focus:outline-none"
                   onclick="clickFiltersBuscar()"
                     wire:click="clickBuscar(GetTextBusqueda())"
 

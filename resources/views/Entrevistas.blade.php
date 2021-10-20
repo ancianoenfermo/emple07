@@ -350,7 +350,8 @@
             </div>
         </div>
         <x-creditos>
-            www.educaweb.com
+            www.todofp.es#https://www.todofp.es/orientacion-profesional/busca-empleo-entrenate/asalariado/entrevista.html
+            |www.educaweb.com#https://www.educaweb.com/contenidos/laborales/como-buscar-empleo/proceso-seleccion/entrevista-trabajo/
         </x-creditos>
 
     </article>

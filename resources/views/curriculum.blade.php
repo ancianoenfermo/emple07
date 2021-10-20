@@ -125,7 +125,10 @@
                 <div></div>
             </div>
         </div>
-
+        <x-creditos>
+            www.todofp.es#https://www.todofp.es/orientacion-profesional/busca-empleo-entrenate/asalariado/curriculum.html
+            |www.educaweb.com#https://www.educaweb.com/contenidos/laborales/como-buscar-empleo/instrumentos-presentacion-buscar-trabajo/curriculum-vitae-cv/
+        </x-creditos>
     </article>
     <x-separadorFooter/>
     <x-footer/>

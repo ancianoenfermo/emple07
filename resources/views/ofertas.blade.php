@@ -22,11 +22,14 @@
 
         </section>
     </header>
-    <section class="bg-white min-h-screen">
+    <x-separadorCabecera/>
+
+    <section class="bg-pink-50 min-h-screen">
 
             @livewire('jobs')
 
     </section>
+    <x-separadorFooter/>
     <x-footer/>
 
 </x-app-layout>

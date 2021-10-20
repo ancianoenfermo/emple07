@@ -6,10 +6,11 @@ $nav_links = [
         'active' => request()->routeIs('home'),
     ],
     [
-        'name' => 'Ofertas de trabajo',
-        'route' => route('ofertas'),
-        'active' => request()->routeIs('ofertas'),
+        'name' => 'Buscar empleo',
+        'route' => route('buscarEmpleo'),
+        'active' => request()->routeIs('buscarEmpleo'),
     ],
+
     [
         'name' => 'La entrevista',
         'route' => route('entrevista'),
@@ -25,7 +26,11 @@ $nav_links = [
         'route' => route('carta'),
         'active' => request()->routeIs('carta'),
     ],
-
+    [
+        'name' => 'Ofertas de trabajo',
+        'route' => route('ofertas'),
+        'active' => request()->routeIs('ofertas'),
+    ],
 
 
 ];

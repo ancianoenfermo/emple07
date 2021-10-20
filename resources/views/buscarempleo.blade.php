@@ -75,7 +75,7 @@
         <p class="h3parrafo">Son poco fiables los anuncios con salarios muy elevados, poco trabajo y que como contacto solo ofrecen un número de teléfono móvil.</p>
 
         <x-creditos>
-        www.educaweb.com
+        www.educaweb.com#https://www.educaweb.com/contenidos/laborales/como-buscar-empleo/busqueda-empleo/pasos-encontrar-trabajo/
         </x-creditos>
     </article>
 
