@@ -6,7 +6,7 @@
             <div class="flex">
                 <div class=flex-1>
                     <h1 itemprop="name" class="pb-6 tituloH1">¿Estás buscando empleo?</h1>
-                    <p class="h2parrafo">Cuando buscas empleo es muy frustrante que tras enviar tu curriculum a todas partes no recibas ninguna respuesta. Si es tu caso debes cambiar de estrategia identificando todos los pasos necesarios para la búsqueda de empleo.</p>
+                    <p class="h2parrafo">iuando buscas empleo es muy frustrante que tras enviar tu curriculum a todas partes no recibas ninguna respuesta. Si es tu caso debes cambiar de estrategia identificando todos los pasos necesarios para la búsqueda de empleo.</p>
                 </div>
                 <div class="flex items-center ml-10">
                     <div class="bg-white border-2 border-pink-400  rounded-lg shadow-lg">
