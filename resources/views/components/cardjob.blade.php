@@ -53,7 +53,7 @@
                 <div class="flex flex-1 justify-center" >
                     @foreach ($tipos as $tipo)
                         <div>
-                            <span class="text-xs items-center font-semibold rounded-full bg-green-100 text-green-800">
+                            <span class="px-2 py-1 text-xs items-center font-semibold rounded-full bg-pink-700 text-white">
                                     {{ $tipo }}
                             </span>
                         </div>
@@ -62,10 +62,10 @@
             @endisset
 
             <!-- Ir a la Oferta -->
-            <div class="  flex-1 flex justify-end">
+            <div class="flex-1 flex justify-end">
                 <div class="flex" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"  >
                     <button
-                    class="focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-opacity-75 bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 mr-4 rounded-full  justify-end"
+                    class="focus:outline-none focus:ring-2 focus:ring-pink-900 focus:ring-opacity-75 bg-pink-500 hover:bg-pink-700 text-white font-bold py-1 px-4 mr-4 rounded-xl  justify-end"
                     onclick="clickOferta('{{ $job->jobUrl }}','{{ $job->title }}')">
                     {{--onclick="window.open('{{ $job->jobUrl }}')">--}}
                     <span class="ml-2 text-xs">Ir a la oferta</span>
@@ -78,8 +78,13 @@
 
         <div class="flex">
             <!-- Titulo de la Oferta -->
-            <div>
-                <h2 class="mt-3 ml-4 text-2xl font-semibold tracking-wide">
+            <div class="flex my-auto mt-4" >
+                <button class="ml-2"
+                x-data="{ tooltip: false }"
+                x-on:click="$dispatch('modal', { openModal: 'true',titulo: '{{$job->title}}', mensaje: '{{$job->excerpt}}' })">
+                <i class="fa fa-search-plus transition duration-500 ease-in-out bg-transparent hover:bg-transparent transform hover:-translate-y-1 hover:scale-110 text-pink-800" ></i>
+                </button>
+                <h2 class="ml-2 text-2xl font-semibold tracking-wide text-pink-900">
                     {{$job->title}}
                 </h2>
             </div>
@@ -89,16 +94,7 @@
 
         <!-- LINEA 3 -->
         <div class="flex pt-6 pb-4 ml-4">
-             <!-- Icono descripción de la Oferta -->
-            <div class="mr-4 items-center text-sm leading-none text-black " x-data="{ tooltip: false }">
-                <strong>Descripción:</strong>
 
-                    <button
-                    x-on:click="$dispatch('modal', { openModal: 'true',titulo: '{{$job->title}}', mensaje: '{{$job->excerpt}}' })">
-                    <i class="fa fa-search-plus transition duration-500 ease-in-out bg-transparent hover:bg-transparent transform hover:-translate-y-1 hover:scale-110 text-pink-800" ></i>
-                    </button>
-
-                </div>
 
             @isset($job->contrato)
                 <span class="mr-4 items-center text-sm leading-none text-black">

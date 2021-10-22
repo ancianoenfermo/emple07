@@ -29,7 +29,7 @@
 
                     @if ($ofertas->hasPages())
                         <div
-                            class="bg-white px-4 py-10  mr-2 items-center justify-between border-t border-gray-200 sm:px-6">
+                            class="bg-transparent px-4 py-10  mr-2 items-center justify-between  sm:px-6">
                             {{ $ofertas->links()}}
                         </div>
 
