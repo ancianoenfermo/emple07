@@ -89,4 +89,8 @@
         @apply bg-pink-600 h-0.5 mb-4 border-none;
     }
 
+    .blur {
+        @apply filter blur-lg;
+    }
+
   }

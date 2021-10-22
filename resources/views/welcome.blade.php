@@ -6,10 +6,10 @@
             <div class="flex">
                 <div class=flex-1>
                     <h1 itemprop="name" class="pb-6 tituloH1">¿Estás buscando empleo?</h1>
-                    <p class="h2parrafo">iuando buscas empleo es muy frustrante que tras enviar tu curriculum a todas partes no recibas ninguna respuesta. Si es tu caso debes cambiar de estrategia identificando todos los pasos necesarios para la búsqueda de empleo.</p>
+                    <p class="h2parrafo">Cuando buscas empleo es muy frustrante que tras enviar tu curriculum a todas partes no recibas ninguna respuesta. Si es tu caso debes cambiar de estrategia identificando todos los pasos necesarios para la búsqueda de empleo.</p>
                 </div>
                 <div class="flex items-center ml-10">
-                    <div class="bg-white border-2 border-pink-400  rounded-lg shadow-lg">
+                    <div class="bg-gradient-to-b from-pink-200 via-pink-100 to-pink-50 border-1 border-pink-400  rounded-lg shadow-lg">
                         <div class="container mx-auto text-center px-4 py-6 text-white ">
                             <h2 itemprop="description" class="text-2xl md:text-4xl font-medium text-pink-600">Ofertas de trabajo</h2>
                             <p class="mt-3 text-pink-600">Ofertas publicadas en España en los últimos treinta días</p>
@@ -34,8 +34,8 @@
 
     <section class="container mx-auto text-xl leading-normal text-justify px-16 bg-pink-50 ">
 
-        <hr class="bg-pink-600 h-0.5 mt-4 border-none bg-opacity-25">
-        <h1 class="text-pink-800 text-center font-bold text-2xl py-1">LO QUE DEBES CONOCER PARA UNA BÙSQUEDA EFICAZ DE EMPLEO</h1>
+
+        <h1 class="text-pink-800 mt-8 text-center font-bold text-2xl py-1">Lo que debes conocer para una búsqueda eficaz de empleo</h1>
         <hr class="bg-pink-600 h-0.5 mb-4 border-none bg-opacity-25">
         <p class="h2parrafo">Conoce las diferentes técnicas y herramientas para la  búsqueda de empleo que te ayudarán a definir una estrategia para que no te frustres si estás buscando empleo</p>
 
@@ -153,8 +153,8 @@
                 </a>
             </article>
         </div>
-        <hr class="bg-pink-600 h-0.5 mt-8 border-none bg-opacity-25">
-        <h1 class="text-pink-800 text-center font-bold text-2xl py-1">Organiza tu búsqueda de trabajo</h1>
+
+        <h1 class="text-pink-800 mt-8 text-center font-bold text-2xl py-1">Organiza tu búsqueda de trabajo</h1>
         <hr class="bg-pink-600 h-0.5 mb-4 border-none bg-opacity-25">
         <p class="h2parrafo py-1">Frecuentemente el único objetivo de las personas que <strong>buscan empleo</strong> es mandar el curriculum a cuantos más sitios mejor y esperar una respuesta. Esta es una estrategia errónea por varios motivos:</p>
         <ul class="h2ul2 list-disc list-inside ">

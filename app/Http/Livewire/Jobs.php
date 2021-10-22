@@ -44,7 +44,8 @@ class Jobs extends Component
         if($this->readyToLoad) {
             $this->contadorRender +=1;
             $pp = $this->contadorRender;
-            //$this->emit('filtrosOff',"nada");
+
+
 
             switch ($this->tipoTrabajo) {
                 case 'Todos los trabajos':
@@ -116,7 +117,7 @@ class Jobs extends Component
             $this->localidad = $localidadId;
         }
         $this->resetPage();
-        $this->readyToLoad = true;
+        //$this->readyToLoad = true;
     }
 
 

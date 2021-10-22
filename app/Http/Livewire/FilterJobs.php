@@ -37,14 +37,14 @@ class FilterJobs extends Component
     public $provincias = null;
     public $localidades = null;
 
-    public $contador = 0;
-
+    public $contador = "filtros";
+    public $blur = "NO";
 
 
 
     public function render()
     {
-        $this->contador += 1;
+        //$this->contador += 1;
 
         return view('livewire.filter-jobs');
     }
@@ -57,12 +57,13 @@ class FilterJobs extends Component
         //$this->autonomias = DB::table('autonomiatodos')->get();;
         $this->selectedTipoTrabajo = "Todos los trabajos";
         $this->tiposTrabajos = array('Todos los trabajos', 'Discapacidad', 'Prácticas', 'Teletrabajo');
+        $this->blur = "SI";
     }
 
 
     public function updatedselectedTipoTrabajo()
     {
-        $this->reset(['autonomias', 'selectedAutonomia', 'provincias', 'selectedProvincia','selectedLocalidad','localidades']);
+        $this->reset(['blur','autonomias', 'selectedAutonomia', 'provincias', 'selectedProvincia','selectedLocalidad','localidades']);
         switch ($this->selectedTipoTrabajo) {
             case 'Todos los trabajos':
                 $this->autonomias = Cache::rememberForever('TodasAutonomias', function () {
@@ -93,7 +94,7 @@ class FilterJobs extends Component
     public function updatedSelectedAutonomia($autonomia_id)
     {
 
-        $this->reset(['provincias', 'selectedProvincia','localidades','selectedLocalidad']);
+        $this->reset(['blur','provincias', 'selectedProvincia','localidades','selectedLocalidad']);
 
         switch ($this->selectedTipoTrabajo) {
             case 'Todos los trabajos':
@@ -133,7 +134,7 @@ class FilterJobs extends Component
     public function updatedSelectedProvincia($provincia_id)
     {
 
-        $this->reset(['localidades','selectedLocalidad']);
+        $this->reset(['blur','localidades','selectedLocalidad']);
 
         switch ($this->selectedTipoTrabajo) {
             case 'Todos los trabajos':
@@ -166,6 +167,7 @@ class FilterJobs extends Component
 
     public function updatedSelectedLocalidad($localidad_id)
     {
+        $this->reset(['blur']);
 
         if ($localidad_id == "todas") {
             $localidad_id = null;
@@ -177,6 +179,7 @@ class FilterJobs extends Component
 
     public function clickBuscar($texto) {
 
+        $this->blur = "SI";
         if ($this->selectedLocalidad != "todas") {
             $this->emitTo('jobs','filtersEmit',null,null,$this->selectedLocalidad,$this->selectedTipoTrabajo,$texto);
             return;

@@ -1,12 +1,22 @@
 <div>
-    <div class="pl-28 sm:block  lg:flex lg:justify-around">
+    <div class="  pl-28 sm:block  lg:flex lg:justify-around">
+        {{--<div class="  rounded-lg bg-gray-50 border-2 border-green-200 bg-opacity-50 shadow-xl flex"--}}
 
+        <div class="
+        @if($blur == "SI")
+        blur
+        disabledbutton
+        @endif
+        rounded-lg bg-pink-800 border-2 border-pink-200 bg-opacity-50 shadow-xl flex"
+        id="filtros">
 
-        <div class="rounded-lg bg-gray-50 border-2 border-green-200 bg-opacity-50 shadow-xl flex"
-        id="filtros" style="background-color:rgb(59, 20, 235) pointer-events: none;opacity: 0.5;background: #CCC; ">
-
-
+        @php
+            $blur = "SI"
+        @endphp
+        {{--id="filtros" style="background-color:rgb(59, 20, 235) pointer-events: none;opacity: 0.5;background: #CCC; ">
+        --}}
             <div >
+
                 <div class="flex space-x-6">
                     {{-- Tipos de Trabajo --}}
                     <div class="ml-4 my-3">
@@ -91,7 +101,7 @@
 
                 <div class="flex  bg-gray-50 ml-10" >
                     <button class="bg-pink-500 hover:bg-pink-700 text-white  font-bold py-2 px-4 rounded focus:outline-none"
-                  onclick="clickFiltersBuscar()"
+                    onclick="clickFiltersBuscar()"
                     wire:click="clickBuscar(GetTextBusqueda())"
 
                     {{--onclick="getDisplayCabecerah1()"--}}
@@ -102,6 +112,7 @@
                 </div>
 
         </div>
+
     </div>
 </div>
 {{--

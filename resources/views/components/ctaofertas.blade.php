@@ -1,5 +1,5 @@
 <div class="flex items-center">
-    <div class="bg-white border-2 border-pink-400  rounded-lg shadow-lg">
+    <div class="bg-gradient-to-b from-pink-200 via-pink-100 to-pink-50 border-1 border-pink-400  rounded-lg shadow-lg">
         <div class="container mx-auto text-center px-4 py-6 text-white ">
             <h2 class="text-2xl font-medium text-pink-600">Ofertas de trabajo</h2>
             <p class="mt-3 text-pink-600">Ofertas publicadas en España en los últimos treinta días</p>

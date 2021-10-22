@@ -12,8 +12,10 @@
                                     </a>
 
                                     <p class="text-gray-600 text-sm pt-4">
-                                        <strong>Qempleo</strong> es una iniciativa de Quelqum dentro de su compromiso de facilitar la búsqueda de empleo y mejorar la empleabilidad de las personas.
-
+                                        <strong>Qempleo</strong> es una iniciativa de Quelqum para facilitar la búsqueda de trabajo a los demandantes de empleo.
+                                    </p>
+                                    <p class="text-gray-600 text-sm pt-4">
+                                        <strong>Quelqum</strong> es agencia de colocación acreditada y experta en formación para el empleo.
                                     </p>
                                 </div>
                                 <div class="w-full lg:w-1/2 lg:flex lg:px-6 ">

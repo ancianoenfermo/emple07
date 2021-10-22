@@ -98,8 +98,8 @@ class populateDB extends Command
         $diff = $timeStart->diff($timeEnd)->format('%H:%I:%S');
 
         // Enviar mail
-        $mail = new populateEmpleos($diff);
-        Mail::to('carlos@allll.com')->send($mail);
+        //$mail = new populateEmpleos($diff);
+        //Mail::to('carlos@allll.com')->send($mail);
         // Desacctiva el modo mantenimiento
 
         Artisan::call('up');
