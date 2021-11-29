@@ -16,7 +16,15 @@ use Illuminate\Support\Facades\Cache;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\populateEmpleos;
+use App\Models\Autonomia;
+use App\Models\Provincia;
+use App\Models\Localidad;
+use App\Models\Empleo;
+use App\Models\Excerpt;
 
+
+use App\Models\Jornada;
+use App\Models\Contrato;
 
 use function PHPUnit\Framework\isNull;
 
@@ -59,534 +67,148 @@ class populateDB extends Command
         $timeStart = Carbon::now();
         $logoFunte = array();
         // Comprueba si hay un nuevo fichero de empleos
-        if (!file_exists(public_path("collection.json"))) {
+        if (!file_exists(public_path("Empleos.json"))) {
+            $this->output->write('FICHERO INEXISTENTE', false);
             return 0;
         }
         // Activa el modo mantenimiento
-        $inicio = now();
-        Artisan::call('down', ['--redirect' => null, '--retry' => null, '--secret' => null, '--status' => '503']);
+        #$inicio = now();
+        #Artisan::call('down', ['--redirect' => null, '--retry' => null, '--secret' => null, '--status' => '503']);
         //borra la Cache
-        Cache::flush();
+        #Cache::flush();
         // Lee el json de empleos
-        $path = public_path() . "/collection.json";
+
+        $path = public_path() . "/Empleos.json";
+
+        $json = json_decode(file_get_contents($path), true);
         $json = File::get($path);
         $empleos = json_decode($json, true);
-
-
-
-        // Vacia las tablas
-
         $this->vaciaTablas();
-
-
-
-        // Crear tipos
-
-        DB::table('tipotodos')->insert(['name' => "Todos los trabajos"]);
-        $tipoTodos = DB::table('tipotodos')->where('id',1)->first();
-        DB::table('tipodiscapacidads')->insert(['name' => "Discapacidad"]);
-        $tipoDiscapacidad = DB::table('tipodiscapacidads')->where('id',1)->first();
-        DB::table('tipoteletrabajos')->insert(['name' => "Teletrabajo"]);
-        $tipoTeletrabajo = DB::table('tipoteletrabajos')->where('id',1)->first();
-        DB::table('tipopracticas')->insert(['name' => "Prácticas"]);
-        $tipoPracticas = DB::table('tipoteletrabajos')->where('id',1)->first();
+        #$this->output->write(gettype($empleos), false);
 
         foreach ($empleos as $empleo) {
             $this->trata_empleo($empleo);
         }
-        $timeEnd = Carbon::now();
-        $diff = $timeStart->diff($timeEnd)->format('%H:%I:%S');
-
-        // Enviar mail
-        //$mail = new populateEmpleos($diff);
-        //Mail::to('carlos@allll.com')->send($mail);
-        // Desacctiva el modo mantenimiento
-
-        Artisan::call('up');
-        $fin = now();
-        echo "acabe";
-        //File::delete($path);
-        return 0;
-    }
-    public function trata_empleo($empleo)
-    {
-       global $tipoTodos, $tipoDiscapacidad, $tipoPracticas,$tipoTeletrabajo;
-
-        if (isset($empleo['remoto'])) {
-            return;
-        }
-
-
-
-        $autonomia = DB::table('autonomiatodos')->where('name', $empleo['autonomia'])->first();
-        if (!$autonomia) {
-            $slug = Str::slug($empleo['autonomia'], '-');
-
-            DB::table('autonomiatodos')->insert(
-                [
-               'name' => $empleo['autonomia'],
-                'slug' => $slug,
-                'tipotodo_id' => $tipoTodos->id,
-                ]
-            );
-            $autonomia = DB::table('autonomiatodos')->where('name',$empleo['autonomia'])->first();
-        }
-
-        $provincia = DB::table('provinciatodos')->where('name',$empleo['provincia'])->first();
-        if (!$provincia) {
-            $slug = Str::slug($empleo['provincia'], '-');
-            DB::table('provinciatodos')->insert(
-                [
-                'name' => $empleo['provincia'],
-                'slug' => $slug,
-                'autonomia_id' => $autonomia->id,
-                ]
-            );
-            $provincia = DB::table('provinciatodos')->where('name',$empleo['provincia'])->first();
-        }
-
-        $localidad = DB::table('localidadtodos')->where('name',$empleo['localidad'])->first();
-        if (!$localidad) {
-            $slug = Str::slug($empleo['localidad'], '-');
-            DB::table('localidadtodos')->insert(
-                [
-                'name' => $empleo['localidad'],
-                'slug' => $slug,
-                'provincia_id' => $provincia->id,
-                ]
-            );
-            $localidad = DB::table('localidadtodos')->where('name',$empleo['localidad'])->first();
-        }
-
-        $listaTipos ="";
-
-        if (isset($empleo['discapacidad'])) {
-            $listaTipos = $listaTipos . 'Discapacidad|';
-        }
-
-        if (isset($empleo['practicas'])) {
-            $listaTipos = $listaTipos . 'Practicas|';
-        }
-
-        if (isset($empleo['teletrabajo'])) {
-            $listaTipos = $listaTipos . 'Teletrabajo|';
-        }
-
-        // DEBEN EXISTIR
-
-        $date = Carbon::createFromFormat('d/m/Y', $empleo['datePosted']);
-        $dateNow = Carbon::now();
-        $cantidadDias = $date->diffInDays($dateNow);
-        $llave = strval($cantidadDias);
-        if (strlen($llave) == 1) {
-            $llave = "0" . $llave;
-        }
-        $randon = rand(10, 100000);
-        $llave = $llave . strval($randon);
-
-        $excerpt = null;
-        if (isset($empleo['excerpt'])) {
-            $excerpt = $empleo['excerpt'];
-        }
-
-        $vacantes = null;
-        if (isset($empleo['vacantes'])) {
-            $vacantes = $empleo['vacantes'];
-        }
-
-        $salario = null;
-        if (isset($empleo['salario'])) {
-            $salario = $empleo['salario'];
-        }
-        $ett = null;
-        if (isset($empleo['ett'])) {
-            $ett = $empleo['ett'];
-        }
-        $contrato = null;
-        if (isset($empleo['contrato'])) {
-            $contrato = $empleo['contrato'];
-        }
-
-        $jornada = null;
-        if (isset($empleo['jornada'])) {
-            $jornada = $empleo['jornada'];
-        }
-        $experiencia = null;
-        if (isset($empleo['experiencia'])) {
-            $experiencia = $empleo['experiencia'];
-        }
-
-        if ($listaTipos) {
-            $listaTipos = substr($listaTipos, 0, -1);
-        } else {
-            $listaTipos = null;
-        }
-
-
-        if (isset($empleo['discapacidad'])) {
-            $this->create_discapacidad($empleo, $tipoDiscapacidad,$listaTipos );
-
-        }
-
-        if (isset($empleo['teletrabajo'])) {
-
-            $this->create_teletrabajo($empleo, $tipoTeletrabajo,$listaTipos );
-
-
-        }
-
-        if (isset($empleo['practicas'])) {
-            $this->create_practicas($empleo, $tipoPracticas,$listaTipos );
-        }
-
-        DB::table('jobs_todos')->insert([
-            'orden' => $llave,
-            'datePosted' => $date,
-            'title' => $empleo['title'],
-            'jobFuente' => $empleo['JobFuente'],
-            'jobUrl' => $empleo['JobUrl'],
-            'excerpt'=> $excerpt,
-            'vacantes' => $vacantes,
-            'salario' => $salario,
-            'ett' => $ett,
-            'contrato' => $contrato,
-            'jornada' => $jornada,
-            'experiencia' => $experiencia,
-            'listaTipos' => $listaTipos,
-            'autonomia' => $autonomia->name,
-            'provincia' => $provincia->name,
-            'localidad' => $localidad->name,
-            'autonomia_id' => $autonomia->id,
-            'provincia_id' => $provincia->id,
-            'localidad_id' => $localidad->id,
-            'tipotodo_id' => $tipoTodos->id
-        ]);
-
     }
 
-    public function create_discapacidad($empleo, $tipoDiscapacidad, $listaTipos) {
+    public function trata_empleo($empleo) {
 
-        $autonomia = DB::table('autonomiadiscapacidads')->where('name', $empleo['autonomia'])->first();
-        if (!$autonomia) {
-            $slug = Str::slug($empleo['autonomia'], '-');
-            DB::table('autonomiadiscapacidads')->insert(
-                [
-                'name' => $empleo['autonomia'],
-                'slug' => $slug,
-                'tipodiscapacidad_id' => $tipoDiscapacidad->id,
-                ]
-            );
-            $autonomia = DB::table('autonomiadiscapacidads')->where('name',$empleo['autonomia'])->first();
+        $autonomia = Autonomia::where('name',$empleo['autonomia'])->first();
+        if($autonomia == null) {
+            $autonomia = new Autonomia;
+            $autonomia->name = $empleo['autonomia'];
+            $autonomia->save();
         }
-
-        $provincia = DB::table('provinciadiscapacidads')->where('name',$empleo['provincia'])->first();
-        if (!$provincia) {
-            $slug = Str::slug($empleo['provincia'], '-');
-            DB::table('provinciadiscapacidads')->insert(
-                [
-                'name' => $empleo['provincia'],
-                'slug' => $slug,
-                'autonomia_id' => $autonomia->id,
-                ]
-            );
-            $provincia = DB::table('provinciadiscapacidads')->where('name',$empleo['provincia'])->first();
+        $provincia = Provincia::where('name',$empleo['provincia'])->first();
+        if($provincia == null) {
+            $provincia = new Provincia;
+            $provincia->name = $empleo['provincia'];
+            $provincia->autonomia_id = $autonomia->id;
+            $provincia->save();
         }
 
-        $localidad = DB::table('localidaddiscapacidads')->where('name',$empleo['localidad'])->first();
-        if (!$localidad) {
-            $slug = Str::slug($empleo['localidad'], '-');
-            DB::table('localidaddiscapacidads')->insert(
-                [
-                'name' => $empleo['localidad'],
-                'slug' => $slug,
-                'provincia_id' => $provincia->id,
-                ]
-            );
-            $localidad = DB::table('localidaddiscapacidads')->where('name',$empleo['localidad'])->first();
+        $localidad = Localidad::where('name',$empleo['localidad'])->first();
+        if($localidad == null) {
+            $localidad = new Localidad;
+            $localidad->name = $empleo['localidad'];
+            $localidad->provincia_id = $provincia->id;
+            $localidad->save();
         }
 
-        $date = Carbon::createFromFormat('d/m/Y', $empleo['datePosted']);
-        $dateNow = Carbon::now();
-        $cantidadDias = $date->diffInDays($dateNow);
-        $llave = strval($cantidadDias);
-        if (strlen($llave) == 1) {
-            $llave = "0" . $llave;
-        }
-        $randon = rand(10, 100000);
-        $llave = $llave . strval($randon);
+        $excerpt = new Excerpt;
+        $excerpt->excerpt = $empleo['excerpt'];
+        $excerpt->save();
 
-        $excerpt = null;
-        if (isset($empleo['excerpt'])) {
-            $excerpt = $empleo['excerpt'];
-        }
-
-        $vacantes = null;
-        if (isset($empleo['vacantes'])) {
-            $vacantes = $empleo['vacantes'];
-        }
-
-        $salario = null;
-        if (isset($empleo['salario'])) {
-            $salario = $empleo['salario'];
-        }
-        $ett = null;
-        if (isset($empleo['ett'])) {
-            $ett = $empleo['ett'];
-        }
-        $contrato = null;
-        if (isset($empleo['contrato'])) {
-            $contrato = $empleo['contrato'];
-        }
-
-        $jornada = null;
         if (isset($empleo['jornada'])) {
-            $jornada = $empleo['jornada'];
-        }
-        $experiencia = null;
-        if (isset($empleo['experiencia'])) {
-            $experiencia = $empleo['experiencia'];
-        }
-
-        DB::table('jobs_discapacidads')->insert([
-            'orden' => $llave,
-            'datePosted' => $date,
-            'title' => $empleo['title'],
-            'jobFuente' => $empleo['JobFuente'],
-            'jobUrl' => $empleo['JobUrl'],
-            'excerpt'=> $excerpt,
-            'vacantes' => $vacantes,
-            'salario' => $salario,
-            'ett' => $ett,
-            'contrato' => $contrato,
-            'jornada' => $jornada,
-            'experiencia' => $experiencia,
-            'listaTipos' => $listaTipos,
-            'autonomia' => $autonomia->name,
-            'provincia' => $provincia->name,
-            'localidad' => $localidad->name,
-            'autonomia_id' => $autonomia->id,
-            'provincia_id' => $provincia->id,
-            'localidad_id' => $localidad->id,
-            'tipodiscapacidad_id' => $tipoDiscapacidad->id
-        ]);
-
-
-    }
-    public function create_teletrabajo($empleo, $tipoTeletrabajo, $listaTipos) {
-        $autonomia = DB::table('autonomiateletrabajos')->where('name', $empleo['autonomia'])->first();
-        if (!$autonomia) {
-            $slug = Str::slug($empleo['autonomia'], '-');
-            DB::table('autonomiateletrabajos')->insert(
-                [
-                'name' => $empleo['autonomia'],
-                'slug' => $slug,
-                'tipoteletrabajo_id' => $tipoTeletrabajo->id,
-                ]
-            );
-            $autonomia = DB::table('autonomiateletrabajos')->where('name',$empleo['autonomia'])->first();
+            $jornada = Jornada::where('name',$empleo['jornada'])->first();
+            if($jornada == null) {
+                $jornada = new Jornada;
+                $jornada->name = $empleo['jornada'];
+                $jornada->save();
+            }
         }
 
-        $provincia = DB::table('provinciateletrabajos')->where('name',$empleo['provincia'])->first();
-        if (!$provincia) {
-            $slug = Str::slug($empleo['provincia'], '-');
-            DB::table('provinciateletrabajos')->insert(
-                [
-                'name' => $empleo['provincia'],
-                'slug' => $slug,
-                'autonomia_id' => $autonomia->id,
-                ]
-            );
-            $provincia = DB::table('provinciateletrabajos')->where('name',$empleo['provincia'])->first();
-        }
-
-        $localidad = DB::table('localidadteletrabajos')->where('name',$empleo['localidad'])->first();
-        if (!$localidad) {
-            $slug = Str::slug($empleo['localidad'], '-');
-            DB::table('localidadteletrabajos')->insert(
-                [
-                'name' => $empleo['localidad'],
-                'slug' => $slug,
-                'provincia_id' => $provincia->id,
-                ]
-            );
-            $localidad = DB::table('localidadteletrabajos')->where('name',$empleo['localidad'])->first();
-        }
-
-        $date = Carbon::createFromFormat('d/m/Y', $empleo['datePosted']);
-        $dateNow = Carbon::now();
-        $cantidadDias = $date->diffInDays($dateNow);
-        $llave = strval($cantidadDias);
-        if (strlen($llave) == 1) {
-            $llave = "0" . $llave;
-        }
-        $randon = rand(10, 100000);
-        $llave = $llave . strval($randon);
-
-        $excerpt = null;
-        if (isset($empleo['excerpt'])) {
-            $excerpt = $empleo['excerpt'];
-        }
-
-        $vacantes = null;
-        if (isset($empleo['vacantes'])) {
-            $vacantes = $empleo['vacantes'];
-        }
-
-        $salario = null;
-        if (isset($empleo['salario'])) {
-            $salario = $empleo['salario'];
-        }
-        $ett = null;
-        if (isset($empleo['ett'])) {
-            $ett = $empleo['ett'];
-        }
-        $contrato = null;
         if (isset($empleo['contrato'])) {
-            $contrato = $empleo['contrato'];
+            $contrato = Contrato::where('name',$empleo['contrato'])->first();
+            if($contrato == null) {
+                $contrato = new Contrato();
+                $contrato->name = $empleo['contrato'];
+                $contrato->save();
+            }
         }
 
-        $jornada = null;
+
+        $newJob = new Empleo;
+
+        $newJob->orden = $empleo['orden'];
+        $newJob->datePosted = Carbon::createFromFormat('d/m/Y', $empleo['datePosted']);;
+        $newJob->title = $empleo['title'];
+        $newJob->excerptCorto = $empleo['excerptCorto'];
+        if ($newJob->excerptCorto == null) {
+            $newJob->excerptCorto ="**** VENIA NULL";
+        }
+        $newJob->JobFuente = $empleo['JobFuente'];
+        $newJob->JobUrl = $empleo['JobUrl'];
+        $newJob->autonomia = $autonomia->name;
+        $newJob->autonomia_id = $autonomia->id;
+        $newJob->provincia = $provincia->name;
+        $newJob->provincia_id = $provincia->id;
+        $newJob->localidad = $localidad->name;
+        $newJob->localidad_id = $localidad->id;
+        $newJob->excerpt_id = $excerpt->id;
+        if (isset($empleo['salario'])) {
+            $newJob->salario = $empleo['salario'];
+        }
         if (isset($empleo['jornada'])) {
-            $jornada = $empleo['jornada'];
+            $newJob->jornada = $empleo['jornada'];
         }
-        $experiencia = null;
-        if (isset($empleo['experiencia'])) {
-            $experiencia = $empleo['experiencia'];
+        if (isset($empleo['contrato'])) {
+            $newJob->contrato = $empleo['contrato'];
+        }
+        if (isset($empleo['vacantes'])) {
+            $newJob->vacantes = $empleo['vacantes'];
         }
 
-        DB::table('jobs_teletrabajos')->insert([
-            'orden' => $llave,
-            'datePosted' => $date,
-            'title' => $empleo['title'],
-            'jobFuente' => $empleo['JobFuente'],
-            'jobUrl' => $empleo['JobUrl'],
-            'excerpt'=> $excerpt,
-            'vacantes' => $vacantes,
-            'salario' => $salario,
-            'ett' => $ett,
-            'contrato' => $contrato,
-            'jornada' => $jornada,
-            'experiencia' => $experiencia,
-            'listaTipos' => $listaTipos,
-            'autonomia' => $autonomia->name,
-            'provincia' => $provincia->name,
-            'localidad' => $localidad->name,
-            'autonomia_id' => $autonomia->id,
-            'provincia_id' => $provincia->id,
-            'localidad_id' => $localidad->id,
-            'tipoteletrabajo_id' => $tipoTeletrabajo->id
+        if (isset($empleo['Texperiencia'])) {
+            $newJob->Texperiencia = true;
+        }
+        if (isset($empleo['Tett'])) {
+            $newJob->Tett = true;
+        }
+        if (isset($empleo['Tdiscapacidad'])) {
+            $newJob->Tdiscapacidad = true;
+        }
+        if (isset($empleo['Tteletrabajo'])) {
+            $newJob->Tteletrabajo = true;
+        }
+        if (isset($empleo['Tpracticas'])) {
+            $newJob->Tpracticas = true;
+        }
+        if (isset($empleo['T100teletrabajo'])) {
+            $newJob->T100teletrabajo = true;
+        }
+        if (isset($empleo['TsalarioConvenio'])) {
+            $newJob->TsalarioConvenio = true;
+        }
+        if (isset($empleo['TsalarioHoras'])) {
+            $newJob->TsalarioHoras = true;
+        }
 
-        ]);
+        $newJob->save();
+
+
+
+
+
+
+
+
 
 
     }
 
-
-    public function create_practicas($empleo, $tipoPracticas, $listaTipos) {
-        $autonomia = DB::table('autonomiapracticas')->where('name', $empleo['autonomia'])->first();
-        if (!$autonomia) {
-            $slug = Str::slug($empleo['autonomia'], '-');
-            DB::table('autonomiapracticas')->insert(
-                [
-                'name' => $empleo['autonomia'],
-                'slug' => $slug,
-                'tipopractica_id' => $tipoPracticas->id,
-                ]
-            );
-            $autonomia = DB::table('autonomiapracticas')->where('name',$empleo['autonomia'])->first();
-        }
-
-        $provincia = DB::table('provinciapracticas')->where('name',$empleo['provincia'])->first();
-        if (!$provincia) {
-            $slug = Str::slug($empleo['provincia'], '-');
-            DB::table('provinciapracticas')->insert(
-                [
-                'name' => $empleo['provincia'],
-                'slug' => $slug,
-                'autonomia_id' => $autonomia->id,
-                ]
-            );
-            $provincia = DB::table('provinciapracticas')->where('name',$empleo['provincia'])->first();
-        }
-
-        $localidad = DB::table('localidadpracticas')->where('name',$empleo['localidad'])->first();
-        if (!$localidad) {
-            $slug = Str::slug($empleo['localidad'], '-');
-            DB::table('localidadpracticas')->insert(
-                [
-                'name' => $empleo['localidad'],
-                'slug' => $slug,
-                'provincia_id' => $provincia->id,
-                ]
-            );
-            $localidad = DB::table('localidadpracticas')->where('name',$empleo['localidad'])->first();
-        }
-
-        $date = Carbon::createFromFormat('d/m/Y', $empleo['datePosted']);
-        $dateNow = Carbon::now();
-        $cantidadDias = $date->diffInDays($dateNow);
-        $llave = strval($cantidadDias);
-        if (strlen($llave) == 1) {
-            $llave = "0" . $llave;
-        }
-        $randon = rand(10, 100000);
-        $llave = $llave . strval($randon);
-
-        $excerpt = null;
-        if (isset($empleo['excerpt'])) {
-            $excerpt = $empleo['excerpt'];
-        }
-
-        $vacantes = null;
-        if (isset($empleo['vacantes'])) {
-            $vacantes = $empleo['vacantes'];
-        }
-
-        $salario = null;
-        if (isset($empleo['salario'])) {
-            $salario = $empleo['salario'];
-        }
-        $ett = null;
-        if (isset($empleo['ett'])) {
-            $ett = $empleo['ett'];
-        }
-        $contrato = null;
-        if (isset($empleo['contrato'])) {
-            $contrato = $empleo['contrato'];
-        }
-
-        $jornada = null;
-        if (isset($empleo['jornada'])) {
-            $jornada = $empleo['jornada'];
-        }
-        $experiencia = null;
-        if (isset($empleo['experiencia'])) {
-            $experiencia = $empleo['experiencia'];
-        }
-
-        DB::table('jobs_practicas')->insert([
-            'orden' => $llave,
-            'datePosted' => $date,
-            'title' => $empleo['title'],
-            'jobFuente' => $empleo['JobFuente'],
-            'jobUrl' => $empleo['JobUrl'],
-            'excerpt'=> $excerpt,
-            'vacantes' => $vacantes,
-            'salario' => $salario,
-            'ett' => $ett,
-            'contrato' => $contrato,
-            'jornada' => $jornada,
-            'experiencia' => $experiencia,
-            'listaTipos' => $listaTipos,
-            'autonomia' => $autonomia->name,
-            'provincia' => $provincia->name,
-            'localidad' => $localidad->name,
-            'autonomia_id' => $autonomia->id,
-            'provincia_id' => $provincia->id,
-            'localidad_id' => $localidad->id,
-            'tipopractica_id' => $tipoPracticas->id
-
-        ]);
+    public function autonomia($autonomia) {
+        $this->output->write($autonomia, true);
     }
 
     public function vaciaTablas()
@@ -603,29 +225,7 @@ class populateDB extends Command
             DB::table($name)->truncate();
         }
         DB::statement("SET foreign_key_checks=1");
-        $pathDirectory = storage_path("app/public/logo_images");
-        if (File::exists($pathDirectory)) {
-            File::deleteDirectory($pathDirectory);
-            File::makeDirectory($pathDirectory);
-        } else {
-            File::makeDirectory($pathDirectory);
-        }
     }
 
-    public function descargarLogo($url)
-    {
-        $extension = pathinfo(storage_path($url), PATHINFO_EXTENSION);
-        $filename = Str::uuid() . '.' . $extension;
-        $logo = Image::make($url);
-        $logo->resize(70, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
-        $logo->save(storage_path('app/public/logo_images/' . $filename));
 
-
-        /*
-        Image::make($url)->save(storage_path('app/public/logo_images/' . $filename));
-        */
-        return $filename;
-    }
 }

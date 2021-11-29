@@ -13,6 +13,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     public function register()
     {
         if ($this->app->environment('local')) {
@@ -20,7 +21,6 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(TelescopeServiceProvider::class);
         }
     }
-
     /**
      * Bootstrap any application services.
      *
@@ -31,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
        Carbon::setLocale('es');
        setlocale(LC_TIME,'es_ES');
        Paginator::defaultView('tailwind.blade');
+
     }
 }

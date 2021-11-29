@@ -44,8 +44,10 @@
     <body class="font-sans antialiased" itemscope itemtype="http://schema.org/WebPage">
         {{--<x-jet-banner />--}}
 
-        <div class="min-h-screen bg-pink-50 z-50">
-            @livewire('navigation-menu')
+        <div class=" bg-pink-50">
+            <div class="z-50 relative">
+                @livewire('navigation-menu')
+            </div>
             <!-- Page Heading -->
             @if (isset($header))
                 {{--<header class="bg-white shadow"> --}}

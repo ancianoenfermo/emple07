@@ -10,6 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@tailwindcss/custom-forms": "^0.2.1",
         "@tailwindcss/forms": "^0.2.1",
         "@tailwindcss/typography": "^0.4.0",
         "alpinejs": "^2.7.3",
@@ -23,6 +24,7 @@
         "sass": "^1.35.1",
         "sass-loader": "^12.1.0",
         "tailwindcss": "^2.2.16",
+        "tailwindcss-plugins": "^0.3.0",
         "tailwindcss-text-indent": "^1.0.2"
     },
     "dependencies": {

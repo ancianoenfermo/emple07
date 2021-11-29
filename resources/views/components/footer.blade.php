@@ -1,5 +1,5 @@
 <div>
-    <footer class="">
+    <footer class="z-50 relative">
         <div class="bg-cover bg-center">
             <div class="cabecera" >
                 <div class="container mx-auto px-6 lg:px-20">

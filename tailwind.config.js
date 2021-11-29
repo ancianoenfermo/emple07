@@ -14,7 +14,12 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            fontSize: {
+                '7xl': '.60rem',
+            },
+
         },
+
     },
 
     variants: {
@@ -24,6 +29,8 @@ module.exports = {
     plugins: [
         require('@tailwindcss/forms'),
         require('tailwindcss-text-indent')(),
+        require('@tailwindcss/custom-forms'),
+
     ]
 };
 

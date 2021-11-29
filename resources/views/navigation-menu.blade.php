@@ -42,7 +42,7 @@ $nav_links_auth = [
     ],
 ]
 @endphp
-<nav x-data="{ open: false }" class="bg-pink-400 border-b border-gray-100 shadow"
+<nav x-data="{ open: false }" class="h-16 fixed  zx-50 w-full bg-pink-400 border-b border-gray-100 shadow"
     itemscope itemtype="https://schema.org/SiteNavigationElement">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,6 +73,7 @@ $nav_links_auth = [
                     @endauth
 
                 </div>
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
