@@ -1,4 +1,5 @@
 <div>
+
     <div class="text-center text-lg w-full text-pink-900 pb-2">
         <x-jet-button
         wire:click="$emit('clickUbicacionBuscar',leerValoresFiltro())"
@@ -10,23 +11,23 @@
     <div id="filtros">
         <div class="flex items-center pt-2">
             <label class="w-24 text-xs mr-2">Autonomia</label>
-            <select id="selectAutonomia"  class="items-end block w-full text-xs h-8 border-pink-600 focus:border-pink-300 focus:ring focus:ring-pink-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                onchange="cambioSelect()"
+
+            <select id="selectAutonomia" class="items-end block w-full text-xs h-8 border-pink-600 focus:border-pink-300 focus:ring focus:ring-pink-200 focus:ring-opacity-50 rounded-md shadow-sm"
                 wire:model="selectedAutonomia"
-                >
-                
+                wire:loading.class="cursor-wait">
                 <option value="">Todas</option>
                 @foreach ($autonomias as $item)
-                    <option value="{{ $item->id}}" >{{ $item->name }}</option>
+                    <option value="{{ $item->id}}">{{ $item->name }}</option>
                 @endforeach
             </select>
         </div>
-        
+
         <div class="flex items-center pt-2">
             <label class="w-24 text-xs mr-2">Provincia</label>
             <select id="selectProvincia" class="items-end block w-full text-xs h-8  border-pink-600 focus:border-pink-300 focus:ring focus:ring-pink-200 focus:ring-opacity-50 rounded-md shadow-sm"
-            onchange="cambioSelect()"
-            wire:model="selectedProvincia">
+            wire:model="selectedProvincia"
+            wire:loading.class="cursor-wait"
+            >
                 <option value="">Todas</option>
                 @if (!is_null($provincias))
                     @foreach ($provincias as $item)
@@ -39,8 +40,8 @@
         <div class="flex items-center pt-2">
             <label class="w-24 text-xs mr-2">Localidad</label>
             <select id="selectLocalidad" class="block w-full   text-xs h-8 border-pink-600 focus:border-pink-300 focus:ring focus:ring-pink-200 focus:ring-opacity-50 rounded-md shadow-sm"
-            onchange="cambioSelect()"
-            wire:model="selectedLocalidad">
+            wire:model="selectedLocalidad"
+            wire:loading.class="cursor-wait">
                 <option value="">Todas</option>
                 @if (!is_null($localidades))
                     @foreach ($localidades as $item)
@@ -49,6 +50,7 @@
                 @endif
             </select>
         </div>
+
         <div class="flex items-center pt-2">
             <label class="w-24 text-xs block mr-2">Contrato</label>
             <select id="selectedContrato" class="block w-full text-xs h-8  border-pink-600 focus:border-pink-300 focus:ring focus:ring-pink-200 focus:ring-opacity-50 rounded-md shadow-sm"
@@ -125,9 +127,6 @@
             </div>
 
         </div>
-
-
-
     </div>
 </div>
 

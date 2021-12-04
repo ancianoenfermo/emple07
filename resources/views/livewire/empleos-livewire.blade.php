@@ -21,7 +21,8 @@
 
                     <div id="blur">
                     @foreach ($empleos as $empleo )
-                    <x-cardempleo :empleo=$empleo/>
+                        
+                        <x-cardempleo :empleo=$empleo index="{{$loop->iteration}}"/>
                     @endforeach
                     </div>
 
@@ -40,59 +41,8 @@
             <div class=" mx-1 px-1 pb-2 ">
                 @livewire('ubicacion')
                 <hr class="h-1 bg-pink-400 mt-2">
-                <div class="grid grid-cols-2 gap-x-1 pt-4 px-1 pb-2">
-                    <div>
-                        <label class="inline-flex items-center mt-3 text-xs">
-                            <input type="checkbox" class="form-checkbox h-5 w-5 text-pink-600" checked><span class="ml-2 text-gray-700">Discapacidad</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label class="inline-flex items-center mt-3 text-xs ">
-                            <input type="checkbox" class="form-checkbox h-5 w-5 text-pink-600" checked><span class="ml-2 text-gray-700">Prácticas</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label class="inline-flex items-center mt-3 text-xs">
-                            <input type="checkbox" class="form-checkbox h-5 w-5 text-pink-600" checked><span class="ml-2 text-gray-700">Teletrabajo</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label class="inline-flex items-center mt-3 text-xs">
-                            <input type="checkbox" class="form-checkbox h-5 w-5 text-pink-600" checked><span class="ml-2 text-gray-700">100% Teletrabajo</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label class="inline-flex items-center mt-3 text-xs">
-                            <input type="checkbox" class="form-checkbox h-4 w-4 text-pink-600" checked><span class="ml-2 text-gray-700">ETT</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label class="inline-flex items-center text-xs">
-                            <input type="checkbox" class="form-checkbox text-pink-600" checked>
-                            <span class="ml-2">Option 1</span>
-                          </label>
-                    </div>
-
-
-
-                </div>
-
-
-
-
-
-
-
-
-
-                <div class="flex items-center pt-2">
-                    <label class="w-24 text-xs block mr-2">Salario</label>
-                    <select class="block w-full text-xs  border-pink-400 focus:border-pink-300 focus:ring focus:ring-pink-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="">Todos</option>
-                    </select>
-                </div>
             </div>
-            <hr class="block bg-gradient-to-b from-pink-200 via-pink-300 to-pink-600 h-2 border-none">
+
 
 
         </div>

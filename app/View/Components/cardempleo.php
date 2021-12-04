@@ -4,20 +4,22 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class cardjob extends Component
+class cardempleo extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $job;
+    public $empleo;
+    public $index;
 
 
-    public function __construct($job)
+    public function __construct($empleo,$index)
     {
-        $this->job = $job;
-
+       
+        $this->empleo = $empleo;
+        $this->index = $index;
     }
 
     /**
@@ -27,6 +29,6 @@ class cardjob extends Component
      */
     public function render()
     {
-        return view('components.cardjob');
+        return view('components.cardempleo');
     }
 }

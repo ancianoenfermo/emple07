@@ -28,10 +28,11 @@ class Ubicacion extends Component
 
     public function mount()
     {
-
+        
         $this->autonomias = Cache::rememberForever('TodasAutonomias', function () {
             return Autonomia::all();
         });
+        
 
         $this->contratos = Cache::rememberForever('TodosContratos', function () {
             return Contrato::all();
@@ -50,17 +51,29 @@ class Ubicacion extends Component
     }
     public function updatedSelectedAutonomia($autonomia_id)
     {
+       
         $this->reset(['provincias','selectedProvincia','selectedLocalidad']);
+        $this->provincias = Provincia::where('autonomia_id', $autonomia_id)->get();
+       /*
         $this->provincias = Cache::rememberForever('TodasProvinciasDeAutonomia' . $autonomia_id, function () use ($autonomia_id) {
-            return Provincia::where('autonomia_id', $autonomia_id)->get();
+            return Provincia::where('autonomia_id', '1')->get();
         });
+        */
     }
+    
+    
+
+
     public function updatedSelectedProvincia($provincia_id)
     {
         $this->reset(['localidades','selectedLocalidad']);
+        $this->localidades = Localidad::where('provincia_id', $provincia_id)->get();
+        
+        /*
         $this->localidades = Cache::rememberForever('TodasLocalidadesDeProvincia' . $provincia_id, function () use ($provincia_id) {
             return Localidad::where('provincia_id', $provincia_id)->get();
         });
+        */
     }
     public function updatedSelectedLocalidad($provincia_id)
     {

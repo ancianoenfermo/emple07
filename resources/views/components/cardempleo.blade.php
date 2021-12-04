@@ -1,4 +1,5 @@
 <div class=" py-4 px-8 bg-white shadow-lg rounded-lg my-10 w-full">
+    {{$index}}
     {{--Linea 1--}}
     <div class="pt-2 ml-4 flex items-center ">
         <!-- Localidad -->
@@ -53,9 +54,8 @@
     </div>
     {{--Linea 3--}}
     <div class="flex  place-items-end ">
-        <p class="mt-2 ml-4 text-gray-600">{{$empleo->excerptCorto}}</p>
-        <a wire:click="showExceprt({{$empleo}})">
-            <i class="fas fa-search-plus text-pink-700"></i>
+        <p class="flex-1 mt-2 ml-4 text-gray-600">{{$empleo->excerptCorto}}</p>
+        <a id="{{$index}}" onclick="leermas({{$index}})" class="cursor-pointer font-semibold text-pink-500 " wire:click="showExceprt({{$empleo}})">Leer más
         </a>
     </div>
     <hr class="mt-1"/>
@@ -90,7 +90,7 @@
                 <strong class="px-1 ">{{ $empleo->vacantes }}</strong>
             </span>
         @endif
-        @if(!@empty($empleo->experiencia))
+        @if(!@empty($empleo->Texperiencia))
             <span class="mr-4 items-center  px-2  text-sm  leading-none text-black ">
                 Experiencia:
                 <strong class="px-1 ">Requerida</strong>

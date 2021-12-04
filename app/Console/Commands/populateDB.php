@@ -25,6 +25,7 @@ use App\Models\Excerpt;
 
 use App\Models\Jornada;
 use App\Models\Contrato;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 
 use function PHPUnit\Framework\isNull;
 
@@ -169,7 +170,7 @@ class populateDB extends Command
             $newJob->vacantes = $empleo['vacantes'];
         }
 
-        if (isset($empleo['Texperiencia'])) {
+        if ($empleo['Texperiencia']==TRUE) {
             $newJob->Texperiencia = true;
         }
         if (isset($empleo['Tett'])) {

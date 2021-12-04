@@ -2,6 +2,21 @@
     @livewire('empleos-livewire')
 @push('js')
     <script>
+        function leermas(id) {
+            console.log(id)
+            var element = document.getElementById(id);
+            element.classList.remove("mcursor-pointer");
+            element.classList.add("cursor-wait");
+        }
+        
+        function cambioSelect() {
+            document.getElementById('selectAutonomia').disabled = true;
+            document.getElementById('selectProvincia').disabled = true;
+            document.getElementById('selectLocalidad').disabled = true;
+        }
+        
+
+
         function leerValoresFiltro() {
             document.getElementById("blur").classList.add("blur");
 
@@ -56,18 +71,13 @@
             }
 
             var e = document.getElementById("selectedExperiencia");
-            var value = e.options[e.selectedIndex].value;
             var text = e.options[e.selectedIndex].text;
             datos['experiencia'] = text;
-            if (datos['experiencia'] == 'Todas') {
-                datos['experiencia'] = null;
-            }
-            if (datos['experiencia'] == 'Con experiencia') {
-                datos['experiencia'] = '1';
-            } else {
-                datos['experiencia'] = '0';
-            }
 
+
+            if (datos['experiencia']=="Todas") {datos['experiencia']=null;}
+            else if (datos['experiencia']=="Con experiencia") {datos['experiencia']='1';}
+            else {datos['experiencia']='0';}
 
 
             makeDivFiltros(datos);

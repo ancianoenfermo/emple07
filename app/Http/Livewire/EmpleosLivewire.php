@@ -61,15 +61,14 @@ class EmpleosLivewire extends Component
         $this->open = true;
     }
     public function clickUbicacionBuscar($dataFilter) {
-        $this->resetPage();
+        
         $this->dataFilter = $dataFilter;
-
+        $this->filters = [];
         foreach ($dataFilter as $key => $value){
             if (!is_null($value)) {
                 if ($key =="h1"){
                     continue;
                 }
-
                 array_push($this->filters,$key);
             }
          }
