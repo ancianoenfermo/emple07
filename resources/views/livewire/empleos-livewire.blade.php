@@ -1,34 +1,47 @@
 <main class="flex flex-col h-screen">
     <div class="flex flex-1 overflow-hidden">
         <div class="flex flex-1 flex-col mt-16">
-
-            <div  class=" bg-pink-400 h-16 p-4 inline-flex">
-                <div id="totalEmpleos">{{$totalEmpleos}}&ensp;</div>
-                <div id="divFiltros">{{$h1Title}}</div>
-            </div>
-
-            <div  class=" bg-pink-200 p-4">
-                <div class="inline-flex">
-                    <i class="fas fa-filter"></i>
-                    @foreach ($filters as $filter )
-                     <span class="px-2 py-1 text-xs items-center font-semibold rounded-full bg-pink-700 text-white">{{$filter}}</span>
-                    @endforeach
+           <div class="bg-pink-400 h-24 pt-4 ">
+                <div  class="flex w-full justify-center text-2xl items-center">
+                    <div id="totalEmpleos">{{$totalEmpleos}}&ensp;</div>
+                    <div id="divFiltros" class="ml-2">{{$h1Title}}</div>
                 </div>
-            </div>
 
+                <div id="filtrosB" class="mx-auto p-4 ">
+                    <div class="inline-flex items-center" >
 
-            <div class=" bg-white overflow-y-auto paragraph px-4">
+                        @foreach ($filters as $filter )
+                            @if ($loop->first)
+                                <i class="fas fa-filter text-pink-100"></i>
+                            @endif
 
-                    <div id="blur">
-                    @foreach ($empleos as $empleo )
-                        
-                        <x-cardempleo :empleo=$empleo index="{{$loop->iteration}}"/>
-                    @endforeach
+                        <span class="bg-pink-100 px-2 py-1 ml-5 text-xs items-center font-semibold  rounded-full  text-pink-700">{{$filter}}</span>
+                        @endforeach
                     </div>
-
-                <div>
-                {{ $empleos->links()}}
                 </div>
+            </div>
+
+            <div class="bg-slate-200  overflow-y-auto paragraph px-4 ">
+                <div  >
+
+                        <button id="spinner" type="button"  class="invisible z-50 absolute top-1/2 left-1/4 inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed" disabled="">
+                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <span id="textSpinner">Processing...</span>
+                        </button>
+
+                    <div id="blur" >
+                        @foreach ($empleos as $empleo )
+
+                            <x-cardempleo :empleo=$empleo index="{{$loop->iteration}}"/>
+                        @endforeach
+                    </div>
+                </div>
+
+                {{ $empleos->links()}}
+
                 <x-separadorFooter/>
                 <x-footer/>
             </div>

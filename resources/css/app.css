@@ -3,6 +3,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .animate-spin {
+        animation: spin 1s linear infinite;
+
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+    }
+  }
+
+
+
+
 @layer components {
     . { text-indent: 2rem; }
     .indent-md { text-indent: 3rem; }

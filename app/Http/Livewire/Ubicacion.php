@@ -18,6 +18,8 @@ class Ubicacion extends Component
     public $contratos = null;
     public $jornadas = null;
     public $experiencias = null;
+    public $tiposempleo = null;
+    public $tipossalario = null;
 
     public $selectedAutonomia = "Todas";
     public $selectedProvincia = "Todas";
@@ -25,14 +27,14 @@ class Ubicacion extends Component
     public $selectedContrato = "Todos";
     public $selectedJornada = "Todas";
     public $selectedExperiencia = "Todo";
-
+    public $selectedTiposalario = "Todos";
     public function mount()
     {
-        
+
         $this->autonomias = Cache::rememberForever('TodasAutonomias', function () {
             return Autonomia::all();
         });
-        
+
 
         $this->contratos = Cache::rememberForever('TodosContratos', function () {
             return Contrato::all();
@@ -43,7 +45,8 @@ class Ubicacion extends Component
         });
 
         $this->experiencias = ['Con experiencia','Sin experiencia'];
-
+        $this->tiposempleo = ['Discapacidad','Prácticas','Teletrabajo','100% Teletrabajo','Ett','Sin tipo'];
+        $this->tipossalario = ['Salario anual', 'Salario mensual','Salario por horas','Según convenio','Con Salario'];
     }
     public function render()
     {
@@ -51,7 +54,7 @@ class Ubicacion extends Component
     }
     public function updatedSelectedAutonomia($autonomia_id)
     {
-       
+
         $this->reset(['provincias','selectedProvincia','selectedLocalidad']);
         $this->provincias = Provincia::where('autonomia_id', $autonomia_id)->get();
        /*
@@ -60,15 +63,15 @@ class Ubicacion extends Component
         });
         */
     }
-    
-    
+
+
 
 
     public function updatedSelectedProvincia($provincia_id)
     {
         $this->reset(['localidades','selectedLocalidad']);
         $this->localidades = Localidad::where('provincia_id', $provincia_id)->get();
-        
+
         /*
         $this->localidades = Cache::rememberForever('TodasLocalidadesDeProvincia' . $provincia_id, function () use ($provincia_id) {
             return Localidad::where('provincia_id', $provincia_id)->get();

@@ -25,7 +25,7 @@ class CreateEmpleosTable extends Migration
             $table->string('jornada')->default("");
             $table->string('contrato')->default("");
             $table->string('vacantes')->default("");
-
+            $table->string('tipos')->default("");
 
             $table->boolean('Texperiencia')->default(false);
             $table->boolean('Tett')->default(false);
@@ -35,6 +35,10 @@ class CreateEmpleosTable extends Migration
             $table->boolean('T100teletrabajo')->default(false);
             $table->boolean('TsalarioConvenio')->default(false);
             $table->boolean('TsalarioHoras')->default(false);
+            $table->boolean('TsalarioMes')->default(false);
+            $table->boolean('TsalarioAno')->default(false);
+            $table->boolean('TsalarioCon')->default(false);
+            $table->boolean('Ttipos')->default(false);
 
             $table->string('autonomia');
             $table->unsignedBigInteger('autonomia_id');

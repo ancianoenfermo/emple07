@@ -6,31 +6,12 @@ $nav_links = [
         'active' => request()->routeIs('home'),
     ],
     [
-        'name' => 'Buscar empleo',
+        'name' => 'Blog de la búsqueda de empleo',
         'route' => route('buscarEmpleo'),
         'active' => request()->routeIs('buscarEmpleo'),
     ],
 
-    [
-        'name' => 'La entrevista',
-        'route' => route('entrevista'),
-        'active' => request()->routeIs('entrevista'),
-    ],
-    [
-        'name' => 'El curriculum',
-        'route' => route('curriculum'),
-        'active' => request()->routeIs('curriculum'),
-    ],
-    [
-        'name' => 'Carta de presentación',
-        'route' => route('carta'),
-        'active' => request()->routeIs('carta'),
-    ],
-    [
-        'name' => 'Ofertas de trabajo',
-        'route' => route('ofertas'),
-        'active' => request()->routeIs('ofertas'),
-    ],
+
 
 
 ];

@@ -2,23 +2,25 @@
     @livewire('empleos-livewire')
 @push('js')
     <script>
+
+
         function leermas(id) {
             console.log(id)
             var element = document.getElementById(id);
             element.classList.remove("mcursor-pointer");
             element.classList.add("cursor-wait");
         }
-        
+
         function cambioSelect() {
             document.getElementById('selectAutonomia').disabled = true;
             document.getElementById('selectProvincia').disabled = true;
             document.getElementById('selectLocalidad').disabled = true;
         }
-        
+
 
 
         function leerValoresFiltro() {
-            document.getElementById("blur").classList.add("blur");
+
 
             datos ={};
             var e = document.getElementById("selectAutonomia");
@@ -54,6 +56,10 @@
                 datos['localidad'] = null;
                 datos['h1'] = "Ofertas de trabajo en España";
             }
+            document.getElementById("blur").classList.add("blur");
+            document.getElementById("spinner").classList.remove("invisible")
+            document.getElementById('textSpinner').innerHTML = datos['h1'];
+
 
             var e = document.getElementById("selectedContrato");
             var value = e.options[e.selectedIndex].value;
@@ -76,17 +82,131 @@
 
 
             if (datos['experiencia']=="Todas") {datos['experiencia']=null;}
-            else if (datos['experiencia']=="Con experiencia") {datos['experiencia']='1';}
-            else {datos['experiencia']='0';}
+            else if (datos['experiencia']=="Con experiencia") {datos['experiencia']=1;}
+            else {datos['experiencia']=0;}
+
+            var e = document.getElementById("selectedTiposalario");
+            var value = e.options[e.selectedIndex].value;
+            var text = e.options[e.selectedIndex].text;
+
+            switch (text) {
+                case "Todos":
+                    datos['solo salario anual'] = null;
+                    datos['solo salario mensual'] = null;
+                    datos['solo salario por hora'] = null;
+                    datos['solo salario según convenio'] = null;
+                    datos['solo con salario'] = null;
+                    break;
+                case "Salario anual":
+                    datos['solo salario anual'] = 1;
+                    datos['solo salario mensual'] = null;
+                    datos['solo salario por hora'] = null;
+                    datos['solo salario según convenio'] = null;
+                    datos['solo con salario'] = null;
+                    break;
+                case "Salario mensual":
+                    datos['solo salario anual'] = null;
+                    datos['solo salario mensual'] = 1;
+                    datos['solo salario por hora'] = null;
+                    datos['solo salario según convenio'] = null;
+                    datos['solo con salario'] = null;
+                    break;
+                case "Salario por horas":
+                    datos['solo salario anual'] = null;
+                    datos['solo salario mensual'] = null;
+                    datos['solo salario por hora'] = 1;
+                    datos['solo salario según convenio'] = null;
+                    datos['solo con salario'] = null;
+                    break;
+                case "Según convenio":
+                    datos['solo salario anual'] = null;
+                    datos['solo salario mensual'] = null;
+                    datos['solo salario por hora'] = null
+                    datos['solo salario según convenio'] = 1;
+                    datos['solo con salario'] = null;
+                    break;
+                case "Con Salario":
+                    datos['solo salario anual'] = null;
+                    datos['solo salario mensual'] = null;
+                    datos['solo salario por hora'] = null;
+                    datos['solo salario según convenio'] = null;
+                    datos['solo con salario'] = 1;
+                    break;
+
+            }
+
+            var e = document.getElementById("selectedTipoempleo");
+            var value = e.options[e.selectedIndex].value;
+            var text = e.options[e.selectedIndex].text;
+
+            switch (text) {
+                case "Todos":
+                    datos['solo discapacidad'] = null;
+                    datos['solo prácticas'] = null;
+                    datos['solo ett'] = null;
+                    datos['solo teletrabajo'] = null;
+                    datos['solo 100% teletrabajo'] = null;
+                    datos['solo sin tipo'] = null;
+                    break;
+                case "Discapacidad":
+                    datos['solo discapacidad'] = 1;
+                    datos['solo prácticas'] = null;
+                    datos['solo ett'] = null;
+                    datos['solo teletrabajo'] = null;
+                    datos['solo 100% teletrabajo'] = null;
+                    datos['solo sin tipo'] = null;
+                    break;
+                case "Prácticas":
+                    datos['solo discapacidad'] = null;
+                    datos['solo prácticas'] = 1;
+                    datos['solo ett'] = null;
+                    datos['solo teletrabajo'] = null;
+                    datos['solo 100% teletrabajo'] = null;
+                    datos['solo sin tipo'] = null;
+                    break;
+                case "Ett":
+                    datos['solo discapacidad'] = null;
+                    datos['solo prácticas'] = null;
+                    datos['solo ett'] = 1;
+                    datos['solo teletrabajo'] = null;
+                    datos['solo 100% teletrabajo'] = null;
+                    datos['solo sin tipo'] = null;
+                    break;
 
 
+                case "Teletrabajo":
+                    datos['solo discapacidad'] = null;
+                    datos['solo prácticas'] = null;
+                    datos['solo ett'] = null;
+                    datos['solo teletrabajo'] = 1;
+                    datos['solo 100% teletrabajo'] = null;
+                    datos['solo sin tipo'] = null;
+                    break;
+                case "100% Teletrabajo":
+                    datos['solo discapacidad'] = null;
+                    datos['solo prácticas'] = null;
+                    datos['solo ett'] = null;
+                    datos['solo teletrabajo'] = null;
+                    datos['solo 100% teletrabajo'] = 1;
+                    datos['solo sin tipo'] = null;
+                    break;
+                case "Sin tipo":
+                    datos['solo discapacidad'] = null;
+                    datos['solo prácticas'] = null;
+                    datos['solo ett'] = null;
+                    datos['solo teletrabajo'] = null;
+                    datos['solo 100% teletrabajo'] = null;
+                    datos['solo sin tipo'] = 1;
+                    break;
+
+            }
             makeDivFiltros(datos);
             return datos;
         }
+
         function makeDivFiltros(datos){
             document.getElementById("divFiltros").innerHTML = " "+datos['h1'];
             document.getElementById("totalEmpleos").innerHTML = '<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>'
-
         }
 
     </script>

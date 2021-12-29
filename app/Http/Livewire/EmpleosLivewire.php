@@ -12,7 +12,15 @@ use function PHPUnit\Framework\isNull;
 class EmpleosLivewire extends Component
 {
     use WithPagination;
-    public $dataFilter = ['autonomia'=>null,'provincia'=>null,'localidad'=>null, 'contrato'=>null,'jornada'=>null,'experiencia'=>null,'h1'=>null];
+    public $dataFilter = ['autonomia'=>null,'provincia'=>null,'localidad'=>null,
+     'contrato'=>null,'jornada'=>null,'experiencia'=>null, 'solo discapacidad'=>null,
+     'solo prácticas'=>null, 'solo teletrabajo'=> null, 'solo 100% teletrabajo' =>null, 'solo ett'=>null,'solo sin tipo' => null,
+     'solo salario anual'=>null, 'solo salario mensual'=>null, 'solo salario por hora'=>null,'solo salario según convenio'=>null,"solo con salario"=>null,
+     'h1'=>null];
+
+
+
+
 
     public $open=false;
     public $excerpt;
@@ -38,18 +46,32 @@ class EmpleosLivewire extends Component
         }
 
         if($this->cont > 1) {
-            //dd($this->filters);
+            //dd($this->dataFilter);
         }
         $h1Title = "Ofertas de trabajo en España";
 
         $empleos =Empleo::orderby('orden')
+
             ->isAutonomia($this->dataFilter['autonomia'])
             ->isProvincia($this->dataFilter['provincia'])
             ->isLocalidad($this->dataFilter['localidad'])
             ->isContrato($this->dataFilter['contrato'])
             ->isJornada($this->dataFilter['jornada'])
-            ->isExperiencia($this->dataFilter['experiencia'])
-            ->paginate(10);
+            ->NoExperiencia($this->dataFilter['experiencia'])
+            ->IsSalarioAnual($this->dataFilter['solo salario anual'])
+            ->IsSalarioMes($this->dataFilter['solo salario mensual'])
+            ->IsSalarioHoras($this->dataFilter['solo salario por hora'])
+            ->IsSalarioConvenio($this->dataFilter['solo salario según convenio'])
+            ->IsSalarioCon($this->dataFilter['solo con salario'])
+
+
+            ->NoTipo($this->dataFilter['solo sin tipo'])
+            ->NoDiscapacidad($this->dataFilter['solo discapacidad'])
+            ->NoPracticas($this->dataFilter['solo prácticas'])
+            ->NoTeletrabajo($this->dataFilter['solo teletrabajo'])
+            ->No100Teletrabajo($this->dataFilter['solo 100% teletrabajo'])
+            ->NoEtt($this->dataFilter['solo ett'])
+            ->paginate(25);
         $this->totalEmpleos = $empleos->total();
         return view('livewire.empleos-livewire', compact('empleos'));
     }
@@ -61,7 +83,8 @@ class EmpleosLivewire extends Component
         $this->open = true;
     }
     public function clickUbicacionBuscar($dataFilter) {
-        
+        $this->resetPage();
+
         $this->dataFilter = $dataFilter;
         $this->filters = [];
         foreach ($dataFilter as $key => $value){
@@ -69,10 +92,24 @@ class EmpleosLivewire extends Component
                 if ($key =="h1"){
                     continue;
                 }
-                array_push($this->filters,$key);
+                if ($key == "autonomia" or $key =='provincia' or $key =='localidad' or $key =='contrato' or $key =='jornada' ) {
+                    array_push($this->filters,$value);
+                } else {
+                    array_push($this->filters,$key);
+                }
             }
          }
 
     }
 
 }
+/*
+->NoExperiencia($this->dataFilter['experiencia'])
+            ->NoDiscapacidad($this->dataFilter['no discapacidad'])
+            ->NoPracticas($this->dataFilter['no practicas'])
+            ->NoTeletrabajo($this->dataFilter['no teletrabajo'])
+            ->No100Teletrabajo($this->dataFilter['no 100%teletrabajo'])
+            ->NoEtt($this->dataFilter['no ett'])
+            ->NoTipo($this->dataFilter['no sin tipo'])
+
+*/

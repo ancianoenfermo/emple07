@@ -76,7 +76,7 @@ class populateDB extends Command
         #$inicio = now();
         #Artisan::call('down', ['--redirect' => null, '--retry' => null, '--secret' => null, '--status' => '503']);
         //borra la Cache
-        #Cache::flush();
+        Cache::flush();
         // Lee el json de empleos
 
         $path = public_path() . "/Empleos.json";
@@ -149,6 +149,7 @@ class populateDB extends Command
             $newJob->excerptCorto ="**** VENIA NULL";
         }
         $newJob->JobFuente = $empleo['JobFuente'];
+
         $newJob->JobUrl = $empleo['JobUrl'];
         $newJob->autonomia = $autonomia->name;
         $newJob->autonomia_id = $autonomia->id;
@@ -157,8 +158,9 @@ class populateDB extends Command
         $newJob->localidad = $localidad->name;
         $newJob->localidad_id = $localidad->id;
         $newJob->excerpt_id = $excerpt->id;
-        if (isset($empleo['salario'])) {
+        if (!empty($empleo['salario'])) {
             $newJob->salario = $empleo['salario'];
+            $newJob->TsalarioCon = true;
         }
         if (isset($empleo['jornada'])) {
             $newJob->jornada = $empleo['jornada'];
@@ -169,31 +171,58 @@ class populateDB extends Command
         if (isset($empleo['vacantes'])) {
             $newJob->vacantes = $empleo['vacantes'];
         }
+        $tipos = "";
 
-        if ($empleo['Texperiencia']==TRUE) {
+        if (!empty($empleo['experiencia'])) {
             $newJob->Texperiencia = true;
+
+            $newJob->Ttipos = true;
         }
-        if (isset($empleo['Tett'])) {
+        if ($empleo['Tett']==TRUE) {
             $newJob->Tett = true;
+            $tipos = $tipos . "Ett,";
+            $newJob->Ttipos = true;
         }
-        if (isset($empleo['Tdiscapacidad'])) {
+        if ($empleo['Tdiscapacidad']==TRUE) {
             $newJob->Tdiscapacidad = true;
+            $tipos = $tipos . "Discapacidad,";
+            $newJob->Ttipos = true;
         }
-        if (isset($empleo['Tteletrabajo'])) {
+        if ($empleo['Tteletrabajo']==TRUE) {
             $newJob->Tteletrabajo = true;
+            $tipos = $tipos . "Teletrabajo,";
+            $newJob->Ttipos = true;
         }
-        if (isset($empleo['Tpracticas'])) {
+        if ($empleo['Tpracticas']==TRUE) {
             $newJob->Tpracticas = true;
+            $tipos = $tipos . "Prácticas,";
+            $newJob->Ttipos = true;
         }
-        if (isset($empleo['T100teletrabajo'])) {
+        if ($empleo['T100teletrabajo']==TRUE) {
             $newJob->T100teletrabajo = true;
+            $tipos = $tipos . "100% Teletrabajo,";
+            $newJob->Ttipos = true;
         }
-        if (isset($empleo['TsalarioConvenio'])) {
+        if ($empleo['TsalarioConvenio']==TRUE) {
             $newJob->TsalarioConvenio = true;
         }
-        if (isset($empleo['TsalarioHoras'])) {
+        if ($empleo['TsalarioHoras']==TRUE) {
             $newJob->TsalarioHoras = true;
         }
+        if ($empleo['TsalarioMes']==TRUE) {
+            $newJob->TsalarioMes = true;
+        }
+        if ($empleo['TsalarioAno']==TRUE) {
+            $newJob->TsalarioAno = true;
+        }
+
+
+
+        if(strlen($tipos)>1){
+            $newJob->tipos=substr($tipos, 0, -1);
+        }
+
+
 
         $newJob->save();
 
