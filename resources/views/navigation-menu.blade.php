@@ -17,9 +17,7 @@ $nav_links = [
 ];
 $nav_links_auth = [
     [
-        'name' => 'Mis Trabajos',
-        'route' => route('misofertas'),
-        'active' => request()->routeIs('misofertas'),
+
     ],
 ]
 @endphp

@@ -26,11 +26,7 @@
                                         <ul class="text-gray-500 text-sm">
 
                                             <li class="pt-1 pb-2"><a href={{route('home')}}>Home</a></li>
-                                            <li class="pt-1 pb-2"><a href={{route('entrevista')}}>Entrevista</a></li>
-                                            <li class="pt-1 pb-2"><a href={{route('curriculum')}}>Curriculum vitae</a></li>
-                                            <li class="pt-1 pb-2"><a href={{route('carta')}}>Carta de Presentación</a></li>
-                                            <li class="pt-1 pb-2"><a href={{route('buscarEmpleo')}}>Buscar empleo</a></li>
-                                            <li class="pt-1 pb-2"><a href={{route('ofertas')}}>Ofertas de trabajo</a></li>
+
 
 
                                         </ul>
