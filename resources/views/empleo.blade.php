@@ -1,4 +1,5 @@
 <x-app-layout>
+
     @livewire('empleos-livewire')
 @push('js')
     <script>
@@ -58,7 +59,7 @@
             }
             document.getElementById("blur").classList.add("blur");
             document.getElementById("spinner").classList.remove("invisible")
-            document.getElementById('textSpinner').innerHTML = datos['h1'];
+            document.getElementById('textSpinner').innerHTML = "buscando "+ datos['h1'];
 
 
             var e = document.getElementById("selectedContrato");

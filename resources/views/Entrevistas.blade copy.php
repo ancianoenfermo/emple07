@@ -73,7 +73,7 @@
             <p class="blogParrafo">
                 Las entrevistas de trabajo suelen estructurarse de la siguiente forma:
             </p>
-            <ul class="blogUl2 list-decimal ">
+            <ul class="blogUl2">
                 <li>
                     <h3 class="inline-block">
                         Inicio de la entrevista: saludo y presentación
@@ -82,10 +82,17 @@
                         Es el primer contacto entre el entrevistador y el candidato. Se saludan y presentan de forma breve. La vestimenta, las palabras que utilizas, la pronunciación, el lenguaje corporal entre otros hacen que el entrevistador se forme una primera impresión del candidato.
                     </p>
                 </li>
-
                 <li>
                     <h3 class="inline-block">
-                        Desarrollo de la entrevista
+                        Charla introductoria.
+                    </h3>
+                    <p class="blogParrafo3">
+                        Conversación sobre temas intrascendentes que sirven para romper el hielo.
+                    </p>
+                </li>
+                <li>
+                    <h3 class="inline-block">
+                        Preguntas del entrevistador:
                     </h3>
                     <p class="blogParrafo3">
                         El entrevistador con sus preguntas quiere conocer aspectos básicos de tu personalidad y lo que

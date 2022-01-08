@@ -7,54 +7,40 @@
         }
     @endphp
     {{--Linea 1--}}
-    <div class="pt-2 ml-4 flex items-center ">
-        <!-- Localidad -->
-        <div x-data="{ tooltip: false }">
-            <div class="flex" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"  >
+    <div class="pt-2 ml-4 flex">
+        <div class="flex flex-1">
+            <!-- Localidad -->
+            <div class="flex">
                 <i class="fas fa-map-marker-alt fill-current text-gray-500 my-auto"></i>
-                <p class="font-semibold ml-1 text-red-900 text-lg">{{ $empleo->localidad }}</p>
-            </div>
-            <div class="text-xs bg-gray-600 text-gray-100 px-1 absolute rounded mt-1" x-cloak x-show.transition.origin.top="tooltip">
-                Provincia: {{ $empleo->provincia }}
+                <p class="font-semibold ml-1 text-red-900 text-base">{{ $empleo->localidad }}</p>
             </div>
 
-        </div>
+            <span class="mx-3">|</span>
 
-        <span class="mx-3">|</span>
-
-        <!-- Fecha de Publicación -->
-        <div x-data="{ tooltip: false }">
-            <div class="flex" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"  >
+            <!-- Fecha de Publicación -->
+            <div class="flex">
                 <i class="fas fa-calendar-week fill-current text-gray-500 my-auto"></i>
-                <p class="text-lg ml-1">{{ \Carbon\Carbon::parse($empleo->datePosted)->diffForHumans() }}</p>
+                <p class="text-base ml-1">{{ \Carbon\Carbon::parse($empleo->datePosted)->diffForHumans() }}</p>
             </div>
 
-            <div class=" bg-gray-600 text-gray-100 px-1 absolute rounded mt-1" x-cloak x-show.transition.origin.top="tooltip">
-                Publicada el {{ \Carbon\Carbon::parse($empleo->datePosted)->format('d/m/Y')}}
-            </div>
-        </div>
+            <span class="mx-3">|</span>
 
-        <span class="mx-3">|</span>
-
-        <!-- Web editor -->
-        <div x-data="{ tooltip: false }">
-            <div class="flex" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false">
+            <!-- Web editor -->
+            <div class="flex" >
                 <i class="fab fa-internet-explorer fill-current text-gray-500 my-auto"></i>
-                <span class="text-lg ml-1">{{$empleo->JobFuente}}</span>
-            </div>
-
-            <div class="text-xs bg-gray-600 text-gray-100 px-1 absolute rounded mt-1" x-cloak x-show.transition.origin.top="tooltip">
-                web www.agro.com
+                <span class="text-base ml-1">{{$empleo->JobFuente}}</span>
             </div>
         </div>
+
+
 
 
         @if (count($tipos) > 0)
-            <div class=" flex ml-4" >
+            <div class=" flex ml-4 items-end" >
 
                 @foreach ($tipos as $tipo)
 
-                    <span class=" px-2  mr-5 text-xs  font-semibold rounded-full bg-pink-400 text-white">
+                    <span class=" px-2  mr-5 text-sm  font-semibold rounded-full bg-pink-400 text-white">
                             {{ $tipo }}
                     </span>
 
@@ -137,20 +123,3 @@
 
 </div>
 
-  {{--
-  <div class="flex">
-            <!-- Titulo de la Oferta -->
-            <div class="flex my-auto mt-4" >
-                <button class="ml-2"
-                x-data="{ tooltip: false }"
-                x-on:click="$dispatch('modal', { openModal: 'true',titulo: '{{$job->title}}', mensaje: '{{$job->excerpt}}' })">
-                <i class="fa fa-search-plus transition duration-500 ease-in-out bg-transparent hover:bg-transparent transform hover:-translate-y-1 hover:scale-110 text-pink-800" ></i>
-                </button>
-                <h2 class="ml-2 text-2xl font-semibold tracking-wide text-pink-900">
-                    {{$job->title}}
-                </h2>
-            </div>
-
-
-        </div>
---}}
