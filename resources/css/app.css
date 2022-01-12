@@ -23,29 +23,63 @@
 
 @layer components {
     .blogH1 {
-        @apply pt-4 pb-2 text-4xl font-bold text-pink-800 text-center ;
+        @apply py-6 text-6xl font-semibold text-pink-800 text-center ;
 
     }
     .blogH2 {
-        @apply pt-4 pb-2 text-3xl text-pink-800 border-l-4 border-t-4 pl-2 border-pink-800;
+        @apply pt-4 pb-2 text-3xl text-pink-700 ;
 
     }
     .blogH3 {
-        @apply pl-10 text-2xl text-pink-600 ;
-
-    }
-    .blogH4 {
-        @apply pt-2 pl-16 text-xl text-pink-600 italic ;
+        @apply pl-10 text-2xl text-pink-600 pt-4 ;
 
     }
 
     .blogParrafo {
-        @apply pt-2 text-gray-800 pb-4 text-xl leading-loose tracking-wide  text-justify ;
+        @apply  text-gray-800 pb-2 text-xl leading-loose tracking-wide  text-justify ;
     }
 
     .blogParrafo3 {
         @apply pl-10 pt-2 text-gray-800 text-xl leading-loose tracking-wide  text-justify;
     }
+
+
+
+
+
+
+
+
+
+
+    .blogSeparador {
+        @apply h-1 my-4 bg-red-800;
+    }
+    .blogTituloCaja {
+        @apply py-2 text-2xl text-pink-800 text-center w-full font-bold underline ;
+    }
+    .blogSubtituloCaja {
+        @apply text-xl ml-4 text-pink-700 font-bold pt-4;
+    }
+    .blogSubSub {
+        @apply text-xl pl-6 font-semibold pt-2;
+    }
+
+
+    .blogDivisionCaja {
+        @apply bg-gray-200 mt-4 my-2 py-2 text-pink-800 text-center w-full font-bold
+    }
+    .blogParrafoCaja {
+        @apply text-gray-800 tracking-normal mx-4 text-justify text-lg;
+    }
+
+
+
+    .blogH4 {
+        @apply pt-2 pl-16 text-xl text-pink-600 italic ;
+
+    }
+
 
     .blogParrafo4 {
         @apply  text-gray-800 text-xl leading-loose tracking-wide  text-justify ;
@@ -63,6 +97,23 @@
         @apply pl-16 pt-2
 
     }
+    .blogCaja {
+        @apply border-2 border-pink-400 w-3/4 bg-gray-50 m-auto my-10
+    }
+    .blogCajaN1 {
+        @apply bg-gray-200 py-2 text-pink-800 text-center w-full font-bold
+    }
+    .blogCajaSubT {
+        @apply p-1 font-bold text-pink-700
+    }
+
+    .blogCajaQuestion {
+        @apply text-lg pl-12 italic pt-2;
+    }
+    .blogCajaGrupo {
+        @apply text-xl font-semibold py-4
+    }
+
 
     .h2titulo {
         @apply text-xl font-bold pt-8 pb-3 text-pink-600;
@@ -196,7 +247,9 @@
     margin-left: -36px;
     margin-top: -36px;
     position: absolute;
-    background: url('//i.imgur.com/TxzC70f.png') no-repeat;
+
+
+    background: url("/img/playYoutube.png") no-repeat;
     cursor: pointer;
   }
 

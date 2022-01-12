@@ -1026,31 +1026,27 @@ select {
 }
 
 .blogH1 {
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   text-align: center;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 700;
+  font-size: 3.75rem;
+  line-height: 1;
+  font-weight: 600;
   --tw-text-opacity: 1;
   color: rgba(157, 23, 77, var(--tw-text-opacity));
 }
 
 .blogH2 {
-  border-top-width: 4px;
-  border-left-width: 4px;
-  --tw-border-opacity: 1;
-  border-color: rgba(157, 23, 77, var(--tw-border-opacity));
   padding-top: 1rem;
   padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
   font-size: 1.875rem;
   line-height: 2.25rem;
   --tw-text-opacity: 1;
-  color: rgba(157, 23, 77, var(--tw-text-opacity));
+  color: rgba(190, 24, 93, var(--tw-text-opacity));
 }
 
 .blogH3 {
+  padding-top: 1rem;
   padding-left: 2.5rem;
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1058,19 +1054,8 @@ select {
   color: rgba(219, 39, 119, var(--tw-text-opacity));
 }
 
-.blogH4 {
-  padding-top: 0.5rem;
-  padding-left: 4rem;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-style: italic;
-  --tw-text-opacity: 1;
-  color: rgba(219, 39, 119, var(--tw-text-opacity));
-}
-
 .blogParrafo {
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   text-align: justify;
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -1090,6 +1075,81 @@ select {
   letter-spacing: 0.025em;
   --tw-text-opacity: 1;
   color: rgba(31, 41, 55, var(--tw-text-opacity));
+}
+
+.blogSeparador {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgba(153, 27, 27, var(--tw-bg-opacity));
+}
+
+.blogTituloCaja {
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgba(157, 23, 77, var(--tw-text-opacity));
+  text-decoration: underline;
+}
+
+.blogSubtituloCaja {
+  margin-left: 1rem;
+  padding-top: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgba(190, 24, 93, var(--tw-text-opacity));
+}
+
+.blogSubSub {
+  padding-top: 0.5rem;
+  padding-left: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.blogDivisionCaja {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  width: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgba(157, 23, 77, var(--tw-text-opacity))
+}
+
+.blogParrafoCaja {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-align: justify;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  letter-spacing: 0em;
+  --tw-text-opacity: 1;
+  color: rgba(31, 41, 55, var(--tw-text-opacity));
+}
+
+.blogH4 {
+  padding-top: 0.5rem;
+  padding-left: 4rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-style: italic;
+  --tw-text-opacity: 1;
+  color: rgba(219, 39, 119, var(--tw-text-opacity));
 }
 
 .blogParrafo4 {
@@ -1126,6 +1186,53 @@ select {
 .blogLi4 {
   padding-top: 0.5rem;
   padding-left: 4rem
+}
+
+.blogCaja {
+  margin: auto;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  width: 75%;
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgba(244, 114, 182, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(249, 250, 251, var(--tw-bg-opacity))
+}
+
+.blogCajaN1 {
+  width: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgba(157, 23, 77, var(--tw-text-opacity))
+}
+
+.blogCajaSubT {
+  padding: 0.25rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgba(190, 24, 93, var(--tw-text-opacity))
+}
+
+.blogCajaQuestion {
+  padding-top: 0.5rem;
+  padding-left: 3rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-style: italic;
+}
+
+.blogCajaGrupo {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600
 }
 
 .h2titulo {
@@ -1383,7 +1490,7 @@ select {
   margin-left: -36px;
   margin-top: -36px;
   position: absolute;
-  background: url('//i.imgur.com/TxzC70f.png') no-repeat;
+  background: url("/img/playYoutube.png") no-repeat;
   cursor: pointer;
 }
 
