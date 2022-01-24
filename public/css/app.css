@@ -1054,6 +1054,16 @@ select {
   color: rgba(219, 39, 119, var(--tw-text-opacity));
 }
 
+.blogH4 {
+  padding-top: 0.5rem;
+  padding-left: 4rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-style: italic;
+  --tw-text-opacity: 1;
+  color: rgba(219, 39, 119, var(--tw-text-opacity));
+}
+
 .blogParrafo {
   padding-bottom: 0.5rem;
   text-align: justify;
@@ -1062,7 +1072,7 @@ select {
   line-height: 2;
   letter-spacing: 0.025em;
   --tw-text-opacity: 1;
-  color: rgba(31, 41, 55, var(--tw-text-opacity));
+  color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
 
 .blogParrafo3 {
@@ -1074,7 +1084,52 @@ select {
   line-height: 2;
   letter-spacing: 0.025em;
   --tw-text-opacity: 1;
+  color: rgba(17, 24, 39, var(--tw-text-opacity));
+}
+
+.blogParrafo4 {
+  padding-left: 4rem;
+  text-align: justify;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  line-height: 2;
+  letter-spacing: 0.025em;
+  --tw-text-opacity: 1;
   color: rgba(31, 41, 55, var(--tw-text-opacity));
+}
+
+.blogUl3 {
+  list-style-position: inside;
+  list-style-type: disc;
+  padding-top: 0.5rem;
+  padding-left: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  --tw-text-opacity: 1;
+  color: rgba(219, 39, 119, var(--tw-text-opacity));
+}
+
+.blogUl3li {
+  padding-top: 0.5rem;
+  padding-left: 2.5rem;
+  text-align: justify;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  line-height: 2;
+  letter-spacing: 0.025em;
+  --tw-text-opacity: 1;
+  color: rgba(31, 41, 55, var(--tw-text-opacity));
+}
+
+.blogUl3D {
+  list-style-position: inside;
+  list-style-type: decimal;
+  padding-top: 0.5rem;
+  padding-left: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  --tw-text-opacity: 1;
+  color: rgba(219, 39, 119, var(--tw-text-opacity));
 }
 
 .blogSeparador {
@@ -1138,26 +1193,6 @@ select {
   font-size: 1.125rem;
   line-height: 1.75rem;
   letter-spacing: 0em;
-  --tw-text-opacity: 1;
-  color: rgba(31, 41, 55, var(--tw-text-opacity));
-}
-
-.blogH4 {
-  padding-top: 0.5rem;
-  padding-left: 4rem;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-style: italic;
-  --tw-text-opacity: 1;
-  color: rgba(219, 39, 119, var(--tw-text-opacity));
-}
-
-.blogParrafo4 {
-  text-align: justify;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  line-height: 2;
-  letter-spacing: 0.025em;
   --tw-text-opacity: 1;
   color: rgba(31, 41, 55, var(--tw-text-opacity));
 }

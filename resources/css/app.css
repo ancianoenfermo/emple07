@@ -34,17 +34,35 @@
         @apply pl-10 text-2xl text-pink-600 pt-4 ;
 
     }
+    .blogH4 {
+        @apply pt-2 pl-16 text-xl text-pink-600 italic ;
+
+    }
+
 
     .blogParrafo {
-        @apply  text-gray-800 pb-2 text-xl leading-loose tracking-wide  text-justify ;
+        @apply  text-gray-900 pb-2 text-xl leading-loose tracking-wide  text-justify ;
     }
 
     .blogParrafo3 {
-        @apply pl-10 pt-2 text-gray-800 text-xl leading-loose tracking-wide  text-justify;
+        @apply pl-10 pt-2 text-gray-900 text-xl leading-loose tracking-wide  text-justify;
+    }
+    .blogParrafo4 {
+        @apply pl-16 text-gray-800 text-xl leading-loose tracking-wide  text-justify ;
+    }
+    .blogUl3 {
+        @apply pt-2 pl-10 text-2xl list-disc list-inside text-pink-600;
+
+    }
+    .blogUl3li {
+        @apply pl-10 pt-2 text-gray-800 text-xl leading-loose tracking-wide  text-justify;;
+
     }
 
+    .blogUl3D {
+        @apply pt-2 pl-10 text-2xl list-decimal list-inside text-pink-600;
 
-
+    }
 
 
 
@@ -75,15 +93,10 @@
 
 
 
-    .blogH4 {
-        @apply pt-2 pl-16 text-xl text-pink-600 italic ;
-
-    }
 
 
-    .blogParrafo4 {
-        @apply  text-gray-800 text-xl leading-loose tracking-wide  text-justify ;
-    }
+
+
     .blogUl2 {
         @apply pt-2 text-2xl list-disc list-inside text-pink-600;
 

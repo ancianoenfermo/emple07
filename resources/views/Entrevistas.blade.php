@@ -42,16 +42,21 @@
                     Habitualmente las entrevistas de trabajo siguen un patrón básico compuesto de el saludo, una charla introductoria, una conversación sobre el puesto de trabajo, preguntas del candidato y el cierre y despedida.
                 </p>
                 <h3 class="blogH3">
-                    Saludo
+                    Saludo y presentación
                 </h3>
                 <p class="blogParrafo3">
-                    Es la primera impresión que el entrevistador se formará del candidato. Todo influye en este importante y primer contacto entre el entrevistador y el candidato: vestimenta, actitud, lenguaje corporal, tono de voz, pronunciación etc.
+                    Es una fase muy breve de la entrevista, pero fundamental para la idea que el entrevistador puede hacerse de ti. Todo influye en este importante y primer contacto entre el entrevistador y el candidato: vestimenta, actitud, lenguaje corporal, tono de voz, pronunciación etc.
                 </p>
-                <h3 class="blogH3">
-                    Charla introductoria
-                </h3>
                 <p class="blogParrafo3">
-                    Al comenzar la entrevista el entrevistador suele iniciar un dialogo sobre temas intrascendentes y de carácter general, con el objetivo de generar un clima de confianza y rebajar la tensión del momento en el candidato.
+                    Deja siempre que sea el entrevistador quien tome la iniciativa. Saluda cordialmente, dando la mano con firmeza sin brusquedad y mirando a los ojos. En caso de que el entrevistador este acompañado presta también atención a esta persona ya que también puede estar evaluándote.
+                </p>
+
+                <p class="blogParrafo3">
+                    No te sientes hasta que te lo indique en entrevistador y cuando lo hagas siéntate correctamente y nunca en el borde de la silla. Deja tus pertenecías a un lado de tal forma que no perturben la conversación.
+                </p>
+
+                <p class="blogParrafo3">
+                    Después del saludo y de sentarte es normal que el entrevistador inicie un dialogo sobre temas intrascendentes y de carácter general. Con ello persigue generar un clima de confianza y reducir el estado de ansiedad del candidato.
                 </p>
                 <h3 class="blogH3">
                     Conversación sobre el puesto de trabajo
@@ -59,12 +64,7 @@
                 <p class="blogParrafo3">
                     En esta fase el entrevistador profundizará y ampliará la información de tu curriculum abordando temas como: datos personales, formación, experiencia en trabajos anteriores, expectativas laborales, motivación para el desempeño del puesto ofertado etc.
                 </p>
-                <h3 class="blogH3">
-                    Preguntas del candidato
-                </h3>
-                <p class="blogParrafo3">
-                    Forman pequeños grupos de candidatos y se propone una tarea. Cada grupo debe discutir hasta llegar a una postura común sobre la solución. Esta forma de entrevista se suele utilizar para evaluar la capacidad de trabajo en equipo, la iniciativa, el liderazgo, la capacidad de comunicación y la actitud de escucha hacia los demás.
-                </p>
+
                 <h3 class="blogH3">
                     Clarificar dudas
                 </h3>
@@ -80,6 +80,76 @@
                 <h2 class="blogH2">
                     3.- ¿Cómo afrontar una entrevista?
                 </h2>
+                <p class="blogParrafo">
+                    Cuando eres entrevistado para obtener un puesto de trabajo debes aprovechar la oportunidad para que el entrevistador vea que eres el más indicado de los candidatos para obtener el puesto de trabajo. Además de tus competencias y trabajos anteriores la forma de comportarte en la entrevista le dará mucha información al entrevistador para que pueda evaluar si eres indicado para el puesto de trabajo a cubrir. A continuación, te damos unas pautas para que puedas preparar y ensayar las distintas fases de una entrevista de trabajo.
+                </p>
+
+                <p class="blogH3 font-semibold">Antes de la entrevista</p>
+                <ul class="blogUl3">
+                    <li class="blogUl3li">
+                    Si te citan por teléfono para realizar una entrevista debes anotar la hora exacta y el lugar y si es posible nombre, apellidos y puesto de la persona que te va a entrevistar.
+                    </li>
+                    <li class="blogUl3li">
+                    Sé puntual. No llegues tarde ni demasiado pronto.
+                    </li>
+                    <li class="blogUl3li">
+                    Recuerda todos los detalles de tu currículum.
+                    </li>
+                    <li class="blogUl3li">
+                    Llevar toda la documentación necesaria. (certificado de estudios, referencias etc.)
+                    </li>
+                    <li class="blogUl3li">
+                    Ten claro qué puedes ofrecer. Analiza tu proyecto y tus argumentos.
+                    </li>
+                    <li class="blogUl3li">
+                    Identifica tus puntos fuertes y débiles.
+                    </li>
+                    <li class="blogUl3li">
+                    Infórmate sobre la empresa y el puesto vacante.
+                    </li>
+                    <li class="blogUl3li">
+                    Información de contacto, cifras y hechos sobre tu jefe anterior o actual. Haz memoria ya que se espera que tengas un gran conocimiento de la empresa para la que has trabajado previamente, o para la que trabajas en la actualidad.
+                    </li>
+                    <li class="blogUl3li">
+                    Preparar preguntas para hacer al entrevistador.
+                    </li>
+                </ul>
+                <p class="blogH3 font-semibold" >Durante la entrevista<p>
+
+                <h3 class="blogH4">
+                   Saludo
+                </h3>
+                <p class="blogParrafo4">
+                    Es una fase muy breve de la entrevista, pero fundamentales para la idea que el entrevistador puede hacerse de ti. Deja siempre que sea el entrevistador quien tome la iniciativa. Saluda cordialmente, dando la mano con firmeza sin brusquedad y mirando a los ojos. En caso de que el entrevistador este acompañado presta también atención a esta persona ya que también puede estar evaluándote.
+                </p>
+
+                <p class="blogParrafo4">
+                    No te sientes hasta que te lo indique en entrevistador y cuando lo hagas siéntate correctamente y nuca en el borde de la silla. Deja tus pertenecías a un lado de tal forma que no perturben la conversación.
+                </p>
+                <h3 class="blogH4">
+                    Charla introductoria
+                </h3>
+                <p class="blogParrafo4">
+                    Después del saludo y de sentarte es normal que el entrevistador inicie un dialogo sobre temas intrascendentes y de carácter general. Con ello persigue generar un clima de confianza y reducir el estado de ansiedad del candidato.
+                </p>
+                <h3 class="blogH4">
+                    Conversación sobre el puesto de trabajo
+                </h3>
+                <p class="blogParrafo4">
+                    En esta parte de la entrevista abordará y profundizará en los temas más importantes de tu curriculum como: datos personales, formación, experiencia, expectativas laborales y motivación.
+                </p>
+                <p class="blogParrafo4">
+                    Es muy importante escuchar atentamente y dejar hablar al entrevistador. Y aunque hay preguntas muy concretas que se responden de una forma muy corta, hay otras que te permiten una respuesta amplia, responde de una forma resumida sin divagar.
+                </p>
+                <h3 class="blogH4">
+                    Clarificar dudas
+                </h3>
+                <p class="blogParrafo4">
+                    Después del saludo y de sentarte es normal que el entrevistador inicie un dialogo sobre temas intrascendentes y de carácter general. Con ello persigue generar un clima de confianza y reducir el estado de ansiedad del candidato.
+                </p>
+
+
+
 
             </div>
 

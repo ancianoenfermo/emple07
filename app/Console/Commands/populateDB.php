@@ -21,10 +21,11 @@ use App\Models\Provincia;
 use App\Models\Localidad;
 use App\Models\Empleo;
 use App\Models\Excerpt;
-
+use Illuminate\Support\Facades\Log;
 
 use App\Models\Jornada;
 use App\Models\Contrato;
+/*use BeyondCode\QueryDetector\Outputs\Log;*/
 use phpDocumentor\Reflection\PseudoTypes\True_;
 
 use function PHPUnit\Framework\isNull;
@@ -64,6 +65,8 @@ class populateDB extends Command
      */
     public function handle()
     {
+        $this->output->write('ACTUALIZANDO EMPLEOS', false);
+        Log::info("ACTUALIZO BD");
         global $tipoTodos, $tipoDiscapacidad, $tipoPracticas,$tipoTeletrabajo;
         $timeStart = Carbon::now();
         $logoFunte = array();
